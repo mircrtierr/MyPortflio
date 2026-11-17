@@ -622,7 +622,10 @@
           <!-- Card 3: 5+ Competitive Awards -->
           <div class="artisan-card spotlight-card p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-3">
             <div>
-              <span class="tech-tag text-amber-400 border-amber-500/30">Podiums & Honors</span>
+              <div class="flex items-center justify-between">
+                <span class="tech-tag text-amber-400 border-amber-500/30">Podiums & Honors</span>
+                <span class="text-[10px] font-mono text-amber-400 font-semibold bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">🏆 3 Verified Trophies</span>
+              </div>
               <div class="mt-3">
                 <div class="text-3xl font-extrabold font-mono text-amber-400">
                   <span data-counter="5" data-decimals="0" data-suffix="+">5+</span> Awards
@@ -630,10 +633,28 @@
                 <h3 class="text-xs font-bold text-white mt-1">State & National Recognitions</h3>
               </div>
             </div>
-            <div class="mt-6 pt-3 border-t border-slate-800">
+
+            <!-- Authentic Trophy Photos Preview Strip -->
+            <div class="mt-4 grid grid-cols-3 gap-1.5">
+              <div class="group/t relative h-16 rounded-lg overflow-hidden border border-amber-500/30 bg-slate-900 cursor-pointer shadow" onclick="openAwardModal('johan_apps_ideation_johor')" title="Johan Johor Android Trophy">
+                <img src="assets/awards/trophy_johan_apps_ideation_johor.jpg" alt="Johan Trophy" class="w-full h-full object-cover object-center group-hover/t:scale-110 transition-transform duration-200" />
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-[8px] font-mono text-amber-300 text-center py-0.5 truncate px-1">Johan State</span>
+              </div>
+              <div class="group/t relative h-16 rounded-lg overflow-hidden border border-emerald-500/30 bg-slate-900 cursor-pointer shadow" onclick="openAwardModal('android_national_mmu')" title="3rd Place National MMU Trophy">
+                <img src="assets/awards/trophy_android_national_mmu.jpg" alt="MMU Android Trophy" class="w-full h-full object-cover object-center group-hover/t:scale-110 transition-transform duration-200" />
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-[8px] font-mono text-emerald-300 text-center py-0.5 truncate px-1">3rd National</span>
+              </div>
+              <div class="group/t relative h-16 rounded-lg overflow-hidden border border-cyan-500/30 bg-slate-900 cursor-pointer shadow" onclick="openAwardModal('petah_madani_podcast')" title="5th Place National PETAH MADANI Trophy">
+                <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="PETAH Trophy" class="w-full h-full object-cover object-center group-hover/t:scale-110 transition-transform duration-200" />
+                <span class="absolute bottom-0 inset-x-0 bg-slate-950/85 text-[8px] font-mono text-cyan-300 text-center py-0.5 truncate px-1">5th Podcast</span>
+              </div>
+            </div>
+
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
               <p class="text-[11px] text-slate-400">
-                Champion Johor Android Apps, 3rd Place National App Dev, 5th Place National Podcast.
+                Champion Johor Android, 3rd MMU National, 5th PETAH MADANI.
               </p>
+              <a href="#credentials" class="text-[11px] font-mono text-amber-400 hover:underline flex-shrink-0 ml-2">Trophies →</a>
             </div>
           </div>
 
@@ -1326,17 +1347,35 @@
           </div>
 
           <!-- ITEM: PETAH MADANI -->
-          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-amber-500">
-            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span class="text-amber-400 font-semibold">NATIONAL PODIUM</span>
-              <span>October 2026</span>
+          <div data-category="award" class="cred-item artisan-card p-4 sm:p-5 border-l-4 border-l-amber-500 flex flex-col justify-between group">
+            <div>
+              <div class="relative w-full h-44 rounded-lg overflow-hidden bg-slate-900 border border-slate-800 mb-3 cursor-pointer group/trophy" onclick="openAwardModal('petah_madani_podcast')">
+                <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="PETAH MADANI 2026 Trophy" class="w-full h-full object-cover object-center group-hover/trophy:scale-105 transition-transform duration-300" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent flex items-end p-2.5">
+                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/90 text-slate-950 backdrop-blur">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    Official Physical Trophy
+                  </span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span class="text-amber-400 font-semibold tracking-wider">NATIONAL PODIUM 🎙️</span>
+                <span>October 2026</span>
+              </div>
+              <h3 class="text-base font-bold text-white mt-1">Fifth Place (National Level)</h3>
+              <div class="text-xs text-slate-300 font-medium">PETAH MADANI: Beyond the Mic Podcast Challenge</div>
+              <div class="text-slate-400 text-[11px] font-mono mt-0.5">Kementerian Pendidikan Malaysia • PICC Putrajaya</div>
+              <p class="text-slate-400 text-xs mt-2.5 leading-relaxed">
+                Recognized nationally at Putrajaya International Convention Centre for articulate technology storytelling, voice delivery, and public communication.
+              </p>
             </div>
-            <h3 class="text-base font-bold text-white mt-2">Fifth Place (National Level)</h3>
-            <div class="text-xs text-slate-300 font-medium mt-1">PETAH MADANI: Beyond the Mic Podcast Challenge</div>
-            <div class="text-slate-400 text-[11px] mt-0.5">Ministry of Education Malaysia (KPM)</div>
-            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-              Recognized nationally for tech storytelling, articulate verbal communication, and podcast presentation.
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-amber-400">PICC Putrajaya</span>
+              <button onclick="openAwardModal('petah_madani_podcast')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-mono font-medium transition-colors">
+                <span>Inspect Trophy</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- ITEM: KV Skills Web Tech (Johor Zone) -->
@@ -1368,31 +1407,67 @@
           </div>
 
           <!-- ITEM: Android App National -->
-          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-amber-500">
-            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span class="text-amber-400 font-semibold">NATIONAL PODIUM</span>
-              <span>2023</span>
+          <div data-category="award" class="cred-item artisan-card p-4 sm:p-5 border-l-4 border-l-amber-500 flex flex-col justify-between group">
+            <div>
+              <div class="relative w-full h-44 rounded-lg overflow-hidden bg-slate-900 border border-slate-800 mb-3 cursor-pointer group/trophy" onclick="openAwardModal('android_national_mmu')">
+                <img src="assets/awards/trophy_android_national_mmu.jpg" alt="MMU Android National Trophy" class="w-full h-full object-cover object-center group-hover/trophy:scale-105 transition-transform duration-300" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent flex items-end p-2.5">
+                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-500/90 text-slate-950 backdrop-blur">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    Official Physical Trophy
+                  </span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span class="text-amber-400 font-semibold tracking-wider">NATIONAL PODIUM 🥉</span>
+                <span>2023</span>
+              </div>
+              <h3 class="text-base font-bold text-white mt-1">Third Place (National Level)</h3>
+              <div class="text-xs text-slate-300 font-medium">Pertandingan Pembangunan Aplikasi Android</div>
+              <div class="text-slate-400 text-[11px] font-mono mt-0.5">KPM (BSTP), JPN Melaka & MMU</div>
+              <p class="text-slate-400 text-xs mt-2.5 leading-relaxed">
+                National engineering showdown evaluating Android mobile application development, algorithmic implementation, and UX design.
+              </p>
             </div>
-            <h3 class="text-base font-bold text-white mt-2">Third Place (National Level)</h3>
-            <div class="text-xs text-slate-300 font-medium mt-1">Pertandingan Pembangunan Aplikasi Android</div>
-            <div class="text-slate-400 text-[11px] mt-0.5">KPM (BSTP), JPN Melaka & MMU</div>
-            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-              National recognition for coding a functional Android mobile application addressing student productivity.
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-amber-400">MMU Crystal Award</span>
+              <button onclick="openAwardModal('android_national_mmu')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-mono font-medium transition-colors">
+                <span>Inspect Trophy</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- ITEM: Apps Ideation Challenge Johor -->
-          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-amber-400">
-            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-              <span class="text-amber-300 font-bold">STATE CHAMPION 🏆</span>
-              <span>September 2023</span>
+          <div data-category="award" class="cred-item artisan-card p-4 sm:p-5 border-l-4 border-l-amber-400 flex flex-col justify-between group">
+            <div>
+              <div class="relative w-full h-44 rounded-lg overflow-hidden bg-slate-900 border border-slate-800 mb-3 cursor-pointer group/trophy" onclick="openAwardModal('johan_apps_ideation_johor')">
+                <img src="assets/awards/trophy_johan_apps_ideation_johor.jpg" alt="Johan Apps Ideation Johor Trophy" class="w-full h-full object-cover object-center group-hover/trophy:scale-105 transition-transform duration-300" loading="lazy" />
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950/85 via-transparent to-transparent flex items-end p-2.5">
+                  <span class="inline-flex items-center gap-1.5 px-2 py-0.5 rounded text-[10px] font-mono font-medium bg-amber-400 text-slate-950 font-bold backdrop-blur">
+                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                    Johan / 1st Place Trophy 🏆
+                  </span>
+                </div>
+              </div>
+              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+                <span class="text-amber-300 font-bold tracking-wider">STATE CHAMPION 🏆</span>
+                <span>September 2023</span>
+              </div>
+              <h3 class="text-base font-bold text-white mt-1">Champion / 1st Place (Johor State Level)</h3>
+              <div class="text-xs text-slate-300 font-medium">Apps Ideation Challenge (Android Category)</div>
+              <div class="text-slate-400 text-[11px] font-mono mt-0.5">Jabatan Pendidikan Negeri Johor (JPNJ)</div>
+              <p class="text-slate-400 text-xs mt-2.5 leading-relaxed">
+                Awarded First Place Champion across the State of Johor for mobile architecture, user interface concept design, and working application prototype.
+              </p>
             </div>
-            <h3 class="text-base font-bold text-white mt-2">Champion / 1st Place (Johor State Level)</h3>
-            <div class="text-xs text-slate-300 font-medium mt-1">Apps Ideation Challenge (Android Category)</div>
-            <div class="text-slate-400 text-[11px] mt-0.5">Jabatan Pendidikan Negeri Johor</div>
-            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
-              First place winner in the State of Johor for mobile architecture, user interface design, and functional prototype.
-            </p>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between">
+              <span class="text-[10px] font-mono text-amber-400">JPN Johor Champion</span>
+              <button onclick="openAwardModal('johan_apps_ideation_johor')" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-amber-500/10 hover:bg-amber-500/20 text-amber-400 border border-amber-500/30 text-xs font-mono font-medium transition-colors">
+                <span>Inspect Trophy</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+              </button>
+            </div>
           </div>
 
           <!-- ITEM: AI Video Resume Workshop -->
@@ -1589,6 +1664,15 @@
   <!-- ========================================== -->
   <div id="certificate-modal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeCertificateModal()">
     <div class="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto bg-[#0d1017] border border-slate-700/80 rounded-2xl shadow-2xl modal-enter" id="certificate-modal-content">
+      <!-- Populated dynamically via app.js -->
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- TROPHY & AWARDS LIGHTBOX MODAL             -->
+  <!-- ========================================== -->
+  <div id="award-modal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeAwardModal()">
+    <div class="relative w-full max-w-3xl max-h-[92vh] overflow-y-auto bg-[#0d1017] border border-amber-500/40 rounded-2xl shadow-2xl modal-enter" id="award-modal-content">
       <!-- Populated dynamically via app.js -->
     </div>
   </div>

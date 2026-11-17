@@ -193,15 +193,24 @@ const COMMANDS = {
 <div class="text-emerald-400 font-bold mb-2">🏅 Honors & Awards (5+ Recognitions):</div>
 <div class="space-y-2 text-xs">
   <div class="border-l-2 border-amber-400 pl-2">
-    <div class="text-amber-300 font-semibold">Champion / 1st Place (Johor State Level)</div>
+    <div class="flex items-center justify-between">
+      <span class="text-amber-300 font-semibold">Champion / 1st Place (Johor State Level) 🏆</span>
+      <button onclick="openAwardModal('johan_apps_ideation_johor')" class="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 border border-amber-500/30 text-[10px] hover:bg-amber-500/30">View Trophy 🏆</button>
+    </div>
     <div class="text-slate-300">Apps Ideation Challenge (Secondary School – Android Category) | JPN Johor (2023)</div>
   </div>
   <div class="border-l-2 border-emerald-400 pl-2">
-    <div class="text-emerald-300 font-semibold">Third Place (National Level)</div>
+    <div class="flex items-center justify-between">
+      <span class="text-emerald-300 font-semibold">Third Place (National Level) 🥉</span>
+      <button onclick="openAwardModal('android_national_mmu')" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px] hover:bg-emerald-500/30">View Trophy 🏆</button>
+    </div>
     <div class="text-slate-300">Pertandingan Pembangunan Aplikasi Android | KPM (BSTP), JPN Melaka & MMU (2023)</div>
   </div>
   <div class="border-l-2 border-cyan-400 pl-2">
-    <div class="text-cyan-300 font-semibold">Fifth Place (National Level)</div>
+    <div class="flex items-center justify-between">
+      <span class="text-cyan-300 font-semibold">Fifth Place (National Level) 🎙️</span>
+      <button onclick="openAwardModal('petah_madani_podcast')" class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[10px] hover:bg-cyan-500/30">View Trophy 🏆</button>
+    </div>
     <div class="text-slate-300">PETAH MADANI: Beyond the Mic – Podcast Challenge | Ministry of Education Malaysia (2026)</div>
   </div>
   <div class="border-l-2 border-amber-400 pl-2">
@@ -1145,6 +1154,141 @@ window.closeCertificateModal = function() {
   }
 };
 
+// ==========================================
+// AUTHENTIC TROPHIES & AWARDS REGISTRY
+// ==========================================
+const AWARDS_DATA = {
+  johan_apps_ideation_johor: {
+    title: "Champion / 1st Place (Johor State Level)",
+    subtitle: "Pertandingan Apps Ideation Challenge (Kategori Sekolah Menengah - Android)",
+    category: "State Championship 🏆",
+    issuer: "Jabatan Pendidikan Negeri Johor (JPN Johor)",
+    date: "September 2023",
+    trophyType: "Official Gold & Red State Champion Column Trophy",
+    inscription: "JOHAN • Sekolah Menengah (Android) • Pertandingan Apps Ideation Challenge Johor 2023",
+    overview: "Awarded First Place Champion across the State of Johor for developing an original Android mobile application prototype, evaluated by the Johor State Education Department on usability, code structure, visual UX design, and real-world student productivity impact.",
+    image: "assets/awards/trophy_johan_apps_ideation_johor.jpg",
+    tags: ["Android Development", "Java", "Mobile Prototyping", "State Champion 🏆", "JPN Johor"]
+  },
+  android_national_mmu: {
+    title: "Third Place (National Level)",
+    subtitle: "Pertandingan Pembangunan Aplikasi Android (Kategori Sekolah Menengah)",
+    category: "National Podium 🥉",
+    issuer: "Kementerian Pendidikan Malaysia (BSTP) & Multimedia University (MMU)",
+    date: "2023",
+    trophyType: "Official Faceted Crystal Plaque Trophy",
+    inscription: "KEMENTERIAN PENDIDIKAN • BAHAGIAN SUMBER DAN TEKNOLOGI PENDIDIKAN DENGAN KERJASAMA JABATAN PENDIDIKAN NEGERI MELAKA • MMU • TEMPAT KETIGA",
+    overview: "Secured 3rd Place nationwide in a high-intensity mobile development challenge organized jointly by the Ministry of Education Malaysia (BSTP), Melaka State Education Department, and Multimedia University (MMU). Evaluated on native Android development, algorithmic logic, and responsive interface architecture.",
+    image: "assets/awards/trophy_android_national_mmu.jpg",
+    tags: ["Android Architecture", "Java / Kotlin", "Mobile UX", "National Podium 🥉", "MMU", "KPM"]
+  },
+  petah_madani_podcast: {
+    title: "Fifth Place (National Level)",
+    subtitle: "PETAH MADANI: Beyond the Mic – Podcast Challenge",
+    category: "National Podium 🎙️",
+    issuer: "Kementerian Pendidikan Malaysia (KPM)",
+    date: "12 – 15 October 2026",
+    trophyType: "Official Acrylic & Beech Wood Podium Trophy",
+    inscription: "KEMENTERIAN PENDIDIKAN • KELIMA • PERTANDINGAN BEYOND THE MIC: PODCAST PERINGKAT KEBANGSAAN KATEGORI LEPAS MENENGAH • 12-15 OKTOBER 2026 • PUSAT KONVENSYEN ANTARABANGSA PUTRAJAYA",
+    overview: "Recognized nationally at the Putrajaya International Convention Centre (PICC) among top student finalists from across Malaysia. Evaluated on articulate technology storytelling, public speech delivery, audio presentation clarity, and engaging narrative structure under the Ministry of Education Malaysia.",
+    image: "assets/awards/trophy_petah_madani_podcast.jpg",
+    tags: ["Technical Storytelling", "Audio Production", "Podcast", "Public Presentation", "National Level 🎙️", "PICC Putrajaya"]
+  }
+};
+
+window.openAwardModal = function(awardKey) {
+  const award = AWARDS_DATA[awardKey];
+  if (!award) return;
+
+  audio.playBeep();
+
+  const modalContainer = document.getElementById('award-modal');
+  const modalContent = document.getElementById('award-modal-content');
+  if (!modalContainer || !modalContent) return;
+
+  modalContent.innerHTML = `
+    <div class="p-6 md:p-8">
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono font-semibold text-amber-400 uppercase tracking-wider">${award.category}</span>
+          <h3 class="text-xl md:text-2xl font-bold text-white mt-1">${award.title}</h3>
+          <p class="text-xs text-slate-300 font-mono mt-0.5">${award.subtitle}</p>
+        </div>
+        <button onclick="closeAwardModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors" title="Close Modal (Esc)">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- High-Res Trophy Photo Preview -->
+      <div class="mt-4">
+        <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-2xl flex items-center justify-center p-3">
+          <img src="${award.image}" alt="${award.title}" class="max-h-[500px] w-auto max-w-full rounded object-contain shadow-lg" />
+          <div class="absolute bottom-3 right-3 flex items-center gap-2">
+            <a href="${award.image}" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs backdrop-blur inline-flex items-center gap-1.5 transition-colors shadow">
+              <svg class="w-3.5 h-3.5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              <span>View Full Resolution</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trophy Metadata Grid -->
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
+        <div class="p-3.5 rounded-lg bg-slate-900/70 border border-slate-800">
+          <div class="text-slate-500 mb-1">// Awarding Authority</div>
+          <div class="text-white font-bold text-sm">${award.issuer}</div>
+          <div class="text-amber-400 font-semibold mt-1">Recipient: Muhammad Mirza Aqmal Raziq</div>
+          <div class="text-slate-400 text-[11px] mt-0.5">${award.trophyType}</div>
+        </div>
+
+        <div class="p-3.5 rounded-lg bg-slate-900/70 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="text-slate-500 mb-1">// Event & Trophy Details</div>
+            <div class="flex items-center justify-between text-slate-300">
+              <span>Date:</span>
+              <span class="text-emerald-400 font-semibold">${award.date}</span>
+            </div>
+            <div class="mt-2 text-[11px] text-slate-300">
+              <span class="text-slate-500 block text-[10px]">Physical Inscription:</span>
+              <span class="text-amber-300 font-semibold italic">"${award.inscription}"</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description & Tags -->
+      <div class="mt-4 p-4 rounded-lg bg-slate-900/40 border border-slate-800">
+        <p class="text-slate-300 text-xs leading-relaxed">${award.overview}</p>
+        <div class="mt-3 flex flex-wrap gap-1.5">
+          ${award.tags.map(t => `<span class="tech-tag text-amber-300 border-amber-500/20">${t}</span>`).join('')}
+        </div>
+      </div>
+
+      <!-- Footer Buttons -->
+      <div class="mt-6 pt-4 border-t border-slate-800 flex items-center justify-between">
+        <span class="text-[11px] font-mono text-slate-500">Official Physical Award Trophy • Pasir Gudang, Johor</span>
+        <button onclick="closeAwardModal()" class="px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-200 font-mono text-xs transition-colors">
+          Close Window
+        </button>
+      </div>
+    </div>
+  `;
+
+  modalContainer.classList.remove('hidden');
+  modalContainer.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeAwardModal = function() {
+  const modalContainer = document.getElementById('award-modal');
+  if (modalContainer) {
+    modalContainer.classList.add('hidden');
+    modalContainer.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+};
+
 // Filter Tabs
 function initCredentialsFilter() {
   const filterBtns = document.querySelectorAll('.cred-filter-btn');
@@ -1284,6 +1428,7 @@ function initKeyboardShortcuts() {
     if (e.key === 'Escape') {
       closeProjectModal();
       closeCertificateModal();
+      closeAwardModal();
     }
     if ((e.ctrlKey && e.key === 'k') || (e.key === '/' && document.activeElement.tagName !== 'INPUT')) {
       e.preventDefault();
