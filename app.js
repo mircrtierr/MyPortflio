@@ -216,11 +216,56 @@ const COMMANDS = {
   certs: {
     desc: "Display verified industry certifications",
     execute: () => `
-<div class="text-emerald-400 font-bold mb-2">📜 Verified Qualifications:</div>
-<div class="space-y-1.5 text-xs">
-  <div>• <strong class="text-cyan-300">ICDL Certificate – AI Essentials (Syllabus 2.0)</strong> — ICDL Asia (5 Nov 2026)</div>
-  <div>• <strong class="text-cyan-300">Cisco Networking Academy – IT Essentials</strong> — KVPJB (11 Apr 2026)</div>
-  <div>• <strong class="text-cyan-300">Sijil Kemahiran Malaysia (SKM) Tahap 3</strong> — Application Development, JPK Accredited</div>
+<div class="text-emerald-400 font-bold mb-2">📜 Verified Qualifications & Certifications (6 Total):</div>
+<div class="space-y-2 text-xs">
+  <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
+    <div class="font-bold text-emerald-400">1. Sijil Kemahiran Malaysia (SKM) Tahap 3 – Application Development</div>
+    <div class="text-slate-400 text-[11px]">JPK Kementerian Sumber Manusia • IT-010-3:2016 • 17 Nov 2026</div>
+    <div class="mt-1 flex gap-2">
+      <button onclick="openCertificateModal('skm3')" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px]">Inspect Cert</button>
+    </div>
+  </div>
+  <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
+    <div class="font-bold text-cyan-400">2. OpenAI Academy – AI Foundations</div>
+    <div class="text-slate-400 text-[11px]">Cert ID: 6u8b3zqsu9 • Issued: 17 Aug 2026</div>
+    <div class="mt-1 flex gap-2">
+      <button onclick="openCertificateModal('openai_foundations')" class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[10px]">Inspect Cert</button>
+      <a href="https://academy.openai.com/public/certificate/6u8b3zqsu9" target="_blank" class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Verify Online</a>
+    </div>
+  </div>
+  <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
+    <div class="font-bold text-cyan-400">3. OpenAI Academy – Agents and Workflows</div>
+    <div class="text-slate-400 text-[11px]">Cert ID: igra2j14wu • Issued: 17 Aug 2026</div>
+    <div class="mt-1 flex gap-2">
+      <button onclick="openCertificateModal('openai_agents')" class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[10px]">Inspect Cert</button>
+      <a href="https://academy.openai.com/public/certificate/igra2j14wu" target="_blank" class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Verify Online</a>
+    </div>
+  </div>
+  <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
+    <div class="font-bold text-cyan-400">4. OpenAI Academy – Applied AI Foundations</div>
+    <div class="text-slate-400 text-[11px]">Cert ID: pt4kythdcy • Issued: 17 Aug 2026</div>
+    <div class="mt-1 flex gap-2">
+      <button onclick="openCertificateModal('openai_applied')" class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[10px]">Inspect Cert</button>
+      <a href="https://academy.openai.com/public/certificate/pt4kythdcy" target="_blank" class="px-2 py-0.5 rounded bg-slate-800 text-slate-300 text-[10px]">Verify Online</a>
+    </div>
+  </div>
+  <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
+    <div class="font-bold text-emerald-400">5. ICDL Certificate – AI Essentials (Syllabus 2.0)</div>
+    <div class="text-slate-400 text-[11px]">ICDL Asia • Candidate No: MY0000023321 • 5 Nov 2026</div>
+    <div class="mt-1 flex gap-2">
+      <button onclick="openCertificateModal('icdl')" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px]">Inspect Cert</button>
+    </div>
+  </div>
+  <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
+    <div class="font-bold text-cyan-400">6. Cisco Networking Academy – IT Essentials</div>
+    <div class="text-slate-400 text-[11px]">Cisco Academy • KVPJB • ID: b3d010ca • 11 Apr 2026</div>
+    <div class="mt-1 flex gap-2">
+      <button onclick="openCertificateModal('cisco')" class="px-2 py-0.5 rounded bg-cyan-500/20 text-cyan-300 border border-cyan-500/30 text-[10px]">Inspect Cert</button>
+    </div>
+  </div>
+</div>
+<div class="mt-3">
+  <a href="assets/certificates/all_certificates.pdf" target="_blank" class="text-emerald-400 hover:underline font-mono text-xs">📄 Download Official PDF Bundle (6 Pages)</a>
 </div>`
   },
 
@@ -784,6 +829,243 @@ window.closeProjectModal = function() {
   }
 };
 
+// ==============================================
+// VERIFIED DIGITAL CERTIFICATES DATA & LIGHTBOX
+// ==============================================
+const CERTIFICATES_DATA = {
+  skm3: {
+    title: "Sijil Kemahiran Malaysia (SKM) Tahap 3",
+    subtitle: "Pembangunan Aplikasi (Application Development) [IT-010-3:2016]",
+    issuer: "Jabatan Pembangunan Kemahiran (JPK), Kementerian Sumber Manusia Malaysia",
+    center: "Pusat Bertauliah K05104 (Kolej Vokasional Perdagangan)",
+    date: "17 November 2026",
+    id: "No. Kad Pengenalan: 070922-01-0269",
+    category: "National Vocational Standard",
+    badgeColor: "emerald",
+    image: "assets/certificates/cert_skm3_jpk.png",
+    overview: "Official national vocational qualification formally certifying core competencies in software engineering, systems design, object-oriented programming, and relational database management under Malaysian national skills framework.",
+    competencies: [
+      "Requirements gathering & software systems analysis",
+      "Full-stack software design and relational database modeling",
+      "Object-oriented implementation, testing and debugging",
+      "Software lifecycle compliance and documentation"
+    ]
+  },
+  openai_foundations: {
+    title: "OpenAI Academy – AI Foundations",
+    subtitle: "Core Foundations of Modern Generative AI & Large Language Models",
+    issuer: "OpenAI Academy",
+    center: "OpenAI Official Accreditation",
+    date: "17 August 2026",
+    id: "6u8b3zqsu9",
+    verifyUrl: "https://academy.openai.com/public/certificate/6u8b3zqsu9",
+    category: "AI & Machine Learning",
+    badgeColor: "cyan",
+    image: "assets/certificates/cert_openai_ai_foundations.png",
+    overview: "Certified foundational knowledge in large language model mechanics, attention mechanisms, tokenization pipelines, prompt techniques, and responsible AI practices.",
+    competencies: [
+      "Transformer and attention mechanism foundations",
+      "Token probability distributions and generation sampling",
+      "System prompt design, few-shot conditioning and formatting",
+      "AI safety, hallucination mitigation and alignment"
+    ]
+  },
+  openai_agents: {
+    title: "OpenAI Academy – Agents and Workflows",
+    subtitle: "Autonomous Agent Architectures & Tool Orchestration",
+    issuer: "OpenAI Academy",
+    center: "OpenAI Official Accreditation",
+    date: "17 August 2026",
+    id: "igra2j14wu",
+    verifyUrl: "https://academy.openai.com/public/certificate/igra2j14wu",
+    category: "Autonomous Systems",
+    badgeColor: "cyan",
+    image: "assets/certificates/cert_openai_agents_workflows.png",
+    overview: "Advanced certification covering multi-step agent design patterns, deterministic tool use, function calling schemas, persistent memory, and agent orchestration.",
+    competencies: [
+      "Agentic loop cycles, reasoning patterns and stopping conditions",
+      "Function calling and OpenAPI tool integration",
+      "State preservation and conversation context management",
+      "Multi-agent collaboration and subagent task delegation"
+    ]
+  },
+  openai_applied: {
+    title: "OpenAI Academy – Applied AI Foundations",
+    subtitle: "Enterprise Problem-Solving with Applied AI",
+    issuer: "OpenAI Academy",
+    center: "OpenAI Official Accreditation",
+    date: "17 August 2026",
+    id: "pt4kythdcy",
+    verifyUrl: "https://academy.openai.com/public/certificate/pt4kythdcy",
+    category: "Applied AI & Engineering",
+    badgeColor: "cyan",
+    image: "assets/certificates/cert_openai_applied_ai.png",
+    overview: "Practical engineering qualification on deploying production AI layers, semantic search, retrieval-augmented generation (RAG), and data integration pipelines.",
+    competencies: [
+      "Vector embeddings and similarity search indexing",
+      "Retrieval-Augmented Generation (RAG) architecture",
+      "AI integration into existing enterprise backends",
+      "Performance evaluation and latency optimization"
+    ]
+  },
+  icdl: {
+    title: "ICDL Certificate – AI Essentials",
+    subtitle: "Syllabus 2.0 • International Digital Literacy",
+    issuer: "ICDL Asia / ICDL Foundation",
+    center: "Kolej Vokasional Perdagangan Examination Center",
+    date: "5 November 2026",
+    id: "Candidate No: MY0000023321",
+    category: "International Certification",
+    badgeColor: "emerald",
+    image: "assets/certificates/cert_icdl_ai_essentials.png",
+    overview: "International digital literacy standard evaluating practical understanding of artificial intelligence applications, data ethics, and workflow automation.",
+    competencies: [
+      "Core AI concepts, machine learning vs traditional software",
+      "Data ethics, privacy, bias, and trustworthy AI",
+      "Workplace productivity tools powered by AI",
+      "Ethical dilemmas and societal impact of automation"
+    ]
+  },
+  cisco: {
+    title: "Cisco Networking Academy – IT Essentials",
+    subtitle: "PC Hardware, Operating Systems & Network Diagnostics",
+    issuer: "Cisco Networking Academy",
+    center: "Kolej Vokasional Perdagangan Cisco Academy",
+    date: "11 April 2026",
+    id: "b3d010ca-7f71-4090-a0e8-b2e6dcca0e66",
+    category: "IT Infrastructure & Networking",
+    badgeColor: "cyan",
+    image: "assets/certificates/cert_cisco_it_essentials.png",
+    overview: "Industry certification validating hands-on hardware assembly, operating system setup, network configuration, and enterprise diagnostics.",
+    competencies: [
+      "Hardware component diagnostics, motherboard, storage & RAM",
+      "Windows/Linux OS installation, configuration and troubleshooting",
+      "TCP/IP, subnetting, switch/router baseline configuration",
+      "Operational security, preventative maintenance and safety"
+    ]
+  }
+};
+
+window.openCertificateModal = function(certKey) {
+  const cert = CERTIFICATES_DATA[certKey];
+  if (!cert) return;
+
+  audio.playBeep();
+
+  const modalContainer = document.getElementById('certificate-modal');
+  const modalContent = document.getElementById('certificate-modal-content');
+  if (!modalContainer || !modalContent) return;
+
+  modalContent.innerHTML = `
+    <div class="p-6 md:p-8">
+      <!-- Modal Header -->
+      <div class="flex items-start justify-between border-b border-slate-800 pb-4">
+        <div>
+          <span class="text-xs font-mono font-semibold text-emerald-400 uppercase tracking-wider">${cert.category}</span>
+          <h3 class="text-xl md:text-2xl font-bold text-white mt-1">${cert.title}</h3>
+          <p class="text-xs text-slate-300 font-mono mt-0.5">${cert.subtitle}</p>
+        </div>
+        <button onclick="closeCertificateModal()" class="text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800 transition-colors" title="Close Modal (Esc)">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+        </button>
+      </div>
+
+      <!-- High-Res Certificate Preview Box -->
+      <div class="mt-4">
+        <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-2xl group flex items-center justify-center p-2">
+          <img src="${cert.image}" alt="${cert.title}" class="max-h-[480px] w-auto max-w-full rounded object-contain shadow-lg" />
+          <div class="absolute bottom-3 right-3 flex items-center gap-2">
+            <a href="${cert.image}" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs backdrop-blur inline-flex items-center gap-1.5 transition-colors shadow">
+              <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+              <span>View Original Image</span>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Metadata Grid -->
+      <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-4 font-mono text-xs">
+        <div class="p-3.5 rounded-lg bg-slate-900/70 border border-slate-800">
+          <div class="text-slate-500 mb-1">// Recipient & Authority</div>
+          <div class="text-white font-bold text-sm">Muhammad Mirza Aqmal Raziq</div>
+          <div class="text-slate-300 mt-1">${cert.issuer}</div>
+          <div class="text-slate-400 text-[11px] mt-0.5">${cert.center}</div>
+        </div>
+
+        <div class="p-3.5 rounded-lg bg-slate-900/70 border border-slate-800 flex flex-col justify-between">
+          <div>
+            <div class="text-slate-500 mb-1">// Credential Verification</div>
+            <div class="flex items-center justify-between text-slate-300">
+              <span>Issue Date:</span>
+              <span class="text-emerald-400 font-semibold">${cert.date}</span>
+            </div>
+            <div class="flex items-center justify-between text-slate-300 mt-1">
+              <span>Credential ID:</span>
+              <span class="text-cyan-400 font-bold">${cert.id}</span>
+            </div>
+          </div>
+          <div class="pt-2 flex justify-end">
+            <button onclick="copyToClipboard('${cert.id}', 'Credential ID')" class="text-[11px] text-slate-400 hover:text-white inline-flex items-center gap-1">
+              <svg class="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/></svg>
+              <span>Copy Credential ID</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description & Competencies -->
+      <div class="mt-4 p-4 rounded-lg bg-slate-900/40 border border-slate-800">
+        <p class="text-slate-300 text-xs leading-relaxed">${cert.overview}</p>
+        <div class="mt-3">
+          <div class="text-[11px] font-mono font-semibold text-slate-400 uppercase tracking-wider mb-2">Verified Competencies:</div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+            ${cert.competencies.map(c => `
+              <div class="flex items-start gap-2 text-slate-300">
+                <span class="text-emerald-400 font-bold">✓</span>
+                <span>${c}</span>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      </div>
+
+      <!-- Actions -->
+      <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+        <div class="flex items-center gap-2">
+          ${cert.verifyUrl ? `
+            <a href="${cert.verifyUrl}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-lg transition-colors shadow-sm">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+              <span>Verify on Official Portal</span>
+            </a>
+          ` : `
+            <span class="text-xs font-mono text-slate-400">Institutional Record Verified</span>
+          `}
+          <a href="assets/certificates/all_certificates.pdf" target="_blank" download="Verified_Certificates_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-2 px-3 py-2 border border-slate-700 hover:border-slate-600 bg-slate-900 text-slate-300 text-xs rounded-lg transition-colors">
+            <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            <span>Download All (6-Page PDF)</span>
+          </a>
+        </div>
+        <button onclick="closeCertificateModal()" class="px-4 py-2 border border-slate-700 hover:bg-slate-800 text-slate-300 font-medium text-xs rounded-lg transition-colors">
+          Close Preview
+        </button>
+      </div>
+    </div>
+  `;
+
+  modalContainer.classList.remove('hidden');
+  modalContainer.classList.add('flex');
+  document.body.style.overflow = 'hidden';
+};
+
+window.closeCertificateModal = function() {
+  const modalContainer = document.getElementById('certificate-modal');
+  if (modalContainer) {
+    modalContainer.classList.add('hidden');
+    modalContainer.classList.remove('flex');
+    document.body.style.overflow = '';
+  }
+};
+
 // Filter Tabs
 function initCredentialsFilter() {
   const filterBtns = document.querySelectorAll('.cred-filter-btn');
@@ -922,6 +1204,7 @@ function initKeyboardShortcuts() {
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
       closeProjectModal();
+      closeCertificateModal();
     }
     if ((e.ctrlKey && e.key === 'k') || (e.key === '/' && document.activeElement.tagName !== 'INPUT')) {
       e.preventDefault();
