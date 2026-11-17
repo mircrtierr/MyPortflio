@@ -658,6 +658,25 @@ const PROJECT_MODAL_DATA = {
     `,
     architectureHtml: `
       <div class="space-y-4">
+        <!-- Live Dashboard Image Showcase -->
+        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-xl">
+          <div class="p-2.5 border-b border-slate-800 bg-slate-900/90 flex items-center justify-between text-xs font-mono text-slate-300">
+            <span class="flex items-center gap-2 text-emerald-400 font-bold">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+              SmartAttend Operations Console & Attendance Logs
+            </span>
+            <span class="text-[11px] text-slate-400">Candidate Student Record: JKV0625KA013</span>
+          </div>
+          <a href="assets/projects/smartattend_dashboard.jpg" target="_blank" class="block relative group/zoom" title="Click to open original screenshot in high-resolution">
+            <img src="assets/projects/smartattend_dashboard.jpg" alt="SmartAttend Administrative Dashboard Screenshot" class="w-full max-h-[380px] object-contain mx-auto bg-slate-950" />
+            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900/90 text-white font-mono text-xs border border-slate-700 shadow">
+                🔍 Open Full-Resolution Screenshot
+              </span>
+            </div>
+          </a>
+        </div>
+
         <div class="bg-slate-950 p-3.5 rounded-lg border border-slate-800 font-mono text-xs text-emerald-400 leading-relaxed overflow-x-auto">
 +-----------------------------------------------------------------------------------------+
 |                              SYSTEM ARCHITECTURE FLOW                                  |
@@ -715,6 +734,25 @@ const PROJECT_MODAL_DATA = {
     `,
     architectureHtml: `
       <div class="space-y-4">
+        <!-- Google Colab Notebook Showcase -->
+        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-xl">
+          <div class="p-2.5 border-b border-slate-800 bg-slate-900/90 flex items-center justify-between text-xs font-mono text-slate-300">
+            <span class="flex items-center gap-2 text-cyan-400 font-bold">
+              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+              Google Colab Training & Inference Notebook (kod_projek.ipynb)
+            </span>
+            <span class="text-[11px] text-slate-400">Class Detected: keyboard (Confidence: 0.91)</span>
+          </div>
+          <a href="assets/projects/yolo_colab_detection.jpg" target="_blank" class="block relative group/zoom" title="Click to open original screenshot in high-resolution">
+            <img src="assets/projects/yolo_colab_detection.jpg" alt="Google Colab YOLO Detection Notebook Screenshot" class="w-full max-h-[380px] object-contain mx-auto bg-slate-950" />
+            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
+              <span class="px-3 py-1.5 rounded-lg bg-slate-900/90 text-white font-mono text-xs border border-slate-700 shadow">
+                🔍 Open Full-Resolution Screenshot
+              </span>
+            </div>
+          </a>
+        </div>
+
         <div class="bg-slate-950 p-3.5 rounded-lg border border-slate-800 font-mono text-xs text-cyan-400 leading-relaxed overflow-x-auto">
 +-----------------------------------------------------------------------------------------+
 |                             DATA & TRAINING PIPELINE                                    |
