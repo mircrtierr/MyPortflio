@@ -5,11 +5,14 @@
   <a href="https://github.com/mircrtierr">
     <img src="https://img.shields.io/badge/Status-Available%20for%20OJT%20(Feb--June%202027)-10b981?style=for-the-badge&logo=google-calendar&logoColor=white" alt="OJT Availability" />
   </a>
+  <a href="https://www.linkedin.com/in/aqmal-raziq-3975b0346">
+    <img src="https://img.shields.io/badge/LinkedIn-aqmal--raziq-0a66c2?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn" />
+  </a>
   <a href="mailto:mirzaaqmal22@gmail.com">
     <img src="https://img.shields.io/badge/Email-mirzaaqmal22%40gmail.com-06b6d4?style=for-the-badge&logo=gmail&logoColor=white" alt="Email" />
   </a>
-  <a href="tel:0135788399">
-    <img src="https://img.shields.io/badge/Phone-013--5788399-f59e0b?style=for-the-badge&logo=whatsapp&logoColor=white" alt="Phone" />
+  <a href="https://wa.me/60135788399">
+    <img src="https://img.shields.io/badge/WhatsApp-013--5788399-25D366?style=for-the-badge&logo=whatsapp&logoColor=white" alt="WhatsApp" />
   </a>
 </p>
 
@@ -20,7 +23,8 @@
 - 🎓 **Education:** Final year **Diploma Teknologi Komputeran** at **Kolej Vokasional Perdagangan Johor Bahru (KVPJB)**.
 - 🏆 **Academic Standing:** Current **CGPA 3.98 / 4.00** (Top cohort performer).
 - 📜 **Vocational Accreditation:** **SKM Tahap 3 (Level 3)** in Application Development (JPK Certified).
-- 📜 **Industry Certifications:** **ICDL AI Essentials (Syllabus 2.0)** & **Cisco IT Essentials**.
+- 📜 **AI Accreditations:** **OpenAI Academy** (AI Foundations, Agents & Workflows, Applied AI) & **ICDL AI Essentials 2.0**.
+- 📜 **Networking:** **Cisco Networking Academy – IT Essentials** (KVPJB).
 - 💼 **Industrial Training (OJT):** Seeking a **5-month IT Internship** from **February to June 2027** in Software Engineering, Full-Stack Development, or AI/Computer Vision.
 - 📍 **Location:** Pasir Gudang, Johor, Malaysia (Open to Johor on-site, hybrid, or remote roles).
 
@@ -66,6 +70,7 @@
 
 ### 📬 Get In Touch
 
+- **LinkedIn:** [linkedin.com/in/aqmal-raziq-3975b0346](https://www.linkedin.com/in/aqmal-raziq-3975b0346)
 - **GitHub:** [@mircrtierr](https://github.com/mircrtierr)
 - **Email:** [mirzaaqmal22@gmail.com](mailto:mirzaaqmal22@gmail.com)
 - **Phone / WhatsApp:** [+60 13-5788399](https://wa.me/60135788399)

@@ -88,6 +88,7 @@ const CANDIDATE = {
   phone: "013-5788399",
   email: "mirzaaqmal22@gmail.com",
   github: "https://github.com/mircrtierr",
+  linkedin: "https://www.linkedin.com/in/aqmal-raziq-3975b0346",
   ojtDuration: "February – June 2027 (5 Months)"
 };
 
@@ -102,10 +103,11 @@ const COMMANDS = {
   <div><span class="text-cyan-400 font-bold">projects</span>    - Featured engineering projects & repos</div>
   <div><span class="text-cyan-400 font-bold">skills</span>      - 7 core technical domains & tools</div>
   <div><span class="text-cyan-400 font-bold">github</span>      - GitHub profile & repository links</div>
+  <div><span class="text-cyan-400 font-bold">linkedin</span>    - Official LinkedIn profile URL</div>
   <div><span class="text-cyan-400 font-bold">awards</span>      - Competition podiums & awards</div>
-  <div><span class="text-cyan-400 font-bold">certs</span>       - Industry certs (ICDL, Cisco, SKM Level 3)</div>
+  <div><span class="text-cyan-400 font-bold">certs</span>       - Industry certs (OpenAI, ICDL, Cisco, SKM3)</div>
   <div><span class="text-cyan-400 font-bold">ojt</span>         - 5-Month IT Internship details (Feb–Jun 2027)</div>
-  <div><span class="text-cyan-400 font-bold">contact</span>     - Direct phone, email & social links</div>
+  <div><span class="text-cyan-400 font-bold">contact</span>     - Direct phone, WhatsApp, email & vCard</div>
   <div><span class="text-cyan-400 font-bold">resume</span>      - Open / download verified resume PDF</div>
   <div><span class="text-cyan-400 font-bold">theme</span>       - Toggle between light and dark theme</div>
   <div><span class="text-cyan-400 font-bold">clear</span>       - Clear current terminal screen</div>
@@ -282,14 +284,27 @@ const COMMANDS = {
 </div>`
   },
 
+  linkedin: {
+    desc: "Open LinkedIn professional profile",
+    execute: () => `
+<div class="text-cyan-400 font-bold mb-1">💼 LinkedIn Profile:</div>
+<div class="text-xs text-slate-300">
+  Profile URL: <a href="https://www.linkedin.com/in/aqmal-raziq-3975b0346" target="_blank" class="text-cyan-300 underline font-mono">https://www.linkedin.com/in/aqmal-raziq-3975b0346</a>
+</div>
+<div class="mt-2 text-slate-400 text-xs">Ready to connect with IT recruiters, engineering leads, and technology teams.</div>`
+  },
+
   contact: {
     desc: "Show contact channels & quick connection links",
     execute: () => `
 <div class="text-emerald-400 font-bold mb-2">📬 Contact Channels:</div>
-<div class="space-y-1 text-xs">
-  <div>📱 Phone/WhatsApp: <a href="tel:0135788399" class="text-cyan-400 font-mono hover:underline">013-5788399</a></div>
+<div class="space-y-1.5 text-xs">
+  <div>💬 WhatsApp: <a href="https://wa.me/60135788399" target="_blank" class="text-emerald-400 font-mono hover:underline">+6013-5788399</a></div>
+  <div>📱 Phone: <a href="tel:0135788399" class="text-cyan-400 font-mono hover:underline">013-5788399</a></div>
   <div>📧 Email: <a href="mailto:mirzaaqmal22@gmail.com" class="text-cyan-400 font-mono hover:underline">mirzaaqmal22@gmail.com</a></div>
+  <div>💼 LinkedIn: <a href="https://www.linkedin.com/in/aqmal-raziq-3975b0346" target="_blank" class="text-cyan-400 font-mono hover:underline">linkedin.com/in/aqmal-raziq-3975b0346</a></div>
   <div>🐙 GitHub: <a href="https://github.com/mircrtierr" target="_blank" class="text-cyan-400 font-mono hover:underline">https://github.com/mircrtierr</a></div>
+  <div>📇 vCard: <a href="Muhammad_Mirza_Aqmal_Raziq.vcf" download="Muhammad_Mirza_Aqmal_Raziq.vcf" class="text-cyan-300 font-mono hover:underline">Download Contact (.vcf)</a></div>
   <div>📄 Resume: <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" download="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" class="text-emerald-400 font-mono hover:underline">Resume_Muhammad_Mirza_Aqmal_Raziq.pdf (Download)</a></div>
 </div>`
   },
@@ -734,23 +749,45 @@ const PROJECT_MODAL_DATA = {
     `,
     architectureHtml: `
       <div class="space-y-4">
-        <!-- Google Colab Notebook Showcase -->
-        <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-xl">
-          <div class="p-2.5 border-b border-slate-800 bg-slate-900/90 flex items-center justify-between text-xs font-mono text-slate-300">
-            <span class="flex items-center gap-2 text-cyan-400 font-bold">
-              <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
-              Google Colab Training & Inference Notebook (kod_projek.ipynb)
-            </span>
-            <span class="text-[11px] text-slate-400">Class Detected: keyboard (Confidence: 0.91)</span>
-          </div>
-          <a href="assets/projects/yolo_colab_detection.jpg" target="_blank" class="block relative group/zoom" title="Click to open original screenshot in high-resolution">
-            <img src="assets/projects/yolo_colab_detection.jpg" alt="Google Colab YOLO Detection Notebook Screenshot" class="w-full max-h-[380px] object-contain mx-auto bg-slate-950" />
-            <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
-              <span class="px-3 py-1.5 rounded-lg bg-slate-900/90 text-white font-mono text-xs border border-slate-700 shadow">
-                🔍 Open Full-Resolution Screenshot
+        <!-- Dual Colab Verification: Dataset Inference & Live Webcam -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Item 1: Colab Dataset Inference -->
+          <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-xl flex flex-col justify-between">
+            <div class="p-2.5 border-b border-slate-800 bg-slate-900/90 flex items-center justify-between text-xs font-mono text-slate-300">
+              <span class="flex items-center gap-2 text-cyan-400 font-bold">
+                <span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+                Dataset Inference
               </span>
+              <span class="text-[11px] text-slate-400">keyboard 0.91</span>
             </div>
-          </a>
+            <a href="assets/projects/yolo_colab_detection.jpg" target="_blank" class="block relative group/zoom p-2 bg-slate-950" title="Click to open original screenshot">
+              <img src="assets/projects/yolo_colab_detection.jpg" alt="Google Colab YOLO Detection Notebook Screenshot" class="w-full max-h-[220px] object-contain mx-auto" />
+              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900/90 text-white font-mono text-xs border border-slate-700 shadow">
+                  🔍 View Image
+                </span>
+              </div>
+            </a>
+          </div>
+
+          <!-- Item 2: Colab Live Webcam Inference -->
+          <div class="rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-xl flex flex-col justify-between">
+            <div class="p-2.5 border-b border-slate-800 bg-slate-900/90 flex items-center justify-between text-xs font-mono text-slate-300">
+              <span class="flex items-center gap-2 text-emerald-400 font-bold">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+                Live Webcam Inference
+              </span>
+              <span class="text-[11px] text-slate-400">webcamCode001</span>
+            </div>
+            <a href="assets/projects/yolo_webcam_live.png" target="_blank" class="block relative group/zoom p-2 bg-slate-950" title="Click to open original webcam screenshot">
+              <img src="assets/projects/yolo_webcam_live.png" alt="Google Colab Live Webcam Inference Screenshot" class="w-full max-h-[220px] object-contain mx-auto" />
+              <div class="absolute inset-0 bg-slate-950/40 opacity-0 group-hover/zoom:opacity-100 transition-opacity flex items-center justify-center">
+                <span class="px-2.5 py-1 rounded-lg bg-slate-900/90 text-white font-mono text-xs border border-slate-700 shadow">
+                  🔍 View Image
+                </span>
+              </div>
+            </a>
+          </div>
         </div>
 
         <div class="bg-slate-950 p-3.5 rounded-lg border border-slate-800 font-mono text-xs text-cyan-400 leading-relaxed overflow-x-auto">
