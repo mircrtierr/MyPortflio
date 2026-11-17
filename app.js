@@ -1,33 +1,120 @@
 /**
  * Muhammad Mirza Aqmal Raziq bin Mirza Affzard - Developer Portfolio
- * Interactive Terminal & Bento Grid Hybrid Logic
+ * Ultra-Interactive 3D Tilt & Cyber Hologram Engine
  * GitHub: https://github.com/mircrtierr
  */
 
-// State Management
+// Application State
 const STATE = {
   theme: localStorage.getItem('portfolio-theme') || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark'),
+  soundEnabled: localStorage.getItem('portfolio-sound') === 'true',
   terminalHistory: [],
   historyIndex: -1,
   activeFilter: 'all',
   activeSkillDomain: 'all',
+  cursor: { x: window.innerWidth / 2, y: window.innerHeight / 2, targetX: window.innerWidth / 2, targetY: window.innerHeight / 2 }
 };
 
-// Data Structures
+// Web Audio API Synthesizer (Zero dependencies, pure browser audio)
+class SoundFX {
+  constructor() {
+    this.ctx = null;
+  }
+
+  init() {
+    if (!this.ctx && (window.AudioContext || window.webkitAudioContext)) {
+      const AudioCtx = window.AudioContext || window.webkitAudioContext;
+      this.ctx = new AudioCtx();
+    }
+    if (this.ctx && this.ctx.state === 'suspended') {
+      this.ctx.resume();
+    }
+  }
+
+  playKeyClick() {
+    if (!STATE.soundEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'sine';
+    osc.frequency.setValueAtTime(650 + Math.random() * 150, this.ctx.currentTime);
+    osc.frequency.exponentialRampToValueAtTime(150, this.ctx.currentTime + 0.04);
+
+    gain.gain.setValueAtTime(0.04, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.04);
+  }
+
+  playHoverTick() {
+    if (!STATE.soundEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    const osc = this.ctx.createOscillator();
+    const gain = this.ctx.createGain();
+
+    osc.type = 'triangle';
+    osc.frequency.setValueAtTime(1200, this.ctx.currentTime);
+
+    gain.gain.setValueAtTime(0.015, this.ctx.currentTime);
+    gain.gain.exponentialRampToValueAtTime(0.0001, this.ctx.currentTime + 0.025);
+
+    osc.connect(gain);
+    gain.connect(this.ctx.destination);
+
+    osc.start();
+    osc.stop(this.ctx.currentTime + 0.025);
+  }
+
+  playSuccessChime() {
+    if (!STATE.soundEnabled) return;
+    this.init();
+    if (!this.ctx) return;
+
+    const now = this.ctx.currentTime;
+    [523.25, 659.25, 783.99, 1046.50].forEach((freq, i) => {
+      const osc = this.ctx.createOscillator();
+      const gain = this.ctx.createGain();
+
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(freq, now + i * 0.06);
+
+      gain.gain.setValueAtTime(0.035, now + i * 0.06);
+      gain.gain.exponentialRampToValueAtTime(0.0001, now + i * 0.06 + 0.25);
+
+      osc.connect(gain);
+      gain.connect(this.ctx.destination);
+
+      osc.start(now + i * 0.06);
+      osc.stop(now + i * 0.06 + 0.25);
+    });
+  }
+}
+
+const audioFX = new SoundFX();
+
+// Candidate Info
 const CANDIDATE = {
   name: "Muhammad Mirza Aqmal Raziq bin Mirza Affzard",
   shortName: "Mirza Aqmal",
-  title: "Diploma Teknologi Komputeran Student & Full-Stack / AI Enthusiast",
   institution: "Kolej Vokasional Perdagangan Johor Bahru (KVPJB)",
   cgpa: "3.98",
   location: "Pasir Gudang, Johor, Malaysia",
   phone: "013-5788399",
   email: "mirzaaqmal22@gmail.com",
   github: "https://github.com/mircrtierr",
-  ojtPeriod: "February – June 2027 (5 Months)",
-  ojtStatus: "Available for Placement"
+  ojtPeriod: "February – June 2027 (5 Months)"
 };
 
+// Terminal Commands
 const COMMANDS = {
   help: {
     desc: "Display list of all available CLI commands",
@@ -77,7 +164,7 @@ const COMMANDS = {
   <div class="mt-2 flex flex-wrap gap-2 text-[11px]">
     <a href="https://github.com/mircrtierr/smartattend-kvpjb" target="_blank" class="text-emerald-400 underline hover:text-emerald-300">↗ GitHub Repository</a>
     <span class="text-slate-600">|</span>
-    <button onclick="openProjectModal('smartattend')" class="text-cyan-400 underline hover:text-cyan-300">🔍 Open Architecture Modal</button>
+    <button onclick="openProjectModal('smartattend')" class="text-cyan-400 underline hover:text-cyan-300">🔍 Open 3D Architecture Modal</button>
   </div>
 </div>
 
@@ -117,7 +204,8 @@ const COMMANDS = {
 <div class="text-xs text-slate-300">Profile URL: <a href="https://github.com/mircrtierr" target="_blank" class="text-cyan-400 underline font-mono">https://github.com/mircrtierr</a></div>
 <div class="mt-2 space-y-1 text-xs">
   <div class="text-slate-300 font-mono">📁 <a href="https://github.com/mircrtierr/smartattend-kvpjb" target="_blank" class="text-emerald-400 underline">smartattend-kvpjb</a> - Facial recognition attendance system with ArcFace & ESP32-CAM</div>
-  <div class="text-slate-300 font-mono">📁 <a href="https://github.com/mircrtierr/yolo-electronics-detection" target="_blank" class="text-emerald-400 underline">yolo-electronics-detection</a> - YOLO-based computer & electronic hardware detection model</div>
+  <div class="text-slate-300 font-mono">📁 <a href="https://github.com/mircrtierr/yolo-electronics-detection" target="_blank" class="text-emerald-400 underline">yolo-electronics-detection</a> - YOLO-based computer hardware detection model</div>
+  <div class="text-slate-300 font-mono">📁 <a href="https://github.com/mircrtierr/MyPortflio" target="_blank" class="text-emerald-400 underline">MyPortflio</a> - This 3D interactive developer portfolio website</div>
 </div>
 <div class="mt-2 text-slate-400 text-[11px]">Type <span class="text-cyan-400 font-mono">open github</span> to launch in a new tab.</div>`
   },
@@ -196,7 +284,7 @@ const COMMANDS = {
 
   whoami: {
     desc: "Current user session context",
-    execute: () => `<div class="text-xs text-slate-300">guest@recruiter-terminal [authenticated as guest with read privileges]</div>`
+    execute: () => `<div class="text-xs text-slate-300">guest@recruiter-workstation [authenticated as guest with read privileges]</div>`
   },
 
   theme: {
@@ -223,14 +311,228 @@ const COMMANDS = {
   }
 };
 
-// Initialize on DOM Loaded
+// Lifecycle Initialization
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
+  initSoundToggle();
+  init3DTiltEngine();
+  initCyberCanvas();
+  initCustomCursor();
   initTerminal();
   initSkillsFilter();
   initCredentialsFilter();
   initKeyboardShortcuts();
 });
+
+// Sound Toggle Handler
+function initSoundToggle() {
+  const soundBtn = document.getElementById('sound-toggle-btn');
+  const soundOnIcon = document.getElementById('sound-icon-on');
+  const soundOffIcon = document.getElementById('sound-icon-off');
+
+  function updateSoundUI() {
+    if (STATE.soundEnabled) {
+      if (soundOnIcon) soundOnIcon.classList.remove('hidden');
+      if (soundOffIcon) soundOffIcon.classList.add('hidden');
+      if (soundBtn) soundBtn.title = "Audio FX Enabled (Click to Mute)";
+    } else {
+      if (soundOnIcon) soundOnIcon.classList.add('hidden');
+      if (soundOffIcon) soundOffIcon.classList.remove('hidden');
+      if (soundBtn) soundBtn.title = "Audio FX Muted (Click to Enable)";
+    }
+  }
+
+  updateSoundUI();
+
+  if (soundBtn) {
+    soundBtn.addEventListener('click', () => {
+      STATE.soundEnabled = !STATE.soundEnabled;
+      localStorage.setItem('portfolio-sound', STATE.soundEnabled);
+      updateSoundUI();
+      if (STATE.soundEnabled) {
+        audioFX.playSuccessChime();
+        showToast("🔊 Audio FX Enabled");
+      } else {
+        showToast("🔇 Audio FX Muted");
+      }
+    });
+  }
+}
+
+// 3D Tilt Engine for Cards (Pop-out 3D physics)
+function init3DTiltEngine() {
+  const cards = document.querySelectorAll('.tilt-card');
+
+  cards.forEach(card => {
+    let bounds;
+
+    function mouseEnter() {
+      bounds = card.getBoundingClientRect();
+      audioFX.playHoverTick();
+    }
+
+    function mouseMove(e) {
+      if (!bounds) bounds = card.getBoundingClientRect();
+      const mouseX = e.clientX - bounds.left;
+      const mouseY = e.clientY - bounds.top;
+
+      // Update CSS variables for dynamic spotlight reflection
+      card.style.setProperty('--mouse-x', `${mouseX}px`);
+      card.style.setProperty('--mouse-y', `${mouseY}px`);
+
+      // Calculate tilt (-15deg to +15deg)
+      const xPercent = (mouseX / bounds.width) - 0.5;
+      const yPercent = (mouseY / bounds.height) - 0.5;
+
+      const rotateX = -yPercent * 18; // Invert for realistic tilt
+      const rotateY = xPercent * 18;
+
+      card.style.transform = `perspective(1000px) rotateX(${rotateX.toFixed(2)}deg) rotateY(${rotateY.toFixed(2)}deg) scale3d(1.025, 1.025, 1.025)`;
+    }
+
+    function mouseLeave() {
+      // Spring reset
+      card.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    }
+
+    card.addEventListener('mouseenter', mouseEnter);
+    card.addEventListener('mousemove', mouseMove);
+    card.addEventListener('mouseleave', mouseLeave);
+  });
+}
+
+// Interactive 3D Cyber Matrix Canvas
+function initCyberCanvas() {
+  const canvas = document.getElementById('cyber-canvas');
+  if (!canvas) return;
+
+  const ctx = canvas.getContext('2d');
+  let width, height;
+  let particles = [];
+  const particleCount = Math.min(window.innerWidth > 768 ? 75 : 35, 80);
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  resize();
+  window.addEventListener('resize', resize);
+
+  // Initialize particles with 3D Z coordinate
+  for (let i = 0; i < particleCount; i++) {
+    particles.push({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      z: Math.random() * 800 + 100, // Z depth
+      vx: (Math.random() - 0.5) * 0.45,
+      vy: (Math.random() - 0.5) * 0.45,
+      radius: Math.random() * 1.8 + 1
+    });
+  }
+
+  let mouseX = width / 2;
+  let mouseY = height / 2;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function render() {
+    ctx.clearRect(0, 0, width, height);
+
+    const isLight = document.body.classList.contains('light-theme');
+    const dotColor = isLight ? 'rgba(16, 185, 129, ' : 'rgba(16, 185, 129, ';
+    const lineColor = isLight ? 'rgba(6, 182, 212, ' : 'rgba(16, 185, 129, ';
+
+    // Parallax shift calculation
+    const offsetX = (mouseX - width / 2) * 0.03;
+    const offsetY = (mouseY - height / 2) * 0.03;
+
+    // Update and draw particles
+    for (let i = 0; i < particles.length; i++) {
+      const p = particles[i];
+
+      p.x += p.vx;
+      p.y += p.vy;
+
+      if (p.x < 0) p.x = width;
+      if (p.x > width) p.x = 0;
+      if (p.y < 0) p.y = height;
+      if (p.y > height) p.y = 0;
+
+      const depthFactor = 600 / (600 + p.z);
+      const renderX = p.x + offsetX * depthFactor;
+      const renderY = p.y + offsetY * depthFactor;
+      const renderRadius = p.radius * depthFactor * 1.5;
+      const alpha = (0.2 + depthFactor * 0.5).toFixed(2);
+
+      ctx.beginPath();
+      ctx.arc(renderX, renderY, renderRadius, 0, Math.PI * 2);
+      ctx.fillStyle = `${dotColor}${alpha})`;
+      ctx.fill();
+
+      // Connect lines
+      for (let j = i + 1; j < particles.length; j++) {
+        const p2 = particles[j];
+        const dx = p.x - p2.x;
+        const dy = p.y - p2.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 110) {
+          const lineAlpha = ((1 - dist / 110) * 0.22 * depthFactor).toFixed(2);
+          ctx.beginPath();
+          ctx.moveTo(renderX, renderY);
+          const p2X = p2.x + offsetX * (600 / (600 + p2.z));
+          const p2Y = p2.y + offsetY * (600 / (600 + p2.z));
+          ctx.lineTo(p2X, p2Y);
+          ctx.strokeStyle = `${lineColor}${lineAlpha})`;
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(render);
+  }
+
+  requestAnimationFrame(render);
+}
+
+// Custom 3D Cursor Engine
+function initCustomCursor() {
+  const cursor = document.getElementById('custom-cursor');
+  const dot = document.getElementById('custom-cursor-dot');
+  if (!cursor || !dot) return;
+
+  let mouseX = window.innerWidth / 2;
+  let mouseY = window.innerHeight / 2;
+  let cursorX = mouseX;
+  let cursorY = mouseY;
+
+  window.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    dot.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0) translate(-50%, -50%)`;
+  });
+
+  function renderCursor() {
+    cursorX += (mouseX - cursorX) * 0.18;
+    cursorY += (mouseY - cursorY) * 0.18;
+    cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+    requestAnimationFrame(renderCursor);
+  }
+
+  requestAnimationFrame(renderCursor);
+
+  // Hover state detection on interactive items
+  const interactiveTargets = 'button, a, input, .tech-pill, .bento-card, .tilt-card';
+  document.querySelectorAll(interactiveTargets).forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+  });
+}
 
 // Theme Management
 function initTheme() {
@@ -242,6 +544,7 @@ function initTheme() {
     themeToggleBtn.addEventListener('click', () => {
       const isLight = document.body.classList.contains('light-theme');
       setTheme(isLight ? 'dark' : 'light');
+      audioFX.playSuccessChime();
     });
   }
 }
@@ -278,13 +581,16 @@ function initTerminal() {
 
   if (!terminalForm || !terminalInput || !terminalOutput) return;
 
-  // Initial welcome message
   terminalOutput.innerHTML = `
     <div class="text-slate-400 text-xs mb-2">
-      <span class="text-emerald-400 font-mono font-bold">mirza@kvpjb-system</span> <span class="text-slate-500">[v2.4.0-release]</span>
-      <br>Interactive Developer Shell. Type <span class="text-cyan-400 font-bold font-mono">help</span> or click command pills below to explore.
+      <span class="text-emerald-400 font-mono font-bold">mirza@kvpjb-system</span> <span class="text-slate-500">[v3.0.0-holographic]</span>
+      <br>Interactive 3D Developer Shell. Type <span class="text-cyan-400 font-bold font-mono">help</span> or click command pills below to explore.
     </div>
   `;
+
+  terminalInput.addEventListener('input', () => {
+    audioFX.playKeyClick();
+  });
 
   terminalForm.addEventListener('submit', (e) => {
     e.preventDefault();
@@ -295,9 +601,9 @@ function initTerminal() {
     STATE.terminalHistory.push(rawVal);
     STATE.historyIndex = STATE.terminalHistory.length;
     terminalInput.value = '';
+    audioFX.playSuccessChime();
   });
 
-  // History navigation with arrow keys & Tab auto-complete
   terminalInput.addEventListener('keydown', (e) => {
     if (e.key === 'ArrowUp') {
       e.preventDefault();
@@ -325,7 +631,6 @@ function initTerminal() {
     }
   });
 
-  // Clicking terminal body focuses input
   const terminalWindow = document.getElementById('terminal-window');
   if (terminalWindow) {
     terminalWindow.addEventListener('click', (e) => {
@@ -345,7 +650,6 @@ function handleCommand(cmdStr) {
   const command = parts[0].toLowerCase();
   const args = parts.slice(1);
 
-  // Append user command line
   const cmdRow = document.createElement('div');
   cmdRow.className = 'mt-2 text-xs flex items-center space-x-1.5';
   cmdRow.innerHTML = `
@@ -354,7 +658,6 @@ function handleCommand(cmdStr) {
   `;
   terminalOutput.appendChild(cmdRow);
 
-  // Execute special or mapped commands
   if (command === 'open') {
     const target = args[0] ? args[0].toLowerCase() : '';
     if (target === 'github') {
@@ -362,12 +665,12 @@ function handleCommand(cmdStr) {
       appendOutput(`<div class="text-xs text-emerald-400">Opening https://github.com/mircrtierr in new tab...</div>`);
     } else if (target === 'smartattend' || target === 'attendance') {
       openProjectModal('smartattend');
-      appendOutput(`<div class="text-xs text-emerald-400">Opening SmartAttend KVPJB architecture modal...</div>`);
+      appendOutput(`<div class="text-xs text-emerald-400">Opening SmartAttend KVPJB 3D architecture modal...</div>`);
     } else if (target === 'yolo' || target === 'electronics') {
       openProjectModal('yolo');
       appendOutput(`<div class="text-xs text-emerald-400">Opening YOLO Electronics case study modal...</div>`);
     } else if (target === 'resume' || target === 'cv') {
-      window.open('Resume_Muhammad_Mirza_Aqmal_Raziq.html', '_blank');
+      window.open('Resume_Muhammad_Mirza_Aqmal_Raziq.pdf', '_blank');
       appendOutput(`<div class="text-xs text-emerald-400">Opening resume document...</div>`);
     } else {
       appendOutput(`<div class="text-xs text-amber-400">Usage: open [github | smartattend | yolo | resume]</div>`);
@@ -386,7 +689,6 @@ function handleCommand(cmdStr) {
     `);
   }
 
-  // Scroll to bottom
   if (terminalContainer) {
     terminalContainer.scrollTop = terminalContainer.scrollHeight;
   }
@@ -401,14 +703,15 @@ function appendOutput(htmlContent) {
   terminalOutput.appendChild(outDiv);
 }
 
-// Global function to trigger a command from button pills
 window.runCliCommand = function(cmd) {
   const terminalInput = document.getElementById('terminal-input');
+  audioFX.playKeyClick();
   if (terminalInput) {
     terminalInput.value = cmd;
     handleCommand(cmd);
     terminalInput.value = '';
     terminalInput.focus();
+    audioFX.playSuccessChime();
   }
 };
 
@@ -424,7 +727,7 @@ const PROJECT_MODAL_DATA = {
     `,
     architectureHtml: `
       <div class="space-y-4">
-        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-xs text-emerald-400 leading-relaxed overflow-x-auto">
+        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-xs text-emerald-400 leading-relaxed overflow-x-auto shadow-inner">
 +-----------------------------------------------------------------------------------------+
 |                              SYSTEM ARCHITECTURE FLOW                                  |
 +-----------------------------------------------------------------------------------------+
@@ -481,7 +784,7 @@ const PROJECT_MODAL_DATA = {
     `,
     architectureHtml: `
       <div class="space-y-4">
-        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-xs text-cyan-400 leading-relaxed overflow-x-auto">
+        <div class="bg-slate-950 p-3 rounded-lg border border-slate-800 font-mono text-xs text-cyan-400 leading-relaxed overflow-x-auto shadow-inner">
 +-----------------------------------------------------------------------------------------+
 |                             DATA & TRAINING PIPELINE                                    |
 +-----------------------------------------------------------------------------------------+
@@ -533,6 +836,8 @@ const PROJECT_MODAL_DATA = {
 window.openProjectModal = function(projectId) {
   const data = PROJECT_MODAL_DATA[projectId];
   if (!data) return;
+
+  audioFX.playSuccessChime();
 
   const modalContainer = document.getElementById('project-modal');
   const modalContent = document.getElementById('project-modal-content');
@@ -600,6 +905,7 @@ function initCredentialsFilter() {
 
   filterBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      audioFX.playHoverTick();
       filterBtns.forEach(b => {
         b.classList.remove('bg-emerald-500', 'text-slate-950', 'font-bold');
         b.classList.add('text-slate-400', 'hover:text-white', 'bg-slate-900/60');
@@ -630,6 +936,7 @@ function initSkillsFilter() {
 
   skillBtns.forEach(btn => {
     btn.addEventListener('click', () => {
+      audioFX.playHoverTick();
       skillBtns.forEach(b => {
         b.classList.remove('border-emerald-500', 'text-emerald-400', 'bg-emerald-500/10');
         b.classList.add('border-slate-800', 'text-slate-400');
@@ -656,17 +963,16 @@ function initSkillsFilter() {
 // Keyboard shortcuts
 function initKeyboardShortcuts() {
   document.addEventListener('keydown', (e) => {
-    // Escape key closes modal
     if (e.key === 'Escape') {
       closeProjectModal();
     }
-    // Ctrl+K or '/' focuses terminal input
     if ((e.ctrlKey && e.key === 'k') || (e.key === '/' && document.activeElement.tagName !== 'INPUT')) {
       e.preventDefault();
       const terminalInput = document.getElementById('terminal-input');
       if (terminalInput) {
         terminalInput.focus();
         terminalInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        audioFX.playHoverTick();
       }
     }
   });
@@ -675,6 +981,7 @@ function initKeyboardShortcuts() {
 // Utility: Copy to Clipboard with Toast
 window.copyToClipboard = function(text, label = 'Copied') {
   navigator.clipboard.writeText(text).then(() => {
+    audioFX.playSuccessChime();
     showToast(`✓ ${label} copied to clipboard!`);
   }).catch(() => {
     showToast(`Failed to copy`);
@@ -695,7 +1002,6 @@ function showToast(message) {
   }, 2400);
 }
 
-// Utility: Escape HTML
 function escapeHtml(string) {
   const entityMap = {
     '&': '&amp;',
