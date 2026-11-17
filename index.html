@@ -61,8 +61,8 @@
         
         <!-- Brand & Local Time Status -->
         <a href="#hero" class="flex items-center gap-3 group">
-          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-mono font-bold text-xs text-emerald-400 group-hover:border-emerald-400 transition-all">
-            MA
+          <div class="relative w-9 h-9 rounded-full overflow-hidden border border-emerald-500/40 ring-2 ring-emerald-500/20 group-hover:scale-105 transition-all flex-shrink-0">
+            <img src="profile.jpg" alt="Muhammad Mirza Aqmal Raziq" class="w-full h-full object-cover object-top" />
           </div>
           <div class="flex flex-col">
             <span class="font-bold text-sm tracking-tight text-white group-hover:text-emerald-400 transition-colors">
@@ -142,22 +142,30 @@
           <!-- Bio Column -->
           <div class="lg:col-span-7 space-y-6">
             
-            <!-- Live Availability Capsule -->
-            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 status-pulsar"></span>
-              <span>Available for 5-Month IT Internship / OJT (Feb – June 2027)</span>
+            <!-- Personal Identity Card with Photo & Live Status -->
+            <div class="flex items-center gap-4 p-3 bg-slate-900/70 rounded-2xl border border-slate-800/90 shadow-xl shadow-black/30 backdrop-blur-md">
+              <div class="relative w-20 h-20 sm:w-24 sm:h-24 rounded-2xl overflow-hidden border-2 border-emerald-500/40 ring-4 ring-emerald-500/10 flex-shrink-0">
+                <img src="profile.jpg" alt="Muhammad Mirza Aqmal Raziq" class="w-full h-full object-cover object-top hover:scale-105 transition-transform duration-300" />
+                <span class="absolute bottom-1 right-1 w-3 h-3 rounded-full bg-emerald-400 border-2 border-slate-900 status-pulsar" title="Active & Available for OJT"></span>
+              </div>
+              <div class="space-y-1">
+                <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-[11px] font-mono font-semibold">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span>OJT: Feb – June 2027</span>
+                </div>
+                <div class="font-extrabold text-sm sm:text-base text-white leading-snug">Muhammad Mirza Aqmal Raziq</div>
+                <div class="text-xs font-mono text-cyan-400 font-medium">Diploma Teknologi Komputeran</div>
+                <div class="text-xs font-mono text-slate-400">CGPA: <span class="text-emerald-400 font-bold">3.98 / 4.00</span> • KVPJB</div>
+              </div>
             </div>
 
             <!-- Authentic Headline -->
             <div>
-              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
-                Muhammad Mirza Aqmal Raziq <br>
-                <span class="text-slate-400 font-semibold text-2xl sm:text-3xl lg:text-4xl">
-                  bin Mirza Affzard
-                </span>
+              <h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white leading-tight">
+                Software Builder & Computer Technology Final Year
               </h1>
-              <p class="mt-3 text-sm font-mono text-cyan-400 font-medium">
-                Software Builder & Computer Technology Final Year • CGPA 3.98
+              <p class="mt-2 text-xs sm:text-sm font-mono text-slate-400">
+                Kolej Vokasional Perdagangan Johor Bahru • Pasir Gudang, Johor
               </p>
             </div>
 
@@ -339,28 +347,39 @@
                 </span>
               </div>
 
-              <!-- Camera Viewport Simulation -->
-              <div class="sim-viewport mt-4 h-48 flex items-center justify-center relative camera-feed-scanline">
-                <!-- Watermark -->
-                <div class="absolute top-2 left-2 text-[10px] font-mono text-emerald-400 bg-slate-900/80 px-2 py-0.5 rounded border border-emerald-500/30">
-                  ESP32-CAM • 192.168.1.142 • OV2640
+              <!-- Camera Viewport Simulation (Real Candidate Face Feed) -->
+              <div class="sim-viewport mt-4 h-52 flex items-center justify-center relative camera-feed-scanline overflow-hidden">
+                <!-- Real Student Video Feed Stream -->
+                <img src="profile.jpg" alt="ESP32-CAM Camera Stream" class="absolute inset-0 w-full h-full object-cover object-top opacity-60 filter contrast-110 brightness-95" />
+
+                <!-- Dark Edge Vignette -->
+                <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/70 pointer-events-none"></div>
+
+                <!-- Live Camera Watermark -->
+                <div class="absolute top-2 left-2 text-[10px] font-mono text-emerald-400 bg-slate-900/90 px-2.5 py-0.5 rounded border border-emerald-500/30 backdrop-blur-sm z-10 flex items-center gap-1.5 shadow-sm">
+                  <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse"></span>
+                  <span>ESP32-CAM • 192.168.1.142 • LIVE</span>
                 </div>
 
-                <!-- Simulated Face Target Area -->
-                <div id="sim-face-box" class="w-28 h-28 border-2 border-emerald-400 rounded-lg relative flex flex-col items-center justify-center transition-opacity duration-300 opacity-20">
-                  <span class="text-2xl">👤</span>
-                  <span class="text-[9px] font-mono bg-emerald-500 text-slate-950 font-bold px-1.5 py-0.2 rounded mt-1">
+                <!-- Simulated Face Target Area (Locks onto Mirza's Face) -->
+                <div id="sim-face-box" class="w-28 h-32 border-2 border-emerald-400 rounded-lg relative flex flex-col items-center justify-between p-1 transition-all duration-300 opacity-20 z-10 bg-emerald-500/10 backdrop-blur-[1px]">
+                  <span class="text-[8px] font-mono bg-emerald-500 text-slate-950 font-bold px-1.5 py-0.5 rounded tracking-wide self-start shadow-sm">
+                    FACE_01: 99.2%
+                  </span>
+                  
+                  <span class="text-[9px] font-mono bg-slate-950/90 text-cyan-300 font-bold px-2 py-0.5 rounded border border-cyan-500/40 tracking-wider shadow-sm">
                     ArcFace 512D
                   </span>
+
                   <!-- Corner Reticles -->
-                  <span class="absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-white"></span>
-                  <span class="absolute -top-1 -right-1 w-2 h-2 border-t-2 border-r-2 border-white"></span>
-                  <span class="absolute -bottom-1 -left-1 w-2 h-2 border-b-2 border-l-2 border-white"></span>
-                  <span class="absolute -bottom-1 -right-1 w-2 h-2 border-b-2 border-r-2 border-white"></span>
+                  <span class="absolute -top-1 -left-1 w-2.5 h-2.5 border-t-2 border-l-2 border-emerald-300"></span>
+                  <span class="absolute -top-1 -right-1 w-2.5 h-2.5 border-t-2 border-r-2 border-emerald-300"></span>
+                  <span class="absolute -bottom-1 -left-1 w-2.5 h-2.5 border-b-2 border-l-2 border-emerald-300"></span>
+                  <span class="absolute -bottom-1 -right-1 w-2.5 h-2.5 border-b-2 border-r-2 border-emerald-300"></span>
                 </div>
 
-                <div class="absolute bottom-2 right-2 text-[10px] font-mono text-slate-500">
-                  FAISS IndexFlatIP
+                <div class="absolute bottom-2 right-2 text-[10px] font-mono text-emerald-400 bg-slate-900/90 px-2 py-0.5 rounded z-10 border border-slate-800 backdrop-blur-sm">
+                  FAISS Vector Engine
                 </div>
               </div>
 
