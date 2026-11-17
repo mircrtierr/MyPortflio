@@ -349,6 +349,10 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillsFilter();
   initCredentialsFilter();
   initKeyboardShortcuts();
+  initScrollProgress();
+  initScrollReveal();
+  initScrollSpy();
+  initBackToTop();
 });
 
 // Johor Bahru Live Clock Widget
@@ -1327,4 +1331,153 @@ function escapeHtml(string) {
     '/': '&#x2F;'
   };
   return String(string).replace(/[&<>"'/]/g, s => entityMap[s]);
+}
+
+// ==========================================
+// SCROLL ANIMATIONS & INTERACTIVE ENGINE
+// ==========================================
+
+// 1. Top Reading Scroll Progress Bar
+function initScrollProgress() {
+  const progressBar = document.getElementById('scroll-progress-bar');
+  if (!progressBar) return;
+
+  let ticking = false;
+  function updateProgress() {
+    const scrollTop = window.scrollY || document.documentElement.scrollTop;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    progressBar.style.width = `${Math.min(100, Math.max(0, scrollPercent))}%`;
+    ticking = false;
+  }
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  }, { passive: true });
+
+  updateProgress();
+}
+
+// 2. Intersection Observer Scroll Reveal & Number Counter Trigger
+function initScrollReveal() {
+  const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-from-left, .reveal-from-right');
+  if (!revealElements.length) return;
+
+  if (!('IntersectionObserver' in window)) {
+    // Fallback for older browsers
+    revealElements.forEach(el => el.classList.add('is-revealed'));
+    initCounterAnimations();
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-revealed');
+        // Trigger any number counters inside this revealed container
+        animateCounters(entry.target);
+        obs.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.08,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  revealElements.forEach(el => observer.observe(el));
+}
+
+// 3. Eased Numeric Counter Animation (e.g. 3.98 CGPA, 5+ Awards)
+function animateCounters(container) {
+  if (!container) return;
+  const isDirect = container.matches && container.matches('[data-counter]');
+  const children = container.querySelectorAll ? Array.from(container.querySelectorAll('[data-counter]')) : [];
+  const counterElements = isDirect ? [container, ...children] : children;
+
+  counterElements.forEach(el => {
+    if (el.dataset.hasAnimated === 'true') return;
+    el.dataset.hasAnimated = 'true';
+
+    const targetVal = parseFloat(el.getAttribute('data-counter')) || 0;
+    const decimals = parseInt(el.getAttribute('data-decimals'), 10) || 0;
+    const suffix = el.getAttribute('data-suffix') || '';
+    const duration = 1200; // ms
+    const startTime = performance.now();
+
+    function update(now) {
+      const elapsed = now - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      // Apple-style easeOutCubic curve: 1 - Math.pow(1 - progress, 3)
+      const ease = 1 - Math.pow(1 - progress, 3);
+      const current = (targetVal * ease).toFixed(decimals);
+
+      el.textContent = `${current}${suffix}`;
+
+      if (progress < 1) {
+        requestAnimationFrame(update);
+      } else {
+        el.textContent = `${targetVal.toFixed(decimals)}${suffix}`;
+      }
+    }
+
+    requestAnimationFrame(update);
+  });
+}
+
+function initCounterAnimations() {
+  document.querySelectorAll('[data-counter]').forEach(el => animateCounters(el));
+}
+
+// 4. ScrollSpy Active Nav Link Highlighting
+function initScrollSpy() {
+  const sections = document.querySelectorAll('section[id], div[id="workstation"]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  if (!sections.length || !navLinks.length) return;
+
+  function onScroll() {
+    const scrollPos = window.scrollY + 140;
+    let currentId = '';
+
+    sections.forEach(section => {
+      const top = section.offsetTop;
+      const height = section.offsetHeight;
+      if (scrollPos >= top && scrollPos < top + height) {
+        currentId = section.getAttribute('id');
+      }
+    });
+
+    if (currentId) {
+      navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href === `#${currentId}`) {
+          link.classList.add('active-nav');
+        } else {
+          link.classList.remove('active-nav');
+        }
+      });
+    }
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  onScroll();
+}
+
+// 5. Floating Back To Top Pill
+function initBackToTop() {
+  const btn = document.getElementById('back-to-top-btn');
+  if (!btn) return;
+
+  function toggleBtn() {
+    if (window.scrollY > 380) {
+      btn.classList.add('visible');
+    } else {
+      btn.classList.remove('visible');
+    }
+  }
+
+  window.addEventListener('scroll', toggleBtn, { passive: true });
+  toggleBtn();
 }

@@ -58,6 +58,9 @@
 
 <body class="bg-[#0a0c10] text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">
 
+  <!-- Top Reading Scroll Progress Bar -->
+  <div id="scroll-progress-bar"></div>
+
   <!-- Subtle Film Grain Overlay -->
   <div class="noise-overlay"></div>
 
@@ -92,13 +95,13 @@
 
         <!-- Desktop Navigation -->
         <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
-          <a href="#hero" class="hover:text-emerald-400 transition-colors">About</a>
-          <a href="#playgrounds" class="hover:text-emerald-400 transition-colors">Live Demos</a>
-          <a href="#bento" class="hover:text-emerald-400 transition-colors">Highlights</a>
-          <a href="#projects" class="hover:text-emerald-400 transition-colors">Projects</a>
-          <a href="#skills" class="hover:text-emerald-400 transition-colors">Skills</a>
-          <a href="#credentials" class="hover:text-emerald-400 transition-colors">Credentials</a>
-          <a href="#workstation" class="text-emerald-400 hover:text-emerald-300 transition-colors font-mono">
+          <a href="#hero" class="nav-link hover:text-emerald-400 transition-colors">About</a>
+          <a href="#playgrounds" class="nav-link hover:text-emerald-400 transition-colors">Live Demos</a>
+          <a href="#bento" class="nav-link hover:text-emerald-400 transition-colors">Highlights</a>
+          <a href="#projects" class="nav-link hover:text-emerald-400 transition-colors">Projects</a>
+          <a href="#skills" class="nav-link hover:text-emerald-400 transition-colors">Skills</a>
+          <a href="#credentials" class="nav-link hover:text-emerald-400 transition-colors">Credentials</a>
+          <a href="#workstation" class="nav-link text-emerald-400 hover:text-emerald-300 transition-colors font-mono">
             >_ Workstation
           </a>
         </nav>
@@ -161,7 +164,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
           <!-- Bio Column -->
-          <div class="lg:col-span-7 space-y-6">
+          <div class="lg:col-span-7 space-y-6 reveal-from-left">
             
             <!-- Personal Identity Card with Photo & Live Status -->
             <div class="flex items-center gap-4 p-3 bg-slate-900/70 rounded-2xl border border-slate-800/90 shadow-xl shadow-black/30 backdrop-blur-md">
@@ -243,7 +246,7 @@
           </div>
 
           <!-- Multi-Tab Workstation Column -->
-          <div id="workstation" class="lg:col-span-5">
+          <div id="workstation" class="lg:col-span-5 reveal-from-right">
             
             <div id="terminal-window" class="developer-terminal overflow-hidden">
               
@@ -361,7 +364,7 @@
     <section id="playgrounds" class="py-16 md:py-20 border-b border-slate-800/60 bg-gradient-to-b from-transparent via-slate-950/40 to-transparent">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 reveal-on-scroll">
           <div>
             <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
               // INTERACTIVE SYSTEM PROTOTYPES
@@ -378,7 +381,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           <!-- PLAYGROUND 1: SmartAttend Live Edge Simulator -->
-          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-1">
             <div>
               <div class="flex items-center justify-between pb-3 border-b border-slate-800">
                 <div class="flex items-center gap-2">
@@ -461,7 +464,7 @@
 
 
           <!-- PLAYGROUND 2: YOLO Electronics Object Detection -->
-          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-2">
             <div>
               <div class="flex items-center justify-between pb-3 border-b border-slate-800">
                 <div class="flex items-center gap-2">
@@ -550,7 +553,7 @@
     <section id="bento" class="py-16 md:py-20 border-b border-slate-800/60">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 reveal-on-scroll">
           <div>
             <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
               // VERIFIED QUALIFICATIONS & STANDING
@@ -567,7 +570,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
           
           <!-- Card 1: 3.98 CGPA (Main Highlight) -->
-          <div class="artisan-card spotlight-card p-6 md:col-span-2 flex flex-col justify-between bg-gradient-to-br from-slate-900 to-[#10141e]">
+          <div class="artisan-card spotlight-card p-6 md:col-span-2 flex flex-col justify-between bg-gradient-to-br from-slate-900 to-[#10141e] reveal-on-scroll reveal-delay-1">
             <div>
               <div class="flex items-start justify-between">
                 <div>
@@ -584,7 +587,7 @@
             <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-baseline justify-between">
               <div>
                 <div class="text-4xl sm:text-5xl font-black font-mono text-emerald-400 tracking-tight">
-                  3.98 <span class="text-sm font-normal text-slate-400 font-sans">/ 4.00</span>
+                  <span data-counter="3.98" data-decimals="2">3.98</span> <span class="text-sm font-normal text-slate-400 font-sans">/ 4.00</span>
                 </div>
                 <div class="text-xs text-slate-400 mt-1">Dean's Honor Class • Semesters 1 – 4 Verified</div>
               </div>
@@ -595,7 +598,7 @@
           </div>
 
           <!-- Card 2: SKM Level 3 & Verified Certifications -->
-          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-2">
             <div>
               <div class="flex items-center justify-between">
                 <span class="tech-tag text-cyan-400 border-cyan-500/30">Accredited Standard</span>
@@ -617,11 +620,13 @@
           </div>
 
           <!-- Card 3: 5+ Competitive Awards -->
-          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-3">
             <div>
               <span class="tech-tag text-amber-400 border-amber-500/30">Podiums & Honors</span>
               <div class="mt-3">
-                <div class="text-3xl font-extrabold font-mono text-amber-400">5+ Awards</div>
+                <div class="text-3xl font-extrabold font-mono text-amber-400">
+                  <span data-counter="5" data-decimals="0" data-suffix="+">5+</span> Awards
+                </div>
                 <h3 class="text-xs font-bold text-white mt-1">State & National Recognitions</h3>
               </div>
             </div>
@@ -633,7 +638,7 @@
           </div>
 
           <!-- Card 4: OJT Commitment -->
-          <div class="artisan-card spotlight-card p-6 md:col-span-2 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 md:col-span-2 flex flex-col justify-between reveal-on-scroll reveal-delay-2">
             <div class="flex items-start justify-between">
               <div>
                 <span class="tech-tag text-emerald-400 border-emerald-500/30">Industrial Internship</span>
@@ -664,7 +669,7 @@
           </div>
 
           <!-- Card 5: Edge Hardware Focus -->
-          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-3">
             <div>
               <span class="tech-tag text-cyan-400 border-cyan-500/30">Hardware + AI</span>
               <h3 class="text-base font-bold text-white mt-2">ESP32-CAM & Vision</h3>
@@ -680,7 +685,7 @@
           </div>
 
           <!-- Card 6: Communication -->
-          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between reveal-on-scroll reveal-delay-4">
             <div>
               <span class="tech-tag text-purple-400 border-purple-500/30">Communication</span>
               <h3 class="text-base font-bold text-white mt-2">Bilingual & Podcaster</h3>
@@ -705,7 +710,7 @@
     <section id="projects" class="py-16 md:py-20 border-b border-slate-800/60">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 reveal-on-scroll">
           <div>
             <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
               // PRODUCTION & ACADEMIC REPOSITORIES
@@ -722,7 +727,7 @@
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           <!-- PROJECT 1: SmartAttend KVPJB -->
-          <div class="artisan-card spotlight-card p-6 md:p-8 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 md:p-8 flex flex-col justify-between reveal-on-scroll reveal-delay-1">
             <div>
               <div class="flex items-center justify-between">
                 <span class="tech-tag text-emerald-400 border-emerald-500/30">
@@ -797,7 +802,7 @@
 
 
           <!-- PROJECT 2: Electronics Object Detection – YOLO -->
-          <div class="artisan-card spotlight-card p-6 md:p-8 flex flex-col justify-between">
+          <div class="artisan-card spotlight-card p-6 md:p-8 flex flex-col justify-between reveal-on-scroll reveal-delay-2">
             <div>
               <div class="flex items-center justify-between">
                 <span class="tech-tag text-cyan-400 border-cyan-500/30">
@@ -882,7 +887,7 @@
     <section id="skills" class="py-16 md:py-20 border-b border-slate-800/60">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 reveal-on-scroll">
           <div>
             <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
               // TECHNICAL DOMAINS & TOOLCHAINS
@@ -897,7 +902,7 @@
         </div>
 
         <!-- Filter Buttons -->
-        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs reveal-on-scroll">
           <button data-domain="all" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-emerald-500 text-emerald-400 bg-emerald-500/10 font-bold transition-colors">
             All Domains (7)
           </button>
@@ -927,7 +932,7 @@
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           
           <!-- Domain 1: Programming Languages -->
-          <div data-domain="prog" class="skill-group artisan-card p-5">
+          <div data-domain="prog" class="skill-group artisan-card p-5 reveal-on-scroll reveal-delay-1">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <span class="font-bold text-sm text-white flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
@@ -947,7 +952,7 @@
           </div>
 
           <!-- Domain 2: Web Development -->
-          <div data-domain="web" class="skill-group artisan-card p-5">
+          <div data-domain="web" class="skill-group artisan-card p-5 reveal-on-scroll reveal-delay-2">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <span class="font-bold text-sm text-white flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
@@ -967,7 +972,7 @@
           </div>
 
           <!-- Domain 3: Application Development -->
-          <div data-domain="app" class="skill-group artisan-card p-5">
+          <div data-domain="app" class="skill-group artisan-card p-5 reveal-on-scroll reveal-delay-3">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <span class="font-bold text-sm text-white flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-amber-400"></span>
@@ -987,7 +992,7 @@
           </div>
 
           <!-- Domain 4: Database Management -->
-          <div data-domain="db" class="skill-group artisan-card p-5">
+          <div data-domain="db" class="skill-group artisan-card p-5 reveal-on-scroll reveal-delay-1">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <span class="font-bold text-sm text-white flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-blue-400"></span>
@@ -1007,7 +1012,7 @@
           </div>
 
           <!-- Domain 5: AI & Machine Learning -->
-          <div data-domain="ai" class="skill-group artisan-card p-5">
+          <div data-domain="ai" class="skill-group artisan-card p-5 reveal-on-scroll reveal-delay-2">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <span class="font-bold text-sm text-white flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
@@ -1030,7 +1035,7 @@
           </div>
 
           <!-- Domain 6: Networking -->
-          <div data-domain="net" class="skill-group artisan-card p-5">
+          <div data-domain="net" class="skill-group artisan-card p-5 reveal-on-scroll reveal-delay-3">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <span class="font-bold text-sm text-white flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
@@ -1050,7 +1055,7 @@
           </div>
 
           <!-- Domain 7: Cybersecurity -->
-          <div data-domain="sec" class="skill-group artisan-card p-5 lg:col-span-3">
+          <div data-domain="sec" class="skill-group artisan-card p-5 lg:col-span-3 reveal-on-scroll reveal-delay-1">
             <div class="flex items-center justify-between pb-3 border-b border-slate-800">
               <span class="font-bold text-sm text-white flex items-center gap-2">
                 <span class="w-2 h-2 rounded-full bg-red-400"></span>
@@ -1081,7 +1086,7 @@
     <section id="credentials" class="py-16 md:py-20 border-b border-slate-800/60">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 reveal-on-scroll">
           <div>
             <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
               // VERIFIED HONORS & INDUSTRY ACCREDITATIONS
@@ -1102,7 +1107,7 @@
         </div>
 
         <!-- Filter Tab Buttons -->
-        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs reveal-on-scroll">
           <button data-filter="all" class="cred-filter-btn px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-colors">
             All Verified (15)
           </button>
@@ -1454,7 +1459,7 @@
     <section id="contact" class="py-16 md:py-20">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="artisan-card p-8 md:p-12 bg-gradient-to-br from-slate-900 via-[#10141e] to-slate-950 border-emerald-500/30">
+        <div class="artisan-card p-8 md:p-12 bg-gradient-to-br from-slate-900 via-[#10141e] to-slate-950 border-emerald-500/30 reveal-on-scroll">
           
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
@@ -1528,8 +1533,6 @@
                 <span class="text-slate-400">Academic CGPA:</span>
                 <span class="text-emerald-400 font-bold text-sm">3.98 / 4.00</span>
               </div>
-                <span class="text-emerald-400 font-bold text-sm">3.98 / 4.00</span>
-              </div>
               <div class="flex items-center justify-between py-1 border-b border-slate-900">
                 <span class="text-slate-400">College:</span>
                 <span class="text-slate-200 text-right">KV Perdagangan Johor Bahru</span>
@@ -1597,6 +1600,12 @@
   <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none px-4 py-2.5 rounded-lg bg-emerald-500 text-slate-950 font-mono text-xs font-bold shadow-xl flex items-center gap-2">
     ✓ Copied to clipboard!
   </div>
+
+  <!-- Floating Back to Top Pill -->
+  <button id="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
+    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+    <span>Top</span>
+  </button>
 
   <!-- App Script -->
   <script src="app.js"></script>
