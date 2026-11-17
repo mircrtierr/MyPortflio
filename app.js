@@ -106,6 +106,7 @@ const COMMANDS = {
   <div><span class="text-cyan-400 font-bold">linkedin</span>    - Official LinkedIn profile URL</div>
   <div><span class="text-cyan-400 font-bold">awards</span>      - Competition podiums & awards</div>
   <div><span class="text-cyan-400 font-bold">certs</span>       - Industry certs (OpenAI, ICDL, Cisco, SKM3)</div>
+  <div><span class="text-cyan-400 font-bold">references</span>  - Academic & institutional referees</div>
   <div><span class="text-cyan-400 font-bold">ojt</span>         - 5-Month IT Internship details (Feb–Jun 2027)</div>
   <div><span class="text-cyan-400 font-bold">contact</span>     - Direct phone, WhatsApp, email & vCard</div>
   <div><span class="text-cyan-400 font-bold">resume</span>      - Open / download verified resume PDF</div>
@@ -277,6 +278,26 @@ const COMMANDS = {
 </div>
 <div class="mt-3">
   <a href="assets/certificates/all_certificates.pdf" target="_blank" class="text-emerald-400 hover:underline font-mono text-xs">📄 Download Official PDF Bundle (6 Pages)</a>
+</div>`
+  },
+
+  references: {
+    desc: "Display academic & institutional referees",
+    execute: () => `
+<div class="text-emerald-400 font-bold mb-2">🎓 Academic & Institutional Referees:</div>
+<div class="space-y-2 text-xs">
+  <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+    <div class="text-white font-bold text-sm">Nor'asikin binti Abu Bakar</div>
+    <div class="text-slate-300">Pensyarah, Jabatan Teknologi Maklumat</div>
+    <div class="text-slate-400 text-[11px]">Kolej Vokasional Perdagangan Johor Bahru</div>
+    <div class="text-emerald-400 font-mono text-[11px] mt-1">E-mel: <a href="mailto:g-56178128@moe-dl.edu.my" class="hover:underline">g-56178128@moe-dl.edu.my</a></div>
+  </div>
+  <div class="p-2.5 rounded bg-slate-900/80 border border-slate-800">
+    <div class="text-white font-bold text-sm">Nurul Syaza binti Rosli</div>
+    <div class="text-slate-300">Pensyarah, Jabatan Teknologi Maklumat</div>
+    <div class="text-slate-400 text-[11px]">Kolej Vokasional Perdagangan Johor Bahru</div>
+    <div class="text-emerald-400 font-mono text-[11px] mt-1">E-mel: <a href="mailto:g-42015121@moe-dl.edu.my" class="hover:underline">g-42015121@moe-dl.edu.my</a></div>
+  </div>
 </div>`
   },
 

@@ -301,8 +301,8 @@
                   <button onclick="runCliCommand('about')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 transition-colors">about</button>
                   <button onclick="runCliCommand('projects')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 transition-colors">projects</button>
                   <button onclick="runCliCommand('skills')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 transition-colors">skills</button>
-                  <button onclick="runCliCommand('github')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-cyan-500/20 text-cyan-400 border border-slate-700 transition-colors">github</button>
                   <button onclick="runCliCommand('awards')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-amber-500/20 text-amber-400 border border-slate-700 transition-colors">awards</button>
+                  <button onclick="runCliCommand('references')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 transition-colors">references</button>
                   <button onclick="runCliCommand('clear')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 transition-colors">clear</button>
                 </div>
               </div>
@@ -1130,7 +1130,7 @@
         <!-- Filter Tab Buttons -->
         <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs reveal-on-scroll">
           <button data-filter="all" class="cred-filter-btn px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-colors">
-            All Verified (15)
+            All Verified (16)
           </button>
           <button data-filter="cert" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-colors">
             Certifications (6)
@@ -1139,7 +1139,7 @@
             Awards & Podiums (5)
           </button>
           <button data-filter="workshop" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-colors">
-            Workshops & Leadership (4)
+            Workshops & Leadership (5)
           </button>
         </div>
 
@@ -1470,6 +1470,20 @@
             </div>
           </div>
 
+          <!-- ITEM: Head of Multimedia & Documentation Bureau -->
+          <div data-category="workshop" class="cred-item artisan-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold tracking-wider">OFFICIAL LEADERSHIP</span>
+              <span>Session 2026/2027</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Head of Multimedia & Documentation Bureau</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Ketua Biro Multimedia dan Dokumentasi • MAKDIS KVPJB</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Majlis Dakwah Islamiah Sekolah, Kolej Vokasional Perdagangan Johor Bahru</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Led multimedia production, event photography, videography editing, and official institutional program documentation.
+            </p>
+          </div>
+
           <!-- ITEM: AI Video Resume Workshop -->
           <div data-category="workshop" class="cred-item artisan-card p-5 border-l-4 border-l-purple-500">
             <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
@@ -1612,9 +1626,35 @@
                 <span class="text-slate-400">College:</span>
                 <span class="text-slate-200 text-right">KV Perdagangan Johor Bahru</span>
               </div>
-              <div class="flex items-center justify-between pt-1">
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
                 <span class="text-slate-400">Languages:</span>
                 <span class="text-slate-200">Malay (Native), English (Proficient)</span>
+              </div>
+              
+              <!-- Institutional Referees -->
+              <div class="pt-2 border-t border-slate-900">
+                <span class="text-slate-500 block text-[10px] uppercase tracking-wider mb-1.5">// Academic Referees (KVPJB):</span>
+                <div class="space-y-1.5 text-[11px]">
+                  <div class="p-1.5 rounded bg-slate-900/60 border border-slate-800">
+                    <div class="font-semibold text-white">Nor'asikin binti Abu Bakar</div>
+                    <div class="text-slate-400 text-[10px]">Pensyarah, Jabatan Teknologi Maklumat</div>
+                    <a href="mailto:g-56178128@moe-dl.edu.my" class="text-emerald-400 text-[10px] hover:underline block font-mono">g-56178128@moe-dl.edu.my</a>
+                  </div>
+                  <div class="p-1.5 rounded bg-slate-900/60 border border-slate-800">
+                    <div class="font-semibold text-white">Nurul Syaza binti Rosli</div>
+                    <div class="text-slate-400 text-[10px]">Pensyarah, Jabatan Teknologi Maklumat</div>
+                    <a href="mailto:g-42015121@moe-dl.edu.my" class="text-emerald-400 text-[10px] hover:underline block font-mono">g-42015121@moe-dl.edu.my</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Quick QR Code -->
+              <div class="pt-2 flex items-center gap-3 border-t border-slate-900">
+                <img src="assets/portfolio_qr.png" alt="Scan Portfolio QR" class="w-12 h-12 rounded border border-slate-700 bg-white p-0.5" />
+                <div class="text-[10px] text-slate-400">
+                  <div class="font-semibold text-slate-200 font-mono">Scan Online Portfolio</div>
+                  <span>Instant mobile review & CV access</span>
+                </div>
               </div>
             </div>
 
