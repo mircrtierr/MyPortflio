@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Muhammad Mirza Aqmal Raziq | 3D Interactive Developer Portfolio</title>
-  <meta name="description" content="Portfolio of Muhammad Mirza Aqmal Raziq bin Mirza Affzard - Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98). Seeking 5-month IT Internship / OJT (Feb–June 2027)." />
+  <title>Muhammad Mirza Aqmal Raziq | Software & Computer Technology Portfolio</title>
+  <meta name="description" content="Portfolio of Muhammad Mirza Aqmal Raziq bin Mirza Affzard — Final year Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98). Seeking 5-month IT Internship / OJT (Feb–June 2027)." />
   
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -18,10 +18,9 @@
               emerald: '#10b981',
               cyan: '#06b6d4',
               amber: '#f59e0b',
-              purple: '#8b5cf6',
-              dark: '#07090e',
-              card: '#0e121a',
-              border: '#1f2430'
+              indigo: '#6366f1',
+              dark: '#0a0c10',
+              surface: '#12151d'
             }
           },
           fontFamily: {
@@ -36,73 +35,67 @@
   <!-- Google Fonts: Inter & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
   
-  <!-- Custom 3D & Hologram Styles -->
+  <!-- Custom Artisan Styles -->
   <link rel="stylesheet" href="styles.css" />
 </head>
 
-<body class="bg-[#07090e] text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">
+<body class="bg-[#0a0c10] text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">
 
-  <!-- Custom Glowing 3D Cursor -->
-  <div id="custom-cursor"></div>
-  <div id="custom-cursor-dot"></div>
+  <!-- Subtle Film Grain Overlay -->
+  <div class="noise-overlay"></div>
 
-  <!-- Interactive 3D Cyber Particle Background -->
-  <canvas id="cyber-canvas" class="cyber-canvas-container"></canvas>
+  <!-- Warm Ambient Glow Accents -->
+  <div class="ambient-glow ambient-glow-emerald top-[-100px] left-[-80px]"></div>
+  <div class="ambient-glow ambient-glow-indigo top-[650px] right-[-100px]"></div>
 
-  <!-- Ambient Radial Glow Orbs -->
-  <div class="radial-glow radial-glow-emerald top-[-80px] left-[-100px]"></div>
-  <div class="radial-glow radial-glow-cyan top-[550px] right-[-100px]"></div>
-  <div class="radial-glow radial-glow-purple bottom-[400px] left-[-150px]"></div>
-
-  <!-- Main Content Wrapper -->
-  <div class="relative z-10 flex flex-col min-h-screen perspective-container">
+  <!-- Main Container -->
+  <div class="relative z-10 flex flex-col min-h-screen">
 
     <!-- ========================================== -->
-    <!-- 1. STICKY TOP NAVIGATION BAR               -->
+    <!-- 1. STICKY NAVIGATION BAR                   -->
     <!-- ========================================== -->
-    <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#07090e]/85 border-b border-slate-800/80 transition-colors">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+    <header class="sticky top-0 z-50 backdrop-blur-xl bg-[#0a0c10]/85 border-b border-slate-800/80 transition-colors">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         
-        <!-- Brand / Identity -->
+        <!-- Brand & Local Time Status -->
         <a href="#hero" class="flex items-center gap-3 group">
-          <div class="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-500/20 to-cyan-500/10 border border-emerald-500/40 flex items-center justify-center font-mono font-bold text-emerald-400 group-hover:border-emerald-400 group-hover:scale-110 group-hover:shadow-lg group-hover:shadow-emerald-500/30 transition-all duration-300">
+          <div class="w-8 h-8 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-mono font-bold text-xs text-emerald-400 group-hover:border-emerald-400 transition-all">
             MA
           </div>
           <div class="flex flex-col">
-            <span class="font-extrabold text-sm tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+            <span class="font-bold text-sm tracking-tight text-white group-hover:text-emerald-400 transition-colors">
               Mirza Aqmal
             </span>
-            <div class="flex items-center gap-1.5">
-              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-emerald"></span>
-              <span class="font-mono text-[10px] text-emerald-400 font-semibold tracking-wide">OJT: FEB – JUNE 2027</span>
+            <div class="flex items-center gap-1.5 text-[11px] font-mono text-slate-400">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 status-pulsar"></span>
+              <span id="johor-clock" class="text-slate-400">Pasir Gudang, Johor</span>
             </div>
           </div>
         </a>
 
-        <!-- Desktop Navigation Links -->
-        <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
-          <a href="#hero" class="hover:text-emerald-400 transition-colors">Overview</a>
-          <a href="#bento" class="hover:text-emerald-400 transition-colors">Bento 3D</a>
+        <!-- Desktop Navigation -->
+        <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
+          <a href="#hero" class="hover:text-emerald-400 transition-colors">About</a>
+          <a href="#playgrounds" class="hover:text-emerald-400 transition-colors">Live Demos</a>
+          <a href="#bento" class="hover:text-emerald-400 transition-colors">Highlights</a>
           <a href="#projects" class="hover:text-emerald-400 transition-colors">Projects</a>
-          <a href="#skills" class="hover:text-emerald-400 transition-colors">Skills Matrix</a>
+          <a href="#skills" class="hover:text-emerald-400 transition-colors">Skills</a>
           <a href="#credentials" class="hover:text-emerald-400 transition-colors">Credentials</a>
-          <a href="#terminal-section" class="hover:text-emerald-300 transition-all font-mono text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded-lg border border-emerald-500/30 hover:border-emerald-400 hover:shadow-md hover:shadow-emerald-500/20">
-            >_ CLI Shell
+          <a href="#workstation" class="text-emerald-400 hover:text-emerald-300 transition-colors font-mono">
+            >_ Workstation
           </a>
         </nav>
 
-        <!-- Right Quick Actions (Audio Toggle, Theme, GitHub, Resume) -->
-        <div class="flex items-center gap-2 sm:gap-2.5">
+        <!-- Right Action Buttons -->
+        <div class="flex items-center gap-2">
           
-          <!-- Sound FX Toggle Button -->
-          <button id="sound-toggle-btn" aria-label="Toggle Audio Effects" class="p-2 rounded-xl border border-slate-800 hover:border-cyan-500/50 bg-slate-900/60 hover:bg-slate-800 text-slate-400 hover:text-cyan-400 transition-all" title="Toggle Sound FX">
-            <!-- Sound On Icon -->
+          <!-- Tactile Sound Toggle Button -->
+          <button id="sound-toggle-btn" aria-label="Toggle Tactile Audio" class="p-2 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/60 text-slate-400 hover:text-white transition-colors" title="Toggle Tactile Audio FX">
             <svg id="sound-icon-on" class="w-4 h-4 hidden text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
             </svg>
-            <!-- Sound Off Icon (Default) -->
             <svg id="sound-icon-off" class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2" />
@@ -110,7 +103,7 @@
           </button>
 
           <!-- Light/Dark Toggle -->
-          <button id="theme-toggle-btn" aria-label="Toggle Theme" class="p-2 rounded-xl border border-slate-800 hover:border-slate-700 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white transition-all">
+          <button id="theme-toggle-btn" aria-label="Toggle Theme" class="p-2 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/60 text-slate-300 hover:text-white transition-colors">
             <svg id="theme-icon-sun" class="w-4 h-4 hidden text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
             </svg>
@@ -119,16 +112,14 @@
             </svg>
           </button>
 
-          <!-- GitHub Profile Link -->
-          <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="p-2 rounded-xl border border-slate-800 hover:border-emerald-500/50 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 transition-all flex items-center gap-1.5 text-xs font-mono" title="GitHub: mircrtierr">
-            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
-            </svg>
+          <!-- GitHub Profile -->
+          <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/60 text-slate-300 hover:text-white transition-colors flex items-center gap-1.5 text-xs font-mono" title="GitHub: mircrtierr">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
             <span class="hidden sm:inline">mircrtierr</span>
           </a>
 
-          <!-- Download CV Button -->
-          <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" download="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-emerald-500/25 hover:scale-105 active:scale-95 font-sans" title="Download Verified Resume PDF">
+          <!-- Download CV PDF -->
+          <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" download="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs transition-colors shadow-sm font-sans" title="Download Verified Resume PDF">
             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
             </svg>
@@ -141,133 +132,109 @@
 
 
     <!-- ========================================== -->
-    <!-- 2. HERO SECTION & 3D INTERACTIVE TERMINAL  -->
+    <!-- 2. HERO: AUTHENTIC HUMAN DEVELOPER PROFILE -->
     <!-- ========================================== -->
-    <section id="hero" class="relative pt-10 pb-16 md:pt-16 md:pb-24 border-b border-slate-800/60 overflow-hidden">
-      
-      <!-- Floating 3D Holographic Badges (Pop-out Depth) -->
-      <div class="hidden lg:block floating-badge top-12 right-[8%]">
-        <div class="px-3.5 py-2 rounded-2xl bg-slate-900/90 border border-emerald-500/40 backdrop-blur-md flex items-center gap-2.5 shadow-2xl">
-          <span class="text-base">🏆</span>
-          <div>
-            <div class="text-[10px] font-mono text-slate-400 uppercase">Top Cohort Rank</div>
-            <div class="text-xs font-bold font-mono text-emerald-400">3.98 CGPA Distinction</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="hidden lg:block floating-badge floating-badge-reverse bottom-12 left-[4%]">
-        <div class="px-3.5 py-2 rounded-2xl bg-slate-900/90 border border-cyan-500/40 backdrop-blur-md flex items-center gap-2.5 shadow-2xl">
-          <span class="text-base">⚡</span>
-          <div>
-            <div class="text-[10px] font-mono text-slate-400 uppercase">Active Edge Node</div>
-            <div class="text-xs font-bold font-mono text-cyan-300">ESP32-CAM + ArcFace AI</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section id="hero" class="pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-800/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
           
-          <!-- Left Hero Column: Bio, Value Prop, Contact -->
-          <div class="lg:col-span-6 space-y-6">
+          <!-- Bio Column -->
+          <div class="lg:col-span-7 space-y-6">
             
-            <!-- Availability Badge with Hologram Glow -->
-            <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 text-xs font-mono backdrop-blur-md shadow-lg shadow-emerald-500/10">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
-              <span class="font-medium tracking-wide">Available for 5-Month OJT (February – June 2027)</span>
+            <!-- Live Availability Capsule -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 status-pulsar"></span>
+              <span>Available for 5-Month IT Internship / OJT (Feb – June 2027)</span>
             </div>
 
-            <!-- Headline with 3D Depth Feel -->
-            <div class="space-y-2">
-              <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight text-white leading-[1.1]">
-                Muhammad Mirza <br>
-                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400 drop-shadow-[0_10px_20px_rgba(16,185,129,0.3)]">
-                  Aqmal Raziq
+            <!-- Authentic Headline -->
+            <div>
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                Muhammad Mirza Aqmal Raziq <br>
+                <span class="text-slate-400 font-semibold text-2xl sm:text-3xl lg:text-4xl">
+                  bin Mirza Affzard
                 </span>
               </h1>
-              <p class="font-mono text-xs sm:text-sm text-cyan-300 font-semibold tracking-wide">
-                Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan Johor Bahru
+              <p class="mt-3 text-sm font-mono text-cyan-400 font-medium">
+                Software Builder & Computer Technology Final Year • CGPA 3.98
               </p>
             </div>
 
-            <!-- Intro Paragraph -->
-            <p class="text-slate-300 text-sm sm:text-base leading-relaxed max-w-xl">
-              High-achieving computer technologist (<span class="text-emerald-400 font-bold font-mono">3.98 CGPA</span>) certified in application development (<span class="text-cyan-300 font-semibold">SKM Level 3</span>), deep learning edge vision (<span class="text-slate-100 font-semibold">ArcFace, FAISS, YOLO</span>), and networking. Seeking an impactful 5-month IT internship where rigorous software engineering meets rapid problem-solving.
+            <!-- Personal Narrative -->
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              I am a final-year student in <strong>Diploma Teknologi Komputeran</strong> at <strong>Kolej Vokasional Perdagangan Johor Bahru</strong>. I love engineering practical tools that bridge physical hardware with deep learning — like building real-time facial recognition attendance using ESP32-CAM and FAISS, and training computer vision models on custom annotated datasets with YOLO.
             </p>
+
+            <div class="p-3.5 bg-slate-900/60 rounded-xl border border-slate-800 text-xs text-slate-300 space-y-1.5">
+              <div class="flex items-center gap-2">
+                <span class="text-emerald-400 font-bold">📍 Based in:</span>
+                <span>Pasir Gudang, Johor, Malaysia (Open to Johor on-site, hybrid, or remote roles)</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <span class="text-cyan-400 font-bold">🎯 Seeking:</span>
+                <span>5-month full-time internship placement starting February 2027</span>
+              </div>
+            </div>
 
             <!-- Quick Contact Badges & Buttons -->
             <div class="pt-2 flex flex-wrap items-center gap-3">
-              <a href="mailto:mirzaaqmal22@gmail.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-xs transition-all shadow-xl shadow-emerald-500/25 hover:scale-105 active:scale-95">
+              <a href="mailto:mirzaaqmal22@gmail.com" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-sm">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                 <span>mirzaaqmal22@gmail.com</span>
               </a>
 
-              <button onclick="copyToClipboard('013-5788399', 'Phone number')" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-700/80 hover:border-emerald-500/60 bg-slate-900/70 hover:bg-slate-800 text-slate-200 font-mono text-xs transition-all hover:scale-105 active:scale-95" title="Click to copy phone">
-                <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+              <button onclick="copyToClipboard('013-5788399', 'Phone number')" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-600 bg-slate-900/70 text-slate-200 font-mono text-xs transition-colors" title="Click to copy phone">
+                <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                 <span>013-5788399</span>
                 <span class="text-[10px] text-slate-500">(Copy)</span>
               </button>
 
-              <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-3 rounded-xl border border-slate-700/80 hover:border-cyan-500/60 bg-slate-900/70 hover:bg-slate-800 text-slate-300 hover:text-cyan-400 font-mono text-xs transition-all hover:scale-105 active:scale-95">
+              <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3.5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-600 bg-slate-900/70 text-slate-300 hover:text-white font-mono text-xs transition-colors">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                <span>GitHub Profile</span>
+                <span>GitHub: mircrtierr</span>
               </a>
-            </div>
-
-            <!-- Location & Mobility -->
-            <div class="flex items-center gap-4 text-xs text-slate-400 font-mono pt-1">
-              <span class="flex items-center gap-1.5 text-slate-300">
-                <svg class="w-4 h-4 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                Pasir Gudang, Johor
-              </span>
-              <span>•</span>
-              <span class="text-slate-300">Open to Johor & Remote/Hybrid IT roles</span>
             </div>
 
           </div>
 
-          <!-- Right Hero Column: 3D Holographic Interactive Terminal -->
-          <div id="terminal-section" class="lg:col-span-6">
+          <!-- Multi-Tab Workstation Column -->
+          <div id="workstation" class="lg:col-span-5">
             
-            <div class="tilt-card beam-border">
+            <div id="terminal-window" class="developer-terminal overflow-hidden">
               
-              <!-- HUD Brackets -->
-              <span class="hud-corner hud-tl"></span>
-              <span class="hud-corner hud-tr"></span>
-              <span class="hud-corner hud-bl"></span>
-              <span class="hud-corner hud-br"></span>
-
-              <div id="terminal-window" class="terminal-window overflow-hidden">
-                
-                <!-- Terminal Header Bar -->
-                <div class="pop-layer-sm px-4 py-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
-                  <div class="flex items-center gap-2">
-                    <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block shadow-sm shadow-red-500/50"></span>
-                    <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block shadow-sm shadow-yellow-500/50"></span>
-                    <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block shadow-sm shadow-green-500/50"></span>
-                    <span class="ml-2 font-mono text-[11px] text-slate-400 flex items-center gap-1.5 font-semibold">
-                      <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3"/></svg>
-                      mirza@kvpjb-workstation:~ (zsh)
-                    </span>
-                  </div>
-                  
-                  <div class="flex items-center gap-2 font-mono text-[10px] text-slate-400">
-                    <span class="hidden sm:inline text-slate-500">Press '/' to focus</span>
-                    <button onclick="runCliCommand('clear')" class="hover:text-emerald-400 text-slate-400 px-2 py-0.5 rounded-lg border border-slate-800 hover:border-slate-700 transition-colors">clear</button>
-                  </div>
+              <!-- Tabs Header -->
+              <div class="px-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-1">
+                  <button class="terminal-tab active" data-tab="terminal">
+                    <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3"/></svg>
+                    <span>terminal.zsh</span>
+                  </button>
+                  <button class="terminal-tab" data-tab="code">
+                    <span class="text-cyan-400 font-bold text-[10px]">py</span>
+                    <span>smartattend.py</span>
+                  </button>
+                  <button class="terminal-tab" data-tab="json">
+                    <span class="text-amber-400 font-bold text-[10px]">{}</span>
+                    <span>mirza.json</span>
+                  </button>
                 </div>
+                
+                <div class="flex items-center gap-1.5 text-[10px] font-mono text-slate-500">
+                  <span class="hidden sm:inline">Press '/'</span>
+                </div>
+              </div>
 
-                <!-- Terminal Scrollable Body with Pop-Out Text -->
-                <div id="terminal-container" class="terminal-scroll p-4 h-[330px] overflow-y-auto font-mono text-xs text-slate-200 crt-scanlines">
-                  <div id="terminal-output" class="pop-layer-md">
+              <!-- Tab Panel 1: Interactive Terminal -->
+              <div id="tab-panel-terminal" class="p-4 font-mono text-xs">
+                <div id="terminal-container" class="h-[280px] overflow-y-auto pr-1">
+                  <div id="terminal-output">
                     <!-- Populated dynamically -->
                   </div>
 
-                  <!-- Active Command Line -->
-                  <form id="terminal-form" class="pop-layer-lg mt-3 flex items-center gap-2">
-                    <span class="text-emerald-400 font-bold font-mono">mirza@kvpjb:~$</span>
+                  <!-- Active Prompt Line -->
+                  <form id="terminal-form" class="mt-2.5 flex items-center gap-2">
+                    <span class="text-emerald-400 font-bold">mirza@kvpjb:~$</span>
                     <input 
                       type="text" 
                       id="terminal-input" 
@@ -275,25 +242,56 @@
                       autocorrect="off" 
                       autocapitalize="off" 
                       spellcheck="false" 
-                      placeholder="type 'help' or click pills below..."
+                      placeholder="try 'help' or click pills..."
                       class="flex-1 bg-transparent border-none outline-none text-slate-100 font-mono text-xs focus:ring-0 p-0"
                     />
-                    <span class="terminal-cursor"></span>
                   </form>
                 </div>
 
-                <!-- Quick Command Pills Footer (3D Lift) -->
-                <div class="pop-layer-sm px-4 py-2.5 bg-slate-900/90 border-t border-slate-800 flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
-                  <span class="text-slate-400 text-[10px] mr-1">Quick run:</span>
-                  <button onclick="runCliCommand('help')" class="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-all hover:scale-105 active:scale-95">help</button>
-                  <button onclick="runCliCommand('about')" class="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-all hover:scale-105 active:scale-95">about</button>
-                  <button onclick="runCliCommand('projects')" class="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-all hover:scale-105 active:scale-95">projects</button>
-                  <button onclick="runCliCommand('skills')" class="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-all hover:scale-105 active:scale-95">skills</button>
-                  <button onclick="runCliCommand('github')" class="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-cyan-500/20 text-cyan-400 border border-slate-700 hover:border-cyan-500/50 transition-all hover:scale-105 active:scale-95">github</button>
-                  <button onclick="runCliCommand('awards')" class="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-amber-500/20 text-amber-400 border border-slate-700 hover:border-amber-500/50 transition-all hover:scale-105 active:scale-95">awards</button>
-                  <button onclick="runCliCommand('contact')" class="px-2 py-0.5 rounded-lg bg-slate-800/80 hover:bg-slate-700 text-slate-300 border border-slate-700 hover:border-slate-500 transition-all hover:scale-105 active:scale-95">contact</button>
+                <!-- Quick Run Command Pills -->
+                <div class="mt-3 pt-2.5 border-t border-slate-800/80 flex flex-wrap items-center gap-1 text-[11px]">
+                  <span class="text-slate-500 text-[10px] mr-1">Quick:</span>
+                  <button onclick="runCliCommand('about')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 transition-colors">about</button>
+                  <button onclick="runCliCommand('projects')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 transition-colors">projects</button>
+                  <button onclick="runCliCommand('skills')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 transition-colors">skills</button>
+                  <button onclick="runCliCommand('github')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-cyan-500/20 text-cyan-400 border border-slate-700 transition-colors">github</button>
+                  <button onclick="runCliCommand('awards')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-amber-500/20 text-amber-400 border border-slate-700 transition-colors">awards</button>
+                  <button onclick="runCliCommand('clear')" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-400 border border-slate-700 transition-colors">clear</button>
                 </div>
+              </div>
 
+              <!-- Tab Panel 2: Real Python Code Snippet -->
+              <div id="tab-panel-code" class="hidden p-4 font-mono text-[11px] leading-relaxed text-slate-300 h-[340px] overflow-y-auto bg-[#0a0d14]">
+                <div class="text-slate-500 mb-2"># SmartAttend Vector Matching Core (Python + FAISS)</div>
+                <div><span class="text-purple-400">import</span> faiss</div>
+                <div><span class="text-purple-400">import</span> numpy <span class="text-purple-400">as</span> np</div>
+                <div><span class="text-purple-400">from</span> insightface.app <span class="text-purple-400">import</span> FaceAnalysis</div>
+                <div class="my-2 text-slate-500"># 512D ArcFace Normalization & Cosine Search</div>
+                <div><span class="text-blue-400">class</span> <span class="text-emerald-400">AttendanceMatcher</span>:</div>
+                <div class="pl-4"><span class="text-blue-400">def</span> <span class="text-amber-300">__init__</span>(self, dimension=<span class="text-orange-400">512</span>):</div>
+                <div class="pl-8">self.index = faiss.<span class="text-emerald-300">IndexFlatIP</span>(dimension)</div>
+                <div class="pl-8">self.threshold = <span class="text-orange-400">0.65</span></div>
+                <div class="pl-4 my-2"><span class="text-blue-400">def</span> <span class="text-amber-300">search_student</span>(self, face_embedding):</div>
+                <div class="pl-8">norm_vec = face_embedding / np.linalg.norm(face_embedding)</div>
+                <div class="pl-8">scores, indices = self.index.search(norm_vec, k=<span class="text-orange-400">1</span>)</div>
+                <div class="pl-8"><span class="text-purple-400">if</span> scores[<span class="text-orange-400">0</span>][<span class="text-orange-400">0</span>] >= self.threshold:</div>
+                <div class="pl-12 text-emerald-400"><span class="text-purple-400">return</span> {<span class="text-green-300">"match"</span>: <span class="text-orange-400">True</span>, <span class="text-green-300">"id"</span>: indices[<span class="text-orange-400">0</span>][<span class="text-orange-400">0</span>]}</div>
+                <div class="pl-8 text-slate-500"><span class="text-purple-400">return</span> {<span class="text-green-300">"match"</span>: <span class="text-orange-400">False</span>}</div>
+              </div>
+
+              <!-- Tab Panel 3: Structured JSON Profile -->
+              <div id="tab-panel-json" class="hidden p-4 font-mono text-[11px] leading-relaxed text-slate-300 h-[340px] overflow-y-auto bg-[#0a0d14]">
+                <div>{</div>
+                <div class="pl-4"><span class="text-cyan-400">"name"</span>: <span class="text-emerald-300">"Muhammad Mirza Aqmal Raziq"</span>,</div>
+                <div class="pl-4"><span class="text-cyan-400">"education"</span>: {</div>
+                <div class="pl-8"><span class="text-cyan-400">"institution"</span>: <span class="text-emerald-300">"KV Perdagangan Johor Bahru"</span>,</div>
+                <div class="pl-8"><span class="text-cyan-400">"program"</span>: <span class="text-emerald-300">"Diploma Teknologi Komputeran"</span>,</div>
+                <div class="pl-8"><span class="text-cyan-400">"cgpa"</span>: <span class="text-amber-400">3.98</span></div>
+                <div class="pl-4">},</div>
+                <div class="pl-4"><span class="text-cyan-400">"accreditation"</span>: <span class="text-emerald-300">"SKM Tahap 3 (Application Development)"</span>,</div>
+                <div class="pl-4"><span class="text-cyan-400">"internship_period"</span>: <span class="text-emerald-300">"February – June 2027 (5 Months)"</span>,</div>
+                <div class="pl-4"><span class="text-cyan-400">"github"</span>: <span class="text-emerald-300">"https://github.com/mircrtierr"</span></div>
+                <div>}</div>
               </div>
 
             </div>
@@ -306,171 +304,175 @@
     </section>
 
 
-    <!-- ========================================== -->
-    <!-- 3. ASYMMETRIC SWISS BENTO GRID (3D TILES)  -->
-    <!-- ========================================== -->
-    <section id="bento" class="py-16 md:py-24 border-b border-slate-800/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <!-- ======================================================== -->
+    <!-- 3. LIVE INTERACTIVE PLAYGROUNDS (Real Engineering Demos) -->
+    <!-- ======================================================== -->
+    <section id="playgrounds" class="py-16 md:py-20 border-b border-slate-800/60 bg-gradient-to-b from-transparent via-slate-950/40 to-transparent">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <!-- Section Header -->
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div>
-            <div class="text-xs font-mono font-bold text-emerald-400 tracking-widest uppercase mb-1 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
-              <span>// 3D BENTO GRID ARCHITECTURE</span>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // INTERACTIVE SYSTEM PROTOTYPES
             </div>
-            <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Interactive Competencies & Honors
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Test My Engineering in Action
             </h2>
           </div>
-          <p class="text-slate-400 text-xs sm:text-sm mt-3 md:mt-0 max-w-md">
-            Hover over any tile to experience real-time 3D tilt physics and depth layers.
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            Click the simulator buttons to experience how my facial recognition pipeline and YOLO models execute in real-time.
           </p>
         </div>
 
-        <!-- 3D Bento Grid Structure -->
-        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-5">
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
-          <!-- Bento Tile 1: CGPA Metric Card (3D Super Pop) -->
-          <div class="tilt-card p-6 md:col-span-2 flex flex-col justify-between bg-gradient-to-br from-[#0e1320] to-[#121828] border-emerald-500/30">
-            <span class="hud-corner hud-tl"></span>
-            <span class="hud-corner hud-br"></span>
-
-            <div class="pop-out-content">
-              <div class="flex items-start justify-between">
-                <div class="pop-layer-md">
-                  <span class="tech-pill text-emerald-400 border-emerald-500/40 bg-emerald-500/10">Academic Distinction</span>
-                  <h3 class="text-xl font-bold text-white mt-3">Diploma Teknologi Komputeran</h3>
-                  <p class="text-xs text-slate-400 mt-1">Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</p>
+          <!-- PLAYGROUND 1: SmartAttend Live Edge Simulator -->
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 status-pulsar"></span>
+                  <span class="font-bold text-sm text-white">SmartAttend KVPJB — Edge Simulator</span>
                 </div>
-                <div class="pop-layer-lg w-12 h-12 rounded-2xl bg-emerald-500/15 border border-emerald-500/40 flex items-center justify-center text-emerald-400 shadow-lg shadow-emerald-500/20">
-                  <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
-                </div>
+                <span id="sim-status-badge" class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-slate-400 border border-slate-700">
+                  Ready for Test
+                </span>
               </div>
 
-              <div class="mt-8 pt-5 border-t border-slate-800/90 flex items-baseline justify-between">
-                <div class="pop-layer-xl">
-                  <div class="text-5xl sm:text-6xl font-black font-mono text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-teal-300 tracking-tight">
-                    3.98 <span class="text-base font-medium text-slate-400 font-sans">/ 4.00</span>
-                  </div>
-                  <div class="text-xs text-slate-400 mt-1 font-medium">Top Cohort Academic Standing • Semesters 1 – 4 Verified</div>
+              <!-- Camera Viewport Simulation -->
+              <div class="sim-viewport mt-4 h-48 flex items-center justify-center relative camera-feed-scanline">
+                <!-- Watermark -->
+                <div class="absolute top-2 left-2 text-[10px] font-mono text-emerald-400 bg-slate-900/80 px-2 py-0.5 rounded border border-emerald-500/30">
+                  ESP32-CAM • 192.168.1.142 • OV2640
                 </div>
-                <div class="pop-layer-md text-right">
-                  <span class="text-xs font-mono text-cyan-300 bg-cyan-500/15 px-3 py-1.5 rounded-xl border border-cyan-500/30 shadow-md">
-                    Dean's Class
+
+                <!-- Simulated Face Target Area -->
+                <div id="sim-face-box" class="w-28 h-28 border-2 border-emerald-400 rounded-lg relative flex flex-col items-center justify-center transition-opacity duration-300 opacity-20">
+                  <span class="text-2xl">👤</span>
+                  <span class="text-[9px] font-mono bg-emerald-500 text-slate-950 font-bold px-1.5 py-0.2 rounded mt-1">
+                    ArcFace 512D
                   </span>
+                  <!-- Corner Reticles -->
+                  <span class="absolute -top-1 -left-1 w-2 h-2 border-t-2 border-l-2 border-white"></span>
+                  <span class="absolute -top-1 -right-1 w-2 h-2 border-t-2 border-r-2 border-white"></span>
+                  <span class="absolute -bottom-1 -left-1 w-2 h-2 border-b-2 border-l-2 border-white"></span>
+                  <span class="absolute -bottom-1 -right-1 w-2 h-2 border-b-2 border-r-2 border-white"></span>
+                </div>
+
+                <div class="absolute bottom-2 right-2 text-[10px] font-mono text-slate-500">
+                  FAISS IndexFlatIP
                 </div>
               </div>
+
+              <!-- Real-time Metrics Readout -->
+              <div id="sim-metrics" class="mt-4 grid grid-cols-3 gap-2 text-center">
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px] font-mono">
+                  <span class="text-slate-500 block text-[10px]">Candidate</span>
+                  <span class="font-semibold text-slate-200">Muhammad Mirza</span>
+                </div>
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px] font-mono">
+                  <span class="text-slate-500 block text-[10px]">Lookup Latency</span>
+                  <span class="font-semibold text-emerald-400">&lt; 10 ms</span>
+                </div>
+                <div class="p-2 rounded bg-slate-900/80 border border-slate-800 text-[11px] font-mono">
+                  <span class="text-slate-500 block text-[10px]">Similarity Model</span>
+                  <span class="font-semibold text-cyan-300">ArcFace FAISS</span>
+                </div>
+              </div>
+
+              <!-- Live Execution Logs -->
+              <div id="sim-log-console" class="mt-3 p-2.5 bg-slate-950 rounded border border-slate-800 text-[10px] font-mono text-slate-400 space-y-1 h-20 overflow-y-auto">
+                <div>[0.0ms] Ready. Click "Simulate Edge Check-in" to trigger recognition loop.</div>
+              </div>
+            </div>
+
+            <!-- Trigger Button -->
+            <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+              <button id="sim-trigger-btn" class="px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-sm">
+                ⚡ Simulate Edge Check-in
+              </button>
+              <a href="https://github.com/mircrtierr/smartattend-kvpjb" target="_blank" class="text-xs text-slate-400 hover:text-emerald-400 font-mono transition-colors">
+                View Source on GitHub ↗
+              </a>
             </div>
           </div>
 
-          <!-- Bento Tile 2: SKM Level 3 -->
-          <div class="tilt-card p-6 flex flex-col justify-between border-cyan-500/30">
-            <span class="hud-corner hud-tr"></span>
-            <span class="hud-corner hud-bl"></span>
 
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between">
-                <span class="tech-pill text-cyan-400 border-cyan-500/40 bg-cyan-500/10">Accredited JPK</span>
-                <div class="pop-layer-md w-8 h-8 rounded-xl bg-cyan-500/10 flex items-center justify-center text-cyan-400">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+          <!-- PLAYGROUND 2: YOLO Electronics Object Detection -->
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+                <div class="flex items-center gap-2">
+                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400"></span>
+                  <span class="font-bold text-sm text-white">YOLO Hardware Classifier — Live Inspector</span>
                 </div>
+                <span class="text-[11px] font-mono px-2.5 py-0.5 rounded-full bg-slate-800 text-cyan-400 border border-slate-700">
+                  mAP@0.5: 92.4%
+                </span>
               </div>
-              <h3 class="pop-layer-md text-lg font-bold text-white mt-4">SKM Tahap 3</h3>
-              <p class="pop-layer-sm text-xs text-slate-400 mt-1">Application Development (Pembangunan Aplikasi)</p>
-            </div>
-            
-            <div class="pop-layer-sm mt-6 pt-4 border-t border-slate-800">
-              <div class="text-xs font-mono text-emerald-400 font-bold">Jabatan Pembangunan Kemahiran</div>
-              <p class="text-[11px] text-slate-500 mt-0.5">Government-certified vocational software engineering</p>
-            </div>
-          </div>
 
-          <!-- Bento Tile 3: Awards Count (3D Pop) -->
-          <div class="tilt-card p-6 flex flex-col justify-between border-amber-500/30">
-            <span class="hud-corner hud-tl"></span>
-            <span class="hud-corner hud-br"></span>
-
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between">
-                <span class="tech-pill text-amber-400 border-amber-500/40 bg-amber-500/10">Podium Track</span>
-                <div class="pop-layer-md w-8 h-8 rounded-xl bg-amber-500/10 flex items-center justify-center text-amber-400">
-                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              <!-- Hardware Components Workbench Canvas -->
+              <div class="sim-viewport mt-4 h-48 relative bg-slate-950 p-3 overflow-hidden">
+                <div class="text-[10px] font-mono text-slate-500 mb-2">
+                  Vocational Lab Workbench • 4 Classified Components
                 </div>
-              </div>
-              <div class="mt-4">
-                <div class="pop-layer-xl text-4xl font-black font-mono text-amber-400">5+ Awards</div>
-                <h3 class="pop-layer-sm text-xs font-bold text-white mt-1">National & State Honors</h3>
-              </div>
-            </div>
 
-            <div class="pop-layer-sm mt-6 pt-4 border-t border-slate-800">
-              <p class="text-[11px] text-slate-400">
-                1st Place State Android Challenge, 3rd & 5th Place Nationals, Web Tech Zone podiums.
-              </p>
-            </div>
-          </div>
+                <!-- Simulated Components Grid -->
+                <div class="grid grid-cols-2 gap-3 h-32 relative">
+                  <!-- Component 1: Motherboard -->
+                  <div class="relative bg-slate-900/80 rounded border border-slate-800 p-2 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-slate-300">🖲️ Desktop Motherboard</span>
+                    <span class="text-[10px] text-slate-500">ATX Form Factor</span>
+                    <div class="yolo-bbox absolute inset-0 border-2 border-emerald-400 bg-emerald-500/10 rounded opacity-0 transition-opacity duration-200 flex items-end p-1">
+                      <span class="text-[9px] font-mono bg-emerald-500 text-black px-1 rounded font-bold">Motherboard: 91.5%</span>
+                    </div>
+                  </div>
 
-          <!-- Bento Tile 4: OJT Internship Timeline & Commitment -->
-          <div class="tilt-card p-6 md:col-span-2 flex flex-col justify-between border-emerald-500/30">
-            <div class="pop-out-content">
-              <div class="flex items-start justify-between">
-                <div class="pop-layer-md">
-                  <span class="tech-pill text-emerald-400 border-emerald-500/40 bg-emerald-500/10">Industrial Training</span>
-                  <h3 class="text-lg font-bold text-white mt-3">5-Month IT Internship Placement</h3>
-                  <p class="text-xs text-slate-300 mt-1 max-w-md">
-                    Ready to deploy on enterprise software engineering, web backend/frontend, IoT edge vision, and networking tasks.
-                  </p>
-                </div>
-                <div class="pop-layer-lg font-mono text-xs font-bold text-emerald-400 bg-emerald-500/15 px-3 py-1.5 rounded-xl border border-emerald-500/40 shadow-lg shadow-emerald-500/20">
-                  FEB – JUNE 2027
+                  <!-- Component 2: Dedicated GPU -->
+                  <div class="relative bg-slate-900/80 rounded border border-slate-800 p-2 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-slate-300">🎮 Dedicated GPU</span>
+                    <span class="text-[10px] text-slate-500">PCIe x16 Card</span>
+                    <div class="yolo-bbox absolute inset-0 border-2 border-cyan-400 bg-cyan-500/10 rounded opacity-0 transition-opacity duration-200 flex items-end p-1">
+                      <span class="text-[9px] font-mono bg-cyan-500 text-black px-1 rounded font-bold">GPU: 94.2%</span>
+                    </div>
+                  </div>
+
+                  <!-- Component 3: DDR4 RAM Module -->
+                  <div class="relative bg-slate-900/80 rounded border border-slate-800 p-2 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-slate-300">💾 DDR4 RAM Module</span>
+                    <span class="text-[10px] text-slate-500">DIMM 3200MHz</span>
+                    <div class="yolo-bbox absolute inset-0 border-2 border-emerald-400 bg-emerald-500/10 rounded opacity-0 transition-opacity duration-200 flex items-end p-1">
+                      <span class="text-[9px] font-mono bg-emerald-500 text-black px-1 rounded font-bold">RAM: 97.8%</span>
+                    </div>
+                  </div>
+
+                  <!-- Component 4: CPU Processor -->
+                  <div class="relative bg-slate-900/80 rounded border border-slate-800 p-2 flex flex-col justify-between">
+                    <span class="text-xs font-semibold text-slate-300">⚡ Microprocessor CPU</span>
+                    <span class="text-[10px] text-slate-500">LGA Socket</span>
+                    <div class="yolo-bbox absolute inset-0 border-2 border-amber-400 bg-amber-500/10 rounded opacity-0 transition-opacity duration-200 flex items-end p-1">
+                      <span class="text-[9px] font-mono bg-amber-500 text-black px-1 rounded font-bold">CPU: 96.1%</span>
+                    </div>
+                  </div>
                 </div>
               </div>
 
-              <div class="pop-layer-md mt-6 grid grid-cols-3 gap-2.5 pt-4 border-t border-slate-800 text-xs">
-                <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
-                  <span class="text-slate-500 block text-[10px]">Location</span>
-                  <span class="font-bold text-slate-200">Johor / Pasir Gudang</span>
-                </div>
-                <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
-                  <span class="text-slate-500 block text-[10px]">Work Mode</span>
-                  <span class="font-bold text-slate-200">On-site / Hybrid / Remote</span>
-                </div>
-                <div class="bg-slate-900/70 p-2.5 rounded-xl border border-slate-800">
-                  <span class="text-slate-500 block text-[10px]">Readiness</span>
-                  <span class="font-bold text-emerald-400">Immediate Interview</span>
+              <!-- Inference Stats -->
+              <div class="mt-4 p-2.5 rounded bg-slate-900/80 border border-slate-800 text-xs text-slate-300 flex items-center justify-between">
+                <div id="yolo-stats-text" class="text-slate-400 font-mono text-[11px]">
+                  Click "Run YOLOv8 Inference" to test real-time object classification.
                 </div>
               </div>
             </div>
-          </div>
 
-          <!-- Bento Tile 5: Hardware & Edge AI Focus -->
-          <div class="tilt-card p-6 flex flex-col justify-between border-cyan-500/30">
-            <div class="pop-out-content">
-              <span class="tech-pill text-cyan-400 border-cyan-500/40 bg-cyan-500/10">Edge Hardware + AI</span>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-3">ESP32-CAM & Vision</h3>
-              <p class="pop-layer-sm text-xs text-slate-400 mt-1">
-                Embedded microcontrollers paired with ArcFace embeddings & FAISS vector search engines.
-              </p>
-            </div>
-            <div class="pop-layer-sm mt-5 flex flex-wrap gap-1.5 font-mono text-[10px]">
-              <span class="bg-slate-800/80 px-2 py-0.5 rounded text-cyan-300">ESP32-CAM</span>
-              <span class="bg-slate-800/80 px-2 py-0.5 rounded text-emerald-300">FAISS</span>
-              <span class="bg-slate-800/80 px-2 py-0.5 rounded text-slate-300">OpenCV</span>
-            </div>
-          </div>
-
-          <!-- Bento Tile 6: Communication & Bilingual -->
-          <div class="tilt-card p-6 flex flex-col justify-between border-purple-500/30">
-            <div class="pop-out-content">
-              <span class="tech-pill text-purple-400 border-purple-500/40 bg-purple-500/10">Communication</span>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-3">Bilingual & Podcaster</h3>
-              <p class="pop-layer-sm text-xs text-slate-400 mt-1">
-                Bahasa Melayu (Native), English (Good working proficiency). National PETAH MADANI Podcast finalist.
-              </p>
-            </div>
-            <div class="pop-layer-sm mt-5 text-xs font-mono text-purple-300">
-              Tech Presentation & Public Speaking
+            <!-- Trigger Button -->
+            <div class="mt-5 pt-3 border-t border-slate-800 flex items-center justify-between">
+              <button id="yolo-run-btn" class="px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition-colors shadow-sm">
+                🔍 Run YOLOv8 Inference
+              </button>
+              <a href="https://github.com/mircrtierr/yolo-electronics-detection" target="_blank" class="text-xs text-slate-400 hover:text-cyan-400 font-mono transition-colors">
+                View Source on GitHub ↗
+              </a>
             </div>
           </div>
 
@@ -481,157 +483,290 @@
 
 
     <!-- ========================================== -->
-    <!-- 4. FEATURED ENGINEERING PROJECTS          -->
+    <!-- 4. ARTISAN BENTO GRID HIGHLIGHTS          -->
     <!-- ========================================== -->
-    <section id="projects" class="py-16 md:py-24 border-b border-slate-800/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="bento" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
           <div>
-            <div class="text-xs font-mono font-bold text-emerald-400 tracking-widest uppercase mb-1 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
-              <span>// PRODUCTION & ACADEMIC REPOSITORIES</span>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // VERIFIED QUALIFICATIONS & STANDING
             </div>
-            <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Featured Academic Projects
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Academic & Vocational Excellence
             </h2>
           </div>
-          <p class="text-slate-400 text-xs sm:text-sm mt-3 md:mt-0 max-w-md">
-            Click "System Architecture" for interactive modals with ASCII flowcharts, edge schemas, and deep metrics.
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            Rigorous coursework performance, national vocational skill standards, and competitive track record.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          
+          <!-- Card 1: 3.98 CGPA (Main Highlight) -->
+          <div class="artisan-card spotlight-card p-6 md:col-span-2 flex flex-col justify-between bg-gradient-to-br from-slate-900 to-[#10141e]">
+            <div>
+              <div class="flex items-start justify-between">
+                <div>
+                  <span class="tech-tag text-emerald-400 border-emerald-500/30">Top Academic Standing</span>
+                  <h3 class="text-lg font-bold text-white mt-3">Diploma Teknologi Komputeran</h3>
+                  <p class="text-xs text-slate-400 mt-1">Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</p>
+                </div>
+                <div class="w-10 h-10 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                  <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <div class="mt-8 pt-4 border-t border-slate-800/80 flex items-baseline justify-between">
+              <div>
+                <div class="text-4xl sm:text-5xl font-black font-mono text-emerald-400 tracking-tight">
+                  3.98 <span class="text-sm font-normal text-slate-400 font-sans">/ 4.00</span>
+                </div>
+                <div class="text-xs text-slate-400 mt-1">Dean's Honor Class • Semesters 1 – 4 Verified</div>
+              </div>
+              <span class="text-xs font-mono text-cyan-300 bg-cyan-500/10 px-2.5 py-1 rounded-md border border-cyan-500/20">
+                Top Percentile
+              </span>
+            </div>
+          </div>
+
+          <!-- Card 2: SKM Level 3 -->
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="tech-tag text-cyan-400 border-cyan-500/30">JPK Accredited</span>
+              <h3 class="text-base font-bold text-white mt-3">SKM Tahap 3</h3>
+              <p class="text-xs text-slate-400 mt-1">Application Development (Pembangunan Aplikasi)</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800">
+              <div class="text-xs font-mono text-emerald-400 font-semibold">Jabatan Pembangunan Kemahiran</div>
+              <p class="text-[11px] text-slate-500 mt-0.5">National Malaysian software development standard</p>
+            </div>
+          </div>
+
+          <!-- Card 3: 5+ Competitive Awards -->
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="tech-tag text-amber-400 border-amber-500/30">Podiums & Honors</span>
+              <div class="mt-3">
+                <div class="text-3xl font-extrabold font-mono text-amber-400">5+ Awards</div>
+                <h3 class="text-xs font-bold text-white mt-1">State & National Recognitions</h3>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800">
+              <p class="text-[11px] text-slate-400">
+                Champion Johor Android Apps, 3rd Place National App Dev, 5th Place National Podcast.
+              </p>
+            </div>
+          </div>
+
+          <!-- Card 4: OJT Commitment -->
+          <div class="artisan-card spotlight-card p-6 md:col-span-2 flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="tech-tag text-emerald-400 border-emerald-500/30">Industrial Internship</span>
+                <h3 class="text-base font-bold text-white mt-2">5-Month IT Internship Placement</h3>
+                <p class="text-xs text-slate-300 mt-1">
+                  Ready to deploy into software development, web engineering, computer vision, or network operations.
+                </p>
+              </div>
+              <div class="font-mono text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1 rounded border border-emerald-500/30">
+                FEB – JUNE 2027
+              </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-3 gap-2 pt-4 border-t border-slate-800 text-xs">
+              <div class="bg-slate-900/60 p-2 rounded border border-slate-800">
+                <span class="text-slate-500 block text-[10px]">Location</span>
+                <span class="font-semibold text-slate-200">Johor / Pasir Gudang</span>
+              </div>
+              <div class="bg-slate-900/60 p-2 rounded border border-slate-800">
+                <span class="text-slate-500 block text-[10px]">Work Mode</span>
+                <span class="font-semibold text-slate-200">On-site / Hybrid / Remote</span>
+              </div>
+              <div class="bg-slate-900/60 p-2 rounded border border-slate-800">
+                <span class="text-slate-500 block text-[10px]">Interviews</span>
+                <span class="font-semibold text-emerald-400">Immediately Available</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Edge Hardware Focus -->
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="tech-tag text-cyan-400 border-cyan-500/30">Hardware + AI</span>
+              <h3 class="text-base font-bold text-white mt-2">ESP32-CAM & Vision</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Embedded microcontrollers connected to deep learning models and sub-second vector search.
+              </p>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-1 font-mono text-[10px]">
+              <span class="bg-slate-800 px-2 py-0.5 rounded text-cyan-300">ESP32-CAM</span>
+              <span class="bg-slate-800 px-2 py-0.5 rounded text-emerald-300">FAISS</span>
+              <span class="bg-slate-800 px-2 py-0.5 rounded text-slate-300">OpenCV</span>
+            </div>
+          </div>
+
+          <!-- Card 6: Communication -->
+          <div class="artisan-card spotlight-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="tech-tag text-purple-400 border-purple-500/30">Communication</span>
+              <h3 class="text-base font-bold text-white mt-2">Bilingual & Podcaster</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Bahasa Melayu (Native), English (Good working proficiency). National PETAH MADANI podcast finalist.
+              </p>
+            </div>
+            <div class="mt-4 text-xs font-mono text-purple-300">
+              Clear technical documentation & teamwork
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 5. FEATURED PROJECTS                      -->
+    <!-- ========================================== -->
+    <section id="projects" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+          <div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // PRODUCTION & ACADEMIC REPOSITORIES
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Featured Engineering Projects
+            </h2>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            Complete codebases with open GitHub repositories, hardware pinouts, and system architectures.
           </p>
         </div>
 
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
           
           <!-- PROJECT 1: SmartAttend KVPJB -->
-          <div class="tilt-card p-6 md:p-8 flex flex-col justify-between border-slate-800 hover:border-emerald-500/50">
-            <span class="hud-corner hud-tl"></span>
-            <span class="hud-corner hud-br"></span>
-
-            <div class="pop-out-content">
+          <div class="artisan-card spotlight-card p-6 md:p-8 flex flex-col justify-between">
+            <div>
               <div class="flex items-center justify-between">
-                <span class="tech-pill text-emerald-400 border-emerald-500/40 bg-emerald-500/10">
-                  Featured Academic Project 01
+                <span class="tech-tag text-emerald-400 border-emerald-500/30">
+                  Academic Project 01
                 </span>
                 <span class="font-mono text-xs text-slate-500">2026</span>
               </div>
 
-              <h3 class="pop-layer-md text-2xl font-black text-white mt-4">
+              <h3 class="text-xl sm:text-2xl font-bold text-white mt-4">
                 SmartAttend KVPJB
               </h3>
-              <p class="pop-layer-sm text-xs font-mono text-cyan-400 mt-1 font-semibold">
+              <p class="text-xs font-mono text-cyan-400 mt-1">
                 Facial Recognition Attendance Management System
               </p>
 
-              <p class="pop-layer-sm text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
-                Web-based institutional student attendance management system engineered with <strong>Python Flask</strong> and <strong>MySQL/MariaDB</strong>. Integrates <strong>InsightFace (ArcFace)</strong> and <strong>FAISS</strong> for sub-second 512-dimensional facial vector search, paired with <strong>ESP32-CAM</strong> edge hardware for real-time capture, automated identification, IN/OUT tracking, and audit reporting.
+              <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                Institutional attendance management system built with <strong>Python Flask</strong> and <strong>MySQL/MariaDB</strong>. Uses <strong>InsightFace (ArcFace)</strong> and <strong>FAISS</strong> for sub-second 512D facial vector similarity matching, integrated with <strong>ESP32-CAM</strong> edge hardware for real-time capture and automated student check-in logs.
               </p>
 
-              <!-- Architecture Highlights Pop Layer -->
-              <div class="pop-layer-md mt-5 p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-2 text-xs">
-                <div class="flex items-center gap-2 text-slate-300">
+              <div class="mt-4 p-3 bg-slate-900/80 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
+                <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span><strong>Edge Capture:</strong> ESP32-CAM WiFi streaming + Flask API ingestion</span>
+                  <span><strong>Edge Capture:</strong> ESP32-CAM WiFi streaming to Flask REST endpoints</span>
                 </div>
-                <div class="flex items-center gap-2 text-slate-300">
+                <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span><strong>Vector Matching:</strong> FAISS IndexFlatIP cosine similarity (&lt;10ms query)</span>
+                  <span><strong>Vector Search:</strong> FAISS IndexFlatIP cosine similarity (&lt;10ms query)</span>
                 </div>
-                <div class="flex items-center gap-2 text-slate-300">
+                <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
-                  <span><strong>Relational Core:</strong> MySQL/MariaDB for transactional records & analytics</span>
+                  <span><strong>Database:</strong> MariaDB storing timestamps, IN/OUT records, and confidence metrics</span>
                 </div>
               </div>
 
-              <!-- Tech Pills -->
-              <div class="pop-layer-sm mt-5 flex flex-wrap gap-1.5">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">Flask</span>
-                <span class="tech-pill">MySQL / MariaDB</span>
-                <span class="tech-pill">InsightFace</span>
-                <span class="tech-pill">ArcFace</span>
-                <span class="tech-pill">FAISS</span>
-                <span class="tech-pill">ESP32-CAM</span>
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">Flask</span>
+                <span class="tech-tag">MySQL / MariaDB</span>
+                <span class="tech-tag">InsightFace</span>
+                <span class="tech-tag">ArcFace</span>
+                <span class="tech-tag">FAISS</span>
+                <span class="tech-tag">ESP32-CAM</span>
               </div>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="pop-layer-lg mt-8 pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
-              <a href="https://github.com/mircrtierr/smartattend-kvpjb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-emerald-500/20 hover:scale-105 active:scale-95">
+            <div class="mt-8 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+              <a href="https://github.com/mircrtierr/smartattend-kvpjb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-sm">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                <span>View Source on GitHub</span>
+                <span>View on GitHub</span>
               </a>
 
-              <button onclick="openProjectModal('smartattend')" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-700/80 hover:border-cyan-500/60 bg-slate-900/70 hover:bg-slate-800 text-cyan-400 font-mono text-xs transition-all hover:scale-105 active:scale-95">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-                <span>3D System Architecture</span>
+              <button onclick="openProjectModal('smartattend')" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-700 hover:border-slate-600 bg-slate-900/60 text-cyan-400 font-mono text-xs transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <span>Architecture Breakdown</span>
               </button>
             </div>
           </div>
 
 
-          <!-- PROJECT 2: Electronic & Computer Goods Object Detection – YOLO -->
-          <div class="tilt-card p-6 md:p-8 flex flex-col justify-between border-slate-800 hover:border-cyan-500/50">
-            <span class="hud-corner hud-tr"></span>
-            <span class="hud-corner hud-bl"></span>
-
-            <div class="pop-out-content">
+          <!-- PROJECT 2: Electronics Object Detection – YOLO -->
+          <div class="artisan-card spotlight-card p-6 md:p-8 flex flex-col justify-between">
+            <div>
               <div class="flex items-center justify-between">
-                <span class="tech-pill text-cyan-400 border-cyan-500/40 bg-cyan-500/10">
-                  Featured Academic Project 02
+                <span class="tech-tag text-cyan-400 border-cyan-500/30">
+                  Academic Project 02
                 </span>
                 <span class="font-mono text-xs text-slate-500">2026</span>
               </div>
 
-              <h3 class="pop-layer-md text-2xl font-black text-white mt-4">
-                Electronics Object Detection
+              <h3 class="text-xl sm:text-2xl font-bold text-white mt-4">
+                Electronics & PC Object Detection
               </h3>
-              <p class="pop-layer-sm text-xs font-mono text-emerald-400 mt-1 font-semibold">
-                Computer Vision Model Powered by YOLO & Roboflow
+              <p class="text-xs font-mono text-emerald-400 mt-1">
+                YOLO Computer Vision Model with Roboflow
               </p>
 
-              <p class="pop-layer-sm text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
-                Computer vision object detection pipeline trained on bespoke annotated electronic equipment datasets via <strong>Roboflow</strong> and <strong>Google Colab</strong> using <strong>Python</strong> and <strong>YOLO</strong>. Accurately segments and classifies components (CPUs, motherboards, GPUs, RAM, PSUs) for automated laboratory auditing and e-waste handling.
+              <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                Computer vision object detection model trained on bespoke annotated computer components (motherboards, GPUs, CPUs, RAM, power supplies) via <strong>Roboflow</strong> and <strong>Google Colab</strong> using <strong>Python</strong> and <strong>YOLO</strong>. Automates inventory counting and hardware auditing.
               </p>
 
-              <!-- Architecture Highlights Pop Layer -->
-              <div class="pop-layer-md mt-5 p-3.5 bg-slate-900/80 rounded-xl border border-slate-800 space-y-2 text-xs">
-                <div class="flex items-center gap-2 text-slate-300">
+              <div class="mt-4 p-3 bg-slate-900/80 rounded-lg border border-slate-800 space-y-1.5 text-xs text-slate-300">
+                <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <span><strong>Dataset Ops:</strong> Roboflow pipeline with mosaic & blur data augmentations</span>
+                  <span><strong>Dataset:</strong> Custom annotations and mosaic augmentations via Roboflow</span>
                 </div>
-                <div class="flex items-center gap-2 text-slate-300">
+                <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <span><strong>Training Engine:</strong> Ultralytics YOLOv8 in GPU-accelerated Google Colab</span>
+                  <span><strong>Training:</strong> Ultralytics YOLO on Google Colab T4 GPU (mAP@0.5 &gt; 92%)</span>
                 </div>
-                <div class="flex items-center gap-2 text-slate-300">
+                <div class="flex items-center gap-2">
                   <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
-                  <span><strong>Inference:</strong> Real-time OpenCV video stream with mAP@0.5 &gt; 92%</span>
+                  <span><strong>Application:</strong> Fast laboratory auditing and automated e-waste classification</span>
                 </div>
               </div>
 
-              <!-- Tech Pills -->
-              <div class="pop-layer-sm mt-5 flex flex-wrap gap-1.5">
-                <span class="tech-pill">Python</span>
-                <span class="tech-pill">YOLO</span>
-                <span class="tech-pill">Roboflow</span>
-                <span class="tech-pill">Google Colab</span>
-                <span class="tech-pill">OpenCV</span>
-                <span class="tech-pill">Computer Vision</span>
-                <span class="tech-pill">PyTorch</span>
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                <span class="tech-tag">Python</span>
+                <span class="tech-tag">YOLO</span>
+                <span class="tech-tag">Roboflow</span>
+                <span class="tech-tag">Google Colab</span>
+                <span class="tech-tag">OpenCV</span>
+                <span class="tech-tag">Computer Vision</span>
+                <span class="tech-tag">PyTorch</span>
               </div>
             </div>
 
-            <!-- Action Buttons -->
-            <div class="pop-layer-lg mt-8 pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
-              <a href="https://github.com/mircrtierr/yolo-electronics-detection" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-gradient-to-r from-cyan-500 to-blue-500 hover:from-cyan-400 hover:to-blue-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-cyan-500/20 hover:scale-105 active:scale-95">
+            <div class="mt-8 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+              <a href="https://github.com/mircrtierr/yolo-electronics-detection" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-bold text-xs transition-colors shadow-sm">
                 <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-                <span>View Source on GitHub</span>
+                <span>View on GitHub</span>
               </a>
 
-              <button onclick="openProjectModal('yolo')" class="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-xl border border-slate-700/80 hover:border-emerald-500/60 bg-slate-900/70 hover:bg-slate-800 text-emerald-400 font-mono text-xs transition-all hover:scale-105 active:scale-95">
-                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-                <span>Pipeline & Case Study</span>
+              <button onclick="openProjectModal('yolo')" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-slate-700 hover:border-slate-600 bg-slate-900/60 text-emerald-400 font-mono text-xs transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <span>Pipeline & Metrics</span>
               </button>
             </div>
           </div>
@@ -643,214 +778,193 @@
 
 
     <!-- ========================================== -->
-    <!-- 5. TECHNICAL SKILLS MATRIX (7 DOMAINS)     -->
+    <!-- 6. TECHNICAL SKILLS MATRIX (7 DOMAINS)     -->
     <!-- ========================================== -->
-    <section id="skills" class="py-16 md:py-24 border-b border-slate-800/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
           <div>
-            <div class="text-xs font-mono font-bold text-emerald-400 tracking-widest uppercase mb-1 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
-              <span>// TECHNICAL DOMAINS & TOOLCHAINS</span>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // TECHNICAL DOMAINS & TOOLCHAINS
             </div>
-            <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Technical Skills Matrix
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Technical Competencies
             </h2>
           </div>
-          <p class="text-slate-400 text-xs sm:text-sm mt-3 md:mt-0 max-w-md">
-            Hands-on practical experience across software, hardware interfaces, database engines, and networking protocols.
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            Hands-on practical development experience across frontend, backend, databases, hardware, and networking.
           </p>
         </div>
 
-        <!-- Filter Pills for Domains -->
-        <div class="flex flex-wrap gap-2 mb-10 font-mono text-xs">
-          <button data-domain="all" class="skill-filter-btn px-4 py-2 rounded-xl border border-emerald-500 text-emerald-400 bg-emerald-500/10 transition-all font-bold shadow-md shadow-emerald-500/15">
+        <!-- Filter Buttons -->
+        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+          <button data-domain="all" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-emerald-500 text-emerald-400 bg-emerald-500/10 font-bold transition-colors">
             All Domains (7)
           </button>
-          <button data-domain="prog" class="skill-filter-btn px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-white transition-all">
+          <button data-domain="prog" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-colors">
             Programming
           </button>
-          <button data-domain="web" class="skill-filter-btn px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-white transition-all">
+          <button data-domain="web" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-colors">
             Web Development
           </button>
-          <button data-domain="app" class="skill-filter-btn px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-white transition-all">
+          <button data-domain="app" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-colors">
             Application Dev
           </button>
-          <button data-domain="db" class="skill-filter-btn px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-white transition-all">
+          <button data-domain="db" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-colors">
             Database
           </button>
-          <button data-domain="ai" class="skill-filter-btn px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-white transition-all">
+          <button data-domain="ai" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-colors">
             AI & Machine Learning
           </button>
-          <button data-domain="net" class="skill-filter-btn px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-white transition-all">
+          <button data-domain="net" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-colors">
             Networking
           </button>
-          <button data-domain="sec" class="skill-filter-btn px-4 py-2 rounded-xl border border-slate-800 text-slate-400 hover:text-white transition-all">
+          <button data-domain="sec" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-colors">
             Cybersecurity
           </button>
         </div>
 
-        <!-- 7 Domain Grid Cards with 3D Tilt -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           
           <!-- Domain 1: Programming Languages -->
-          <div data-domain="prog" class="skill-group tilt-card p-6">
-            <span class="hud-corner hud-tl"></span>
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span class="font-bold text-sm text-white flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
-                  Programming Languages
-                </span>
-                <span class="font-mono text-[10px] text-slate-500">Core</span>
-              </div>
-              <div class="pop-layer-md mt-4 flex flex-wrap gap-2">
-                <span class="tech-pill text-emerald-300 font-bold">Python</span>
-                <span class="tech-pill text-cyan-300 font-bold">Java</span>
-                <span class="tech-pill text-amber-300 font-bold">PHP</span>
-                <span class="tech-pill text-purple-300 font-bold">JavaScript</span>
-              </div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-4 leading-relaxed">
-                Object-oriented programming, data structures, backend scripting, algorithmic design, and automation.
-              </p>
+          <div data-domain="prog" class="skill-group artisan-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Programming Languages
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Core</span>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-tag text-emerald-300 font-semibold">Python</span>
+              <span class="tech-tag text-cyan-300 font-semibold">Java</span>
+              <span class="tech-tag text-amber-300 font-semibold">PHP</span>
+              <span class="tech-tag text-purple-300 font-semibold">JavaScript</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Object-oriented design, algorithmic structures, backend data processing, and scripting.
+            </p>
           </div>
 
           <!-- Domain 2: Web Development -->
-          <div data-domain="web" class="skill-group tilt-card p-6">
-            <span class="hud-corner hud-tr"></span>
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span class="font-bold text-sm text-white flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400/50"></span>
-                  Web Development
-                </span>
-                <span class="font-mono text-[10px] text-slate-500">Full-Stack</span>
-              </div>
-              <div class="pop-layer-md mt-4 flex flex-wrap gap-2">
-                <span class="tech-pill text-cyan-300">HTML5</span>
-                <span class="tech-pill text-cyan-300">CSS3</span>
-                <span class="tech-pill text-red-400 font-bold">Laravel</span>
-                <span class="tech-pill text-emerald-400 font-bold">Flask</span>
-              </div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-4 leading-relaxed">
-                MVC architecture, RESTful API endpoints, routing, session security, template rendering, and responsive UI design.
-              </p>
+          <div data-domain="web" class="skill-group artisan-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                Web Development
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Full-Stack</span>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-tag text-cyan-300">HTML5</span>
+              <span class="tech-tag text-cyan-300">CSS3</span>
+              <span class="tech-tag text-red-400 font-semibold">Laravel</span>
+              <span class="tech-tag text-emerald-400 font-semibold">Flask</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              RESTful API design, MVC patterns, template engines, and responsive user interfaces.
+            </p>
           </div>
 
           <!-- Domain 3: Application Development -->
-          <div data-domain="app" class="skill-group tilt-card p-6">
-            <span class="hud-corner hud-bl"></span>
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span class="font-bold text-sm text-white flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-amber-400 shadow-sm shadow-amber-400/50"></span>
-                  Application Development
-                </span>
-                <span class="font-mono text-[10px] text-slate-500">Desktop & Mobile</span>
-              </div>
-              <div class="pop-layer-md mt-4 flex flex-wrap gap-2">
-                <span class="tech-pill text-amber-300">Java Swing</span>
-                <span class="tech-pill text-amber-300">JFrame</span>
-                <span class="tech-pill text-emerald-400 font-bold">Android Studio</span>
-                <span class="tech-pill text-slate-300">NetBeans</span>
-              </div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-4 leading-relaxed">
-                SKM Level 3 certified application developer. Desktop graphical user interfaces, event-driven programming, and Android APK deployment.
-              </p>
+          <div data-domain="app" class="skill-group artisan-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                Application Development
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">SKM Level 3</span>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-tag text-amber-300">Java Swing</span>
+              <span class="tech-tag text-amber-300">JFrame</span>
+              <span class="tech-tag text-emerald-400 font-semibold">Android Studio</span>
+              <span class="tech-tag text-slate-300">NetBeans</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Certified desktop graphical user interfaces, event handlers, and Android mobile development.
+            </p>
           </div>
 
           <!-- Domain 4: Database Management -->
-          <div data-domain="db" class="skill-group tilt-card p-6">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span class="font-bold text-sm text-white flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-blue-400 shadow-sm shadow-blue-400/50"></span>
-                  Database Management
-                </span>
-                <span class="font-mono text-[10px] text-slate-500">RDBMS</span>
-              </div>
-              <div class="pop-layer-md mt-4 flex flex-wrap gap-2">
-                <span class="tech-pill text-blue-300 font-bold">MySQL</span>
-                <span class="tech-pill text-cyan-300 font-bold">MariaDB</span>
-                <span class="tech-pill text-slate-300">SQL Schema Design</span>
-                <span class="tech-pill text-slate-300">Indexing & Joins</span>
-              </div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-4 leading-relaxed">
-                Relational data modeling, foreign key constraints, normalized schemas, prepared statements, and transactional logging.
-              </p>
+          <div data-domain="db" class="skill-group artisan-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                Database Management
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">RDBMS</span>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-tag text-blue-300 font-semibold">MySQL</span>
+              <span class="tech-tag text-cyan-300 font-semibold">MariaDB</span>
+              <span class="tech-tag text-slate-300">Schema Design</span>
+              <span class="tech-tag text-slate-300">Query Optimization</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Relational schemas, foreign key normalization, indexing, and transactional data integrity.
+            </p>
           </div>
 
           <!-- Domain 5: AI & Machine Learning -->
-          <div data-domain="ai" class="skill-group tilt-card p-6">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span class="font-bold text-sm text-white flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 shadow-sm shadow-emerald-400/50"></span>
-                  AI & Machine Learning
-                </span>
-                <span class="font-mono text-[10px] text-slate-500">Deep Learning</span>
-              </div>
-              <div class="pop-layer-md mt-4 flex flex-wrap gap-2">
-                <span class="tech-pill text-emerald-300 font-bold">YOLO (v5/v8)</span>
-                <span class="tech-pill text-cyan-300 font-bold">OpenCV</span>
-                <span class="tech-pill text-purple-300">Computer Vision</span>
-                <span class="tech-pill text-amber-300">Roboflow</span>
-                <span class="tech-pill text-slate-300">Google Colab</span>
-              </div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-4 leading-relaxed">
-                ICDL AI Essentials certified. Object detection pipelines, face embeddings (ArcFace), vector search (FAISS), and dataset augmentation.
-              </p>
+          <div data-domain="ai" class="skill-group artisan-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                AI & Machine Learning
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Computer Vision</span>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-tag text-emerald-300 font-semibold">YOLO (v5/v8)</span>
+              <span class="tech-tag text-cyan-300 font-semibold">OpenCV</span>
+              <span class="tech-tag text-purple-300">Roboflow</span>
+              <span class="tech-tag text-amber-300">Google Colab</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Object detection pipelines, ArcFace embeddings, FAISS vector indexing, and data augmentation.
+            </p>
           </div>
 
           <!-- Domain 6: Networking -->
-          <div data-domain="net" class="skill-group tilt-card p-6">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span class="font-bold text-sm text-white flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-cyan-400 shadow-sm shadow-cyan-400/50"></span>
-                  Networking & Infrastructure
-                </span>
-                <span class="font-mono text-[10px] text-slate-500">Cisco Academy</span>
-              </div>
-              <div class="pop-layer-md mt-4 flex flex-wrap gap-2">
-                <span class="tech-pill text-cyan-300 font-bold">Cisco Packet Tracer</span>
-                <span class="tech-pill text-emerald-300">TCP/IP</span>
-                <span class="tech-pill text-slate-300">OSI Model</span>
-                <span class="tech-pill text-slate-300">Network Config</span>
-              </div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-4 leading-relaxed">
-                Cisco IT Essentials certified. Switch/router configuration, IP subnet planning, routing tables, and network diagnostics.
-              </p>
+          <div data-domain="net" class="skill-group artisan-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                Networking & Infrastructure
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Cisco</span>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-tag text-cyan-300 font-semibold">Packet Tracer</span>
+              <span class="tech-tag text-emerald-300">TCP/IP</span>
+              <span class="tech-tag text-slate-300">OSI Model</span>
+              <span class="tech-tag text-slate-300">Router Config</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Subnet allocation, VLAN configurations, routing tables, and network troubleshooting.
+            </p>
           </div>
 
           <!-- Domain 7: Cybersecurity -->
-          <div data-domain="sec" class="skill-group tilt-card p-6 lg:col-span-3 border-red-500/30">
-            <span class="hud-corner hud-br"></span>
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between pb-3 border-b border-slate-800">
-                <span class="font-bold text-sm text-white flex items-center gap-2">
-                  <span class="w-2.5 h-2.5 rounded-full bg-red-400 shadow-sm shadow-red-400/50"></span>
-                  Cybersecurity & Systems Security
-                </span>
-                <span class="font-mono text-[10px] text-slate-500">Defense & Reverse Engineering</span>
-              </div>
-              <div class="pop-layer-md mt-4 flex flex-wrap gap-2">
-                <span class="tech-pill text-red-300 font-bold">Basic Cybersecurity</span>
-                <span class="tech-pill text-amber-300 font-bold">Reverse Engineering Fundamentals</span>
-                <span class="tech-pill text-slate-300">Access Control & Auth</span>
-                <span class="tech-pill text-slate-300">Input Sanitization (SQLi/XSS Prevention)</span>
-              </div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Principles of system defense, understanding assembly/binary breakdown concepts, secure communication protocols, and defensive vulnerability hygiene.
-              </p>
+          <div data-domain="sec" class="skill-group artisan-card p-5 lg:col-span-3">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                Cybersecurity & Systems Defense
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Security Fundamentals</span>
             </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-tag text-red-300 font-semibold">Basic Cybersecurity</span>
+              <span class="tech-tag text-amber-300 font-semibold">Reverse Engineering Concepts</span>
+              <span class="tech-tag text-slate-300">Access Control</span>
+              <span class="tech-tag text-slate-300">Input Sanitization (SQLi/XSS Prevention)</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Defensive coding hygiene, binary decompilation fundamentals, and network defense principles.
+            </p>
           </div>
 
         </div>
@@ -860,228 +974,202 @@
 
 
     <!-- ========================================== -->
-    <!-- 6. CREDENTIALS & TIMELINE (FILTERABLE)     -->
+    <!-- 7. CREDENTIALS & TIMELINE                  -->
     <!-- ========================================== -->
-    <section id="credentials" class="py-16 md:py-24 border-b border-slate-800/60">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="credentials" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
           <div>
-            <div class="text-xs font-mono font-bold text-emerald-400 tracking-widest uppercase mb-1 flex items-center gap-2">
-              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
-              <span>// VERIFIED HONORS & QUALIFICATIONS</span>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // VERIFIED HONORS & QUALIFICATIONS
             </div>
-            <h2 class="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              Credentials & Track Record
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Credentials & Recognitions
             </h2>
           </div>
-          <p class="text-slate-400 text-xs sm:text-sm mt-3 md:mt-0 max-w-md">
-            All certifications, competition awards, and leadership workshops verified through institutional records.
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            All certifications, awards, and leadership workshops verified through institutional records.
           </p>
         </div>
 
         <!-- Filter Tab Buttons -->
-        <div class="flex flex-wrap gap-2 mb-10 font-mono text-xs">
-          <button data-filter="all" class="cred-filter-btn px-4 py-2 rounded-xl bg-emerald-500 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20 hover:scale-105 active:scale-95">
+        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+          <button data-filter="all" class="cred-filter-btn px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-colors">
             All Verified (12)
           </button>
-          <button data-filter="cert" class="cred-filter-btn px-4 py-2 rounded-xl bg-slate-900/70 text-slate-400 hover:text-white border border-slate-800 transition-all hover:scale-105 active:scale-95">
+          <button data-filter="cert" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-colors">
             Certifications (3)
           </button>
-          <button data-filter="award" class="cred-filter-btn px-4 py-2 rounded-xl bg-slate-900/70 text-slate-400 hover:text-white border border-slate-800 transition-all hover:scale-105 active:scale-95">
+          <button data-filter="award" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-colors">
             Awards & Podiums (5)
           </button>
-          <button data-filter="workshop" class="cred-filter-btn px-4 py-2 rounded-xl bg-slate-900/70 text-slate-400 hover:text-white border border-slate-800 transition-all hover:scale-105 active:scale-95">
+          <button data-filter="workshop" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-colors">
             Workshops & Leadership (4)
           </button>
         </div>
 
-        <!-- Credentials List / Grid with 3D Tilt -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           
           <!-- ITEM: ICDL Certificate -->
-          <div data-category="cert" class="cred-item tilt-card p-6 border-l-4 border-l-emerald-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-emerald-400 font-bold">CERTIFICATION</span>
-                <span>5 Nov 2026</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">ICDL Certificate – AI Essentials</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">Syllabus 2.0 • ICDL Asia</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Certified in practical applications of artificial intelligence, machine learning ethics, generative tools, and digital workflow automation.
-              </p>
+          <div data-category="cert" class="cred-item artisan-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">CERTIFICATION</span>
+              <span>5 Nov 2026</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">ICDL Certificate – AI Essentials</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Syllabus 2.0 • ICDL Asia</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Certified in practical applications of artificial intelligence, ethical considerations, and productivity automation.
+            </p>
           </div>
 
-          <!-- ITEM: Cisco Networking Academy -->
-          <div data-category="cert" class="cred-item tilt-card p-6 border-l-4 border-l-cyan-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-cyan-400 font-bold">CERTIFICATION</span>
-                <span>11 Apr 2026</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Cisco IT Essentials</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">Cisco Networking Academy • KVPJB</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Comprehensive hardware diagnostics, operating systems, network configuration, and foundational enterprise IT troubleshooting.
-              </p>
+          <!-- ITEM: Cisco IT Essentials -->
+          <div data-category="cert" class="cred-item artisan-card p-5 border-l-4 border-l-cyan-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-cyan-400 font-semibold">CERTIFICATION</span>
+              <span>11 Apr 2026</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Cisco IT Essentials</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Cisco Networking Academy • KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Hardware maintenance, operating systems diagnostics, and foundational enterprise IT troubleshooting.
+            </p>
           </div>
 
           <!-- ITEM: SKM Level 3 -->
-          <div data-category="cert" class="cred-item tilt-card p-6 border-l-4 border-l-emerald-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-emerald-400 font-bold">QUALIFICATION</span>
-                <span>JPK Accredited</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">SKM Tahap 3 (Level 3)</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">Application Development (Pembangunan Aplikasi)</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                National vocational skill credential issued by Jabatan Pembangunan Kemahiran verifying complete software development competence.
-              </p>
+          <div data-category="cert" class="cred-item artisan-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">QUALIFICATION</span>
+              <span>JPK Accredited</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">SKM Tahap 3 (Level 3)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Application Development (Pembangunan Aplikasi)</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              National vocational skill credential issued by Jabatan Pembangunan Kemahiran verifying software engineering competencies.
+            </p>
           </div>
 
-          <!-- ITEM: PETAH MADANI Award -->
-          <div data-category="award" class="cred-item tilt-card p-6 border-l-4 border-l-amber-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-amber-400 font-bold">NATIONAL PODIUM</span>
-                <span>October 2026</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Fifth Place (National Level)</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">PETAH MADANI: Beyond the Mic – Podcast Challenge</div>
-              <div class="text-slate-400 text-[11px] mt-0.5">Ministry of Education Malaysia (KPM)</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                National-level podcast and communication championship demonstrating articulate tech storytelling, analysis, and verbal delivery.
-              </p>
+          <!-- ITEM: PETAH MADANI -->
+          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-amber-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-amber-400 font-semibold">NATIONAL PODIUM</span>
+              <span>October 2026</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Fifth Place (National Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">PETAH MADANI: Beyond the Mic Podcast Challenge</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Ministry of Education Malaysia (KPM)</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Recognized nationally for tech storytelling, articulate verbal communication, and podcast presentation.
+            </p>
           </div>
 
           <!-- ITEM: KV Skills Web Tech (Johor Zone) -->
-          <div data-category="award" class="cred-item tilt-card p-6 border-l-4 border-l-cyan-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-cyan-400 font-bold">ZONE COMPETITION</span>
-                <span>July 2025</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Consolation Prize (Johor Zone Level)</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">KV Skills Competition in Web Technology</div>
-              <div class="text-slate-400 text-[11px] mt-0.5">Kolej Vokasional Malaysia</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Timed speed challenge building full-stack web solutions adhering to strict WorldSkills standards and responsive criteria.
-              </p>
+          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-cyan-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-cyan-400 font-semibold">ZONE COMPETITION</span>
+              <span>July 2025</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Consolation Prize (Johor Zone Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KV Skills Competition in Web Technology</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Kolej Vokasional Malaysia</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Fast-paced engineering challenge building full-stack web solutions under strict WorldSkills criteria.
+            </p>
           </div>
 
           <!-- ITEM: KV Skills Web Tech (College Level) -->
-          <div data-category="award" class="cred-item tilt-card p-6 border-l-4 border-l-emerald-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-emerald-400 font-bold">COLLEGE LEVEL</span>
-                <span>August 2024</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">1st Runner-Up / 2nd Place</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">KV Skills Competition in Web Technology</div>
-              <div class="text-slate-400 text-[11px] mt-0.5">KVPJB</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Secured 2nd place in campus-wide web engineering showdown evaluating frontend styling, PHP backend logic, and MySQL integration.
-              </p>
+          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">COLLEGE LEVEL</span>
+              <span>August 2024</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">1st Runner-Up / 2nd Place</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KV Skills Competition in Web Technology</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Secured 2nd place in campus-wide web showdown evaluating frontend styling, PHP backend logic, and database schemas.
+            </p>
           </div>
 
-          <!-- ITEM: Pertandingan Pembangunan Aplikasi Android (National) -->
-          <div data-category="award" class="cred-item tilt-card p-6 border-l-4 border-l-amber-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-amber-400 font-bold">NATIONAL PODIUM</span>
-                <span>2023</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Third Place (National Level)</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">Pertandingan Pembangunan Aplikasi Android</div>
-              <div class="text-slate-400 text-[11px] mt-0.5">KPM (BSTP), JPN Melaka & Multimedia University (MMU)</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Recognized nationally for designing and coding an innovative functional mobile application in Android Studio.
-              </p>
+          <!-- ITEM: Android App National -->
+          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-amber-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-amber-400 font-semibold">NATIONAL PODIUM</span>
+              <span>2023</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Third Place (National Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Pertandingan Pembangunan Aplikasi Android</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">KPM (BSTP), JPN Melaka & MMU</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              National recognition for coding a functional Android mobile application addressing student productivity.
+            </p>
           </div>
 
-          <!-- ITEM: Apps Ideation Challenge (Johor Champion) -->
-          <div data-category="award" class="cred-item tilt-card p-6 border-l-4 border-l-amber-400">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-amber-300 font-bold">STATE CHAMPION 🏆</span>
-                <span>September 2023</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Champion / 1st Place (Johor State Level)</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">Apps Ideation Challenge (Android Category)</div>
-              <div class="text-slate-400 text-[11px] mt-0.5">Jabatan Pendidikan Negeri Johor (JPN Johor)</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Awarded 1st place in the entire State of Johor for technical architecture, UI prototype, and commercial ideation.
-              </p>
+          <!-- ITEM: Apps Ideation Challenge Johor -->
+          <div data-category="award" class="cred-item artisan-card p-5 border-l-4 border-l-amber-400">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-amber-300 font-bold">STATE CHAMPION 🏆</span>
+              <span>September 2023</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Champion / 1st Place (Johor State Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Apps Ideation Challenge (Android Category)</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Jabatan Pendidikan Negeri Johor</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              First place winner in the State of Johor for mobile architecture, user interface design, and functional prototype.
+            </p>
           </div>
 
-          <!-- ITEM: Workshop AI in Video Resume -->
-          <div data-category="workshop" class="cred-item tilt-card p-6 border-l-4 border-l-purple-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-purple-400 font-bold">WORKSHOP</span>
-                <span>30 July 2026</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Bengkel "AI in Video Resume"</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">KVPJB</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Explored generative AI video pipelines, audio synthesis, and modern portfolio presentation techniques.
-              </p>
+          <!-- ITEM: AI Video Resume Workshop -->
+          <div data-category="workshop" class="cred-item artisan-card p-5 border-l-4 border-l-purple-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-purple-400 font-semibold">WORKSHOP</span>
+              <span>30 July 2026</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Bengkel "AI in Video Resume"</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Generative media workflows, video synthesis, and modern portfolio presentation techniques.
+            </p>
           </div>
 
-          <!-- ITEM: Workshop JavaScript -->
-          <div data-category="workshop" class="cred-item tilt-card p-6 border-l-4 border-l-purple-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-purple-400 font-bold">WORKSHOP</span>
-                <span>20 May 2026</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Program Pemantapan JS</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">KVPJB</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Advanced asynchronous JavaScript, DOM manipulation, promises, and modern ES6+ application practices.
-              </p>
+          <!-- ITEM: JS Program -->
+          <div data-category="workshop" class="cred-item artisan-card p-5 border-l-4 border-l-purple-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-purple-400 font-semibold">WORKSHOP</span>
+              <span>20 May 2026</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Program Pemantapan Pengaturcaraan JS</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Asynchronous JavaScript, DOM manipulation, promises, and modern ES6+ application architectures.
+            </p>
           </div>
 
           <!-- ITEM: Residential College Committee -->
-          <div data-category="workshop" class="cred-item tilt-card p-6 border-l-4 border-l-emerald-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-emerald-400 font-bold">LEADERSHIP</span>
-                <span>November 2024</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Residential College Committee</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">AJK Kolej Kediaman • KVPJB</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Elected student residential leader coordinating collegiate welfare, technical setups, and student discipline.
-              </p>
+          <div data-category="workshop" class="cred-item artisan-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">LEADERSHIP</span>
+              <span>November 2024</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Residential College Committee Member</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">AJK Kolej Kediaman • KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Coordinated student residential affairs, technical logistics, and community activities.
+            </p>
           </div>
 
           <!-- ITEM: Final Cut Pro Workshop -->
-          <div data-category="workshop" class="cred-item tilt-card p-6 border-l-4 border-l-purple-500">
-            <div class="pop-out-content">
-              <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
-                <span class="text-purple-400 font-bold">MULTIMEDIA</span>
-                <span>July 2024</span>
-              </div>
-              <h3 class="pop-layer-md text-base font-bold text-white mt-2">Final Cut Pro Workshop</h3>
-              <div class="pop-layer-sm text-xs text-slate-300 font-medium mt-1">MPP KVPJB</div>
-              <p class="pop-layer-sm text-slate-400 text-xs mt-3 leading-relaxed">
-                Professional video production and editing workshop emphasizing storytelling, pacing, and visual communications.
-              </p>
+          <div data-category="workshop" class="cred-item artisan-card p-5 border-l-4 border-l-purple-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-purple-400 font-semibold">MULTIMEDIA</span>
+              <span>July 2024</span>
             </div>
+            <h3 class="text-base font-bold text-white mt-2">Final Cut Pro Workshop x Merdeka Vibes</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">MPP KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3 leading-relaxed">
+              Digital video production, color grading, audio synchronization, and visual pacing.
+            </p>
           </div>
 
         </div>
@@ -1091,68 +1179,64 @@
 
 
     <!-- ========================================== -->
-    <!-- 7. CONTACT & INVITATION SECTION           -->
+    <!-- 8. CONTACT & FOOTER                        -->
     <!-- ========================================== -->
-    <section id="contact" class="py-16 md:py-24">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="contact" class="py-16 md:py-20">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        <div class="tilt-card p-8 md:p-12 bg-gradient-to-br from-[#0c101a] via-[#101524] to-[#07090e] border-emerald-500/40 shadow-2xl">
-          <span class="hud-corner hud-tl"></span>
-          <span class="hud-corner hud-tr"></span>
-          <span class="hud-corner hud-bl"></span>
-          <span class="hud-corner hud-br"></span>
+        <div class="artisan-card p-8 md:p-12 bg-gradient-to-br from-slate-900 via-[#10141e] to-slate-950 border-emerald-500/30">
           
-          <div class="pop-out-content grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <div class="lg:col-span-7 space-y-5">
-              <div class="pop-layer-sm inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/40 text-emerald-400 text-xs font-mono">
-                <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 status-pulsar"></span>
                 <span>OJT Placement Open: Feb – June 2027</span>
               </div>
 
-              <h2 class="pop-layer-md text-3xl sm:text-4xl font-black text-white leading-tight">
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
                 Let's discuss my 5-Month IT Internship.
               </h2>
 
-              <p class="pop-layer-sm text-slate-300 text-sm leading-relaxed max-w-lg">
-                Looking for a dedicated, high-performing software engineer, full-stack developer, or AI/ML trainee for your technical team? I am based in Pasir Gudang, Johor and available for on-site, hybrid, or remote placements.
+              <p class="text-slate-300 text-sm leading-relaxed max-w-lg">
+                I am actively interviewing with software engineering and technology teams. Whether you are looking for a dedicated full-stack developer, Python trainee, or systems assistant, I am excited to contribute.
               </p>
 
-              <div class="pop-layer-lg pt-3 flex flex-wrap items-center gap-3">
-                <a href="mailto:mirzaaqmal22@gmail.com" class="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-400 hover:from-emerald-400 hover:to-teal-300 text-slate-950 font-bold text-xs transition-all shadow-xl shadow-emerald-500/25 hover:scale-105 active:scale-95">
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <a href="mailto:mirzaaqmal22@gmail.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-colors shadow-sm">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                  <span>Email: mirzaaqmal22@gmail.com</span>
+                  <span>mirzaaqmal22@gmail.com</span>
                 </a>
 
-                <button onclick="copyToClipboard('013-5788399', 'Phone number')" class="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl border border-slate-700 hover:border-slate-600 bg-slate-900/80 text-slate-200 font-mono text-xs transition-all hover:scale-105 active:scale-95">
+                <button onclick="copyToClipboard('013-5788399', 'Phone number')" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-slate-700 hover:border-slate-600 bg-slate-900 text-slate-200 font-mono text-xs transition-colors">
                   <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
                   <span>013-5788399 (Copy)</span>
                 </button>
 
-                <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" download="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-2 px-4 py-3.5 rounded-xl border border-slate-700 hover:border-emerald-500/60 bg-slate-900/80 text-emerald-400 font-mono text-xs transition-all hover:scale-105 active:scale-95" title="Download Verified Resume PDF">
+                <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" download="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-slate-700 hover:border-emerald-500/50 bg-slate-900 text-emerald-400 font-mono text-xs transition-colors" title="Download Verified Resume PDF">
                   <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
                   <span>Download CV (PDF)</span>
                 </a>
               </div>
             </div>
 
-            <!-- Terminal Info Card with 3D Pop -->
-            <div class="pop-layer-lg lg:col-span-5 bg-slate-950/90 p-6 rounded-2xl border border-slate-800 font-mono text-xs space-y-2.5 shadow-2xl">
-              <div class="text-slate-500 font-bold">// Direct Quick Verification</div>
-              <div class="flex items-center justify-between py-1.5 border-b border-slate-900">
+            <!-- Verification Metadata Card -->
+            <div class="lg:col-span-5 bg-slate-950/90 p-5 rounded-xl border border-slate-800 font-mono text-xs space-y-2">
+              <div class="text-slate-500">// Direct Quick Information</div>
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
                 <span class="text-slate-400">Location:</span>
                 <span class="text-slate-200">Pasir Gudang, Johor</span>
               </div>
-              <div class="flex items-center justify-between py-1.5 border-b border-slate-900">
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
                 <span class="text-slate-400">GitHub:</span>
                 <a href="https://github.com/mircrtierr" target="_blank" class="text-cyan-400 hover:underline">github.com/mircrtierr</a>
               </div>
-              <div class="flex items-center justify-between py-1.5 border-b border-slate-900">
-                <span class="text-slate-400">Current CGPA:</span>
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
+                <span class="text-slate-400">Academic CGPA:</span>
                 <span class="text-emerald-400 font-bold text-sm">3.98 / 4.00</span>
               </div>
-              <div class="flex items-center justify-between py-1.5 border-b border-slate-900">
-                <span class="text-slate-400">Institution:</span>
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
+                <span class="text-slate-400">College:</span>
                 <span class="text-slate-200 text-right">KV Perdagangan Johor Bahru</span>
               </div>
               <div class="flex items-center justify-between pt-1">
@@ -1168,14 +1252,11 @@
       </div>
     </section>
 
-
-    <!-- ========================================== -->
-    <!-- 8. FOOTER                                  -->
-    <!-- ========================================== -->
-    <footer class="mt-auto py-8 border-t border-slate-800/80 bg-[#06070a] text-xs font-mono text-slate-500">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <!-- Footer -->
+    <footer class="mt-auto py-8 border-t border-slate-800/80 bg-[#07090e] text-xs font-mono text-slate-500">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
         <div>
-          © 2026 Muhammad Mirza Aqmal Raziq bin Mirza Affzard. Built with 3D Swiss Bento & Holographic Terminal.
+          © 2026 Muhammad Mirza Aqmal Raziq bin Mirza Affzard. Built with care for OJT placement.
         </div>
         <div class="flex items-center gap-4">
           <a href="https://github.com/mircrtierr" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors">
@@ -1196,7 +1277,7 @@
   <!-- PROJECT ARCHITECTURE & CASE STUDY MODAL    -->
   <!-- ========================================== -->
   <div id="project-modal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeProjectModal()">
-    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#0d1117] border border-slate-700/80 rounded-2xl shadow-2xl modal-enter" id="project-modal-content">
+    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#0d1017] border border-slate-700/80 rounded-2xl shadow-2xl modal-enter" id="project-modal-content">
       <!-- Populated dynamically via app.js -->
     </div>
   </div>
@@ -1205,7 +1286,7 @@
   <!-- ========================================== -->
   <!-- TOAST NOTIFICATION                         -->
   <!-- ========================================== -->
-  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none px-4 py-2.5 rounded-xl bg-emerald-500 text-slate-950 font-mono text-xs font-bold shadow-2xl flex items-center gap-2">
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none px-4 py-2.5 rounded-lg bg-emerald-500 text-slate-950 font-mono text-xs font-bold shadow-xl flex items-center gap-2">
     ✓ Copied to clipboard!
   </div>
 
