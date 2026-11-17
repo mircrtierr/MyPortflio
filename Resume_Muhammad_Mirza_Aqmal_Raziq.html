@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Resume - Muhammad Mirza Aqmal Raziq bin Mirza Affzard</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      color: #0f172a;
+      background-color: #f1f5f9;
+    }
+    .font-mono {
+      font-family: 'JetBrains Mono', monospace;
+    }
+    @page {
+      size: A4;
+      margin: 12mm 15mm;
+    }
+    @media print {
+      body {
+        background-color: #ffffff;
+      }
+      .no-print {
+        display: none !important;
+      }
+      .resume-container {
+        box-shadow: none !important;
+        border: none !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+      }
+    }
+  </style>
+</head>
+<body class="py-6 px-4 sm:px-6">
+
+  <!-- Print Action Bar (Hidden when printing) -->
+  <div class="no-print max-w-4xl mx-auto mb-6 flex items-center justify-between bg-white p-4 rounded-xl border border-slate-200 shadow-sm">
+    <div class="flex items-center gap-3">
+      <a href="index.html" class="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-600 hover:text-emerald-600 transition-colors">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
+        Back to Portfolio
+      </a>
+      <span class="text-slate-300">|</span>
+      <span class="text-xs text-slate-500 font-mono">Resume_Muhammad_Mirza_Aqmal_Raziq.pdf</span>
+    </div>
+    <div class="flex items-center gap-2">
+      <button onclick="window.print()" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold rounded-lg shadow transition-all">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z"/></svg>
+        Print / Save to PDF
+      </button>
+    </div>
+  </div>
+
+  <!-- Main Resume Paper Canvas (A4 Optimized) -->
+  <main class="resume-container max-w-4xl mx-auto bg-white p-8 sm:p-12 rounded-xl shadow-lg border border-slate-200">
+
+    <!-- Header Section -->
+    <header class="border-b-2 border-slate-900 pb-5">
+      <div class="flex flex-col sm:flex-row sm:items-start justify-between gap-4">
+        <div>
+          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-950 uppercase tracking-tight">
+            Muhammad Mirza Aqmal Raziq <br class="hidden sm:inline">
+            <span class="text-emerald-700 font-bold">bin Mirza Affzard</span>
+          </h1>
+          <p class="text-sm font-semibold text-slate-700 mt-1">
+            Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan Johor Bahru
+          </p>
+          <div class="mt-2 inline-flex items-center gap-2 px-2.5 py-1 rounded bg-emerald-50 text-emerald-800 text-xs font-semibold border border-emerald-200">
+            <span>Seeking 5-Month IT Internship / OJT (February – June 2027)</span>
+          </div>
+        </div>
+
+        <!-- Contact Box -->
+        <div class="text-xs space-y-1 sm:text-right font-mono text-slate-600">
+          <div>📍 Pasir Gudang, Johor, Malaysia</div>
+          <div>📞 <a href="tel:0135788399" class="hover:text-emerald-700 text-slate-900 font-semibold">013-5788399</a></div>
+          <div>✉️ <a href="mailto:mirzaaqmal22@gmail.com" class="hover:text-emerald-700 text-slate-900 font-semibold">mirzaaqmal22@gmail.com</a></div>
+          <div>🐙 <a href="https://github.com/mircrtierr" target="_blank" class="hover:text-emerald-700 text-slate-900 font-semibold">github.com/mircrtierr</a></div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Content Sections -->
+    <div class="mt-6 space-y-6 text-xs text-slate-800 leading-relaxed">
+
+      <!-- 1. ACADEMIC EDUCATION -->
+      <section>
+        <h2 class="text-xs font-bold font-mono uppercase tracking-wider text-emerald-800 border-b border-slate-300 pb-1 mb-2.5">
+          Education & Academic Distinction
+        </h2>
+        <div class="flex justify-between items-start">
+          <div>
+            <h3 class="font-bold text-sm text-slate-950">Diploma Teknologi Komputeran</h3>
+            <div class="text-slate-700 font-medium">Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</div>
+            <div class="text-slate-600 text-[11px] mt-0.5">Focus: Software Development, RDBMS, Edge AI & Computer Vision, Computer Networking</div>
+          </div>
+          <div class="text-right">
+            <span class="font-mono font-bold text-sm text-emerald-700">CGPA: 3.98 / 4.00</span>
+            <div class="text-[11px] font-mono text-slate-500">2023 – Expected 2027</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 2. CORE TECHNICAL SKILLS MATRIX -->
+      <section>
+        <h2 class="text-xs font-bold font-mono uppercase tracking-wider text-emerald-800 border-b border-slate-300 pb-1 mb-2.5">
+          Technical Skills Matrix (7 Core Domains)
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs">
+          <div>
+            <span class="font-bold text-slate-900">Programming Languages:</span> 
+            <span class="text-slate-700">Python, Java, PHP, JavaScript</span>
+          </div>
+          <div>
+            <span class="font-bold text-slate-900">Web Development:</span> 
+            <span class="text-slate-700">HTML5, CSS3, Laravel, Flask, REST APIs</span>
+          </div>
+          <div>
+            <span class="font-bold text-slate-900">Application Development:</span> 
+            <span class="text-slate-700">Java Swing, JFrame, Android Studio, NetBeans</span>
+          </div>
+          <div>
+            <span class="font-bold text-slate-900">Database Management:</span> 
+            <span class="text-slate-700">MySQL, MariaDB, Relational Schema Design, SQL Optimization</span>
+          </div>
+          <div>
+            <span class="font-bold text-slate-900">AI & Machine Learning:</span> 
+            <span class="text-slate-700">YOLO (v5/v8), OpenCV, Roboflow, ArcFace, FAISS, Google Colab</span>
+          </div>
+          <div>
+            <span class="font-bold text-slate-900">Networking:</span> 
+            <span class="text-slate-700">Cisco Packet Tracer, TCP/IP, OSI Model, Router/Switch Config</span>
+          </div>
+          <div class="sm:col-span-2">
+            <span class="font-bold text-slate-900">Cybersecurity:</span> 
+            <span class="text-slate-700">Basic Cybersecurity Principles, Reverse Engineering Fundamentals, Secure Coding</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 3. FEATURED ENGINEERING PROJECTS -->
+      <section>
+        <h2 class="text-xs font-bold font-mono uppercase tracking-wider text-emerald-800 border-b border-slate-300 pb-1 mb-2.5">
+          Featured Engineering Projects
+        </h2>
+
+        <!-- Project 1 -->
+        <div class="mb-4">
+          <div class="flex justify-between items-baseline">
+            <h3 class="font-bold text-slate-950 text-xs">
+              SmartAttend KVPJB – Facial Recognition Attendance Management System
+            </h3>
+            <a href="https://github.com/mircrtierr/smartattend-kvpjb" target="_blank" class="font-mono text-[11px] text-emerald-700 hover:underline">github.com/mircrtierr/smartattend-kvpjb ↗</a>
+          </div>
+          <div class="text-[11px] font-mono text-slate-600 mb-1">
+            Tech: Python, Flask, MySQL/MariaDB, InsightFace (ArcFace), FAISS Vector Search, ESP32-CAM
+          </div>
+          <ul class="list-disc list-inside text-slate-700 space-y-0.5">
+            <li>Architected edge-to-cloud automated attendance pipeline capturing faces via ESP32-CAM microcontrollers.</li>
+            <li>Implemented InsightFace (ArcFace) generating 512D facial embeddings paired with FAISS index for sub-10ms 1:N student recognition.</li>
+            <li>Engineered relational backend in MySQL/MariaDB for transactional check-ins and audit reporting portal with CSV exports.</li>
+          </ul>
+        </div>
+
+        <!-- Project 2 -->
+        <div>
+          <div class="flex justify-between items-baseline">
+            <h3 class="font-bold text-slate-950 text-xs">
+              Electronic & Computer Goods Object Detection – YOLO
+            </h3>
+            <a href="https://github.com/mircrtierr/yolo-electronics-detection" target="_blank" class="font-mono text-[11px] text-emerald-700 hover:underline">github.com/mircrtierr/yolo-electronics-detection ↗</a>
+          </div>
+          <div class="text-[11px] font-mono text-slate-600 mb-1">
+            Tech: Python, YOLO (v8/v5), Roboflow, Google Colab, OpenCV, Computer Vision
+          </div>
+          <ul class="list-disc list-inside text-slate-700 space-y-0.5">
+            <li>Curated and augmented custom dataset of computer hardware components (motherboards, GPUs, CPUs, RAM, PSUs) via Roboflow.</li>
+            <li>Trained deep learning YOLO model on Google Colab GPU environment achieving mAP@0.5 score over 92%.</li>
+            <li>Built real-time OpenCV inference stream for automated vocational lab inventory auditing and component classification.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- 4. CERTIFICATIONS & QUALIFICATIONS -->
+      <section>
+        <h2 class="text-xs font-bold font-mono uppercase tracking-wider text-emerald-800 border-b border-slate-300 pb-1 mb-2.5">
+          Verified Qualifications & Certifications
+        </h2>
+        <div class="space-y-1.5">
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">ICDL Certificate – AI Essentials (Syllabus 2.0)</span>
+              <span class="text-slate-600"> — ICDL Asia</span>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">5 November 2026</span>
+          </div>
+
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">Cisco Networking Academy – IT Essentials</span>
+              <span class="text-slate-600"> — Kolej Vokasional Perdagangan Johor Bahru</span>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">11 April 2026</span>
+          </div>
+
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">Sijil Kemahiran Malaysia (SKM) Tahap 3 – Application Development</span>
+              <span class="text-slate-600"> — Jabatan Pembangunan Kemahiran (JPK)</span>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">Accredited</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. HONORS & COMPETITIVE AWARDS -->
+      <section>
+        <h2 class="text-xs font-bold font-mono uppercase tracking-wider text-emerald-800 border-b border-slate-300 pb-1 mb-2.5">
+          Honors & Competitive Awards (5+ Honors)
+        </h2>
+        <div class="space-y-1.5">
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">Fifth Place (National Level)</span> — PETAH MADANI: Beyond the Mic Podcast Challenge
+              <div class="text-[11px] text-slate-600">Ministry of Education Malaysia (KPM)</div>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">October 2026</span>
+          </div>
+
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">Consolation Prize (Johor Zone Level)</span> — KV Skills Competition in Web Technology
+              <div class="text-[11px] text-slate-600">Kolej Vokasional Malaysia</div>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">July 2025</span>
+          </div>
+
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">1st Runner-Up / 2nd Place (College Level)</span> — KV Skills Competition in Web Technology
+              <div class="text-[11px] text-slate-600">Kolej Vokasional Perdagangan Johor Bahru</div>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">August 2024</span>
+          </div>
+
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">Third Place (National Level)</span> — Pertandingan Pembangunan Aplikasi Android
+              <div class="text-[11px] text-slate-600">KPM (BSTP), JPN Melaka & Multimedia University (MMU)</div>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">2023</span>
+          </div>
+
+          <div class="flex justify-between">
+            <div>
+              <span class="font-bold text-slate-950">Champion / 1st Place (Johor State Level)</span> — Apps Ideation Challenge (Android Category)
+              <div class="text-[11px] text-slate-600">Jabatan Pendidikan Negeri Johor (JPN Johor)</div>
+            </div>
+            <span class="font-mono text-[11px] text-slate-500">September 2023</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- 6. LEADERSHIP & EXTRACURRICULAR -->
+      <section>
+        <h2 class="text-xs font-bold font-mono uppercase tracking-wider text-emerald-800 border-b border-slate-300 pb-1 mb-2.5">
+          Workshops, Leadership & Extracurricular
+        </h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+          <div>
+            <span class="font-semibold text-slate-950">• Residential College Committee Member</span>
+            <div class="text-[11px] text-slate-600 pl-2">AJK Kolej Kediaman, KVPJB (Nov 2024)</div>
+          </div>
+          <div>
+            <span class="font-semibold text-slate-950">• Bengkel & Pertandingan "AI in Video Resume"</span>
+            <div class="text-[11px] text-slate-600 pl-2">Participant, KVPJB (July 2026)</div>
+          </div>
+          <div>
+            <span class="font-semibold text-slate-950">• Program Pemantapan Pengaturcaraan JS</span>
+            <div class="text-[11px] text-slate-600 pl-2">Participant, KVPJB (May 2026)</div>
+          </div>
+          <div>
+            <span class="font-semibold text-slate-950">• Final Cut Pro Workshop x Merdeka Vibes</span>
+            <div class="text-[11px] text-slate-600 pl-2">Participant, MPP KVPJB (July 2024)</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 7. LANGUAGES -->
+      <section class="border-t border-slate-200 pt-3">
+        <div class="flex items-center gap-6 text-xs">
+          <div><strong class="text-slate-950">Languages:</strong> Bahasa Melayu (Native), English (Good Working Proficiency)</div>
+          <div><strong class="text-slate-950">Availability:</strong> Full-Time OJT (Feb – June 2027)</div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+</body>
+</html>
+

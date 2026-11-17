@@ -1,0 +1,1094 @@
+<!DOCTYPE html>
+<html lang="en" class="dark scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Muhammad Mirza Aqmal Raziq | Developer Portfolio & Interactive Terminal</title>
+  <meta name="description" content="Portfolio of Muhammad Mirza Aqmal Raziq bin Mirza Affzard - Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98). Seeking 5-month IT Internship / OJT (Feb–June 2027)." />
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              emerald: '#10b981',
+              cyan: '#06b6d4',
+              amber: '#f59e0b',
+              dark: '#090a0f',
+              card: '#11141c',
+              border: '#1f2430'
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="styles.css" />
+</head>
+
+<body class="bg-[#090a0f] text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">
+
+  <!-- Ambient Glow Orbs -->
+  <div class="radial-glow radial-glow-emerald top-[-100px] left-[-150px]"></div>
+  <div class="radial-glow radial-glow-cyan top-[600px] right-[-150px]"></div>
+
+  <!-- Background Grid Pattern -->
+  <div class="fixed inset-0 bg-grid-pattern pointer-events-none opacity-60 z-0"></div>
+
+  <!-- Main Wrapper -->
+  <div class="relative z-10 flex flex-col min-h-screen">
+
+    <!-- ========================================== -->
+    <!-- 1. STICKY TOP NAVIGATION BAR               -->
+    <!-- ========================================== -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-[#090a0f]/80 border-b border-slate-800/80 transition-colors">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        
+        <!-- Brand / Identity -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-9 h-9 rounded-lg bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center font-mono font-bold text-emerald-400 group-hover:border-emerald-400 group-hover:scale-105 transition-all">
+            MA
+          </div>
+          <div class="flex flex-col">
+            <span class="font-bold text-sm tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+              Mirza Aqmal
+            </span>
+            <div class="flex items-center gap-1.5">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 pulse-emerald"></span>
+              <span class="font-mono text-[10px] text-emerald-400 font-medium">OJT: FEB – JUNE 2027</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-6 text-xs font-medium text-slate-300">
+          <a href="#hero" class="hover:text-emerald-400 transition-colors">Overview</a>
+          <a href="#bento" class="hover:text-emerald-400 transition-colors">Bento Highlights</a>
+          <a href="#projects" class="hover:text-emerald-400 transition-colors">Projects</a>
+          <a href="#skills" class="hover:text-emerald-400 transition-colors">Skills Matrix</a>
+          <a href="#credentials" class="hover:text-emerald-400 transition-colors">Credentials</a>
+          <a href="#terminal-section" class="hover:text-emerald-400 transition-colors font-mono text-emerald-400 bg-emerald-500/10 px-2 py-1 rounded border border-emerald-500/20">
+            >_ CLI
+          </a>
+        </nav>
+
+        <!-- Right Quick Actions (Theme, GitHub, Resume) -->
+        <div class="flex items-center gap-2.5">
+          <!-- Light/Dark Toggle -->
+          <button id="theme-toggle-btn" aria-label="Toggle Theme" class="p-2 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/50 hover:bg-slate-800 text-slate-300 hover:text-white transition-colors">
+            <!-- Sun Icon (Hidden in dark) -->
+            <svg id="theme-icon-sun" class="w-4 h-4 hidden text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <!-- Moon Icon (Default in dark) -->
+            <svg id="theme-icon-moon" class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+            </svg>
+          </button>
+
+          <!-- GitHub Profile Link -->
+          <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="p-2 rounded-lg border border-slate-800 hover:border-emerald-500/40 bg-slate-900/50 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 transition-all flex items-center gap-1.5 text-xs font-mono" title="GitHub: mircrtierr">
+            <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
+              <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/>
+            </svg>
+            <span class="hidden sm:inline">mircrtierr</span>
+          </a>
+
+          <!-- Download CV Button -->
+          <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" download="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs transition-all shadow-md shadow-emerald-500/20 font-sans" title="Download Verified Resume PDF">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+            </svg>
+            <span>Download CV</span>
+          </a>
+        </div>
+      </div>
+    </header>
+
+
+    <!-- ========================================== -->
+    <!-- 2. HERO SECTION & INTERACTIVE TERMINAL     -->
+    <!-- ========================================== -->
+    <section id="hero" class="pt-8 pb-14 md:pt-14 md:pb-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          
+          <!-- Left Hero Column: Bio, Value Prop, Contact -->
+          <div class="lg:col-span-6 space-y-5">
+            
+            <!-- Availability Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
+              <span>Available for 5-Month OJT (February – June 2027)</span>
+            </div>
+
+            <!-- Headline -->
+            <div class="space-y-2">
+              <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                Muhammad Mirza <br>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
+                  Aqmal Raziq
+                </span>
+              </h1>
+              <p class="font-mono text-xs sm:text-sm text-cyan-300 font-medium">
+                Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan Johor Bahru
+              </p>
+            </div>
+
+            <!-- Intro Paragraph -->
+            <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              High-achieving computer technology candidate (<span class="text-emerald-400 font-bold font-mono">3.98 CGPA</span>) with certified expertise in application development (<span class="text-cyan-300 font-medium">SKM Level 3</span>), deep learning edge vision (<span class="text-slate-100 font-medium">InsightFace, ArcFace, YOLO</span>), and networking. Ready to bring rigorous engineering and rapid problem-solving to an impactful 5-month IT internship.
+            </p>
+
+            <!-- Quick Contact Badges & Buttons -->
+            <div class="pt-2 flex flex-wrap items-center gap-3">
+              <a href="mailto:mirzaaqmal22@gmail.com" class="inline-flex items-center gap-2 px-4 py-2.5 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs transition-all shadow-lg shadow-emerald-500/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span>mirzaaqmal22@gmail.com</span>
+              </a>
+
+              <button onclick="copyToClipboard('013-5788399', 'Phone number')" class="inline-flex items-center gap-2 px-3.5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-600 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-white font-mono text-xs transition-all" title="Click to copy phone">
+                <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                <span>013-5788399</span>
+                <span class="text-[10px] text-slate-500 hover:text-slate-400">(Copy)</span>
+              </button>
+
+              <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-3 py-2.5 rounded-lg border border-slate-700 hover:border-emerald-500/40 bg-slate-900/60 hover:bg-slate-800 text-slate-300 hover:text-emerald-400 font-mono text-xs transition-all">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <span>GitHub Profile</span>
+              </a>
+            </div>
+
+            <!-- Key Location & Mobility Details -->
+            <div class="flex items-center gap-4 text-xs text-slate-400 font-mono pt-1">
+              <span class="flex items-center gap-1">
+                <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                Pasir Gudang, Johor
+              </span>
+              <span>•</span>
+              <span class="text-slate-300">Open to Johor & Remote/Hybrid IT roles</span>
+            </div>
+
+          </div>
+
+          <!-- Right Hero Column: Interactive Terminal Widget -->
+          <div id="terminal-section" class="lg:col-span-6">
+            
+            <div id="terminal-window" class="terminal-window overflow-hidden border border-slate-700/80 bg-[#0d1117]">
+              
+              <!-- Terminal Window Header -->
+              <div class="px-4 py-2.5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                  <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                  <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                  <span class="ml-2 font-mono text-[11px] text-slate-400 flex items-center gap-1.5">
+                    <svg class="w-3 h-3 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3"/></svg>
+                    mirza@kvpjb-workstation:~ (zsh)
+                  </span>
+                </div>
+                
+                <div class="flex items-center gap-2 font-mono text-[10px] text-slate-400">
+                  <span class="hidden sm:inline text-slate-500">Press '/' to focus</span>
+                  <button onclick="runCliCommand('clear')" class="hover:text-emerald-400 text-slate-400 px-1 py-0.5 rounded border border-slate-800 hover:border-slate-700">clear</button>
+                </div>
+              </div>
+
+              <!-- Terminal Scrollable Body -->
+              <div id="terminal-container" class="terminal-scroll p-4 h-[330px] overflow-y-auto font-mono text-xs text-slate-200">
+                <div id="terminal-output">
+                  <!-- Output populated dynamically via app.js -->
+                </div>
+
+                <!-- Active Command Line -->
+                <form id="terminal-form" class="mt-2 flex items-center gap-1.5">
+                  <span class="text-emerald-400 font-bold font-mono">mirza@kvpjb:~$</span>
+                  <input 
+                    type="text" 
+                    id="terminal-input" 
+                    autocomplete="off" 
+                    autocorrect="off" 
+                    autocapitalize="off" 
+                    spellcheck="false" 
+                    placeholder="type 'help' or click pills below..."
+                    class="flex-1 bg-transparent border-none outline-none text-slate-100 font-mono text-xs focus:ring-0 p-0"
+                  />
+                  <span class="terminal-cursor"></span>
+                </form>
+              </div>
+
+              <!-- Quick Command Pills Footer -->
+              <div class="px-4 py-2.5 bg-slate-900/90 border-t border-slate-800 flex flex-wrap items-center gap-1.5 font-mono text-[11px]">
+                <span class="text-slate-400 text-[10px] mr-1">Quick run:</span>
+                <button onclick="runCliCommand('help')" class="px-2 py-0.5 rounded bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-colors">help</button>
+                <button onclick="runCliCommand('about')" class="px-2 py-0.5 rounded bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-colors">about</button>
+                <button onclick="runCliCommand('projects')" class="px-2 py-0.5 rounded bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-colors">projects</button>
+                <button onclick="runCliCommand('skills')" class="px-2 py-0.5 rounded bg-slate-800/80 hover:bg-emerald-500/20 text-emerald-400 border border-slate-700 hover:border-emerald-500/50 transition-colors">skills</button>
+                <button onclick="runCliCommand('github')" class="px-2 py-0.5 rounded bg-slate-800/80 hover:bg-emerald-500/20 text-cyan-400 border border-slate-700 hover:border-cyan-500/50 transition-colors">github</button>
+                <button onclick="runCliCommand('awards')" class="px-2 py-0.5 rounded bg-slate-800/80 hover:bg-emerald-500/20 text-amber-400 border border-slate-700 hover:border-amber-500/50 transition-colors">awards</button>
+                <button onclick="runCliCommand('contact')" class="px-2 py-0.5 rounded bg-slate-800/80 hover:bg-emerald-500/20 text-slate-300 border border-slate-700 hover:border-slate-500 transition-colors">contact</button>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 3. ASYMMETRIC SWISS BENTO GRID             -->
+    <!-- ========================================== -->
+    <section id="bento" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-10">
+          <div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // CORE STATS & COMPETENCIES
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Swiss Bento Grid Overview
+            </h2>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            Quantifiable academic rigor, certified vocational mastery, and competitive track record at a glance.
+          </p>
+        </div>
+
+        <!-- Bento Grid Structure -->
+        <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
+          
+          <!-- Bento Tile 1: CGPA Metric Card (Prominent) -->
+          <div class="bento-card p-6 md:col-span-2 flex flex-col justify-between bg-gradient-to-br from-slate-900 to-[#121622]">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="tech-pill text-emerald-400 border-emerald-500/30">Academic Distinction</span>
+                <h3 class="text-lg font-bold text-white mt-3">Diploma Teknologi Komputeran</h3>
+                <p class="text-xs text-slate-400 mt-1">Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</p>
+              </div>
+              <div class="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center text-emerald-400">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-6.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5l4-2.222"/></svg>
+              </div>
+            </div>
+
+            <div class="mt-6 pt-4 border-t border-slate-800/80 flex items-baseline justify-between">
+              <div>
+                <div class="text-4xl sm:text-5xl font-extrabold font-mono text-emerald-400 tracking-tight">
+                  3.98 <span class="text-sm font-normal text-slate-400 font-sans">/ 4.00</span>
+                </div>
+                <div class="text-xs text-slate-400 mt-1">Dean's Honor Class • Top Cohort Standing</div>
+              </div>
+              <div class="text-right">
+                <span class="text-xs font-mono text-cyan-400 bg-cyan-500/10 px-2 py-1 rounded border border-cyan-500/20">
+                  Semesters 1 – 4 Verified
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Tile 2: SKM Level 3 -->
+          <div class="bento-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="tech-pill text-cyan-400 border-cyan-500/30">Accredited JPK</span>
+                <svg class="w-5 h-5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/></svg>
+              </div>
+              <h3 class="text-base font-bold text-white mt-3">SKM Tahap 3</h3>
+              <p class="text-xs text-slate-400 mt-1">Application Development (Pembangunan Aplikasi)</p>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800">
+              <div class="text-xs font-mono text-emerald-400 font-semibold">Jabatan Pembangunan Kemahiran</div>
+              <p class="text-[11px] text-slate-500 mt-0.5">Government-certified software vocational standard</p>
+            </div>
+          </div>
+
+          <!-- Bento Tile 3: Awards Count -->
+          <div class="bento-card p-6 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="tech-pill text-amber-400 border-amber-500/30">Podium Track</span>
+                <svg class="w-5 h-5 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"/></svg>
+              </div>
+              <div class="mt-3">
+                <div class="text-3xl font-extrabold font-mono text-amber-400">5+ Awards</div>
+                <h3 class="text-xs font-bold text-white mt-1">National & State Competitions</h3>
+              </div>
+            </div>
+            <div class="mt-6 pt-3 border-t border-slate-800">
+              <p class="text-[11px] text-slate-400">
+                1st Place State Android Challenge, 3rd & 5th Place Nationals, Web Tech Zone podiums.
+              </p>
+            </div>
+          </div>
+
+          <!-- Bento Tile 4: OJT Internship Timeline & Commitment -->
+          <div class="bento-card p-6 md:col-span-2 flex flex-col justify-between">
+            <div class="flex items-start justify-between">
+              <div>
+                <span class="tech-pill text-emerald-400 border-emerald-500/30">On-the-Job Training</span>
+                <h3 class="text-base font-bold text-white mt-2">5-Month IT Internship Placement</h3>
+                <p class="text-xs text-slate-300 mt-1">
+                  Ready to deploy on enterprise software engineering, web backend/frontend, IoT edge vision, and networking tasks.
+                </p>
+              </div>
+              <div class="font-mono text-xs font-bold text-emerald-400 bg-emerald-500/10 px-2.5 py-1.5 rounded border border-emerald-500/30">
+                FEB – JUNE 2027
+              </div>
+            </div>
+
+            <div class="mt-6 grid grid-cols-3 gap-2 pt-4 border-t border-slate-800 text-xs">
+              <div class="bg-slate-900/60 p-2 rounded border border-slate-800">
+                <span class="text-slate-500 block text-[10px]">Location</span>
+                <span class="font-semibold text-slate-200">Johor / Pasir Gudang</span>
+              </div>
+              <div class="bg-slate-900/60 p-2 rounded border border-slate-800">
+                <span class="text-slate-500 block text-[10px]">Work Mode</span>
+                <span class="font-semibold text-slate-200">On-site / Hybrid / Remote</span>
+              </div>
+              <div class="bg-slate-900/60 p-2 rounded border border-slate-800">
+                <span class="text-slate-500 block text-[10px]">Readiness</span>
+                <span class="font-semibold text-emerald-400">Immediate Interview</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Bento Tile 5: Hardware & Edge AI Focus -->
+          <div class="bento-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="tech-pill text-cyan-400 border-cyan-500/30">Edge Hardware + AI</span>
+              <h3 class="text-base font-bold text-white mt-2">ESP32-CAM & Vision</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Embedded microcontrollers paired with ArcFace embeddings & FAISS vector search engines.
+              </p>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-1 font-mono text-[10px]">
+              <span class="bg-slate-800/80 px-2 py-0.5 rounded text-cyan-300">ESP32-CAM</span>
+              <span class="bg-slate-800/80 px-2 py-0.5 rounded text-emerald-300">FAISS</span>
+              <span class="bg-slate-800/80 px-2 py-0.5 rounded text-slate-300">OpenCV</span>
+            </div>
+          </div>
+
+          <!-- Bento Tile 6: Communication & Bilingual -->
+          <div class="bento-card p-6 flex flex-col justify-between">
+            <div>
+              <span class="tech-pill text-purple-400 border-purple-500/30">Communication</span>
+              <h3 class="text-base font-bold text-white mt-2">Bilingual & Podcaster</h3>
+              <p class="text-xs text-slate-400 mt-1">
+                Bahasa Melayu (Native), English (Good working proficiency). National PETAH MADANI Podcast finalist.
+              </p>
+            </div>
+            <div class="mt-4 text-xs font-mono text-purple-300">
+              Tech Presentation & Documentation
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 4. FEATURED ENGINEERING PROJECTS          -->
+    <!-- ========================================== -->
+    <section id="projects" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+          <div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // PRODUCTION & ACADEMIC REPOSITORIES
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Featured Academic Projects
+            </h2>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            Engineered systems with deep technical documentation, architectural schematics, and open-source GitHub repositories.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          
+          <!-- PROJECT 1: SmartAttend KVPJB -->
+          <div class="bento-card p-6 md:p-8 flex flex-col justify-between border-slate-800 hover:border-emerald-500/50">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="tech-pill text-emerald-400 border-emerald-500/30">
+                  Featured Academic Project 01
+                </span>
+                <span class="font-mono text-xs text-slate-500">2026</span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-bold text-white mt-4 group">
+                SmartAttend KVPJB
+              </h3>
+              <p class="text-xs font-mono text-cyan-400 mt-1">
+                Facial Recognition Attendance Management System
+              </p>
+
+              <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                Web-based institutional student attendance management system engineered with <strong>Python Flask</strong> and <strong>MySQL/MariaDB</strong>. Integrates <strong>InsightFace (ArcFace)</strong> and <strong>FAISS</strong> for sub-second 512-dimensional facial vector search, paired with <strong>ESP32-CAM</strong> edge hardware for real-time capture, automated identification, IN/OUT tracking, and audit reporting.
+              </p>
+
+              <!-- Architecture Highlights -->
+              <div class="mt-4 p-3 bg-slate-900/80 rounded-lg border border-slate-800 space-y-1.5 text-xs">
+                <div class="flex items-center gap-2 text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span><strong>Edge Capture:</strong> ESP32-CAM WiFi streaming + Flask API ingestion</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span><strong>Vector Matching:</strong> FAISS IndexFlatIP cosine similarity (&lt;10ms query)</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+                  <span><strong>Relational Core:</strong> MySQL/MariaDB for transactional records & analytics</span>
+                </div>
+              </div>
+
+              <!-- Tech Pills -->
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">Flask</span>
+                <span class="tech-pill">MySQL / MariaDB</span>
+                <span class="tech-pill">InsightFace</span>
+                <span class="tech-pill">ArcFace</span>
+                <span class="tech-pill">FAISS</span>
+                <span class="tech-pill">ESP32-CAM</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+              <a href="https://github.com/mircrtierr/smartattend-kvpjb" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-xs transition-all shadow-md shadow-emerald-500/20">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <span>View Source on GitHub</span>
+              </a>
+
+              <button onclick="openProjectModal('smartattend')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-700 hover:border-cyan-500/50 bg-slate-900/60 hover:bg-slate-800 text-cyan-400 font-mono text-xs transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <span>System Architecture</span>
+              </button>
+            </div>
+          </div>
+
+
+          <!-- PROJECT 2: Electronic & Computer Goods Object Detection – YOLO -->
+          <div class="bento-card p-6 md:p-8 flex flex-col justify-between border-slate-800 hover:border-cyan-500/50">
+            <div>
+              <div class="flex items-center justify-between">
+                <span class="tech-pill text-cyan-400 border-cyan-500/30">
+                  Featured Academic Project 02
+                </span>
+                <span class="font-mono text-xs text-slate-500">2026</span>
+              </div>
+
+              <h3 class="text-xl sm:text-2xl font-bold text-white mt-4">
+                Electronics & Computer Goods Detection
+              </h3>
+              <p class="text-xs font-mono text-emerald-400 mt-1">
+                Computer Vision Model Powered by YOLO & Roboflow
+              </p>
+
+              <p class="text-slate-300 text-xs sm:text-sm mt-3 leading-relaxed">
+                Computer vision object detection pipeline trained on bespoke annotated electronic equipment datasets via <strong>Roboflow</strong> and <strong>Google Colab</strong> using <strong>Python</strong> and <strong>YOLO</strong>. Accurately segments and classifies components (CPUs, motherboards, GPUs, RAM, PSUs) for automated laboratory auditing and e-waste handling.
+              </p>
+
+              <!-- Architecture Highlights -->
+              <div class="mt-4 p-3 bg-slate-900/80 rounded-lg border border-slate-800 space-y-1.5 text-xs">
+                <div class="flex items-center gap-2 text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                  <span><strong>Dataset Ops:</strong> Roboflow pipeline with mosaic & blur data augmentations</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                  <span><strong>Training Engine:</strong> Ultralytics YOLOv8 in GPU-accelerated Google Colab</span>
+                </div>
+                <div class="flex items-center gap-2 text-slate-300">
+                  <span class="w-1.5 h-1.5 rounded-full bg-cyan-400"></span>
+                  <span><strong>Inference:</strong> Real-time OpenCV video stream with mAP@0.5 &gt; 92%</span>
+                </div>
+              </div>
+
+              <!-- Tech Pills -->
+              <div class="mt-5 flex flex-wrap gap-1.5">
+                <span class="tech-pill">Python</span>
+                <span class="tech-pill">YOLO</span>
+                <span class="tech-pill">Roboflow</span>
+                <span class="tech-pill">Google Colab</span>
+                <span class="tech-pill">OpenCV</span>
+                <span class="tech-pill">Computer Vision</span>
+                <span class="tech-pill">PyTorch</span>
+              </div>
+            </div>
+
+            <!-- Action Buttons -->
+            <div class="mt-8 pt-5 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
+              <a href="https://github.com/mircrtierr/yolo-electronics-detection" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-cyan-500 hover:bg-cyan-400 text-slate-950 font-semibold text-xs transition-all shadow-md shadow-cyan-500/20">
+                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.53 1.032 1.53 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+                <span>View Source on GitHub</span>
+              </a>
+
+              <button onclick="openProjectModal('yolo')" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-700 hover:border-emerald-500/50 bg-slate-900/60 hover:bg-slate-800 text-emerald-400 font-mono text-xs transition-colors">
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+                <span>Pipeline & Case Study</span>
+              </button>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 5. TECHNICAL SKILLS MATRIX (7 DOMAINS)     -->
+    <!-- ========================================== -->
+    <section id="skills" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+          <div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // TECHNICAL DOMAINS & TOOLCHAINS
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Technical Skills Matrix
+            </h2>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            Hands-on practical experience across software, hardware interfaces, database engines, and networking protocols.
+          </p>
+        </div>
+
+        <!-- Filter Pills for Domains -->
+        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+          <button data-domain="all" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-emerald-500 text-emerald-400 bg-emerald-500/10 transition-all font-semibold">
+            All Domains (7)
+          </button>
+          <button data-domain="prog" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+            Programming
+          </button>
+          <button data-domain="web" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+            Web Development
+          </button>
+          <button data-domain="app" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+            Application Dev
+          </button>
+          <button data-domain="db" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+            Database
+          </button>
+          <button data-domain="ai" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+            AI & Machine Learning
+          </button>
+          <button data-domain="net" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+            Networking
+          </button>
+          <button data-domain="sec" class="skill-filter-btn px-3 py-1.5 rounded-lg border border-slate-800 text-slate-400 hover:text-white transition-all">
+            Cybersecurity
+          </button>
+        </div>
+
+        <!-- 7 Domain Grid Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          
+          <!-- Domain 1: Programming Languages -->
+          <div data-domain="prog" class="skill-group bento-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                Programming Languages
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Core</span>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-pill text-emerald-300 font-semibold">Python</span>
+              <span class="tech-pill text-cyan-300 font-semibold">Java</span>
+              <span class="tech-pill text-amber-300 font-semibold">PHP</span>
+              <span class="tech-pill text-purple-300 font-semibold">JavaScript</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-4">
+              Object-oriented programming, data structures, backend scripting, algorithmic design, and automation.
+            </p>
+          </div>
+
+          <!-- Domain 2: Web Development -->
+          <div data-domain="web" class="skill-group bento-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                Web Development
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Full-Stack</span>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-pill text-cyan-300">HTML5</span>
+              <span class="tech-pill text-cyan-300">CSS3</span>
+              <span class="tech-pill text-red-400 font-semibold">Laravel</span>
+              <span class="tech-pill text-emerald-400 font-semibold">Flask</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-4">
+              MVC architecture, RESTful API endpoints, routing, session security, template rendering, and responsive UI design.
+            </p>
+          </div>
+
+          <!-- Domain 3: Application Development -->
+          <div data-domain="app" class="skill-group bento-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-amber-400"></span>
+                Application Development
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Desktop & Mobile</span>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-pill text-amber-300">Java Swing</span>
+              <span class="tech-pill text-amber-300">JFrame</span>
+              <span class="tech-pill text-emerald-400 font-semibold">Android Studio</span>
+              <span class="tech-pill text-slate-300">NetBeans</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-4">
+              SKM Level 3 certified application developer. Desktop graphical user interfaces, event-driven programming, and Android APK deployment.
+            </p>
+          </div>
+
+          <!-- Domain 4: Database Management -->
+          <div data-domain="db" class="skill-group bento-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                Database Management
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">RDBMS</span>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-pill text-blue-300 font-semibold">MySQL</span>
+              <span class="tech-pill text-cyan-300 font-semibold">MariaDB</span>
+              <span class="tech-pill text-slate-300">SQL Schema Design</span>
+              <span class="tech-pill text-slate-300">Indexing & Joins</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-4">
+              Relational data modeling, foreign key constraints, normalized schemas, prepared statements, and transactional logging.
+            </p>
+          </div>
+
+          <!-- Domain 5: AI & Machine Learning -->
+          <div data-domain="ai" class="skill-group bento-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400"></span>
+                AI & Machine Learning
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Deep Learning</span>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-pill text-emerald-300 font-semibold">YOLO (v5/v8)</span>
+              <span class="tech-pill text-cyan-300 font-semibold">OpenCV</span>
+              <span class="tech-pill text-purple-300">Computer Vision</span>
+              <span class="tech-pill text-amber-300">Roboflow</span>
+              <span class="tech-pill text-slate-300">Google Colab</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-4">
+              ICDL AI Essentials certified. Object detection pipelines, face embeddings (ArcFace), vector search (FAISS), and dataset augmentation.
+            </p>
+          </div>
+
+          <!-- Domain 6: Networking -->
+          <div data-domain="net" class="skill-group bento-card p-5">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+                Networking & Infrastructure
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Cisco Academy</span>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-pill text-cyan-300 font-semibold">Cisco Packet Tracer</span>
+              <span class="tech-pill text-emerald-300">TCP/IP</span>
+              <span class="tech-pill text-slate-300">OSI Model</span>
+              <span class="tech-pill text-slate-300">Network Config</span>
+              <span class="tech-pill text-slate-300">VLAN / Subnetting</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-4">
+              Cisco IT Essentials certified. Switch/router configuration, IP subnet planning, routing tables, and network diagnostics.
+            </p>
+          </div>
+
+          <!-- Domain 7: Cybersecurity -->
+          <div data-domain="sec" class="skill-group bento-card p-5 lg:col-span-3">
+            <div class="flex items-center justify-between pb-3 border-b border-slate-800">
+              <span class="font-bold text-sm text-white flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-red-400"></span>
+                Cybersecurity & Systems Security
+              </span>
+              <span class="font-mono text-[10px] text-slate-500">Defense & Analysis</span>
+            </div>
+            <div class="mt-4 flex flex-wrap gap-2">
+              <span class="tech-pill text-red-300 font-semibold">Basic Cybersecurity</span>
+              <span class="tech-pill text-amber-300 font-semibold">Reverse Engineering Fundamentals</span>
+              <span class="tech-pill text-slate-300">Access Control & Auth</span>
+              <span class="tech-pill text-slate-300">Input Sanitization (SQLi/XSS Prevention)</span>
+            </div>
+            <p class="text-slate-400 text-xs mt-3">
+              Principles of system defense, understanding assembly/binary breakdown concepts, secure communication protocols, and defensive vulnerability hygiene.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 6. CREDENTIALS & TIMELINE (FILTERABLE)     -->
+    <!-- ========================================== -->
+    <section id="credentials" class="py-16 md:py-20 border-b border-slate-800/60">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8">
+          <div>
+            <div class="text-xs font-mono font-semibold text-emerald-400 tracking-wider uppercase mb-1">
+              // VERIFIED HONORS & QUALIFICATIONS
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+              Credentials & Track Record
+            </h2>
+          </div>
+          <p class="text-slate-400 text-xs sm:text-sm mt-2 md:mt-0 max-w-md">
+            All certifications, competition awards, and leadership workshops verified through institutional records.
+          </p>
+        </div>
+
+        <!-- Filter Tab Buttons -->
+        <div class="flex flex-wrap gap-2 mb-8 font-mono text-xs">
+          <button data-filter="all" class="cred-filter-btn px-4 py-2 rounded-lg bg-emerald-500 text-slate-950 font-bold transition-all shadow-md shadow-emerald-500/20">
+            All Verified (12)
+          </button>
+          <button data-filter="cert" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-all">
+            Certifications (3)
+          </button>
+          <button data-filter="award" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-all">
+            Awards & Podiums (5)
+          </button>
+          <button data-filter="workshop" class="cred-filter-btn px-4 py-2 rounded-lg bg-slate-900/60 text-slate-400 hover:text-white border border-slate-800 transition-all">
+            Workshops & Leadership (4)
+          </button>
+        </div>
+
+        <!-- Credentials List / Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          
+          <!-- ITEM: ICDL Certificate -->
+          <div data-category="cert" class="cred-item bento-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">CERTIFICATION</span>
+              <span>5 Nov 2026</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">ICDL Certificate – AI Essentials</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Syllabus 2.0 • ICDL Asia</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Certified in practical applications of artificial intelligence, machine learning ethics, generative tools, and digital workflow automation.
+            </p>
+          </div>
+
+          <!-- ITEM: Cisco Networking Academy -->
+          <div data-category="cert" class="cred-item bento-card p-5 border-l-4 border-l-cyan-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-cyan-400 font-semibold">CERTIFICATION</span>
+              <span>11 Apr 2026</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Cisco IT Essentials</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Cisco Networking Academy • KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Comprehensive hardware diagnostics, operating systems, network configuration, and foundational enterprise IT troubleshooting.
+            </p>
+          </div>
+
+          <!-- ITEM: SKM Level 3 -->
+          <div data-category="cert" class="cred-item bento-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">QUALIFICATION</span>
+              <span>JPK Accredited</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">SKM Tahap 3 (Level 3)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Application Development (Pembangunan Aplikasi)</div>
+            <p class="text-slate-400 text-xs mt-3">
+              National vocational skill credential issued by Jabatan Pembangunan Kemahiran verifying complete software development competence.
+            </p>
+          </div>
+
+          <!-- ITEM: PETAH MADANI Award -->
+          <div data-category="award" class="cred-item bento-card p-5 border-l-4 border-l-amber-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-amber-400 font-semibold">NATIONAL PODIUM</span>
+              <span>October 2026</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Fifth Place (National Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">PETAH MADANI: Beyond the Mic – Podcast Challenge</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Ministry of Education Malaysia (KPM)</div>
+            <p class="text-slate-400 text-xs mt-3">
+              National-level podcast and communication championship demonstrating articulate tech storytelling, analysis, and verbal delivery.
+            </p>
+          </div>
+
+          <!-- ITEM: KV Skills Web Tech (Johor Zone) -->
+          <div data-category="award" class="cred-item bento-card p-5 border-l-4 border-l-cyan-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-cyan-400 font-semibold">ZONE COMPETITION</span>
+              <span>July 2025</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Consolation Prize (Johor Zone Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KV Skills Competition in Web Technology</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Kolej Vokasional Malaysia</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Timed speed challenge building full-stack web solutions adhering to strict WorldSkills standards and responsive criteria.
+            </p>
+          </div>
+
+          <!-- ITEM: KV Skills Web Tech (College Level) -->
+          <div data-category="award" class="cred-item bento-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">COLLEGE LEVEL</span>
+              <span>August 2024</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">1st Runner-Up / 2nd Place</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KV Skills Competition in Web Technology</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Kolej Vokasional Perdagangan Johor Bahru</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Secured 2nd place in campus-wide web engineering showdown evaluating frontend styling, PHP backend logic, and MySQL integration.
+            </p>
+          </div>
+
+          <!-- ITEM: Pertandingan Pembangunan Aplikasi Android (National) -->
+          <div data-category="award" class="cred-item bento-card p-5 border-l-4 border-l-amber-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-amber-400 font-semibold">NATIONAL PODIUM</span>
+              <span>2023</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Third Place (National Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Pertandingan Pembangunan Aplikasi Android</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">KPM (BSTP), JPN Melaka & Multimedia University (MMU)</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Recognized nationally for designing and coding an innovative functional mobile application in Android Studio.
+            </p>
+          </div>
+
+          <!-- ITEM: Apps Ideation Challenge (Johor Champion) -->
+          <div data-category="award" class="cred-item bento-card p-5 border-l-4 border-l-amber-400">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-amber-300 font-semibold">STATE CHAMPION 🏆</span>
+              <span>September 2023</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Champion / 1st Place (Johor State Level)</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">Apps Ideation Challenge (Secondary School – Android Category)</div>
+            <div class="text-slate-400 text-[11px] mt-0.5">Jabatan Pendidikan Negeri Johor (JPN Johor)</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Awarded 1st place in the entire State of Johor for technical architecture, UI prototype, and commercial ideation.
+            </p>
+          </div>
+
+          <!-- ITEM: Workshop AI in Video Resume -->
+          <div data-category="workshop" class="cred-item bento-card p-5 border-l-4 border-l-purple-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-purple-400 font-semibold">WORKSHOP</span>
+              <span>30 July 2026</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Bengkel & Pertandingan "AI in Video Resume"</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Explored generative AI video pipelines, audio synthesis, and modern portfolio presentation techniques.
+            </p>
+          </div>
+
+          <!-- ITEM: Workshop JavaScript -->
+          <div data-category="workshop" class="cred-item bento-card p-5 border-l-4 border-l-purple-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-purple-400 font-semibold">WORKSHOP</span>
+              <span>20 May 2026</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Program Pemantapan Pengaturcaraan JS</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Advanced asynchronous JavaScript, DOM manipulation, promises, and modern ES6+ application practices.
+            </p>
+          </div>
+
+          <!-- ITEM: Residential College Committee -->
+          <div data-category="workshop" class="cred-item bento-card p-5 border-l-4 border-l-emerald-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-emerald-400 font-semibold">LEADERSHIP</span>
+              <span>November 2024</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Residential College Committee Member</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">AJK Kolej Kediaman • KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Elected student residential leader coordinating collegiate welfare, technical setups, and student discipline.
+            </p>
+          </div>
+
+          <!-- ITEM: Final Cut Pro Workshop -->
+          <div data-category="workshop" class="cred-item bento-card p-5 border-l-4 border-l-purple-500">
+            <div class="flex items-center justify-between text-[11px] font-mono text-slate-400">
+              <span class="text-purple-400 font-semibold">MULTIMEDIA</span>
+              <span>July 2024</span>
+            </div>
+            <h3 class="text-base font-bold text-white mt-2">Final Cut Pro Workshop x Merdeka Vibes</h3>
+            <div class="text-xs text-slate-300 font-medium mt-1">MPP KVPJB</div>
+            <p class="text-slate-400 text-xs mt-3">
+              Professional video production and editing workshop emphasizing storytelling, pacing, and visual communications.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 7. CONTACT & INVITATION SECTION           -->
+    <!-- ========================================== -->
+    <section id="contact" class="py-16 md:py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="bento-card p-8 md:p-12 bg-gradient-to-br from-slate-900 via-[#111622] to-slate-950 border-emerald-500/30">
+          
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            
+            <div class="lg:col-span-7 space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-mono">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-emerald"></span>
+                <span>OJT Placement Open: Feb – June 2027</span>
+              </div>
+
+              <h2 class="text-2xl sm:text-3xl font-extrabold text-white">
+                Let's discuss my 5-Month IT Internship.
+              </h2>
+
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Looking for a dedicated, high-performing software engineer, full-stack developer, or AI/ML trainee for your technical team? I am based in Pasir Gudang, Johor and available for on-site, hybrid, or remote placements.
+              </p>
+
+              <div class="pt-2 flex flex-wrap items-center gap-3">
+                <a href="mailto:mirzaaqmal22@gmail.com" class="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs transition-all shadow-lg shadow-emerald-500/25">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                  <span>Email: mirzaaqmal22@gmail.com</span>
+                </a>
+
+                <button onclick="copyToClipboard('013-5788399', 'Phone number')" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-slate-700 hover:border-slate-600 bg-slate-900 text-slate-200 font-mono text-xs transition-colors">
+                  <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+                  <span>013-5788399 (Copy)</span>
+                </button>
+
+                <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" download="Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-2 px-4 py-3 rounded-lg border border-slate-700 hover:border-emerald-500/50 bg-slate-900 text-emerald-400 font-mono text-xs transition-colors" title="Download Verified Resume PDF">
+                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                  <span>Download CV (PDF)</span>
+                </a>
+                <a href="Resume_Muhammad_Mirza_Aqmal_Raziq.html" target="_blank" class="inline-flex items-center gap-1.5 px-3 py-3 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/60 text-slate-400 hover:text-slate-200 font-mono text-xs transition-colors" title="View Printable Web Version">
+                  <span>Web CV ↗</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Terminal Info Card -->
+            <div class="lg:col-span-5 bg-slate-950 p-5 rounded-xl border border-slate-800 font-mono text-xs space-y-2">
+              <div class="text-slate-500">// Direct Quick Contacts</div>
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
+                <span class="text-slate-400">Location:</span>
+                <span class="text-slate-200">Pasir Gudang, Johor</span>
+              </div>
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
+                <span class="text-slate-400">GitHub:</span>
+                <a href="https://github.com/mircrtierr" target="_blank" class="text-cyan-400 hover:underline">github.com/mircrtierr</a>
+              </div>
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
+                <span class="text-slate-400">Current CGPA:</span>
+                <span class="text-emerald-400 font-bold">3.98 / 4.00</span>
+              </div>
+              <div class="flex items-center justify-between py-1 border-b border-slate-900">
+                <span class="text-slate-400">Institution:</span>
+                <span class="text-slate-200 text-right">KV Perdagangan Johor Bahru</span>
+              </div>
+              <div class="flex items-center justify-between pt-1">
+                <span class="text-slate-400">Languages:</span>
+                <span class="text-slate-200">Malay (Native), English (Working)</span>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ========================================== -->
+    <!-- 8. FOOTER                                  -->
+    <!-- ========================================== -->
+    <footer class="mt-auto py-8 border-t border-slate-800/80 bg-[#07080c] text-xs font-mono text-slate-500">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          © 2026 Muhammad Mirza Aqmal Raziq bin Mirza Affzard. Built with Swiss Bento Grid & Interactive Terminal.
+        </div>
+        <div class="flex items-center gap-4">
+          <a href="https://github.com/mircrtierr" target="_blank" class="text-slate-400 hover:text-emerald-400 transition-colors">
+            github.com/mircrtierr
+          </a>
+          <span>•</span>
+          <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="text-slate-400 hover:text-white transition-colors">
+            ↑ Top
+          </button>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- PROJECT ARCHITECTURE & CASE STUDY MODAL    -->
+  <!-- ========================================== -->
+  <div id="project-modal" class="fixed inset-0 z-50 modal-overlay hidden items-center justify-center p-4 sm:p-6" onclick="if(event.target === this) closeProjectModal()">
+    <div class="relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-[#0d1117] border border-slate-700/80 rounded-2xl shadow-2xl modal-enter" id="project-modal-content">
+      <!-- Content populated dynamically via app.js -->
+    </div>
+  </div>
+
+
+  <!-- ========================================== -->
+  <!-- TOAST NOTIFICATION                         -->
+  <!-- ========================================== -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none px-4 py-2.5 rounded-lg bg-emerald-500 text-slate-950 font-mono text-xs font-bold shadow-xl flex items-center gap-2">
+    ✓ Copied to clipboard!
+  </div>
+
+  <!-- App Script -->
+  <script src="app.js"></script>
+
+</body>
+</html>
