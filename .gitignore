@@ -14,3 +14,6 @@ desktop.ini
 
 # Temporary files
 *.tmp
+
+# Local push helper
+push_to_github.bat
