@@ -232,9 +232,10 @@ const COMMANDS = {
 <div class="space-y-2 text-xs">
   <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
     <div class="font-bold text-emerald-400">1. Sijil Kemahiran Malaysia (SKM) Tahap 3 – Application Development</div>
-    <div class="text-slate-400 text-[11px]">JPK Kementerian Sumber Manusia • IT-010-3:2016 • 17 Nov 2026</div>
+    <div class="text-slate-400 text-[11px]">JPK Kementerian Sumber Manusia • No. Sijil: S103882102 • NOSS: IT-010-3:2016</div>
     <div class="mt-1 flex gap-2">
       <button onclick="openCertificateModal('skm3')" class="px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/30 text-[10px]">Inspect Cert</button>
+      <a href="assets/certificates/sijil_skm3_jpk_official.pdf" target="_blank" class="px-2 py-0.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-300 text-[10px] inline-flex items-center gap-1">Official PDF</a>
     </div>
   </div>
   <div class="p-2 rounded bg-slate-900/80 border border-slate-800">
@@ -946,13 +947,16 @@ const CERTIFICATES_DATA = {
     title: "Sijil Kemahiran Malaysia (SKM) Tahap 3",
     subtitle: "Pembangunan Aplikasi (Application Development) [IT-010-3:2016]",
     issuer: "Jabatan Pembangunan Kemahiran (JPK), Kementerian Sumber Manusia Malaysia",
-    center: "Pusat Bertauliah K05104 (Kolej Vokasional Perdagangan)",
+    center: "Pusat Bertauliah K05104 (Kolej Vokasional Perdagangan Johor)",
     date: "17 November 2026",
-    id: "No. Kad Pengenalan: 070922-01-0269",
+    id: "S103882102",
+    batch: "K05104-IT-010-3:2016-2023(MTB1)FT-092025",
     category: "National Vocational Standard",
     badgeColor: "emerald",
     image: "assets/certificates/cert_skm3_jpk.png",
-    overview: "Official national vocational qualification formally certifying core competencies in software engineering, systems design, object-oriented programming, and relational database management under Malaysian national skills framework.",
+    imageP2: "assets/certificates/cert_skm3_jpk_p2.png",
+    pdfUrl: "assets/certificates/sijil_skm3_jpk_official.pdf",
+    overview: "Official national vocational qualification formally issued under Akta Pembangunan Kemahiran Kebangsaan 2006 (Akta 652), certifying core competencies in software engineering, systems design, object-oriented programming, and relational database management under the Malaysian Qualifications Framework.",
     competencies: [
       "Requirements gathering & software systems analysis",
       "Full-stack software design and relational database modeling",
@@ -1081,10 +1085,23 @@ window.openCertificateModal = function(certKey) {
 
       <!-- High-Res Certificate Preview Box -->
       <div class="mt-4">
+        ${cert.imageP2 ? `
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex gap-2 font-mono text-xs">
+            <button id="cert-tab-p1" onclick="switchCertPage('p1')" class="px-3 py-1 rounded-md bg-emerald-500 text-slate-950 font-bold transition-colors">
+              Muka 1 (Bahasa Melayu)
+            </button>
+            <button id="cert-tab-p2" onclick="switchCertPage('p2')" class="px-3 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white transition-colors">
+              Page 2 (English Version)
+            </button>
+          </div>
+          <span class="text-[11px] font-mono text-slate-500">2-Page Official Credential</span>
+        </div>
+        ` : ''}
         <div class="relative rounded-xl overflow-hidden border border-slate-700 bg-slate-950 shadow-2xl group flex items-center justify-center p-2">
-          <img src="${cert.image}" alt="${cert.title}" class="max-h-[480px] w-auto max-w-full rounded object-contain shadow-lg" />
+          <img id="cert-modal-main-img" src="${cert.image}" alt="${cert.title}" class="max-h-[480px] w-auto max-w-full rounded object-contain shadow-lg" />
           <div class="absolute bottom-3 right-3 flex items-center gap-2">
-            <a href="${cert.image}" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs backdrop-blur inline-flex items-center gap-1.5 transition-colors shadow">
+            <a id="cert-modal-orig-link" href="${cert.image}" target="_blank" class="px-3 py-1.5 rounded-lg bg-slate-900/90 hover:bg-slate-800 text-slate-200 border border-slate-700 font-mono text-xs backdrop-blur inline-flex items-center gap-1.5 transition-colors shadow">
               <svg class="w-3.5 h-3.5 text-cyan-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
               <span>View Original Image</span>
             </a>
@@ -1109,9 +1126,14 @@ window.openCertificateModal = function(certKey) {
               <span class="text-emerald-400 font-semibold">${cert.date}</span>
             </div>
             <div class="flex items-center justify-between text-slate-300 mt-1">
-              <span>Credential ID:</span>
+              <span>No. Sijil / ID:</span>
               <span class="text-cyan-400 font-bold">${cert.id}</span>
             </div>
+            ${cert.batch ? `
+            <div class="flex items-center justify-between text-slate-300 mt-1">
+              <span>Kod Kelulusan:</span>
+              <span class="text-slate-400 font-mono text-[10px] truncate max-w-[200px]" title="${cert.batch}">${cert.batch}</span>
+            </div>` : ''}
           </div>
           <div class="pt-2 flex justify-end">
             <button onclick="copyToClipboard('${cert.id}', 'Credential ID')" class="text-[11px] text-slate-400 hover:text-white inline-flex items-center gap-1">
@@ -1140,7 +1162,7 @@ window.openCertificateModal = function(certKey) {
 
       <!-- Actions -->
       <div class="mt-6 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
-        <div class="flex items-center gap-2">
+        <div class="flex flex-wrap items-center gap-2">
           ${cert.verifyUrl ? `
             <a href="${cert.verifyUrl}" target="_blank" class="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs rounded-lg transition-colors shadow-sm">
               <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
@@ -1149,9 +1171,15 @@ window.openCertificateModal = function(certKey) {
           ` : `
             <span class="text-xs font-mono text-slate-400">Institutional Record Verified</span>
           `}
+          ${cert.pdfUrl ? `
+            <a href="${cert.pdfUrl}" target="_blank" download="Sijil_SKM3_JPK_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-1.5 px-3 py-2 bg-emerald-500/15 hover:bg-emerald-500/25 text-emerald-300 border border-emerald-500/30 text-xs rounded-lg transition-colors font-mono">
+              <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+              <span>Download Official PDF</span>
+            </a>
+          ` : ''}
           <a href="assets/certificates/all_certificates.pdf" target="_blank" download="Verified_Certificates_Muhammad_Mirza_Aqmal_Raziq.pdf" class="inline-flex items-center gap-2 px-3 py-2 border border-slate-700 hover:border-slate-600 bg-slate-900 text-slate-300 text-xs rounded-lg transition-colors">
             <svg class="w-4 h-4 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
-            <span>Download All (6-Page PDF)</span>
+            <span>Download All (7-Page PDF)</span>
           </a>
         </div>
         <button onclick="closeCertificateModal()" class="px-4 py-2 border border-slate-700 hover:bg-slate-800 text-slate-300 font-medium text-xs rounded-lg transition-colors">
@@ -1172,6 +1200,34 @@ window.closeCertificateModal = function() {
     modalContainer.classList.add('hidden');
     modalContainer.classList.remove('flex');
     document.body.style.overflow = '';
+  }
+};
+
+window.switchCertPage = function(page) {
+  const img = document.getElementById('cert-modal-main-img');
+  const link = document.getElementById('cert-modal-orig-link');
+  const btnP1 = document.getElementById('cert-tab-p1');
+  const btnP2 = document.getElementById('cert-tab-p2');
+  if (!img) return;
+
+  if (page === 'p2') {
+    img.src = 'assets/certificates/cert_skm3_jpk_p2.png';
+    if (link) link.href = 'assets/certificates/cert_skm3_jpk_p2.png';
+    if (btnP1) {
+      btnP1.className = 'px-3 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white transition-colors';
+    }
+    if (btnP2) {
+      btnP2.className = 'px-3 py-1 rounded-md bg-emerald-500 text-slate-950 font-bold transition-colors';
+    }
+  } else {
+    img.src = 'assets/certificates/cert_skm3_jpk_p1.png';
+    if (link) link.href = 'assets/certificates/cert_skm3_jpk_p1.png';
+    if (btnP1) {
+      btnP1.className = 'px-3 py-1 rounded-md bg-emerald-500 text-slate-950 font-bold transition-colors';
+    }
+    if (btnP2) {
+      btnP2.className = 'px-3 py-1 rounded-md bg-slate-800 text-slate-300 hover:text-white transition-colors';
+    }
   }
 };
 
