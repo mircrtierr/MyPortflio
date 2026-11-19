@@ -27,6 +27,10 @@
   <meta name="twitter:image"
     content="https://raw.githubusercontent.com/mircrtierr/MyPortflio/main/assets/profile.jpg" />
 
+  <!-- Custom Retro Webfonts Preload (Zero FOUT) -->
+  <link rel="preload" href="fonts/public-pixel.woff" as="font" type="font/woff" crossorigin />
+  <link rel="preload" href="fonts/chill.woff" as="font" type="font/woff" crossorigin />
+
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
@@ -45,8 +49,9 @@
             }
           },
           fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            mono: ['JetBrains Mono', 'monospace']
+            sans: ['chill', 'Inter', 'sans-serif'],
+            mono: ['JetBrains Mono', 'chill', 'monospace'],
+            pixel: ['public-pixel', 'monospace']
           }
         }
       }
@@ -81,9 +86,9 @@
           <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
           <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
-          <span class="text-slate-300 font-bold ml-1 tracking-wider">MIRZA_KERNEL_V2.0</span>
+          <span class="text-slate-300 font-bold ml-1 tracking-wider font-pixel text-[10px]">MIRZA_KERNEL_V2.0</span>
         </div>
-        <span class="text-emerald-400 font-bold font-mono" id="bootloader-pct">0%</span>
+        <span class="text-emerald-400 font-bold font-pixel text-xs" id="bootloader-pct">0%</span>
       </div>
 
       <div class="mt-4 flex items-center justify-between">
