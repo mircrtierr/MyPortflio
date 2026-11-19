@@ -34,6 +34,11 @@
 
 <body>
 
+  <!-- Top Reading Scroll Progress Bar -->
+  <div id="scroll-progress-container">
+    <div id="scroll-progress-bar"></div>
+  </div>
+
   <!-- ========================================== -->
   <!-- 1. RETRO BOOTLOADER SCREEN                 -->
   <!-- ========================================== -->
@@ -84,7 +89,7 @@
         <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
           <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
         </svg>
-        <span style="display: none; @media(min-width:640px){display:inline;}">LINKEDIN</span>
+        <span>LINKEDIN</span>
       </a>
 
       <!-- GitHub -->
@@ -185,8 +190,8 @@
       </div>
     </div>
 
-    <!-- Floating Scroll Tip -->
-    <div id="tip-scroll">
+    <!-- Floating Scroll Tip with Bounce Animation -->
+    <div id="tip-scroll" role="button" aria-label="Scroll down to explore">
       Scroll ↓
     </div>
   </header>
@@ -200,7 +205,7 @@
     <!-- ---------------------------------------- -->
     <!-- SECTION 1: ABOUT ME                      -->
     <!-- ---------------------------------------- -->
-    <section id="about">
+    <section id="about" class="scroll-reveal">
       <h1>About Me</h1>
 
       <p style="margin-bottom: 16px; text-align: left;">
@@ -215,27 +220,27 @@
         I am currently seeking a <strong>5-Month On-The-Job Training (OJT) IT / Software Internship from February to June 2027</strong>.
       </p>
 
-      <!-- Key Metrics Cards -->
+      <!-- Key Metrics Cards with Scroll Animation & Numeric Counter -->
       <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-top: 24px;">
-        <div class="retro-card" style="padding: 16px; text-align: center;">
-          <div class="font-pixel" style="font-size: 1.4rem; color: #d97706; margin-bottom: 4px;">3.98</div>
+        <div class="retro-card scroll-reveal delay-1" style="padding: 16px; text-align: center;">
+          <div class="font-pixel" data-counter="3.98" data-decimals="2" style="font-size: 1.4rem; color: #d97706; margin-bottom: 4px;">0.00</div>
           <div style="font-family: var(--font-pixel); font-size: 10px; color: var(--color-primary);">CGPA / 4.00</div>
           <div style="font-size: 12px; color: #666; margin-top: 4px;">Academic Excellence</div>
         </div>
 
-        <div class="retro-card" style="padding: 16px; text-align: center;">
+        <div class="retro-card scroll-reveal delay-2" style="padding: 16px; text-align: center;">
           <div class="font-pixel" style="font-size: 1.05rem; margin-bottom: 4px;">SKM TAHAP 3</div>
           <div style="font-family: var(--font-pixel); font-size: 10px; color: var(--color-primary);">ID: S103882102</div>
           <div style="font-size: 12px; color: #666; margin-top: 4px;">IT System Support</div>
         </div>
 
-        <div class="retro-card" style="padding: 16px; text-align: center;">
+        <div class="retro-card scroll-reveal delay-3" style="padding: 16px; text-align: center;">
           <div class="font-pixel" style="font-size: 1.05rem; margin-bottom: 4px;">FEB – JUN 2027</div>
           <div style="font-family: var(--font-pixel); font-size: 10px; color: var(--color-primary);">5-MONTH OJT</div>
           <div style="font-size: 12px; color: #666; margin-top: 4px;">Internship Window</div>
         </div>
 
-        <div class="retro-card" style="padding: 16px; text-align: center;">
+        <div class="retro-card scroll-reveal delay-4" style="padding: 16px; text-align: center;">
           <div class="font-pixel" style="font-size: 1.05rem; margin-bottom: 4px;">PASIR GUDANG</div>
           <div style="font-family: var(--font-pixel); font-size: 10px; color: var(--color-primary);">JOHOR, MY</div>
           <div style="font-size: 12px; color: #666; margin-top: 4px;">On-site / Hybrid Ready</div>
@@ -247,11 +252,11 @@
     <!-- ---------------------------------------- -->
     <!-- SECTION 2: ENGINEERING PROJECTS          -->
     <!-- ---------------------------------------- -->
-    <section id="projects">
+    <section id="projects" class="scroll-reveal">
       <h1>Projects</h1>
 
       <!-- Project 1: SmartAttend -->
-      <article style="text-align: left; margin-top: 24px;">
+      <article class="scroll-reveal delay-1" style="text-align: left; margin-top: 24px;">
         <h2>SmartAttend</h2>
         <h3>2024 – 2025</h3>
 
@@ -273,14 +278,15 @@
         </p>
 
         <div style="margin: 16px 0;">
-          <img src="assets/projects/smartattend_dashboard.jpg" alt="SmartAttend Biometric System Interface" class="retro-img" loading="lazy" />
+          <img src="assets/projects/smartattend_dashboard.jpg" alt="SmartAttend Biometric System Interface" class="retro-img clickable" loading="lazy"
+            onclick="openLightbox('assets/projects/smartattend_dashboard.jpg', 'SmartAttend Dashboard', 'Real-time ESP32-CAM biometric attendance UI with sub-second FAISS vector search.')" />
         </div>
       </article>
 
       <hr class="retro-divider" />
 
       <!-- Project 2: YOLO Custom Object Detection -->
-      <article style="text-align: left;">
+      <article class="scroll-reveal delay-2" style="text-align: left;">
         <h2>YOLO Custom Object Detection</h2>
         <h3>2024</h3>
 
@@ -302,14 +308,15 @@
         </p>
 
         <div style="margin: 16px 0;">
-          <img src="assets/projects/yolo_colab_detection.jpg" alt="YOLO Custom Detection on Google Colab" class="retro-img" loading="lazy" />
+          <img src="assets/projects/yolo_colab_detection.jpg" alt="YOLO Custom Detection on Google Colab" class="retro-img clickable" loading="lazy"
+            onclick="openLightbox('assets/projects/yolo_colab_detection.jpg', 'YOLO Object Classifier on Google Colab', 'Webcam detection inference identifying classroom devices with high confidence bounding boxes.')" />
         </div>
       </article>
 
       <hr class="retro-divider" />
 
       <!-- Project 3: Beyond The Mic Podcast -->
-      <article style="text-align: left;">
+      <article class="scroll-reveal delay-3" style="text-align: left;">
         <h2>Beyond The Mic Podcast</h2>
         <h3>2026 (National Finalist)</h3>
 
@@ -330,7 +337,8 @@
         </p>
 
         <div style="margin: 16px 0; max-width: 420px; margin-left: auto; margin-right: auto;">
-          <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="Petah KPM 2026 National Trophy" class="retro-img" loading="lazy" />
+          <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="Petah KPM 2026 National Trophy" class="retro-img clickable" loading="lazy"
+            onclick="openLightbox('assets/awards/trophy_petah_madani_podcast.jpg', 'Kelima Kebangsaan Trophy - Petah KPM 2026', 'Beyond The Mic Podcast competition trophy awarded at Putrajaya International Convention Centre (PICC).')" />
         </div>
       </article>
     </section>
@@ -339,11 +347,11 @@
     <!-- ---------------------------------------- -->
     <!-- SECTION 3: TECHNICAL SKILLS              -->
     <!-- ---------------------------------------- -->
-    <section id="skills">
+    <section id="skills" class="scroll-reveal">
       <h1>Technical Skills</h1>
 
       <div style="text-align: left; display: flex; flex-direction: column; gap: 20px; margin-top: 24px;">
-        <div class="retro-card">
+        <div class="retro-card scroll-reveal delay-1">
           <h2 style="margin-top: 0;">Programming &amp; Scripting</h2>
           <ul class="skills-list" style="justify-content: flex-start;">
             <li>Python (NumPy, FAISS, PyTorch)</li>
@@ -355,7 +363,7 @@
           </ul>
         </div>
 
-        <div class="retro-card">
+        <div class="retro-card scroll-reveal delay-2">
           <h2 style="margin-top: 0;">AI &amp; Computer Vision</h2>
           <ul class="skills-list" style="justify-content: flex-start;">
             <li>FAISS 512D Vector Embeddings</li>
@@ -366,7 +374,7 @@
           </ul>
         </div>
 
-        <div class="retro-card">
+        <div class="retro-card scroll-reveal delay-3">
           <h2 style="margin-top: 0;">IoT &amp; Embedded Hardware</h2>
           <ul class="skills-list" style="justify-content: flex-start;">
             <li>ESP32 / ESP32-CAM Microcontrollers</li>
@@ -377,7 +385,7 @@
           </ul>
         </div>
 
-        <div class="retro-card">
+        <div class="retro-card scroll-reveal delay-4">
           <h2 style="margin-top: 0;">IT Support &amp; Networking</h2>
           <ul class="skills-list" style="justify-content: flex-start;">
             <li>SKM Tahap 3 Certified Procedures</li>
@@ -394,13 +402,13 @@
     <!-- ---------------------------------------- -->
     <!-- SECTION 4: CREDENTIALS & AWARDS          -->
     <!-- ---------------------------------------- -->
-    <section id="credentials">
+    <section id="credentials" class="scroll-reveal">
       <h1>Credentials &amp; Awards</h1>
 
       <div style="display: flex; flex-direction: column; gap: 24px; margin-top: 24px; text-align: left;">
         
         <!-- Official SKM Level 3 Digital Certificate -->
-        <div class="retro-card" style="border: 3px solid var(--color-primary); background-color: #fff9f2;">
+        <div class="retro-card scroll-reveal delay-1" style="border: 3px solid var(--color-primary); background-color: #fff9f2;">
           <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 8px;">
             <div>
               <span class="btn" style="padding: 4px 8px; font-size: 9px; margin-bottom: 8px;">VERIFIED SKM LEVEL 3</span>
@@ -418,28 +426,31 @@
           </div>
         </div>
 
-        <!-- Trophies Showcase Grid -->
+        <!-- Trophies Showcase Grid with Lightbox Modals -->
         <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px;">
           
           <!-- Trophy 1: Johan Apps Ideation Challenge -->
-          <div class="retro-card" style="text-align: center;">
-            <img src="assets/awards/trophy_johan_apps_ideation_johor.jpg" alt="Johan Apps Ideation Challenge Johor Trophy" class="retro-img" style="max-height: 260px; object-fit: contain; margin-bottom: 12px; background: #fff;" loading="lazy" />
+          <div class="retro-card scroll-reveal delay-2" style="text-align: center;">
+            <img src="assets/awards/trophy_johan_apps_ideation_johor.jpg" alt="Johan Apps Ideation Challenge Johor Trophy" class="retro-img clickable" style="max-height: 260px; object-fit: contain; margin-bottom: 12px; background: #fff;" loading="lazy"
+              onclick="openLightbox('assets/awards/trophy_johan_apps_ideation_johor.jpg', 'Johan - Apps Ideation Challenge Johor 2023', 'Champion Trophy for the State Android App Innovation Competition (Sekolah Menengah).')" />
             <h2 style="font-size: 0.95rem; padding: 4px 10px;">JOHAN (CHAMPION)</h2>
             <div style="font-size: 13px; font-weight: bold; margin-top: 6px;">Pertandingan Apps Ideation Challenge Johor 2023</div>
             <div style="font-size: 12px; color: #666;">Kategori Sekolah Menengah (Android)</div>
           </div>
 
           <!-- Trophy 2: Tempat Ketiga MMU & JPN Melaka -->
-          <div class="retro-card" style="text-align: center;">
-            <img src="assets/awards/trophy_android_national_mmu.jpg" alt="Tempat Ketiga MMU Android Competition Trophy" class="retro-img" style="max-height: 260px; object-fit: contain; margin-bottom: 12px; background: #fff;" loading="lazy" />
+          <div class="retro-card scroll-reveal delay-3" style="text-align: center;">
+            <img src="assets/awards/trophy_android_national_mmu.jpg" alt="Tempat Ketiga MMU Android Competition Trophy" class="retro-img clickable" style="max-height: 260px; object-fit: contain; margin-bottom: 12px; background: #fff;" loading="lazy"
+              onclick="openLightbox('assets/awards/trophy_android_national_mmu.jpg', 'Tempat Ketiga - MMU Android Competition', '3rd Place Trophy awarded by Multimedia University (MMU) & JPN Melaka.')" />
             <h2 style="font-size: 0.95rem; padding: 4px 10px;">TEMPAT KETIGA</h2>
             <div style="font-size: 13px; font-weight: bold; margin-top: 6px;">Pertandingan Pembangunan Aplikasi Android</div>
             <div style="font-size: 12px; color: #666;">MMU Multimedia University &amp; JPN Melaka</div>
           </div>
 
           <!-- Trophy 3: Kelima Kebangsaan Beyond The Mic -->
-          <div class="retro-card" style="text-align: center;">
-            <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="Kelima Kebangsaan Beyond The Mic Trophy" class="retro-img" style="max-height: 260px; object-fit: contain; margin-bottom: 12px; background: #fff;" loading="lazy" />
+          <div class="retro-card scroll-reveal delay-4" style="text-align: center;">
+            <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="Kelima Kebangsaan Beyond The Mic Trophy" class="retro-img clickable" style="max-height: 260px; object-fit: contain; margin-bottom: 12px; background: #fff;" loading="lazy"
+              onclick="openLightbox('assets/awards/trophy_petah_madani_podcast.jpg', 'Kelima Kebangsaan - Beyond The Mic Podcast', '5th Place National Trophy at Petah KPM 2026, Putrajaya International Convention Centre.')" />
             <h2 style="font-size: 0.95rem; padding: 4px 10px;">KELIMA KEBANGSAAN</h2>
             <div style="font-size: 13px; font-weight: bold; margin-top: 6px;">Pertandingan Beyond The Mic: Podcast</div>
             <div style="font-size: 12px; color: #666;">Petah KPM 2026 @ PICC Putrajaya</div>
@@ -448,7 +459,7 @@
         </div>
 
         <!-- Cisco Academy Credentials -->
-        <div class="retro-card">
+        <div class="retro-card scroll-reveal delay-1">
           <h2 style="margin-top: 0;">Cisco Networking Academy</h2>
           <ul class="skills-list" style="justify-content: flex-start;">
             <li>Cisco IT Essentials: PC Hardware and Software</li>
@@ -464,7 +475,7 @@
     <!-- ---------------------------------------- -->
     <!-- SECTION 5: INTERACTIVE TERMINAL SHELL    -->
     <!-- ---------------------------------------- -->
-    <section id="terminal">
+    <section id="terminal" class="scroll-reveal">
       <h1>Interactive Terminal</h1>
 
       <p style="text-align: center; margin-bottom: 18px; font-size: 0.95rem;">
@@ -510,7 +521,7 @@
     <!-- ---------------------------------------- -->
     <!-- SECTION 6: CONTACT & OJT INQUIRY         -->
     <!-- ---------------------------------------- -->
-    <section id="contact">
+    <section id="contact" class="scroll-reveal">
       <h1>Contact</h1>
 
       <p style="text-align: center; margin-bottom: 24px;">
@@ -519,7 +530,7 @@
 
       <div style="display: flex; flex-direction: column; gap: 14px; text-align: left;">
         
-        <div class="retro-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div class="retro-card scroll-reveal delay-1" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
           <div>
             <div style="font-family: var(--font-pixel); font-size: 11px; color: var(--color-primary);">PHONE &amp; WHATSAPP</div>
             <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: bold; margin-top: 4px;">013-5788399</div>
@@ -534,7 +545,7 @@
           </div>
         </div>
 
-        <div class="retro-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div class="retro-card scroll-reveal delay-2" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
           <div>
             <div style="font-family: var(--font-pixel); font-size: 11px; color: var(--color-primary);">DIRECT EMAIL</div>
             <div style="font-family: var(--font-mono); font-size: 1.15rem; font-weight: bold; margin-top: 4px;">mirzaaqmal22@gmail.com</div>
@@ -549,7 +560,7 @@
           </div>
         </div>
 
-        <div class="retro-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+        <div class="retro-card scroll-reveal delay-3" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
           <div>
             <div style="font-family: var(--font-pixel); font-size: 11px; color: var(--color-primary);">PROFESSIONAL NETWORKS</div>
             <div style="font-size: 14px; margin-top: 4px;">LinkedIn &amp; GitHub Profile</div>
@@ -564,7 +575,7 @@
           </div>
         </div>
 
-        <div class="retro-card" style="text-align: center;">
+        <div class="retro-card scroll-reveal delay-4" style="text-align: center;">
           <div style="font-family: var(--font-pixel); font-size: 11px; color: var(--color-primary);">LOCATION &amp; MOBILITY</div>
           <p style="margin-top: 6px; font-weight: bold;">
             📍 Pasir Gudang, Johor, Malaysia (Open to Johor Bahru, Klang Valley, or Remote IT Internship)
@@ -594,6 +605,27 @@
       Designed with 1980s Retro-Compute Aesthetics, Three.js &amp; WebGL • Pasir Gudang, Johor
     </div>
   </footer>
+
+
+  <!-- Floating Retro Back To Top Pill -->
+  <button id="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
+    <span>↑ TOP</span>
+  </button>
+
+
+  <!-- Retro Image Lightbox Modal -->
+  <div id="retro-lightbox" onclick="if(event.target === this) closeLightbox();">
+    <div id="retro-lightbox-content">
+      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: dashed 2px var(--color-primary); padding-bottom: 10px;">
+        <span id="retro-lightbox-title" class="font-pixel" style="font-size: 12px;">PREVIEW</span>
+        <button onclick="closeLightbox()" class="btn" style="padding: 4px 10px; font-size: 9px;">
+          CLOSE [ESC]
+        </button>
+      </div>
+      <img id="retro-lightbox-img" src="" alt="Enlarged Preview" />
+      <p id="retro-lightbox-desc" style="font-size: 13px; color: #555; margin-top: 8px; text-align: center;"></p>
+    </div>
+  </div>
 
 
   <!-- Toast Notification -->

@@ -2077,6 +2077,28 @@ window.toggleRetroMenu = function() {
   }
 };
 
+// ==============================================
+// RETRO LIGHTBOX MODAL (Image Zoom & Previews)
+// ==============================================
+window.openLightbox = function(src, title, desc) {
+  const modal = document.getElementById('retro-lightbox');
+  const img = document.getElementById('retro-lightbox-img');
+  const t = document.getElementById('retro-lightbox-title');
+  const d = document.getElementById('retro-lightbox-desc');
+  if (!modal || !img) return;
+  img.src = src;
+  if (t) t.textContent = title || 'IMAGE PREVIEW';
+  if (d) d.textContent = desc || '';
+  modal.classList.add('active');
+  if (typeof audio !== 'undefined' && audio.playBeep) audio.playBeep();
+};
+
+window.closeLightbox = function() {
+  const modal = document.getElementById('retro-lightbox');
+  if (modal) modal.classList.remove('active');
+  if (typeof audio !== 'undefined' && audio.playSoftClick) audio.playSoftClick();
+};
+
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     const overlay = document.getElementById('retro-menu-overlay');
@@ -2084,11 +2106,16 @@ window.addEventListener('keydown', (e) => {
       overlay.classList.remove('menu-open');
       if (typeof audio !== 'undefined' && audio.playBeep) audio.playBeep();
     }
+    const lightbox = document.getElementById('retro-lightbox');
+    if (lightbox && lightbox.classList.contains('active')) {
+      lightbox.classList.remove('active');
+      if (typeof audio !== 'undefined' && audio.playSoftClick) audio.playSoftClick();
+    }
   }
 });
 
 // ==============================================
-// 3D COMMODORE 710 WORKSTATION (THREE.JS + BAKED TEXTURES + DYNAMIC CRT)
+// 3D COMMODORE 710 WORKSTATION (THREE.JS + SCROLL & MOUSE ANIMATION)
 // ==============================================
 let commodoreModel = null;
 let commodoreScreenMesh = null;
@@ -2202,6 +2229,7 @@ function initCommodore3D() {
 
     let cursorBlink = true;
     let lastBlinkTime = performance.now();
+    let scanlineOffset = 0;
 
     function drawCrtScreen() {
       if (!crtCtx) return;
@@ -2219,9 +2247,10 @@ function initCommodore3D() {
       crtCtx.fillStyle = vignette;
       crtCtx.fillRect(0, 0, 1024, 768);
 
-      // 3. Phosphor Scanlines
+      // 3. Phosphor Scanlines with Dynamic Drift
       crtCtx.fillStyle = palette.scanline;
-      for (let y = 0; y < 768; y += 4) {
+      const startYScan = (scanlineOffset % 4);
+      for (let y = startYScan; y < 768; y += 4) {
         crtCtx.fillRect(0, y, 1024, 2);
       }
 
@@ -2325,10 +2354,8 @@ function initCommodore3D() {
                 map: crtTexture
               });
             } else if (child.name === 'Computer' || child.name === 'CRT' || child.name === 'Keyboard') {
-              // Apply photorealistic baked textures
               child.material = computerMaterial;
             } else if (child.name === 'ShadowPlane') {
-              // Apply baked floor shadow texture
               child.material = floorMaterial;
             } else if (child.name === 'Plane') {
               child.visible = false;
@@ -2350,11 +2377,24 @@ function initCommodore3D() {
     }
 
     // ========================================================
-    // INTERACTIVE ROTATION & CONTROLS
+    // INTERACTIVE ROTATION, DRAG & MOUSE/SCROLL PARALLAX
     // ========================================================
     let isDragging = false;
     let prevMouse = { x: 0, y: 0 };
     let rotVel = { x: 0, y: 0 };
+    let scrollRatio = 0;
+    let targetMouseParallax = { x: 0, y: 0 };
+    let currentMouseParallax = { x: 0, y: 0 };
+
+    window.addEventListener('scroll', () => {
+      const vh = window.innerHeight || 800;
+      scrollRatio = Math.min(2.5, Math.max(0, window.scrollY / vh));
+    }, { passive: true });
+
+    window.addEventListener('pointermove', (e) => {
+      targetMouseParallax.x = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetMouseParallax.y = (e.clientY / window.innerHeight - 0.5) * 2;
+    }, { passive: true });
 
     canvas.addEventListener('pointerdown', (e) => {
       isDragging = true;
@@ -2427,7 +2467,7 @@ function initCommodore3D() {
     };
 
     // ========================================================
-    // 60FPS DELTATIME ANIMATION LOOP
+    // 60FPS DELTATIME ANIMATION LOOP WITH SCROLL & MOUSE DYNAMICS
     // ========================================================
     let idleTime = 0;
     function renderLoop() {
@@ -2435,6 +2475,9 @@ function initCommodore3D() {
 
       const dt = DeltaTime();
       idleTime += dt;
+
+      // Scanline Drift Animation on CRT Canvas
+      scanlineOffset = (scanlineOffset + dt * 10) % 4;
 
       // Handle Blinking Cursor (every 500ms)
       const now = performance.now();
@@ -2444,17 +2487,29 @@ function initCommodore3D() {
         drawCrtScreen();
       }
 
-      // Smooth Camera Lerp for Zoom Toggle
-      const targetPos = isCommodoreZoomed ? cameraZoomedPos : cameraOverviewPos;
+      // Smooth Mouse Parallax Interpolation
+      currentMouseParallax.x += (targetMouseParallax.x - currentMouseParallax.x) * dt * 3.5;
+      currentMouseParallax.y += (targetMouseParallax.y - currentMouseParallax.y) * dt * 3.5;
+
+      // Calculate Scroll-Linked Camera & Model Offset
+      const scrollRotY = isCommodoreZoomed ? 0 : scrollRatio * 0.35;
+      const scrollPosY = isCommodoreZoomed ? -0.45 : (-0.45 + scrollRatio * 0.18);
+      const scrollCamZ = isCommodoreZoomed ? cameraZoomedPos.z : (cameraOverviewPos.z + scrollRatio * 0.6);
+
+      const targetPos = isCommodoreZoomed ? cameraZoomedPos : new THREE.Vector3(cameraOverviewPos.x, cameraOverviewPos.y, scrollCamZ);
       camera.position.lerp(targetPos, Math.min(1, dt * 5.0));
-      camera.lookAt(cameraLookTarget.x, isCommodoreZoomed ? 0.35 : 0.15, cameraLookTarget.z);
+      camera.lookAt(cameraLookTarget.x, isCommodoreZoomed ? 0.35 : (0.15 + scrollRatio * 0.08), cameraLookTarget.z);
 
       if (commodoreModel) {
         if (!isDragging) {
-          // Gentle idle breathing sway (slowed down when zoomed in)
-          const swayFactor = isCommodoreZoomed ? 0.008 : 0.025;
-          commodoreModel.rotation.y += (rotVel.y + Math.sin(idleTime * 0.8) * swayFactor) * dt;
-          commodoreModel.rotation.x += rotVel.x * dt;
+          // Gentle idle breathing sway combined with mouse parallax and scroll rotation
+          const swayFactor = isCommodoreZoomed ? 0.005 : 0.02;
+          const targetRotY = -0.25 + scrollRotY + (isCommodoreZoomed ? 0 : currentMouseParallax.x * 0.16) + Math.sin(idleTime * 0.8) * swayFactor;
+          const targetRotX = 0.12 + (isCommodoreZoomed ? 0 : currentMouseParallax.y * 0.1);
+          
+          commodoreModel.rotation.y += (targetRotY - commodoreModel.rotation.y) * Math.min(1, dt * 4.0);
+          commodoreModel.rotation.x += (targetRotX - commodoreModel.rotation.x) * Math.min(1, dt * 4.0);
+          commodoreModel.position.y += (scrollPosY - commodoreModel.position.y) * Math.min(1, dt * 4.0);
         } else {
           commodoreModel.rotation.y += rotVel.y * dt;
           commodoreModel.rotation.x += rotVel.x * dt;
