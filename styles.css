@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 
 /* ============================================================ */
-/* CUSTOM RETRO WEBFONTS (Public Pixel & Chill)                 */
+/* 1. CUSTOM RETRO WEBFONTS (Public Pixel & Chill)              */
 /* ============================================================ */
 @font-face {
   font-family: 'public-pixel';
@@ -21,542 +21,60 @@
   font-display: swap;
 }
 
+/* ============================================================ */
+/* 2. ROOT VARIABLES - WARM VINTAGE RETRO PALETTE               */
+/* ============================================================ */
 :root {
-  --font-sans: 'chill', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  --font-mono: 'JetBrains Mono', 'chill', 'Fira Code', monospace;
+  --color-primary: #525252;
+  --color-bg: #f6d4b1;
+  --color-bg-card: #fff7ee;
+  --color-bg-card-alt: #fbeee1;
+  --color-border: #525252;
+  --color-accent: #d97706;
+  --color-amber: #ffb000;
   --font-pixel: 'public-pixel', monospace;
-  --bg-page: #0a0c10;
-  --bg-surface: #12151d;
-  --bg-surface-elevated: #171b26;
-  --border-subtle: rgba(255, 255, 255, 0.07);
-  --border-hover: rgba(255, 255, 255, 0.16);
-  --border-focus: rgba(16, 185, 129, 0.4);
-  --accent-emerald: #10b981;
-  --accent-indigo: #6366f1;
-  --accent-amber: #f59e0b;
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-muted: #64748b;
+  --font-sans: 'chill', sans-serif;
+  --font-mono: 'JetBrains Mono', 'chill', monospace;
 }
 
-.light-theme {
-  --bg-page: #f8fafc;
-  --bg-surface: #ffffff;
-  --bg-surface-elevated: #f1f5f9;
-  --border-subtle: rgba(0, 0, 0, 0.08);
-  --border-hover: rgba(0, 0, 0, 0.16);
-  --border-focus: rgba(16, 185, 129, 0.5);
-  --text-primary: #0f172a;
-  --text-secondary: #475569;
-  --text-muted: #94a3b8;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-html {
-  scroll-behavior: smooth;
-  font-family: var(--font-sans);
-}
-
-body {
-  font-family: var(--font-sans);
-  background-color: var(--bg-page);
-  color: var(--text-primary);
-  line-height: 1.6;
-  transition: background-color 0.3s ease, color 0.3s ease;
-  overflow-x: hidden;
-  -webkit-text-size-adjust: 100%;
-}
-
-/* Headings with Authentic Public-Pixel Typography */
-h1, h2, h3, .pixel-title {
-  font-family: var(--font-pixel);
-  letter-spacing: -0.02em;
-}
-
-h1 {
-  font-size: clamp(1.25rem, 3.2vw, 2.1rem) !important;
-  line-height: 1.35 !important;
-}
-
-h2 {
-  font-size: clamp(1.05rem, 2.4vw, 1.45rem) !important;
-  line-height: 1.4 !important;
-}
-
-h3 {
-  font-size: clamp(0.9rem, 1.8vw, 1.15rem) !important;
-  line-height: 1.4 !important;
-}
-
-.font-mono {
-  font-family: var(--font-mono);
-}
-
-.font-pixel {
-  font-family: var(--font-pixel) !important;
-}
-
-/* Subtle Film Grain Texture Overlay */
-.noise-overlay {
-  position: fixed;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-  z-index: 1;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-}
-
-/* Soft Warm Ambient Lights (Subtle, never loud) */
-.ambient-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  border-radius: 50%;
-  filter: blur(140px);
-  pointer-events: none;
-  opacity: 0.12;
-  z-index: 0;
-}
-
-.ambient-glow-emerald {
-  background: radial-gradient(circle, #10b981 0%, transparent 70%);
-}
-
-.ambient-glow-indigo {
-  background: radial-gradient(circle, #6366f1 0%, transparent 70%);
-}
-
-/* Human-Crafted Surface Cards */
-.artisan-card {
-  position: relative;
-  background-color: var(--bg-surface);
-  border: 1px solid var(--border-subtle);
-  border-radius: 1rem;
-  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1), 
-              border-color 0.25s ease, 
-              box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: transform, box-shadow;
-}
-
-.artisan-card:hover {
-  border-color: var(--border-hover);
-  transform: translateY(-2px);
-  box-shadow: 0 16px 32px -8px rgba(0, 0, 0, 0.35), 0 0 0 1px rgba(255, 255, 255, 0.04);
-}
-
-.light-theme .artisan-card:hover {
-  box-shadow: 0 16px 32px -8px rgba(15, 23, 42, 0.08), 0 0 0 1px rgba(0, 0, 0, 0.04);
-  border-color: var(--border-hover);
-}
-
-/* Interactive Spotlight Gradient that tracks pointer */
-.spotlight-card {
-  position: relative;
-  overflow: hidden;
-}
-
-.spotlight-card::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    400px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
-    rgba(255, 255, 255, 0.05),
-    transparent 60%
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
-  z-index: 1;
-}
-
-.spotlight-card:hover::before {
-  opacity: 1;
-}
-
-/* Developer Workstation Terminal */
-.developer-terminal {
-  background: #0d1017;
-  border: 1px solid rgba(255, 255, 255, 0.09);
-  border-radius: 0.875rem;
-  box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 255, 255, 0.03);
-}
-
-.light-theme .developer-terminal {
-  background: #111827;
-  border-color: rgba(0, 0, 0, 0.15);
-  box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.2);
-}
-
-/* Terminal Tab Item */
-.terminal-tab {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.45rem 0.85rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  color: #94a3b8;
-  border-bottom: 2px solid transparent;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.terminal-tab.active {
-  color: #f8fafc;
-  background: rgba(255, 255, 255, 0.04);
-  border-bottom-color: #10b981;
-}
-
-.terminal-tab:hover:not(.active) {
-  color: #cbd5e1;
-  background: rgba(255, 255, 255, 0.02);
-}
-
-/* Interactive Interactive Simulator Canvas Frame */
-.sim-viewport {
-  position: relative;
-  background: #080a0f;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  border-radius: 0.75rem;
-  overflow: hidden;
-}
-
-.camera-feed-scanline {
-  background: linear-gradient(
-    to bottom,
-    transparent 50%,
-    rgba(0, 0, 0, 0.25) 51%
-  );
-  background-size: 100% 4px;
-}
-
-/* Pulse Live Status Pill */
-.status-pulsar {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.status-pulsar::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  border-radius: 9999px;
-  background: inherit;
-  animation: radarPing 2.5s cubic-bezier(0, 0, 0.2, 1) infinite;
-  opacity: 0.6;
-}
-
-@keyframes radarPing {
-  0% { transform: scale(1); opacity: 0.8; }
-  75%, 100% { transform: scale(2.4); opacity: 0; }
-}
-
-/* Snappy Tactile Buttons */
-button, .clickable-pill {
-  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), 
-              background-color 0.15s ease, 
-              border-color 0.15s ease,
-              color 0.15s ease;
-}
-
-button:active, .clickable-pill:active {
-  transform: scale(0.97);
-}
-
-/* Tech Pill */
-.tech-tag {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.35rem;
-  padding: 0.25rem 0.6rem;
-  font-size: 0.75rem;
-  font-family: var(--font-mono);
-  font-weight: 500;
-  border-radius: 0.375rem;
-  border: 1px solid rgba(255, 255, 255, 0.07);
-  background: rgba(255, 255, 255, 0.03);
-  color: #cbd5e1;
-  transition: all 0.2s ease;
-}
-
-.light-theme .tech-tag {
-  border-color: rgba(0, 0, 0, 0.08);
-  background: rgba(0, 0, 0, 0.03);
-  color: #475569;
-}
-
-.tech-tag:hover {
-  border-color: rgba(16, 185, 129, 0.4);
-  color: #10b981;
-  background: rgba(16, 185, 129, 0.06);
-}
-
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.15);
-  border-radius: 9999px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: rgba(255, 255, 255, 0.25);
-}
-
-/* Modal Animations */
-.modal-overlay {
-  background: rgba(8, 10, 15, 0.85);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-}
-
-.modal-enter {
-  animation: modalSlideUp 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-}
-
-@keyframes modalSlideUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px) scale(0.98);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-}
-
-/* Bounding box animation for YOLO demo */
-@keyframes pulseBBox {
-  0%, 100% { border-color: rgba(16, 185, 129, 0.85); }
-  50% { border-color: rgba(6, 182, 212, 0.95); }
-}
-
-.bounding-box-active {
-  animation: pulseBBox 2s infinite ease-in-out;
-}
-
-/* ======================================================== */
-/* SCROLL ANIMATIONS & REVEAL SYSTEM                        */
-/* ======================================================== */
-
-/* Reading Scroll Progress Bar */
-#scroll-progress-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  height: 3px;
-  background: linear-gradient(90deg, #10b981, #06b6d4, #10b981);
-  background-size: 200% 100%;
-  animation: gradientShift 6s ease infinite;
-  z-index: 100;
-  width: 0%;
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.8), 0 0 4px rgba(6, 182, 212, 0.6);
-  pointer-events: none;
-  transition: width 0.08s ease-out;
-}
-
-@keyframes gradientShift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-/* Scroll Reveal Elements */
-.reveal-on-scroll {
-  opacity: 0;
-  transform: translateY(28px);
-  filter: blur(3px);
-  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform, filter;
-}
-
-.reveal-on-scroll.is-revealed {
-  opacity: 1;
-  transform: translateY(0);
-  filter: blur(0);
-}
-
-/* Stagger Delay Classes */
-.reveal-delay-1 { transition-delay: 0.08s; }
-.reveal-delay-2 { transition-delay: 0.16s; }
-.reveal-delay-3 { transition-delay: 0.24s; }
-.reveal-delay-4 { transition-delay: 0.32s; }
-.reveal-delay-5 { transition-delay: 0.40s; }
-.reveal-delay-6 { transition-delay: 0.48s; }
-
-/* Horizontal Slide Variations */
-.reveal-from-left {
-  opacity: 0;
-  transform: translateX(-32px);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-from-left.is-revealed {
-  opacity: 1;
-  transform: translateX(0);
-  filter: blur(0);
-}
-
-.reveal-from-right {
-  opacity: 0;
-  transform: translateX(32px);
-  filter: blur(3px);
-  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              transform 0.75s cubic-bezier(0.16, 1, 0.3, 1),
-              filter 0.75s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal-from-right.is-revealed {
-  opacity: 1;
-  transform: translateX(0);
-  filter: blur(0);
-}
-
-/* Floating Back To Top Button */
-#back-to-top-btn {
-  position: fixed;
-  bottom: 24px;
-  left: 24px;
-  z-index: 40;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 0.85rem;
-  border-radius: 9999px;
-  background: rgba(18, 21, 29, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #94a3b8;
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.4);
-  cursor: pointer;
-  opacity: 0;
-  transform: translateY(16px);
-  pointer-events: none;
-  transition: opacity 0.25s ease, transform 0.25s ease, border-color 0.2s ease, color 0.2s ease;
-}
-
-#back-to-top-btn.visible {
-  opacity: 1;
-  transform: translateY(0);
-  pointer-events: auto;
-}
-
-#back-to-top-btn:hover {
-  color: #10b981;
-  border-color: rgba(16, 185, 129, 0.5);
-  transform: translateY(-2px);
-}
-
-/* Active Nav Item Indicator */
-.nav-link.active-nav {
-  color: #10b981 !important;
-  position: relative;
-}
-
-.nav-link.active-nav::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 100%;
-  height: 2px;
-  background-color: #10b981;
-  border-radius: 9999px;
-  box-shadow: 0 0 8px rgba(16, 185, 129, 0.8);
-}
-
-/* ======================================================== */
-/* RETRO-TACTILE & WEBGL INTERACTIVE SYSTEM                 */
-/* (Inspired by Creative Indie Arcade Webcraft)             */
-/* ======================================================== */
-
-/* 1. Interactive WebGL Canvas */
-.webgl {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  outline: none;
-  z-index: 0;
-  pointer-events: auto;
-  cursor: grab;
-  opacity: 0.65;
-  transition: opacity 0.5s ease;
-}
-
-.webgl:active {
-  cursor: grabbing;
-}
-
-.light-theme .webgl {
-  opacity: 0.35;
-}
-
-/* 2. Retro Bootloader Screen */
+/* ============================================================ */
+/* RETRO BOOTLOADER SCREEN (VINTAGE CHARCOAL & PEACH)          */
+/* ============================================================ */
 #loading {
   position: fixed;
   inset: 0;
-  background-color: #0a0c10;
-  color: #10b981;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
   z-index: 99999;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   padding: 24px;
-  transition: opacity 0.45s cubic-bezier(0.16, 1, 0.3, 1),
-              visibility 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, visibility;
+  transition: opacity 0.35s ease;
 }
 
 #loading.loaded {
   opacity: 0;
-  visibility: hidden;
   pointer-events: none;
 }
 
 .bootloader-card {
   width: 100%;
-  max-width: 540px;
-  background: #0d1017;
-  border: 1.5px solid rgba(16, 185, 129, 0.4);
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.9), 8px 8px 0px rgba(16, 185, 129, 0.25);
-  border-radius: 12px;
-  padding: 24px;
+  max-width: 560px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
 #loading-bar {
   position: relative;
   width: 100%;
   height: 38px;
-  border: dashed 2px #10b981;
-  box-shadow: 2px 2px 0px #0a0c10, 6px 6px 0px rgba(16, 185, 129, 0.3);
-  background: #080a0f;
-  margin: 16px 0 12px 0;
-  overflow: hidden;
+  border: dashed 2px var(--color-bg);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4), 6px 6px 0px rgba(246, 212, 177, 0.4);
+  background-color: #3f3f3f;
+  border-radius: 2px;
 }
 
 #loading-bar-progress {
@@ -565,165 +83,459 @@ button:active, .clickable-pill:active {
   bottom: 3px;
   left: 3px;
   right: 3px;
-  background: linear-gradient(90deg, #10b981, #06b6d4);
+  background-color: var(--color-bg);
   transform: scaleX(0);
   transform-origin: left;
-  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1);
-  box-shadow: 0 0 12px rgba(16, 185, 129, 0.7);
+  transition: transform 0.2s;
 }
 
-#loading-items {
-  height: 24px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
-/* 3. Floating Retro Scroll Tip Pill */
-#tip-scroll {
-  position: fixed;
-  bottom: 24px;
-  left: 50%;
-  transform: translateX(-50%);
+html {
+  scroll-behavior: smooth;
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  font-size: 17px;
+  line-height: 1.65;
+  overflow-x: hidden;
+  transition: background-color 0.3s ease;
+}
+
+/* Headings with Authentic Public-Pixel Brutalist Style */
+h1 {
+  display: inline-block;
+  color: var(--color-bg);
+  background-color: var(--color-primary);
   font-family: var(--font-pixel);
-  font-size: 9px;
-  letter-spacing: 0.05em;
-  font-weight: 700;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.9), 6px 6px 0px rgba(16, 185, 129, 0.35);
-  background-color: #0d1017;
-  color: #10b981;
-  transition: opacity 0.35s ease, transform 0.35s ease;
+  font-size: clamp(1.2rem, 3vw, 1.85rem) !important;
+  line-height: 1.3 !important;
+  padding: 12px 24px;
+  margin: 0 auto 1.5rem auto;
+  box-shadow: 3px 3px 0px rgba(82, 82, 82, 0.4);
+  text-align: center;
+  border-radius: 2px;
+}
+
+h2 {
+  display: inline-block;
+  color: var(--color-bg);
+  background-color: var(--color-primary);
+  font-family: var(--font-pixel);
+  font-size: clamp(0.95rem, 2.2vw, 1.25rem) !important;
+  line-height: 1.35 !important;
   padding: 8px 18px;
-  border: dashed 1.5px #10b981;
-  border-radius: 6px;
-  pointer-events: auto;
-  z-index: 45;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  user-select: none;
+  margin: 0.8rem auto;
+  box-shadow: 2px 2px 0px rgba(82, 82, 82, 0.3);
+  text-align: center;
+  border-radius: 2px;
 }
 
-#tip-scroll:hover {
-  transform: translateX(-50%) translateY(-2px);
-  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.9), 8px 8px 0px rgba(16, 185, 129, 0.5);
-  background-color: #121622;
-}
-
-html[data-scroll="true"] #tip-scroll {
-  opacity: 0;
-  transform: translateX(-50%) translateY(24px);
-  pointer-events: none;
-}
-
-/* 4. Collapsible Accordions (User Inspired Specification) */
-.collapse-btn {
-  user-select: none;
-  cursor: pointer;
-}
-
-.collapse-btn[collapsed="true"] + .collapse-body {
-  opacity: 0;
-  max-height: 0;
-  font-size: 0;
-  overflow: hidden;
-  transition: opacity 0.35s ease, max-height 0.4s cubic-bezier(0, 1, 0, 1), font-size 0.3s 0.25s;
-}
-
-.collapse-btn[collapsed="true"] + .collapse-body p,
-.collapse-btn[collapsed="true"] + .collapse-body div {
-  padding-top: 0 !important;
-  padding-bottom: 0 !important;
-  transition: padding 0.3s;
-}
-
-.collapse-btn[collapsed="false"] + .collapse-body {
-  font-size: inherit;
-  opacity: 1;
-  max-height: 900px;
-  overflow: hidden;
-  transition: opacity 0.35s 0.1s ease, max-height 0.5s cubic-bezier(0.16, 1, 0.3, 1), font-size 0.3s;
-}
-
-.collapse-btn[collapsed="false"] + .collapse-body p,
-.collapse-btn[collapsed="false"] + .collapse-body div {
-  transition: padding 0.3s;
-}
-
-/* 5. Neo-Brutalist Tactile Buttons & Badges */
-.retro-btn {
-  position: relative;
+h3 {
   font-family: var(--font-pixel);
-  font-size: 0.65rem;
-  letter-spacing: 0.03em;
-  font-weight: 700;
+  font-size: 0.85rem !important;
+  text-align: center;
+  color: var(--color-primary);
+  margin: 0.4rem auto 0.8rem auto;
+  letter-spacing: 0.02em;
+}
+
+p {
+  color: var(--color-primary);
+  line-height: 1.7;
+  font-size: 1.05rem;
+}
+
+hr.retro-divider {
+  width: 140px;
+  height: 2px;
+  margin: 40px auto;
+  border: none;
+  border-bottom: dashed 2px var(--color-primary);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel) !important;
+}
+
+.font-sans {
+  font-family: var(--font-sans) !important;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+/* ============================================================ */
+/* 3. TACTILE NEO-BRUTALIST BUTTONS & BADGES                    */
+/* ============================================================ */
+.btn, .retro-btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.375rem;
-  box-shadow: 4px 4px 0px rgba(16, 185, 129, 0.35);
-  background-color: #0d1017;
-  color: #10b981;
-  cursor: pointer;
-  transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
-  padding: 6px 18px;
-  border: 1.5px solid #10b981;
-  text-decoration: none;
-  border-radius: 6px;
-}
-
-.retro-btn:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 6px 6px 0px #10b981;
-  background-color: #10b981;
-  color: #0a0c10;
-}
-
-.retro-btn:active {
-  transform: translate(2px, 2px);
-  box-shadow: 1px 1px 0px #10b981;
-}
-
-.retro-block-tag {
-  display: inline-flex;
-  align-items: center;
   gap: 0.4rem;
   font-family: var(--font-pixel);
-  font-size: 0.6rem;
+  font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 4px 8px;
-  background-color: #10b981;
-  color: #0a0c10;
+  letter-spacing: 0.03em;
+  padding: 8px 18px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  fill: var(--color-bg);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0px var(--color-primary), 5px 5px 0px rgba(82, 82, 82, 0.25);
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  pointer-events: all;
+}
+
+.btn:hover, .retro-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px var(--color-primary), 8px 8px 0px rgba(82, 82, 82, 0.2);
+  background-color: #3f3f3f;
+  color: #fff;
+}
+
+.btn:active, .retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--color-primary);
+}
+
+.btn-secondary {
+  background-color: var(--color-bg-card);
+  color: var(--color-primary);
+  border: dashed 2px var(--color-primary);
+  box-shadow: 2px 2px 0px var(--color-primary), 5px 5px 0px rgba(82, 82, 82, 0.2);
+}
+
+.btn-secondary:hover {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border-color: var(--color-primary);
+}
+
+/* Tactile Brutalist Chips (Skills & Tags) */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  list-style: none;
+  margin: 1rem 0;
+}
+
+.skills-list li, .retro-tag {
+  display: inline-block;
+  padding: 5px 12px;
+  border: dashed 1px var(--color-primary);
+  background-color: var(--color-bg-card);
+  color: var(--color-primary);
+  box-shadow: 1px 1px 0px var(--color-bg), 3px 3px 0px rgba(82, 82, 82, 0.25);
+  font-family: var(--font-sans);
+  font-size: 0.9rem;
+  font-weight: 500;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.skills-list li:hover, .retro-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 1px 1px 0px var(--color-bg), 5px 5px 0px rgba(82, 82, 82, 0.35);
+  background-color: #fff;
+}
+
+/* ============================================================ */
+/* 4. RETRO CARD CONTAINERS & SECTIONS                          */
+/* ============================================================ */
+.retro-card {
+  background-color: var(--color-bg-card);
+  border: dashed 2px var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary), 7px 7px 0px rgba(82, 82, 82, 0.2);
+  padding: 24px;
   border-radius: 4px;
-  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.9), 4px 4px 0px rgba(16, 185, 129, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.retro-section-divider {
+.retro-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 4px 4px 0px var(--color-primary), 10px 10px 0px rgba(82, 82, 82, 0.25);
+}
+
+section {
+  padding-bottom: 56px;
+  margin-bottom: 64px;
   position: relative;
+  text-align: center;
 }
 
-.retro-section-divider::after {
+section::after {
   content: "";
-  border-bottom: dashed 2px rgba(16, 185, 129, 0.25);
+  border-bottom: dashed 2px var(--color-primary);
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
-  width: clamp(0px, 92vw, 1152px);
+  width: clamp(0px, 92vw, 760px);
 }
 
-/* Retro Slide-Out Navigation Drawer */
+section:last-of-type::after {
+  display: none;
+}
+
+/* ============================================================ */
+/* 5. TOP NAVIGATION & SLIDE-OUT RETRO MENU                     */
+/* ============================================================ */
+nav.retro-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+nav.retro-nav .btn {
+  pointer-events: all;
+}
+
 #retro-menu-overlay {
-  transition: opacity 0.25s cubic-bezier(0.16, 1, 0.3, 1), transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  transform: translateY(-8px);
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  z-index: 1000;
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
 }
 
 #retro-menu-overlay.menu-open {
-  opacity: 1 !important;
-  pointer-events: auto !important;
-  transform: translateY(0) !important;
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  margin: auto 0;
+}
+
+.menu-links a {
+  font-family: var(--font-pixel);
+  font-size: clamp(1rem, 2.8vw, 1.6rem);
+  color: var(--color-bg);
+  text-decoration: none;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-links a:hover {
+  transform: translateX(10px);
+  color: #fff;
+}
+
+/* ============================================================ */
+/* 6. HERO SECTION & 3D COMMODORE WORKSTATION                   */
+/* ============================================================ */
+#hero {
+  position: relative;
+  width: 100%;
+  min-height: 82vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 60px;
+  padding-bottom: 30px;
+  background-color: var(--color-bg);
+  overflow: hidden;
+}
+
+#commodore-canvas-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 1080px;
+  height: clamp(380px, 62vh, 620px);
+  margin: 0 auto;
+}
+
+#commodore-canvas {
+  width: 100%;
+  height: 100%;
+  outline: none;
+  cursor: grab;
+  touch-action: none;
+}
+
+#commodore-canvas:active {
+  cursor: grabbing;
+}
+
+/* Floating Scroll Indicator */
+#tip-scroll {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: 6px 20px;
+  border-radius: 3px;
+  box-shadow: 2px 2px 0px var(--color-primary), 5px 5px 0px rgba(82, 82, 82, 0.35);
+  pointer-events: none;
+  z-index: 100;
+  transition: opacity 0.3s;
+}
+
+/* ============================================================ */
+/* 7. INTERACTIVE TERMINAL SHELL (VINTAGE RETRO STYLE)          */
+/* ============================================================ */
+.retro-terminal-box {
+  background-color: #121214;
+  border: 3px solid var(--color-primary);
+  box-shadow: 4px 4px 0px var(--color-primary), 8px 8px 0px rgba(82, 82, 82, 0.3);
+  border-radius: 6px;
+  color: var(--color-amber);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  text-align: left;
+}
+
+.retro-terminal-bar {
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: 8px 14px;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.terminal-scroll-area {
+  padding: 16px;
+  height: 280px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.terminal-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+
+.terminal-scroll-area::-webkit-scrollbar-track {
+  background: #18181b;
+}
+
+.terminal-scroll-area::-webkit-scrollbar-thumb {
+  background: var(--color-primary);
+}
+
+/* ============================================================ */
+/* 8. COLLAPSIBLE ACCORDION & MODALS                            */
+/* ============================================================ */
+.collapse-btn[collapsed="true"] + .collapse-body {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s, max-height 0.4s cubic-bezier(0, 1, 0, 1);
+}
+
+.collapse-btn[collapsed="false"] + .collapse-body {
+  opacity: 1;
+  max-height: 1200px;
+  overflow: hidden;
+  transition: opacity 0.35s 0.1s ease, max-height 0.5s ease;
+}
+
+/* Modal Overlay */
+.retro-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(82, 82, 82, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.retro-modal-overlay.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.retro-modal-content {
+  background-color: var(--color-bg-card);
+  border: 3px solid var(--color-primary);
+  box-shadow: 6px 6px 0px var(--color-primary);
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  padding: 24px;
+  position: relative;
+  text-align: left;
+}
+
+/* Responsive Images with Retro Border */
+.retro-img {
+  width: 100%;
+  border: dashed 2px var(--color-primary);
+  box-shadow: 2px 2px 0px var(--color-bg), 5px 5px 0px rgba(82, 82, 82, 0.25);
+  border-radius: 3px;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  body {
+    font-size: 15px;
+  }
+  .btn, .retro-btn {
+    padding: 6px 12px;
+    font-size: 9px;
+  }
+  #hero {
+    min-height: 70vh;
+    padding-top: 48px;
+  }
+  #commodore-canvas-wrapper {
+    height: 360px;
+  }
+}

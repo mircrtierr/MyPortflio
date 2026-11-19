@@ -590,17 +590,24 @@ window.runCliCommand = function(cmd) {
   const terminalInput = document.getElementById('terminal-input');
   audio.playSoftClick();
   if (terminalInput) {
-    // Switch to terminal tab if not active
-    const terminalTabBtn = document.querySelector('.terminal-tab[data-tab="terminal"]');
-    if (terminalTabBtn && !terminalTabBtn.classList.contains('active')) {
-      terminalTabBtn.click();
-    }
     terminalInput.value = cmd;
     handleCommand(cmd);
     terminalInput.value = '';
     terminalInput.focus();
     audio.playBeep();
   }
+};
+
+window.submitCliCommand = function() {
+  const input = document.getElementById('terminal-input');
+  if (!input) return;
+  const val = input.value.trim();
+  if (!val) return;
+  handleCommand(val);
+  STATE.terminalHistory.push(val);
+  STATE.historyIndex = STATE.terminalHistory.length;
+  input.value = '';
+  audio.playBeep();
 };
 
 // ========================================================
@@ -2128,6 +2135,7 @@ function initCommodore3D() {
 
   try {
     const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0xf6d4b1);
 
     // Camera setup with Dual-Mode Zoom Targets
     const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
@@ -2139,19 +2147,20 @@ function initCommodore3D() {
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
-      alpha: true,
+      alpha: false,
       antialias: true,
       powerPreference: 'high-performance'
     });
+    renderer.setClearColor(0xf6d4b1, 1);
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
 
-    // Ambient & Directional Lighting matching reference lighting
-    const ambientLight = new THREE.AmbientLight(0xffffff, 1.15);
+    // Ambient & Directional Lighting matching warm retro aesthetic
+    const ambientLight = new THREE.AmbientLight(0xffedd9, 1.35);
     scene.add(ambientLight);
 
-    const dirLight = new THREE.DirectionalLight(0xfff5ea, 1.25);
+    const dirLight = new THREE.DirectionalLight(0xfff3e6, 1.45);
     dirLight.position.set(4, 7, 5);
     scene.add(dirLight);
 
@@ -2174,19 +2183,21 @@ function initCommodore3D() {
 
     // Line log buffer with Mirza's verified credentials
     const crtLogs = [
-      "*** MIRZA-OS 2.0 (COMMODORE 710 RETRO WORKSTATION) ***",
-      "64K RAM SYSTEM  •  FAISS 512D VECTOR  •  YOLO READY",
-      "-------------------------------------------------------------",
-      "CANDIDATE: MUHAMMAD MIRZA AQMAL RAZIQ BIN MIRZA AFFZARD",
-      "DIPLOMA  : TEKNOLOGI KOMPUTERAN (KVPJB)  •  CGPA: 3.98",
-      "SKM LEVEL: LEVEL 3 IT SYSTEM SUPPORT (CERT: S103882102)",
-      "OJT DATES: 5-MONTH INTERNSHIP (FEB - JUN 2027) PASIR GUDANG",
-      "SYSTEMS  : SMARTATTEND (ESP32-CAM) • YOLO CUSTOM CLASSIFIER",
-      "-------------------------------------------------------------",
+      "*** MIRZA-OS 2.0 (COMMODORE 710) ***",
+      "64K RAM SYSTEM  •  FAISS 512D VECTOR READY",
+      "---------------------------------------------------",
+      "Hi there,",
+      "I'm Mirza",
+      "",
+      "• Diploma Teknologi Komputeran (KVPJB)",
+      "• Academic CGPA: 3.98 / 4.00",
+      "• SKM Tahap 3 Certified: S103882102",
+      "• 5-Month IT Internship (Feb - June 2027)",
+      "• Systems: ESP32-CAM FAISS & YOLOv8",
+      "---------------------------------------------------",
       "READY.",
-      "RUN \"PORTFOLIO.PRG\"",
-      "> MIRZA KERNEL ONLINE // 60FPS DELTATIME CLOCK ACTIVE",
-      "READY."
+      "Scroll down or type to explore",
+      "mirza:~$ ready."
     ];
 
     let cursorBlink = true;
@@ -2246,7 +2257,7 @@ function initCommodore3D() {
           crtCtx.fillStyle = palette.dim;
         } else if (line.startsWith(">") || line.includes("READY")) {
           crtCtx.fillStyle = palette.primary;
-        } else if (line.startsWith("CANDIDATE") || line.startsWith("DIPLOMA")) {
+        } else if (line.startsWith("CANDIDATE") || line.startsWith("Hi there") || line.startsWith("I'm Mirza")) {
           crtCtx.fillStyle = palette.primary;
         } else {
           crtCtx.fillStyle = palette.primary;
@@ -2421,9 +2432,6 @@ function initCommodore3D() {
     let idleTime = 0;
     function renderLoop() {
       requestAnimationFrame(renderLoop);
-
-      const panel = document.getElementById('tab-panel-retro3d');
-      if (panel && panel.classList.contains('hidden')) return;
 
       const dt = DeltaTime();
       idleTime += dt;
