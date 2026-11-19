@@ -369,10 +369,13 @@ const COMMANDS = {
 
 // Lifecycle Boot
 document.addEventListener('DOMContentLoaded', () => {
+  initRetroBootloader();
   initTheme();
   initSoundToggle();
   initJohorClock();
   initSpotlightMouseTracking();
+  initThreeWebGL();
+  initScrollTip();
   initTerminalTabs();
   initTerminal();
   initSmartAttendSimulator();
@@ -1702,4 +1705,333 @@ function initBackToTop() {
 
   window.addEventListener('scroll', toggleBtn, { passive: true });
   toggleBtn();
+}
+
+// ==============================================
+// 60FPS DELTATIME CLOCK (User Inspired Module)
+// ==============================================
+let lastFrameTime = performance.now();
+const DeltaTime = () => {
+  const currentTime = performance.now();
+  const delta = (currentTime - lastFrameTime) / 1000;
+  lastFrameTime = currentTime;
+  return Math.min(Math.max(delta, 0.001), 0.1);
+};
+
+// ==============================================
+// INTERACTIVE 3D WEBGL CONSTELLATION (THREE.JS)
+// ==============================================
+let threeScene, threeCamera, threeRenderer, threeCore, threeInnerCore, threeParticles;
+let isTurboSpin = false;
+let threeVelocity = { x: 0, y: 0 };
+let isThreeDragging = false;
+let previousPointerPos = { x: 0, y: 0 };
+
+function initThreeWebGL() {
+  const canvas = document.getElementById('webgl-canvas');
+  if (!canvas || typeof THREE === 'undefined') {
+    initCanvasFallback();
+    return;
+  }
+
+  try {
+    threeScene = new THREE.Scene();
+    threeCamera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
+    threeCamera.position.z = 24;
+
+    threeRenderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    threeRenderer.setSize(window.innerWidth, window.innerHeight);
+    threeRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // 1. Primary Outer Icosahedron Wireframe Core
+    const coreGeo = new THREE.IcosahedronGeometry(6.5, 1);
+    const coreMat = new THREE.MeshBasicMaterial({
+      color: 0x10b981,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.38
+    });
+    threeCore = new THREE.Mesh(coreGeo, coreMat);
+    threeScene.add(threeCore);
+
+    // 2. Inner Cyber Gem
+    const innerGeo = new THREE.OctahedronGeometry(3.6, 0);
+    const innerMat = new THREE.MeshBasicMaterial({
+      color: 0x06b6d4,
+      wireframe: true,
+      transparent: true,
+      opacity: 0.55
+    });
+    threeInnerCore = new THREE.Mesh(innerGeo, innerMat);
+    threeScene.add(threeInnerCore);
+
+    // 3. Orbital Particle Constellation
+    const particleCount = 1100;
+    const posArray = new Float32Array(particleCount * 3);
+    const colorArray = new Float32Array(particleCount * 3);
+    const color1 = new THREE.Color(0x10b981); // Emerald
+    const color2 = new THREE.Color(0x06b6d4); // Cyan
+    const color3 = new THREE.Color(0xf59e0b); // Amber
+
+    for (let i = 0; i < particleCount; i++) {
+      const angle = Math.random() * Math.PI * 2;
+      const radius = 9 + Math.random() * 16;
+      posArray[i * 3] = Math.cos(angle) * radius;
+      posArray[i * 3 + 1] = (Math.random() - 0.5) * 8;
+      posArray[i * 3 + 2] = Math.sin(angle) * radius;
+
+      const pick = Math.random();
+      const col = pick < 0.6 ? color1 : (pick < 0.85 ? color2 : color3);
+      colorArray[i * 3] = col.r;
+      colorArray[i * 3 + 1] = col.g;
+      colorArray[i * 3 + 2] = col.b;
+    }
+
+    const particleGeo = new THREE.BufferGeometry();
+    particleGeo.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    particleGeo.setAttribute('color', new THREE.BufferAttribute(colorArray, 3));
+
+    const particleMat = new THREE.PointsMaterial({
+      size: 0.16,
+      vertexColors: true,
+      transparent: true,
+      opacity: 0.75,
+      blending: THREE.AdditiveBlending
+    });
+
+    threeParticles = new THREE.Points(particleGeo, particleMat);
+    threeScene.add(threeParticles);
+
+    // Pointer Interactivity (Grab & Orbit)
+    window.addEventListener('pointerdown', (e) => {
+      if (e.target.closest('button, a, input, textarea, .artisan-card, #terminal-window, .modal-overlay, #tip-scroll, #loading')) {
+        return;
+      }
+      isThreeDragging = true;
+      previousPointerPos = { x: e.clientX, y: e.clientY };
+    }, { passive: true });
+
+    window.addEventListener('pointermove', (e) => {
+      if (isThreeDragging) {
+        const deltaX = e.clientX - previousPointerPos.x;
+        const deltaY = e.clientY - previousPointerPos.y;
+        threeVelocity.x += deltaX * 0.0035;
+        threeVelocity.y += deltaY * 0.0035;
+        previousPointerPos = { x: e.clientX, y: e.clientY };
+      } else {
+        const targetX = (e.clientX / window.innerWidth - 0.5) * 3;
+        const targetY = -(e.clientY / window.innerHeight - 0.5) * 3;
+        threeCamera.position.x += (targetX - threeCamera.position.x) * 0.02;
+        threeCamera.position.y += (targetY - threeCamera.position.y) * 0.02;
+      }
+    }, { passive: true });
+
+    window.addEventListener('pointerup', () => {
+      isThreeDragging = false;
+    }, { passive: true });
+
+    // Window Resize Handling
+    window.addEventListener('resize', () => {
+      if (!threeCamera || !threeRenderer) return;
+      threeCamera.aspect = window.innerWidth / window.innerHeight;
+      threeCamera.updateProjectionMatrix();
+      threeRenderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // 60FPS DeltaTime Animation Loop
+    function animate() {
+      requestAnimationFrame(animate);
+
+      if (document.hidden) return;
+
+      const dt = DeltaTime();
+      const spinSpeed = isTurboSpin ? 3.5 : 1.0;
+
+      if (threeCore) {
+        threeCore.rotation.y += (0.22 * spinSpeed + threeVelocity.x) * dt;
+        threeCore.rotation.x += (0.14 * spinSpeed + threeVelocity.y) * dt;
+      }
+
+      if (threeInnerCore) {
+        threeInnerCore.rotation.y -= (0.35 * spinSpeed) * dt;
+        threeInnerCore.rotation.z += (0.22 * spinSpeed) * dt;
+      }
+
+      if (threeParticles) {
+        threeParticles.rotation.y -= (0.07 * spinSpeed) * dt;
+        threeParticles.rotation.x += 0.02 * dt;
+      }
+
+      threeVelocity.x *= 0.94;
+      threeVelocity.y *= 0.94;
+
+      threeCamera.lookAt(threeScene.position);
+      threeRenderer.render(threeScene, threeCamera);
+    }
+
+    animate();
+  } catch (err) {
+    console.warn("WebGL initialization note:", err);
+    initCanvasFallback();
+  }
+}
+
+// Fallback 2D Canvas Constellation if WebGL disabled
+function initCanvasFallback() {
+  const canvas = document.getElementById('webgl-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  if (!ctx) return;
+
+  function resize() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const dots = Array.from({ length: 60 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    vx: (Math.random() - 0.5) * 0.8,
+    vy: (Math.random() - 0.5) * 0.8,
+    r: Math.random() * 2 + 1
+  }));
+
+  function draw() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.fillStyle = 'rgba(16, 185, 129, 0.4)';
+    dots.forEach(d => {
+      d.x += d.vx;
+      d.y += d.vy;
+      if (d.x < 0) d.x = canvas.width;
+      if (d.x > canvas.width) d.x = 0;
+      if (d.y < 0) d.y = canvas.height;
+      if (d.y > canvas.height) d.y = 0;
+      ctx.beginPath();
+      ctx.arc(d.x, d.y, d.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+}
+
+// Turbo Spin Toggle for 3D Scene
+window.toggleThreeWebGLRotation = function() {
+  isTurboSpin = !isTurboSpin;
+  const btn = document.getElementById('three-rot-btn');
+  if (btn) {
+    btn.textContent = isTurboSpin ? "🔥 Turbo Active" : "⚡ Turbo Spin";
+    btn.className = isTurboSpin
+      ? "px-2 py-0.5 rounded bg-emerald-500 text-slate-950 font-bold text-[10px] shadow"
+      : "px-2 py-0.5 rounded bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[10px] hover:bg-emerald-500/30 transition-colors";
+  }
+  audio.playBeep();
+};
+
+// ==============================================
+// RETRO BOOTLOADER SYSTEM (User Inspired Reference)
+// ==============================================
+function initRetroBootloader() {
+  const loader = document.getElementById('loading');
+  const bar = document.getElementById('loading-bar-progress');
+  const pct = document.getElementById('bootloader-pct');
+  const items = document.getElementById('loading-items');
+  if (!loader || !bar) return;
+
+  if (sessionStorage.getItem('mirza_booted') === 'true') {
+    loader.classList.add('loaded');
+    return;
+  }
+
+  const steps = [
+    { p: 20, msg: "// MOUNTING HARDWARE INTERFACES & DELTATIME ENGINE..." },
+    { p: 45, msg: "// INITIALIZING YOLO OBJECT DETECTION & INSIGHTFACE ARCFACE..." },
+    { p: 70, msg: "// VERIFYING CREDENTIALS: SKM3 (S103882102) & OPENAI ACADEMY..." },
+    { p: 90, msg: "// CALIBRATING TACTILE AUDIO SYNTHESIZER & WORKSTATION CLI..." },
+    { p: 100, msg: "// SYSTEM INITIALIZATION COMPLETE. WELCOME!" }
+  ];
+
+  let currentStep = 0;
+  const interval = setInterval(() => {
+    if (currentStep < steps.length) {
+      const step = steps[currentStep];
+      bar.style.transform = `scaleX(${step.p / 100})`;
+      if (pct) pct.textContent = `${step.p}%`;
+      if (items) items.textContent = step.msg;
+      currentStep++;
+    } else {
+      clearInterval(interval);
+      setTimeout(() => {
+        loader.classList.add('loaded');
+        sessionStorage.setItem('mirza_booted', 'true');
+        audio.playBeep();
+      }, 250);
+    }
+  }, 160);
+
+  window.skipBootloader = function() {
+    clearInterval(interval);
+    bar.style.transform = 'scaleX(1)';
+    if (pct) pct.textContent = '100%';
+    loader.classList.add('loaded');
+    sessionStorage.setItem('mirza_booted', 'true');
+  };
+
+  window.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !loader.classList.contains('loaded')) {
+      window.skipBootloader();
+    }
+  });
+}
+
+// ==============================================
+// COLLAPSIBLE ACCORDION CONTROLLER (User Inspired)
+// ==============================================
+window.toggleCollapse = function(btn) {
+  if (!btn) return;
+  const isCollapsed = btn.getAttribute('collapsed') === 'true';
+  btn.setAttribute('collapsed', isCollapsed ? 'false' : 'true');
+
+  const indicator = btn.querySelector('.collapse-indicator');
+  if (indicator) {
+    indicator.textContent = isCollapsed ? '[-]' : '[+]';
+  }
+
+  audio.playSoftClick();
+};
+
+// ==============================================
+// FLOATING SCROLL TIP INDICATOR (User Inspired)
+// ==============================================
+function initScrollTip() {
+  const tip = document.getElementById('tip-scroll');
+  function checkScroll() {
+    if (window.scrollY > 40) {
+      document.documentElement.setAttribute('data-scroll', 'true');
+    } else {
+      document.documentElement.removeAttribute('data-scroll');
+    }
+  }
+
+  if (tip) {
+    tip.addEventListener('click', () => {
+      const targetSec = document.getElementById('playgrounds') || document.getElementById('bento');
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        window.scrollBy({ top: 400, behavior: 'smooth' });
+      }
+      audio.playSoftClick();
+    });
+  }
+
+  window.addEventListener('scroll', checkScroll, { passive: true });
+  checkScroll();
 }

@@ -53,11 +53,14 @@
     }
   </script>
 
-  <!-- Google Fonts: Inter & JetBrains Mono -->
+  <!-- Three.js Library for 60FPS Interactive WebGL Scene -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+
+  <!-- Google Fonts: Inter, JetBrains Mono & Silkscreen Pixel Accents -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
-    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&family=Silkscreen:wght@400;700&display=swap"
     rel="stylesheet">
 
   <!-- Custom Artisan Styles -->
@@ -66,6 +69,47 @@
 
 <body
   class="bg-[#0a0c10] text-slate-100 min-h-screen relative overflow-x-hidden selection:bg-emerald-500 selection:text-black">
+
+  <!-- ========================================== -->
+  <!-- RETRO BOOTLOADER INITIALIZATION SCREEN     -->
+  <!-- ========================================== -->
+  <div id="loading" class="font-mono">
+    <div class="bootloader-card">
+      <div class="flex items-center justify-between pb-3 border-b border-slate-800 text-xs">
+        <div class="flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-red-500/80 inline-block"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-amber-500/80 inline-block"></span>
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-500/80 inline-block"></span>
+          <span class="text-slate-300 font-bold ml-1 tracking-wider">MIRZA_KERNEL_V2.0</span>
+        </div>
+        <span class="text-emerald-400 font-bold font-mono" id="bootloader-pct">0%</span>
+      </div>
+
+      <div class="mt-4 flex items-center justify-between">
+        <span class="retro-block-tag text-[10px]">SYSTEM INITIALIZATION</span>
+        <span class="text-[11px] font-mono text-cyan-400">PASIR GUDANG, JOHOR</span>
+      </div>
+
+      <!-- Retro Loading Bar with Dashed Border & Hard Offset Shadow -->
+      <div id="loading-bar">
+        <div id="loading-bar-progress"></div>
+      </div>
+
+      <div id="loading-items" class="text-xs text-slate-400 font-mono">
+        // CALIBRATING 60FPS DELTATIME WEBGL ENGINE...
+      </div>
+
+      <div class="mt-5 pt-3 border-t border-slate-800 flex justify-between items-center text-[11px] text-slate-500">
+        <span>CGPA 3.98 • SKM TAHAP 3 • OJT 2027</span>
+        <button id="skip-loader-btn" onclick="skipBootloader()" class="text-emerald-400 hover:text-emerald-300 underline cursor-pointer">
+          Skip Boot [ESC]
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Interactive 3D WebGL Canvas (DeltaTime Driven) -->
+  <canvas id="webgl-canvas" class="webgl" aria-label="Interactive 3D Technology Constellation Canvas"></canvas>
 
   <!-- Top Reading Scroll Progress Bar -->
   <div id="scroll-progress-bar"></div>
@@ -193,7 +237,7 @@
     <!-- ========================================== -->
     <!-- 2. HERO: AUTHENTIC HUMAN DEVELOPER PROFILE -->
     <!-- ========================================== -->
-    <section id="hero" class="pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-800/60">
+    <section id="hero" class="pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-800/60 retro-section-divider">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
@@ -316,6 +360,18 @@
                 </svg>
                 <span>Save Contact (.vcf)</span>
               </a>
+            </div>
+
+            <!-- Interactive 3D Orbit Control & Status Pill (User Inspired Retro Control) -->
+            <div class="mt-4 p-2.5 rounded-xl bg-slate-900/70 border border-dashed border-emerald-500/40 shadow-lg flex items-center justify-between text-xs font-mono">
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-emerald-400 status-pulsar"></span>
+                <span class="text-emerald-400 font-bold">60FPS DELTATIME 3D ORBIT:</span>
+                <span class="text-slate-400 hidden sm:inline">Drag background canvas to grab & rotate</span>
+              </div>
+              <button onclick="toggleThreeWebGLRotation()" id="three-rot-btn" class="px-2.5 py-1 rounded-md bg-emerald-500/20 text-emerald-300 border border-emerald-500/40 text-[11px] font-bold hover:bg-emerald-500/30 transition-all cursor-pointer">
+                ⚡ Turbo Spin
+              </button>
             </div>
 
           </div>
@@ -461,7 +517,7 @@
     <!-- 3. LIVE INTERACTIVE PLAYGROUNDS (Real Engineering Demos) -->
     <!-- ======================================================== -->
     <section id="playgrounds"
-      class="py-16 md:py-20 border-b border-slate-800/60 bg-gradient-to-b from-transparent via-slate-950/40 to-transparent">
+      class="py-16 md:py-20 border-b border-slate-800/60 bg-gradient-to-b from-transparent via-slate-950/40 to-transparent retro-section-divider">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 reveal-on-scroll">
@@ -679,7 +735,7 @@
     <!-- ========================================== -->
     <!-- 4. ARTISAN BENTO GRID HIGHLIGHTS          -->
     <!-- ========================================== -->
-    <section id="bento" class="py-16 md:py-20 border-b border-slate-800/60">
+    <section id="bento" class="py-16 md:py-20 border-b border-slate-800/60 retro-section-divider">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 reveal-on-scroll">
@@ -886,7 +942,7 @@
     <!-- ========================================== -->
     <!-- 5. FEATURED PROJECTS                      -->
     <!-- ========================================== -->
-    <section id="projects" class="py-16 md:py-20 border-b border-slate-800/60">
+    <section id="projects" class="py-16 md:py-20 border-b border-slate-800/60 retro-section-divider">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 reveal-on-scroll">
@@ -976,6 +1032,29 @@
                 <span class="tech-tag">ArcFace</span>
                 <span class="tech-tag">FAISS</span>
                 <span class="tech-tag">ESP32-CAM</span>
+              </div>
+
+              <!-- Collapsible Architecture & Pinout Accordion (User Inspired) -->
+              <div class="mt-4">
+                <button type="button" class="collapse-btn w-full px-3 py-2 rounded-lg bg-slate-900/90 border border-dashed border-emerald-500/40 text-emerald-400 font-mono text-xs flex items-center justify-between hover:bg-slate-800 transition-colors" collapsed="true" onclick="toggleCollapse(this)">
+                  <span class="flex items-center gap-2">
+                    <span class="collapse-indicator font-mono font-bold text-emerald-400">[+]</span>
+                    <span class="font-semibold">Hardware Pinouts & Vector Pipeline</span>
+                  </span>
+                  <span class="text-[10px] text-slate-500 font-mono">SPECS_EXPAND</span>
+                </button>
+                <div class="collapse-body">
+                  <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-b-lg mt-1 space-y-1.5 text-xs font-mono text-slate-300">
+                    <div class="text-emerald-400 font-bold">// HARDWARE & NETWORK TOPOLOGY:</div>
+                    <div class="text-[11px] text-slate-400 leading-relaxed">
+                      • ESP32-CAM OV2640 sensor streaming JPEG frames over local WLAN (115200 baud)<br/>
+                      • Flask REST gateway receiving base64 image stream on port 5000<br/>
+                      • ArcFace 512D deep embedding extraction via InsightFace on GPU/CPU<br/>
+                      • FAISS IndexFlatIP (Inner Product) similarity index (&lt;10ms query time)<br/>
+                      • Transaction logged into MariaDB table `tbl_attendance_log`
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1071,6 +1150,29 @@
                 <span class="tech-tag">Computer Vision</span>
                 <span class="tech-tag">PyTorch</span>
               </div>
+
+              <!-- Collapsible Dataset & Colab Pipeline Accordion (User Inspired) -->
+              <div class="mt-4">
+                <button type="button" class="collapse-btn w-full px-3 py-2 rounded-lg bg-slate-900/90 border border-dashed border-cyan-500/40 text-cyan-400 font-mono text-xs flex items-center justify-between hover:bg-slate-800 transition-colors" collapsed="true" onclick="toggleCollapse(this)">
+                  <span class="flex items-center gap-2">
+                    <span class="collapse-indicator font-mono font-bold text-cyan-400">[+]</span>
+                    <span class="font-semibold">Dataset Annotation & Inference Pipeline</span>
+                  </span>
+                  <span class="text-[10px] text-slate-500 font-mono">SPECS_EXPAND</span>
+                </button>
+                <div class="collapse-body">
+                  <div class="p-3 bg-slate-950/70 border border-slate-800/80 rounded-b-lg mt-1 space-y-1.5 text-xs font-mono text-slate-300">
+                    <div class="text-cyan-400 font-bold">// COLAB TRAINING & DETECTION PIPELINE:</div>
+                    <div class="text-[11px] text-slate-400 leading-relaxed">
+                      • Custom annotated dataset built via Roboflow (vocational lab computer components)<br/>
+                      • Training executed on Google Colab T4 GPU (`kod_projek.ipynb`)<br/>
+                      • Classes: keyboard, mouse, monitor, system unit, motherboard<br/>
+                      • Confidence score: 0.91 on test keyboard target<br/>
+                      • Live webcam inference stream using JavaScript bridge in Colab cell
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div class="mt-8 pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between gap-3">
@@ -1103,7 +1205,7 @@
     <!-- ========================================== -->
     <!-- 6. TECHNICAL SKILLS MATRIX (7 DOMAINS)     -->
     <!-- ========================================== -->
-    <section id="skills" class="py-16 md:py-20 border-b border-slate-800/60">
+    <section id="skills" class="py-16 md:py-20 border-b border-slate-800/60 retro-section-divider">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 reveal-on-scroll">
@@ -1311,7 +1413,7 @@
     <!-- ========================================== -->
     <!-- 7. CREDENTIALS & TIMELINE                  -->
     <!-- ========================================== -->
-    <section id="credentials" class="py-16 md:py-20 border-b border-slate-800/60">
+    <section id="credentials" class="py-16 md:py-20 border-b border-slate-800/60 retro-section-divider">
       <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 
         <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4 reveal-on-scroll">
@@ -2159,6 +2261,13 @@
   <div id="toast"
     class="fixed bottom-6 right-6 z-50 transform translate-y-20 opacity-0 pointer-events-none px-4 py-2.5 rounded-lg bg-emerald-500 text-slate-950 font-mono text-xs font-bold shadow-xl flex items-center gap-2">
     ✓ Copied to clipboard!
+  </div>
+
+  <!-- Floating Retro Scroll Tip Indicator (User Inspired) -->
+  <div id="tip-scroll" role="button" aria-label="Scroll down to explore architecture">
+    <span class="w-2 h-2 rounded-full bg-emerald-400 status-pulsar"></span>
+    <span>↓ SCROLL TO EXPLORE ARCHITECTURE</span>
+    <span class="text-[9px] px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-300 font-mono">60FPS</span>
   </div>
 
   <!-- Floating Back to Top Pill -->
