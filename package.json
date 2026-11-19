@@ -1,0 +1,12 @@
+{
+  "name": "mirza-retro-portfolio",
+  "version": "1.0.0",
+  "description": "Muhammad Mirza Aqmal Raziq - Retro Computer Portfolio (Commodore 710 / PET 8296)",
+  "scripts": {
+    "start": "python -m http.server 8080",
+    "dev": "python -m http.server 8080",
+    "preview": "Preview_Website.bat"
+  },
+  "author": "Muhammad Mirza Aqmal Raziq",
+  "license": "ISC"
+}

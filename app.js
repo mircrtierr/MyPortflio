@@ -433,7 +433,7 @@ function initTerminalTabs() {
   });
 }
 
-window.switchTerminalTab = function(target) {
+window.switchTerminalTab = function (target) {
   const tabs = document.querySelectorAll('.terminal-tab');
   const panels = {
     retro3d: document.getElementById('tab-panel-retro3d'),
@@ -586,7 +586,7 @@ function appendOutput(htmlContent) {
   terminalOutput.appendChild(outDiv);
 }
 
-window.runCliCommand = function(cmd) {
+window.runCliCommand = function (cmd) {
   const terminalInput = document.getElementById('terminal-input');
   audio.playSoftClick();
   if (terminalInput) {
@@ -598,7 +598,7 @@ window.runCliCommand = function(cmd) {
   }
 };
 
-window.submitCliCommand = function() {
+window.submitCliCommand = function () {
   const input = document.getElementById('terminal-input');
   if (!input) return;
   const val = input.value.trim();
@@ -906,7 +906,7 @@ const PROJECT_MODAL_DATA = {
   }
 };
 
-window.openProjectModal = function(projectId) {
+window.openProjectModal = function (projectId) {
   const data = PROJECT_MODAL_DATA[projectId];
   if (!data) return;
 
@@ -962,7 +962,7 @@ window.openProjectModal = function(projectId) {
   document.body.style.overflow = 'hidden';
 };
 
-window.closeProjectModal = function() {
+window.closeProjectModal = function () {
   const modalContainer = document.getElementById('project-modal');
   if (modalContainer) {
     modalContainer.classList.add('hidden');
@@ -1091,7 +1091,7 @@ const CERTIFICATES_DATA = {
   }
 };
 
-window.openCertificateModal = function(certKey) {
+window.openCertificateModal = function (certKey) {
   const cert = CERTIFICATES_DATA[certKey];
   if (!cert) return;
 
@@ -1226,7 +1226,7 @@ window.openCertificateModal = function(certKey) {
   document.body.style.overflow = 'hidden';
 };
 
-window.closeCertificateModal = function() {
+window.closeCertificateModal = function () {
   const modalContainer = document.getElementById('certificate-modal');
   if (modalContainer) {
     modalContainer.classList.add('hidden');
@@ -1235,7 +1235,7 @@ window.closeCertificateModal = function() {
   }
 };
 
-window.switchCertPage = function(page) {
+window.switchCertPage = function (page) {
   const img = document.getElementById('cert-modal-main-img');
   const link = document.getElementById('cert-modal-orig-link');
   const btnP1 = document.getElementById('cert-tab-p1');
@@ -1305,7 +1305,7 @@ const AWARDS_DATA = {
   }
 };
 
-window.openAwardModal = function(awardKey) {
+window.openAwardModal = function (awardKey) {
   const award = AWARDS_DATA[awardKey];
   if (!award) return;
 
@@ -1389,7 +1389,7 @@ window.openAwardModal = function(awardKey) {
   document.body.style.overflow = 'hidden';
 };
 
-window.closeAwardModal = function() {
+window.closeAwardModal = function () {
   const modalContainer = document.getElementById('award-modal');
   if (modalContainer) {
     modalContainer.classList.add('hidden');
@@ -1552,7 +1552,7 @@ function initKeyboardShortcuts() {
 }
 
 // Copy Helper
-window.copyToClipboard = function(text, label = 'Copied') {
+window.copyToClipboard = function (text, label = 'Copied') {
   navigator.clipboard.writeText(text).then(() => {
     audio.playBeep();
     showToast(`✓ ${label} copied to clipboard!`);
@@ -1965,7 +1965,7 @@ function initCanvasFallback() {
 }
 
 // Turbo Spin Toggle for 3D Scene
-window.toggleThreeWebGLRotation = function() {
+window.toggleThreeWebGLRotation = function () {
   isTurboSpin = !isTurboSpin;
   const btn = document.getElementById('three-rot-btn');
   if (btn) {
@@ -2018,7 +2018,7 @@ function initRetroBootloader() {
     }
   }, 160);
 
-  window.skipBootloader = function() {
+  window.skipBootloader = function () {
     clearInterval(interval);
     bar.style.transform = 'scaleX(1)';
     if (pct) pct.textContent = '100%';
@@ -2036,7 +2036,7 @@ function initRetroBootloader() {
 // ==============================================
 // COLLAPSIBLE ACCORDION CONTROLLER (User Inspired)
 // ==============================================
-window.toggleCollapse = function(btn) {
+window.toggleCollapse = function (btn) {
   if (!btn) return;
   const isCollapsed = btn.getAttribute('collapsed') === 'true';
   btn.setAttribute('collapsed', isCollapsed ? 'false' : 'true');
@@ -2076,7 +2076,7 @@ function initScrollTip() {
 // ==============================================
 // RETRO SLIDE-OUT NAVIGATION OVERLAY
 // ==============================================
-window.toggleRetroMenu = function() {
+window.toggleRetroMenu = function () {
   const overlay = document.getElementById('retro-menu-overlay');
   if (!overlay) return;
   overlay.classList.toggle('menu-open');
@@ -2088,7 +2088,7 @@ window.toggleRetroMenu = function() {
 // ==============================================
 // RETRO LIGHTBOX MODAL (Image Zoom & Previews)
 // ==============================================
-window.openLightbox = function(src, title, desc) {
+window.openLightbox = function (src, title, desc) {
   const modal = document.getElementById('retro-lightbox');
   const img = document.getElementById('retro-lightbox-img');
   const t = document.getElementById('retro-lightbox-title');
@@ -2101,7 +2101,7 @@ window.openLightbox = function(src, title, desc) {
   if (typeof audio !== 'undefined' && audio.playBeep) audio.playBeep();
 };
 
-window.closeLightbox = function() {
+window.closeLightbox = function () {
   const modal = document.getElementById('retro-lightbox');
   if (modal) modal.classList.remove('active');
   if (typeof audio !== 'undefined' && audio.playSoftClick) audio.playSoftClick();
@@ -2372,7 +2372,7 @@ function initCommodore3D() {
     }
 
     // Expose log function to mirror CLI commands
-    window.logToCommodoreCrt = function(cmdStr) {
+    window.logToCommodoreCrt = function (cmdStr) {
       if (!cmdStr) return;
       crtLogs.push("> " + cmdStr.toUpperCase());
       crtLogs.push("EXEC // STATUS: OK [200]");
@@ -2392,7 +2392,7 @@ function initCommodore3D() {
     // PHOTOREALISTIC BAKED TEXTURES & GLTF MODEL LOADER
     // ========================================================
     const textureLoader = new THREE.TextureLoader();
-    
+
     const bakeTexture = textureLoader.load('assets/textures/bake-quality-5.jpg', () => {
       if (renderer) renderer.render(scene, camera);
     });
@@ -2493,7 +2493,7 @@ function initCommodore3D() {
     // ========================================================
     // ZOOM CONTROL TOGGLE
     // ========================================================
-    window.toggleCommodoreZoom = function() {
+    window.toggleCommodoreZoom = function () {
       isCommodoreZoomed = !isCommodoreZoomed;
       const btn = document.getElementById('crt-zoom-btn');
       if (btn) {
@@ -2507,7 +2507,7 @@ function initCommodore3D() {
     // ========================================================
     // PHOSPHOR PALETTE SWITCHER
     // ========================================================
-    window.toggleCrtColor = function() {
+    window.toggleCrtColor = function () {
       currentCrtColorIndex = (currentCrtColorIndex + 1) % CRT_PALETTES.length;
       const current = CRT_PALETTES[currentCrtColorIndex];
 
