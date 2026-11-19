@@ -1617,7 +1617,8 @@ function initScrollProgress() {
 
 // 2. Intersection Observer Scroll Reveal & Number Counter Trigger
 function initScrollReveal() {
-  const revealElements = document.querySelectorAll('.reveal-on-scroll, .reveal-from-left, .reveal-from-right');
+  document.documentElement.classList.add('js-ready');
+  const revealElements = document.querySelectorAll('.scroll-reveal, .reveal-on-scroll, .reveal-from-left, .reveal-from-right');
   if (!revealElements.length) return;
 
   if (!('IntersectionObserver' in window)) {
@@ -1637,11 +1638,23 @@ function initScrollReveal() {
       }
     });
   }, {
-    threshold: 0.08,
-    rootMargin: '0px 0px -40px 0px'
+    threshold: 0.01,
+    rootMargin: '0px 0px 250px 0px'
   });
 
   revealElements.forEach(el => observer.observe(el));
+
+  // Immediate check: Reveal elements in the first 2 viewports right away
+  requestAnimationFrame(() => {
+    const vh = window.innerHeight || 800;
+    revealElements.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < vh * 2) {
+        el.classList.add('is-revealed');
+        animateCounters(el);
+      }
+    });
+  });
 }
 
 // 3. Eased Numeric Counter Animation (e.g. 3.98 CGPA, 5+ Awards)
