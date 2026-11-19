@@ -1,726 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Muhammad Mirza Aqmal Raziq – Personal Portfolio</title>
+    <meta
+      name="description"
+      content="Muhammad Mirza Aqmal Raziq bin Mirza Affzard — Final year Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)."
+    />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Muhammad Mirza Aqmal Raziq | Software & Computer Technology Portfolio</title>
-  <meta name="description"
-    content="Muhammad Mirza Aqmal Raziq bin Mirza Affzard — Final year Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)." />
-  <meta name="theme-color" content="#f6d4b1" />
+    <link rel="icon" type="image/png" href="/icon/32x32.png" />
 
-  <!-- Favicon: Amber CRT Prompt Icon -->
-  <link rel="icon" type="image/png" href="assets/retro/prompt_icon_crt.png" />
-  <link rel="apple-touch-icon" href="assets/retro/prompt_icon_crt.png" />
+    <meta
+      name="viewport"
+      content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover"
+    />
+    <link rel="apple-touch-icon" sizes="180x180" href="/icon/180x180.png" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-title"
+      content="Mirza – Personal Portfolio"
+    />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="theme-color" content="#f6d4b1" />
 
-  <!-- Open Graph Metadata -->
-  <meta property="og:title" content="Muhammad Mirza Aqmal Raziq | Portfolio" />
-  <meta property="og:description"
-    content="Final-year Diploma Teknologi Komputeran at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)." />
-  <meta property="og:image" content="assets/profile.jpg" />
-  <meta property="og:type" content="website" />
+    <meta property="og:title" content="Muhammad Mirza Aqmal Raziq – Portfolio" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/images/mirza-title.png" />
+    <meta
+      name="og:description"
+      content="Final year Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)."
+    />
+    <link rel="manifest" href="/manifest.json" />
+    <script type="module" crossorigin src="/assets/index-udq3wo2J.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DyysJUmZ.css">
+  </head>
 
-  <!-- Webfonts Preload -->
-  <link rel="preload" href="fonts/public-pixel.woff" as="font" type="font/woff" crossorigin />
-  <link rel="preload" href="fonts/chill.woff" as="font" type="font/woff" crossorigin />
+  <body>
+    <div id="home"></div>
 
-  <!-- Three.js & GLTFLoader for 60FPS 3D Workstation -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-  <script src="assets/GLTFLoader.js"></script>
+    <canvas class="webgl"></canvas>
 
-  <!-- Custom Retro Stylesheet -->
-  <link rel="stylesheet" href="styles.css" />
-</head>
+    <div id="hero-backup">
+      <h3>Hi there, I’m</h3>
+      <h1>Mirza</h1>
+      <ul>
+        <li>Software &amp; IT Systems</li>
+        <li>Diploma Teknologi Komputeran (KVPJB)</li>
+        <li>CGPA 3.98 • SKM Level 3</li>
+      </ul>
+    </div>
 
-<body>
-
-  <!-- Top Reading Scroll Progress Bar -->
-  <div id="scroll-progress-container">
-    <div id="scroll-progress-bar"></div>
-  </div>
-
-  <!-- ========================================== -->
-  <!-- 1. RETRO BOOTLOADER SCREEN                 -->
-  <!-- ========================================== -->
-  <div id="loading">
-    <div class="bootloader-card">
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: dashed 1px #f6d4b1; padding-bottom: 8px;">
-        <span class="font-pixel" style="font-size: 11px;">MIRZA_KERNEL // COMMODORE 710</span>
-        <span class="font-pixel" id="bootloader-pct" style="font-size: 11px;">0%</span>
-      </div>
-
-      <div style="text-align: left; font-family: var(--font-pixel); font-size: 10px; margin-top: 4px;">
-        PASIR GUDANG, JOHOR • CGPA 3.98 • SKM3: S103882102
-      </div>
-
-      <div id="loading-bar">
-        <div id="loading-bar-progress"></div>
-      </div>
-
-      <div id="loading-items" style="font-family: var(--font-mono); font-size: 12px; height: 28px; overflow: hidden; text-overflow: ellipsis;">
-        // MOUNTING HARDWARE INTERFACES & DELTATIME ENGINE...
-      </div>
-
-      <div style="display: flex; justify-content: flex-end; margin-top: 4px;">
-        <button onclick="skipBootloader()" class="btn" style="padding: 4px 12px; font-size: 9px;">
-          Skip Boot [ESC]
+    <nav>
+      <div class="menu-btn">
+        <button class="btn" onclick="toggleMenu()" aria-label="Toggle navigation menu">
+          <svg width="16" height="16">
+            <rect class="st0" width="16" height="3.2" />
+            <rect y="6.4" class="st0" width="16" height="3.2" />
+            <rect y="12.8" class="st0" width="16" height="3.2" />
+          </svg>
         </button>
-      </div>
-    </div>
-  </div>
-
-
-  <!-- ========================================== -->
-  <!-- 2. FIXED TOP NAVIGATION BAR                -->
-  <!-- ========================================== -->
-  <nav class="retro-nav">
-    <button onclick="toggleRetroMenu()" class="btn" aria-label="Toggle Retro Navigation Menu" title="Open Navigation Menu">
-      <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor">
-        <rect width="16" height="2.5" />
-        <rect y="6" width="16" height="2.5" />
-        <rect y="12" width="16" height="2.5" />
-      </svg>
-      <span>MENU</span>
-    </button>
-
-    <div style="display: flex; gap: 8px; align-items: center;">
-      <!-- Phosphor CRT Color Switcher -->
-      <button onclick="toggleCrtColor()" id="crt-color-btn" class="btn" title="Toggle CRT phosphor color">
-        🟡 Amber CRT
-      </button>
-
-      <!-- LinkedIn -->
-      <a href="https://www.linkedin.com/in/aqmal-raziq-3975b0346" target="_blank" rel="noopener noreferrer" class="btn" title="LinkedIn Profile" aria-label="LinkedIn">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
-        </svg>
-        <span>LINKEDIN</span>
-      </a>
-
-      <!-- GitHub -->
-      <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="btn" title="GitHub Repositories" aria-label="GitHub">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-        </svg>
-      </a>
-
-      <!-- Resume PDF Download -->
-      <a href="assets/certificates/sijil_skm3_jpk_official.pdf" target="_blank" rel="noopener noreferrer" class="btn" title="View Certified Credentials" aria-label="Resume">
-        📄 RESUME
-      </a>
-
-      <!-- Tactile Audio Toggle Button -->
-      <button id="sound-toggle-btn" class="btn" aria-label="Toggle Tactile Sound Effects" title="Toggle Sound">
-        <svg id="sound-icon-on" width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77zm-2.5-2.23l-5.5 5h-4v8h4l5.5 5v-18zm-2.5 13.71l-3.5-3.18h-2v-3.06h2l3.5-3.18v9.42zm7-7.71c.73.64 1.2 1.57 1.2 2.62s-.47 1.98-1.2 2.62v-5.24z"/>
-        </svg>
-        <svg id="sound-icon-off" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" style="display: none;">
-          <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51c.66-1.24 1.03-2.65 1.03-4.15 0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zm-15.08-9.42l-1.42 1.41 4.78 4.78c-.78.71-1.28 1.72-1.28 2.85v4.38h-4v8h4l5.5 5v-9.73l4.24 4.24c-.73.32-1.52.54-2.24.68v2.06c1.28-.21 2.48-.7 3.55-1.36l3.41 3.41 1.41-1.41-19.95-19.91zm7.08 17.65l-3.5-3.18h-2v-3.06h2l3.5-3.18v9.42z"/>
-        </svg>
-      </button>
-    </div>
-  </nav>
-
-
-  <!-- ========================================== -->
-  <!-- 3. RETRO SLIDE-OUT MENU OVERLAY            -->
-  <!-- ========================================== -->
-  <div id="retro-menu-overlay">
-    <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: dashed 2px var(--color-bg); padding-bottom: 12px;">
-      <span class="font-pixel" style="font-size: 13px;">MIRZA_NAV_KERNEL // PASIR GUDANG</span>
-      <button onclick="toggleRetroMenu()" class="btn" style="background-color: var(--color-bg); color: var(--color-primary); box-shadow: none;">
-        CLOSE [ESC]
-      </button>
-    </div>
-
-    <div class="menu-links">
-      <a href="#home" onclick="toggleRetroMenu()">&gt; 01. WORKSTATION (COMMODORE 710)</a>
-      <a href="#about" onclick="toggleRetroMenu()">&gt; 02. ABOUT ME &amp; BIO</a>
-      <a href="#projects" onclick="toggleRetroMenu()">&gt; 03. ENGINEERING PROJECTS</a>
-      <a href="#skills" onclick="toggleRetroMenu()">&gt; 04. TECHNICAL SKILLS</a>
-      <a href="#credentials" onclick="toggleRetroMenu()">&gt; 05. CREDENTIALS &amp; TROPHIES</a>
-      <a href="#terminal" onclick="toggleRetroMenu()">&gt; 06. INTERACTIVE TERMINAL</a>
-      <a href="#contact" onclick="toggleRetroMenu()">&gt; 07. CONTACT &amp; OJT INQUIRY</a>
-    </div>
-
-    <div style="display: flex; flex-wrap: wrap; justify-content: space-between; font-family: var(--font-mono); font-size: 12px; border-top: dashed 1px rgba(246, 212, 177, 0.4); padding-top: 12px;">
-      <span>CGPA: 3.98 • SKM3: S103882102 • PASIR GUDANG, JOHOR</span>
-      <span style="font-weight: bold; color: #ffb000;">OJT: 5-MO IT INTERNSHIP (FEB – JUNE 2027)</span>
-    </div>
-  </div>
-
-
-  <div id="home"></div>
-
-  <!-- ========================================== -->
-  <!-- 4. FULL-SCREEN 3D COMMODORE WORKSTATION    -->
-  <!-- ========================================== -->
-  <canvas class="webgl" id="commodore-canvas" aria-label="Interactive 3D Commodore 710 Computer"></canvas>
-
-  <!-- Hero Backup (Accessible fallback if WebGL is unavailable) -->
-  <div id="hero-backup">
-    <div class="font-pixel" style="font-size: 13px; color: var(--color-primary); letter-spacing: 0.05em;">Hi there, I’m</div>
-    <h1 style="margin: 0; font-size: 2.4em;">Mirza</h1>
-    <div class="font-pixel" style="font-size: 11px; letter-spacing: 0.05em; color: var(--color-primary); margin-top: 6px;">
-      PASIR GUDANG, JOHOR • DIPLOMA TEKNOLOGI KOMPUTERAN • KVPJB
-    </div>
-    <ul class="skills-list" style="justify-content: center; max-width: 580px; margin-top: 10px;">
-      <li>CGPA 3.98 / 4.00</li>
-      <li>SKM Level 3: S103882102</li>
-      <li>Edge AI &amp; FAISS 512D</li>
-      <li>5-Mo OJT (Feb–Jun 2027)</li>
-    </ul>
-  </div>
-
-  <!-- Floating Scroll Tip (Bounces gently, hides on scroll) -->
-  <div id="tip-scroll" onclick="window.scrollTo({top: window.innerHeight * 1.05, behavior: 'smooth'})" role="button" aria-label="Scroll down to explore">
-    Scroll ↓
-  </div>
-
-
-  <!-- ========================================== -->
-  <!-- 5. MAIN CONTENT WRAPPER                     -->
-  <!-- ========================================== -->
-  <main>
-
-    <!-- ---------------------------------------- -->
-    <!-- SECTION 1: ABOUT ME                      -->
-    <!-- ---------------------------------------- -->
-    <section id="about">
-      <div class="section-tag">// 01. PROFILE &amp; ACADEMICS</div>
-      <h1 class="section-title">About Me</h1>
-
-      <p style="margin-bottom: 16px;">
-        My name is <strong>Muhammad Mirza Aqmal Raziq bin Mirza Affzard</strong>. I am a final-year Computer Technology (<em>Diploma Teknologi Komputeran</em>) student at <strong>Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</strong>, based in <strong>Pasir Gudang, Johor</strong>.
-      </p>
-
-      <p style="margin-bottom: 16px;">
-        I maintain an academic cumulative <strong>CGPA of 3.98 / 4.00</strong> and hold an official <strong>Sijil Kemahiran Malaysia (SKM) Tahap 3</strong> accreditation (Cert ID: <code>S103882102</code>) in IT System Support. My engineering focus bridges edge IoT microcontrollers with neural similarity search (ESP32-CAM + FAISS 512D), custom YOLOv8 computer vision classification, hardware troubleshooting, and Cisco network routing.
-      </p>
-
-      <p style="margin-bottom: 24px;">
-        I am currently seeking a <strong>5-Month On-The-Job Training (OJT) IT / Software Internship from February to June 2027</strong>.
-      </p>
-
-      <!-- Key Metrics Plaques Grid -->
-      <div class="metric-grid">
-        <div class="metric-card">
-          <div class="metric-num highlight" data-counter="3.98" data-decimals="2">3.98</div>
-          <div class="metric-label">CGPA / 4.00</div>
-          <div class="metric-sub">Academic Excellence</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-num">SKM 3</div>
-          <div class="metric-label">ID: S103882102</div>
-          <div class="metric-sub">IT System Support</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-num">FEB–JUN '27</div>
-          <div class="metric-label">5-MONTH OJT</div>
-          <div class="metric-sub">Internship Window</div>
-        </div>
-
-        <div class="metric-card">
-          <div class="metric-num">PASIR GUDANG</div>
-          <div class="metric-label">JOHOR, MY</div>
-          <div class="metric-sub">Hybrid / On-site Ready</div>
+        <div style="display: flex; gap: 8px;">
+          <a
+            class="btn"
+            href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/"
+            target="_blank"
+            title="LinkedIn Profile"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+            </svg>
+          </a>
+          <a
+            class="btn"
+            href="https://github.com/mircrtierr"
+            target="_blank"
+            title="GitHub Repositories"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+            </svg>
+          </a>
+          <a
+            class="btn"
+            href="/sijil_skm3_jpk_official.pdf"
+            target="_blank"
+            title="Download Official SKM Level 3 Certificate PDF"
+          >
+            PDF
+          </a>
         </div>
       </div>
-    </section>
 
-    <div class="section-divider">
-      <span>❖ 02 // PROJECTS ❖</span>
-    </div>
+      <div class="menu-body" onclick="closeMenu()">
+        <a href="#home" onclick="closeMenu()">Home</a>
+        <a href="#aboutMe" onclick="closeMenu()">About</a>
+        <a href="#projects" onclick="closeMenu()">Projects</a>
+        <a href="#skills" onclick="closeMenu()">Skills</a>
+        <a href="#awards" onclick="closeMenu()">Achievements</a>
+        <a href="#contact" onclick="closeMenu()">Contact</a>
+      </div>
 
-    <!-- ---------------------------------------- -->
-    <!-- SECTION 2: ENGINEERING PROJECTS          -->
-    <!-- ---------------------------------------- -->
-    <section id="projects">
-      <div class="section-tag">// 02. FEATURED ENGINEERING PROJECTS</div>
-      <h1 class="section-title">Projects</h1>
+      <div id="tip-scroll">Scroll &#8595;</div>
+    </nav>
 
-      <!-- Project 1: SmartAttend -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <span class="project-badge">Edge AI &amp; IoT</span>
-            <h2 class="project-title" style="margin-top: 6px;">SmartAttend KVPJB</h2>
-          </div>
-          <div class="project-year">2024 – 2025</div>
-        </div>
+    <main>
+      <section>
+        <h1 id="aboutMe">Hi there</h1>
+        <p>
+          My name is <strong>Muhammad Mirza Aqmal Raziq bin Mirza Affzard</strong>. I am a final-year Computer Technology (<em>Diploma Teknologi Komputeran</em>) student at <strong>Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</strong>, based in <strong>Pasir Gudang, Johor</strong>.
+        </p>
+        <p>
+          I maintain an academic cumulative <strong>CGPA of 3.98 / 4.00</strong> and hold verified <strong>Sijil Kemahiran Malaysia (SKM) Tahap 3</strong> accreditation (Cert ID: <code>S103882102</code>) in IT System Support. My engineering focus bridges edge IoT microcontrollers with neural similarity search (ESP32-CAM + FAISS 512D), custom YOLOv8 computer vision classification, hardware troubleshooting, and Cisco networking.
+        </p>
+        <p>
+          I am currently seeking a <strong>5-Month On-The-Job Training (OJT) IT / Software Internship from February to June 2027</strong>.
+        </p>
+        <ul class="skills">
+          <li>CGPA 3.98 / 4.00</li>
+          <li>SKM Level 3 Certified: S103882102</li>
+          <li>5-Month OJT: Feb – June 2027</li>
+          <li>Pasir Gudang, Johor</li>
+        </ul>
+      </section>
 
-        <ul class="skills-list" style="justify-content: flex-start; margin: 8px 0 16px 0;">
+      <section>
+        <h1 id="projects">Projects</h1>
+        <hr />
+        <h2>SmartAttend KVPJB</h2>
+        <h3>2024-25</h3>
+        <ul class="skills">
           <li>ESP32-CAM</li>
           <li>Python</li>
           <li>FAISS 512D</li>
           <li>ArcFace ResNet-50</li>
           <li>SQLite</li>
-          <li>Vector Search</li>
+          <li>Edge AI</li>
         </ul>
-
-        <p style="margin-bottom: 12px;">
-          <strong>SmartAttend</strong> is an automated biometric attendance logging platform. It replaces manual paper attendance sheets with low-cost edge vision hardware coupled to a high-speed Python embedding server.
+        <p>
+          SmartAttend is an automated biometric attendance logging platform. It replaces manual paper attendance sheets with low-cost edge vision hardware coupled to a high-speed Python embedding server.
         </p>
-
-        <p style="margin-bottom: 16px;">
-          An <strong>ESP32-CAM</strong> capture node streams compressed video frames across the local subnet to a Python backend. Frames are aligned and embedded into 512-dimensional feature vectors, then matched using <strong>Facebook AI Similarity Search (FAISS)</strong> against 500+ pre-registered student vectors in sub-second latency (&lt;250ms), recording attendance directly into a persistent database.
+        <p>
+          An ESP32-CAM capture node streams compressed video frames across the local subnet to a Python backend. Frames are aligned and embedded into 512-dimensional feature vectors, then matched using Facebook AI Similarity Search (FAISS) against 500+ pre-registered student vectors in sub-second latency (&lt;250ms), recording attendance directly into a persistent database.
         </p>
-
-        <img src="assets/projects/smartattend_dashboard.jpg" alt="SmartAttend Biometric System Interface" class="retro-img clickable" loading="lazy"
-          onclick="openLightbox('assets/projects/smartattend_dashboard.jpg', 'SmartAttend Dashboard', 'Real-time ESP32-CAM biometric attendance UI with sub-second FAISS vector search.')" />
-
-        <div style="text-align: right; margin-top: 8px;">
-          <button class="btn collapse-btn" collapsed="true" onclick="toggleCollapse(this)">more...</button>
-          <div class="collapse-body">
-            <div class="retro-card" style="margin-top: 14px; width: 100%; box-sizing: border-box;">
-              <div class="font-pixel" style="font-size: 11px; margin-bottom: 10px; color: var(--color-primary);">SYSTEM ARCHITECTURE &amp; WORKFLOW:</div>
-              <ul style="padding-left: 20px; font-size: 14.5px; line-height: 1.65; text-align: left;">
-                <li><strong>Edge Vision Node:</strong> ESP32-CAM (OV2640 sensor) transmitting high-throughput JPEG frames over local LAN.</li>
-                <li><strong>Embedding Pipeline:</strong> Facial landmark alignment + InsightFace (ArcFace ResNet-50) yielding dense 512-dimensional feature vectors.</li>
-                <li><strong>Vector Similarity:</strong> IndexFlatL2 FAISS vector index querying 500+ student embeddings in &lt;250ms with Euclidean distance threshold of 0.42.</li>
-                <li><strong>Persistent Storage:</strong> SQLite backend with transactional timestamps, duplicate suppression, and automated attendance reporting.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="image">
+          <img
+            src="/images/smartattend_dashboard.jpg"
+            width="100%"
+            alt="SmartAttend Biometric System Interface"
+            loading="lazy"
+            style="aspect-ratio: 16 / 9; max-width: 900px;"
+          />
         </div>
-      </article>
-
-      <!-- Project 2: YOLO Custom Object Detection -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <span class="project-badge">Computer Vision &amp; PyTorch</span>
-            <h2 class="project-title" style="margin-top: 6px;">YOLO Custom Object Detection</h2>
-          </div>
-          <div class="project-year">2024</div>
+        <br />
+        <button
+          class="collapse-btn btn"
+          collapsed="true"
+          onclick="this.setAttribute('collapsed', this.getAttribute('collapsed') === 'true'? 'false' : 'true')"
+        >
+          more...
+        </button>
+        <div class="collapse-body">
+          <p>
+            <strong>Edge Vision Node:</strong> ESP32-CAM (OV2640 sensor) transmitting high-throughput JPEG frames over local LAN.
+          </p>
+          <p>
+            <strong>Embedding Pipeline:</strong> Facial landmark alignment + InsightFace (ArcFace ResNet-50) yielding dense 512-dimensional feature vectors.
+          </p>
+          <p>
+            <strong>Vector Similarity:</strong> IndexFlatL2 FAISS vector index querying 500+ student embeddings in &lt;250ms with Euclidean distance threshold of 0.42.
+          </p>
+          <p>
+            <strong>Persistent Storage:</strong> SQLite backend with transactional timestamps, duplicate suppression, and automated attendance reporting.
+          </p>
         </div>
 
-        <ul class="skills-list" style="justify-content: flex-start; margin: 8px 0 16px 0;">
+        <hr />
+        <h2>YOLO Object Detection</h2>
+        <h3>2024</h3>
+        <ul class="skills">
           <li>YOLOv8</li>
           <li>Google Colab GPU</li>
           <li>PyTorch</li>
           <li>OpenCV</li>
           <li>Python</li>
-          <li>Real-time Inference</li>
+          <li>Computer Vision</li>
         </ul>
-
-        <p style="margin-bottom: 12px;">
-          A custom neural object classifier trained on <strong>Google Colab</strong> for classroom and laboratory monitoring. Developed to automatically identify classroom devices and laboratory items in real time.
+        <p>
+          A custom neural object classifier trained on Google Colab for classroom and laboratory device monitoring in real time.
         </p>
-
-        <p style="margin-bottom: 16px;">
-          Trained on labeled datasets for smartphone detection, school backpacks, and student faces. Deployed with a live webcam loop executing continuous inference with automated bounding boxes, class labels, and confidence thresholds.
+        <p>
+          Trained on custom labeled datasets for smartphone detection, school backpacks, and student faces. Deployed with a live webcam loop executing continuous inference with automated bounding boxes, class labels, and confidence thresholds. Achieved 92.4% mAP@0.5 and 18ms inference latency per frame.
         </p>
-
-        <img src="assets/projects/yolo_colab_detection.jpg" alt="YOLO Custom Detection on Google Colab" class="retro-img clickable" loading="lazy"
-          onclick="openLightbox('assets/projects/yolo_colab_detection.jpg', 'YOLO Object Classifier on Google Colab', 'Webcam detection inference identifying classroom devices with high confidence bounding boxes.')" />
-
-        <div style="text-align: right; margin-top: 8px;">
-          <button class="btn collapse-btn" collapsed="true" onclick="toggleCollapse(this)">more...</button>
-          <div class="collapse-body">
-            <div class="retro-card" style="margin-top: 14px; width: 100%; box-sizing: border-box;">
-              <div class="font-pixel" style="font-size: 11px; margin-bottom: 10px; color: var(--color-primary);">TRAINING METRICS &amp; PIPELINE:</div>
-              <ul style="padding-left: 20px; font-size: 14.5px; line-height: 1.65; text-align: left;">
-                <li><strong>Dataset:</strong> 1,200+ annotated high-res images with augmentations (random crop, brightness jitter, mosaic).</li>
-                <li><strong>Training Compute:</strong> 100 epochs on Google Colab Tesla T4 GPU running PyTorch and Ultralytics YOLOv8.</li>
-                <li><strong>Performance:</strong> Achieved 92.4% mAP@0.5 and 18ms inference latency per frame on live video streams.</li>
-                <li><strong>Deployment:</strong> OpenCV continuous video loop with bounding box thresholds and automated alert triggers.</li>
-              </ul>
-            </div>
-          </div>
+        <div class="image">
+          <img
+            src="/images/yolo_colab_detection.jpg"
+            width="100%"
+            alt="YOLO Custom Detection on Google Colab"
+            loading="lazy"
+            style="aspect-ratio: 16 / 9; max-width: 900px;"
+          />
         </div>
-      </article>
-
-      <!-- Project 3: Beyond The Mic Podcast -->
-      <article class="project-card">
-        <div class="project-header">
-          <div>
-            <span class="project-badge">National Finalist // Audio Engineering</span>
-            <h2 class="project-title" style="margin-top: 6px;">Beyond The Mic Podcast</h2>
-          </div>
-          <div class="project-year">2026 (National Final)</div>
+        <br />
+        <button
+          class="collapse-btn btn"
+          collapsed="true"
+          onclick="this.setAttribute('collapsed', this.getAttribute('collapsed') === 'true'? 'false' : 'true')"
+        >
+          more...
+        </button>
+        <div class="collapse-body">
+          <p>
+            <strong>Dataset:</strong> 1,200+ annotated high-res images with augmentations (random crop, brightness jitter, mosaic).
+          </p>
+          <p>
+            <strong>Training Compute:</strong> 100 epochs on Google Colab Tesla T4 GPU running PyTorch and Ultralytics YOLOv8.
+          </p>
+          <p>
+            <strong>Performance:</strong> Achieved 92.4% mAP@0.5 and 18ms inference latency per frame on live video streams.
+          </p>
         </div>
 
-        <ul class="skills-list" style="justify-content: flex-start; margin: 8px 0 16px 0;">
+        <hr />
+        <h2>Beyond The Mic Podcast</h2>
+        <h3>2026 (National Final)</h3>
+        <ul class="skills">
           <li>Audio Engineering</li>
           <li>Broadcasting</li>
           <li>Petah KPM 2026</li>
           <li>PICC Putrajaya</li>
           <li>Post-Production</li>
         </ul>
-
-        <p style="margin-bottom: 12px;">
-          Broadcast production and audio mastering for the <em>Pertandingan Beyond The Mic: Podcast Peringkat Kebangsaan (Kategori Lepas Menengah)</em>, held at the <strong>Putrajaya International Convention Centre (PICC)</strong> during the Petah KPM 2026 national festival.
+        <p>
+          Broadcast production and audio mastering for Pertandingan Beyond The Mic: Podcast Peringkat Kebangsaan (Kategori Lepas Menengah), held at the Putrajaya International Convention Centre (PICC) during the Petah KPM 2026 national festival.
         </p>
-
-        <p style="margin-bottom: 16px;">
+        <p>
           Managed audio capture, acoustic noise cancellation, multi-track studio mixing, and live streaming delivery, achieving <strong>5th Place Nationally (Kelima Kebangsaan)</strong> representing Kolej Vokasional Perdagangan Johor Bahru.
         </p>
-
-        <div style="max-width: 440px; margin: 16px auto;">
-          <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="Petah KPM 2026 National Trophy" class="retro-img clickable" loading="lazy"
-            onclick="openLightbox('assets/awards/trophy_petah_madani_podcast.jpg', 'Kelima Kebangsaan Trophy - Petah KPM 2026', 'Beyond The Mic Podcast competition trophy awarded at Putrajaya International Convention Centre (PICC).')" />
+        <div class="image">
+          <img
+            src="/images/trophy_petah_madani_podcast.jpg"
+            width="100%"
+            alt="Petah KPM 2026 National Trophy"
+            loading="lazy"
+            style="aspect-ratio: 4 / 3; max-width: 500px;"
+          />
         </div>
-
-        <div style="text-align: right; margin-top: 8px;">
-          <button class="btn collapse-btn" collapsed="true" onclick="toggleCollapse(this)">more...</button>
-          <div class="collapse-body">
-            <div class="retro-card" style="margin-top: 14px; width: 100%; box-sizing: border-box;">
-              <div class="font-pixel" style="font-size: 11px; margin-bottom: 10px; color: var(--color-primary);">PRODUCTION &amp; AUDIO SPECIFICATIONS:</div>
-              <ul style="padding-left: 20px; font-size: 14.5px; line-height: 1.65; text-align: left;">
-                <li><strong>Hardware:</strong> Dual-channel balanced XLR dynamic microphones with low-noise mic preamps and shock mounts.</li>
-                <li><strong>Acoustic Processing:</strong> Multi-band downward expansion, phase-aligned dynamic EQ, and real-time noise suppression.</li>
-                <li><strong>Mastering:</strong> EBU R128 / ITU-R BS.1770 broadcast standard compliance (-14 LUFS integrated, -1.0 dBTP ceiling).</li>
-                <li><strong>Achievement:</strong> Awarded 5th Place Nationally (Kelima Kebangsaan) at Putrajaya International Convention Centre.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <div class="section-divider">
-      <span>❖ 03 // SKILLS ❖</span>
-    </div>
-
-    <!-- ---------------------------------------- -->
-    <!-- SECTION 3: TECHNICAL SKILLS              -->
-    <!-- ---------------------------------------- -->
-    <section id="skills">
-      <div class="section-tag">// 03. TECHNICAL CAPABILITIES</div>
-      <h1 class="section-title">Technical Skills</h1>
-
-      <div style="display: flex; flex-direction: column; gap: 18px; margin-top: 20px;">
-        <div class="retro-card">
-          <h2 style="margin: 0 0 10px 0; font-family: var(--font-pixel); font-size: 1rem; color: var(--color-primary);">Programming &amp; Scripting</h2>
-          <ul class="skills-list" style="justify-content: flex-start; margin: 0; width: 100%;">
-            <li>Python (NumPy, FAISS, PyTorch)</li>
-            <li>C / C++ (Arduino &amp; ESP32)</li>
-            <li>JavaScript (ES6+, DOM, Three.js)</li>
-            <li>SQL (Relational Queries)</li>
-            <li>Bash &amp; Linux Shell Scripting</li>
-            <li>HTML5 / CSS3 / Tailwind</li>
-          </ul>
-        </div>
-
-        <div class="retro-card">
-          <h2 style="margin: 0 0 10px 0; font-family: var(--font-pixel); font-size: 1rem; color: var(--color-primary);">AI &amp; Computer Vision</h2>
-          <ul class="skills-list" style="justify-content: flex-start; margin: 0; width: 100%;">
-            <li>FAISS 512D Vector Embeddings</li>
-            <li>YOLOv8 Custom Object Detection</li>
-            <li>OpenCV Image Processing</li>
-            <li>Google Colab GPU Pipelines</li>
-            <li>Facial Alignment &amp; Recognition</li>
-          </ul>
-        </div>
-
-        <div class="retro-card">
-          <h2 style="margin: 0 0 10px 0; font-family: var(--font-pixel); font-size: 1rem; color: var(--color-primary);">IoT &amp; Embedded Hardware</h2>
-          <ul class="skills-list" style="justify-content: flex-start; margin: 0; width: 100%;">
-            <li>ESP32 / ESP32-CAM Microcontrollers</li>
-            <li>Arduino UNO Prototyping</li>
-            <li>PIR, Ultrasonic &amp; Optical Sensors</li>
-            <li>Relay Control &amp; Circuit Breadboarding</li>
-            <li>UART / I2C / SPI Communication</li>
-          </ul>
-        </div>
-
-        <div class="retro-card">
-          <h2 style="margin: 0 0 10px 0; font-family: var(--font-pixel); font-size: 1rem; color: var(--color-primary);">IT Support &amp; Networking</h2>
-          <ul class="skills-list" style="justify-content: flex-start; margin: 0; width: 100%;">
-            <li>SKM Tahap 3 Certified Procedures</li>
-            <li>Cisco CCNA Routing &amp; Switching</li>
-            <li>LAN / VLAN &amp; Subnet Configuration</li>
-            <li>PC Hardware Diagnostics &amp; Assembly</li>
-            <li>Operating System Deployment &amp; Recovery</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider">
-      <span>❖ 04 // CREDENTIALS ❖</span>
-    </div>
-
-    <!-- ---------------------------------------- -->
-    <!-- SECTION 4: CREDENTIALS & AWARDS          -->
-    <!-- ---------------------------------------- -->
-    <section id="credentials">
-      <div class="section-tag">// 04. CERTIFICATIONS &amp; PODIUM TROPHIES</div>
-      <h1 class="section-title">Credentials &amp; Awards</h1>
-
-      <div style="display: flex; flex-direction: column; gap: 20px; margin-top: 20px;">
-        
-        <!-- Official SKM Level 3 Digital Certificate Banner -->
-        <div class="retro-card" style="border: 2px solid var(--color-primary); background-color: #fffdf9;">
-          <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 14px;">
-            <div>
-              <span class="btn" style="padding: 4px 10px; font-size: 9px; margin-bottom: 8px;">VERIFIED SKM LEVEL 3</span>
-              <h2 style="margin: 4px 0; display: block; text-align: left; font-family: var(--font-pixel); font-size: 1.1rem;">Sijil Kemahiran Malaysia (SKM) Tahap 3</h2>
-              <div style="font-family: var(--font-mono); font-size: 13.5px; color: #444; margin-top: 4px;">
-                Field: IT Support System • Certificate No: <strong>S103882102</strong>
-              </div>
-              <div style="font-size: 12.5px; color: #666; margin-top: 4px;">
-                Jabatan Pembangunan Kemahiran (JPK), Kementerian Sumber Manusia Malaysia
-              </div>
-            </div>
-            <a href="assets/certificates/sijil_skm3_jpk_official.pdf" target="_blank" rel="noopener noreferrer" class="btn" style="align-self: center;">
-              📄 View Official SKM Digital PDF
-            </a>
-          </div>
-        </div>
-
-        <!-- Trophies Showcase Grid with Lightbox Modals -->
-        <div class="trophy-grid">
-          
-          <!-- Trophy 1: Johan Apps Ideation Challenge -->
-          <div class="trophy-card">
-            <span class="trophy-badge gold">🥇 JOHAN (CHAMPION)</span>
-            <img src="assets/awards/trophy_johan_apps_ideation_johor.jpg" alt="Johan Apps Ideation Challenge Johor Trophy" class="retro-img clickable" style="max-height: 250px; object-fit: contain; margin: 8px auto 12px auto;" loading="lazy"
-              onclick="openLightbox('assets/awards/trophy_johan_apps_ideation_johor.jpg', 'Johan - Apps Ideation Challenge Johor 2023', 'Champion Trophy for the State Android App Innovation Competition (Sekolah Menengah).')" />
-            <div style="font-family: var(--font-pixel); font-size: 10px; margin-top: 4px;">Apps Ideation Challenge</div>
-            <div style="font-size: 12px; color: #666; margin-top: 4px;">Negeri Johor 2023 (Android)</div>
-          </div>
-
-          <!-- Trophy 2: Tempat Ketiga MMU & JPN Melaka -->
-          <div class="trophy-card">
-            <span class="trophy-badge bronze">🥉 TEMPAT KETIGA</span>
-            <img src="assets/awards/trophy_android_national_mmu.jpg" alt="Tempat Ketiga MMU Android Competition Trophy" class="retro-img clickable" style="max-height: 250px; object-fit: contain; margin: 8px auto 12px auto;" loading="lazy"
-              onclick="openLightbox('assets/awards/trophy_android_national_mmu.jpg', 'Tempat Ketiga - MMU Android Competition', '3rd Place Trophy awarded by Multimedia University (MMU) & JPN Melaka.')" />
-            <div style="font-family: var(--font-pixel); font-size: 10px; margin-top: 4px;">Aplikasi Android MMU</div>
-            <div style="font-size: 12px; color: #666; margin-top: 4px;">MMU &amp; JPN Melaka</div>
-          </div>
-
-          <!-- Trophy 3: Kelima Kebangsaan Beyond The Mic -->
-          <div class="trophy-card">
-            <span class="trophy-badge">🏅 KELIMA KEBANGSAAN</span>
-            <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="Kelima Kebangsaan Beyond The Mic Trophy" class="retro-img clickable" style="max-height: 250px; object-fit: contain; margin: 8px auto 12px auto;" loading="lazy"
-              onclick="openLightbox('assets/awards/trophy_petah_madani_podcast.jpg', 'Kelima Kebangsaan - Beyond The Mic Podcast', '5th Place National Trophy at Petah KPM 2026, Putrajaya International Convention Centre.')" />
-            <div style="font-family: var(--font-pixel); font-size: 10px; margin-top: 4px;">Beyond The Mic Podcast</div>
-            <div style="font-size: 12px; color: #666; margin-top: 4px;">Petah KPM 2026 @ PICC Putrajaya</div>
-          </div>
-
-        </div>
-
-        <!-- Cisco Academy Credentials -->
-        <div class="retro-card">
-          <h2 style="margin: 0 0 10px 0; font-family: var(--font-pixel); font-size: 1rem; color: var(--color-primary);">Cisco Networking Academy Credentials</h2>
-          <ul class="skills-list" style="justify-content: flex-start; margin: 0; width: 100%;">
-            <li>Cisco IT Essentials: PC Hardware and Software</li>
-            <li>Cisco CCNA: Introduction to Networks (ITN)</li>
-            <li>ICDL: AI &amp; Digital Productivity Standards</li>
-          </ul>
-        </div>
-
-      </div>
-    </section>
-
-    <div class="section-divider">
-      <span>❖ 05 // TERMINAL ❖</span>
-    </div>
-
-    <!-- ---------------------------------------- -->
-    <!-- SECTION 5: INTERACTIVE TERMINAL SHELL    -->
-    <!-- ---------------------------------------- -->
-    <section id="terminal">
-      <div class="section-tag">// 05. INTERACTIVE UNIX SHELL</div>
-      <h1 class="section-title">Terminal Console</h1>
-
-      <p style="text-align: center; margin-bottom: 18px; font-size: 0.95rem;">
-        Commands typed here mirror in real-time onto the 3D Commodore 710 CRT screen above!
-      </p>
-
-      <div class="retro-terminal-box">
-        <div class="retro-terminal-bar">
-          <div class="term-dots">
-            <span class="term-dot red"></span>
-            <span class="term-dot amber"></span>
-            <span class="term-dot green"></span>
-            <span style="margin-left: 8px; font-weight: bold; color: #fff; font-family: var(--font-mono); font-size: 12px;">mirza@kvpjb:~$</span>
-          </div>
-          <span style="font-size: 11px; color: #aaa;">COMMODORE 710 SHELL</span>
-        </div>
-
-        <div id="terminal-scroll-container" class="terminal-scroll-area">
-          <div id="terminal-output">
-            <div style="color: #999; margin-bottom: 8px;">
-              *** MIRZA WORKSTATION KERNEL v2.0 (COMMODORE 710) ***<br />
-              Type <span style="color: #ffb000; font-weight: bold; cursor: pointer; text-decoration: underline;" onclick="runCliCommand('help')">help</span> to view available system commands.
-            </div>
-          </div>
-
-          <form id="terminal-form" onsubmit="event.preventDefault(); submitCliCommand();" style="display: flex; align-items: center; margin-top: 8px;">
-            <span style="color: #ffb000; font-weight: bold; margin-right: 8px;">mirza@kvpjb:~$</span>
-            <input type="text" id="terminal-input" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
-              style="flex: 1; background: transparent; border: none; outline: none; color: #ffb000; font-family: var(--font-mono); font-size: 13px;" />
-          </form>
-        </div>
-
-        <!-- Quick Command Chips -->
-        <div style="background-color: #1a1a1e; padding: 10px 14px; border-top: 1px solid #333; display: flex; gap: 8px; flex-wrap: wrap;">
-          <span style="font-size: 11px; color: #888; align-self: center;">Quick Run:</span>
-          <button onclick="runCliCommand('about')" class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: none;">about</button>
-          <button onclick="runCliCommand('projects')" class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: none;">projects</button>
-          <button onclick="runCliCommand('skills')" class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: none;">skills</button>
-          <button onclick="runCliCommand('cgpa')" class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: none;">cgpa</button>
-          <button onclick="runCliCommand('ojt')" class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: none;">ojt</button>
-          <button onclick="runCliCommand('awards')" class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: none;">awards</button>
-          <button onclick="runCliCommand('clear')" class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: none; background: #333;">clear</button>
-        </div>
-      </div>
-    </section>
-
-    <div class="section-divider">
-      <span>❖ 06 // CONTACT ❖</span>
-    </div>
-
-    <!-- ---------------------------------------- -->
-    <!-- SECTION 6: CONTACT & OJT INQUIRY         -->
-    <!-- ---------------------------------------- -->
-    <section id="contact">
-      <div class="section-tag">// 06. OJT INTERNSHIP INQUIRY</div>
-      <h1 class="section-title">Contact &amp; Connect</h1>
-
-      <p style="text-align: center; margin-bottom: 24px;">
-        Available for interviews regarding the <strong>5-Month IT Internship (Feb – June 2027)</strong>. Reach out via any of the verified channels below:
-      </p>
-
-      <div style="display: flex; flex-direction: column; gap: 14px; text-align: left;">
-        
-        <div class="retro-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <div style="font-family: var(--font-pixel); font-size: 10px; color: #777;">PHONE &amp; WHATSAPP</div>
-            <div style="font-family: var(--font-mono); font-size: 1.2rem; font-weight: bold; margin-top: 4px; color: var(--color-primary);">013-5788399</div>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <a href="https://wa.me/60135788399" target="_blank" rel="noopener noreferrer" class="btn">
-              💬 Chat WhatsApp
-            </a>
-            <a href="tel:+60135788399" class="btn btn-secondary">
-              📞 Call
-            </a>
-          </div>
-        </div>
-
-        <div class="retro-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <div style="font-family: var(--font-pixel); font-size: 10px; color: #777;">DIRECT EMAIL</div>
-            <div style="font-family: var(--font-mono); font-size: 1.2rem; font-weight: bold; margin-top: 4px; color: var(--color-primary);">mirzaaqmal22@gmail.com</div>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <a href="mailto:mirzaaqmal22@gmail.com" class="btn">
-              ✉️ Send Email
-            </a>
-            <button onclick="copyToClipboard('mirzaaqmal22@gmail.com')" class="btn btn-secondary">
-              📋 Copy
-            </button>
-          </div>
-        </div>
-
-        <div class="retro-card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <div>
-            <div style="font-family: var(--font-pixel); font-size: 10px; color: #777;">PROFESSIONAL NETWORKS</div>
-            <div style="font-size: 14px; margin-top: 4px; font-weight: 600;">LinkedIn &amp; GitHub Profile</div>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <a href="https://www.linkedin.com/in/aqmal-raziq-3975b0346" target="_blank" rel="noopener noreferrer" class="btn">
-              LinkedIn
-            </a>
-            <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="retro-card" style="text-align: center;">
-          <div style="font-family: var(--font-pixel); font-size: 10px; color: #777;">LOCATION &amp; MOBILITY</div>
-          <p style="margin-top: 6px; font-weight: bold; text-align: center;">
-            📍 Pasir Gudang, Johor, Malaysia (Open to Johor Bahru, Klang Valley, or Remote IT Internship)
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-          <div>
-            <div style="font-family: var(--font-pixel); font-size: 11px; color: var(--color-primary);">PROFESSIONAL NETWORKS</div>
-            <div style="font-size: 14px; margin-top: 4px;">LinkedIn &amp; GitHub Profile</div>
-          </div>
-          <div style="display: flex; gap: 8px;">
-            <a href="https://www.linkedin.com/in/aqmal-raziq-3975b0346" target="_blank" rel="noopener noreferrer" class="btn">
-              LinkedIn
-            </a>
-            <a href="https://github.com/mircrtierr" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">
-              GitHub
-            </a>
-          </div>
-        </div>
-
-        <div class="retro-card scroll-reveal delay-4" style="text-align: center;">
-          <div style="font-family: var(--font-pixel); font-size: 11px; color: var(--color-primary);">LOCATION &amp; MOBILITY</div>
-          <p style="margin-top: 6px; font-weight: bold;">
-            📍 Pasir Gudang, Johor, Malaysia (Open to Johor Bahru, Klang Valley, or Remote IT Internship)
-          </p>
-        </div>
-
-      </div>
-    </section>
-
-  </main>
-
-
-  <!-- ========================================== -->
-  <!-- 6. RETRO FOOTER                            -->
-  <!-- ========================================== -->
-  <footer style="max-width: 760px; margin: 0 auto; padding: 40px 20px 60px 20px; text-align: center; border-top: dashed 2px var(--color-primary); font-family: var(--font-mono); font-size: 12px; color: #525252;">
-    <div class="font-pixel" style="font-size: 11px; margin-bottom: 8px;">
-      MUHAMMAD MIRZA AQMAL RAZIQ BIN MIRZA AFFZARD
-    </div>
-    <div>
-      DIPLOMA TEKNOLOGI KOMPUTERAN • KOLEJ VOKASIONAL PERDAGANGAN JOHOR BAHRU
-    </div>
-    <div style="margin-top: 6px; color: #777;">
-      CGPA 3.98 • SKM3 S103882102 • 5-MONTH OJT (FEB – JUNE 2027)
-    </div>
-    <div style="margin-top: 14px; font-size: 11px; color: #888;">
-      Designed with 1980s Retro-Compute Aesthetics, Three.js &amp; WebGL • Pasir Gudang, Johor
-    </div>
-  </footer>
-
-
-  <!-- Floating Retro Back To Top Pill -->
-  <button id="back-to-top-btn" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" aria-label="Back to top">
-    <span>↑ TOP</span>
-  </button>
-
-
-  <!-- Retro Image Lightbox Modal -->
-  <div id="retro-lightbox" onclick="if(event.target === this) closeLightbox();">
-    <div id="retro-lightbox-content">
-      <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: dashed 2px var(--color-primary); padding-bottom: 10px;">
-        <span id="retro-lightbox-title" class="font-pixel" style="font-size: 12px;">PREVIEW</span>
-        <button onclick="closeLightbox()" class="btn" style="padding: 4px 10px; font-size: 9px;">
-          CLOSE [ESC]
+        <br />
+        <button
+          class="collapse-btn btn"
+          collapsed="true"
+          onclick="this.setAttribute('collapsed', this.getAttribute('collapsed') === 'true'? 'false' : 'true')"
+        >
+          more...
         </button>
+        <div class="collapse-body">
+          <p>
+            <strong>Hardware:</strong> Dual-channel balanced XLR dynamic microphones with low-noise mic preamps and shock mounts.
+          </p>
+          <p>
+            <strong>Acoustic Processing:</strong> Multi-band downward expansion, phase-aligned dynamic EQ, and real-time noise suppression.
+          </p>
+          <p>
+            <strong>Mastering:</strong> EBU R128 / ITU-R BS.1770 broadcast standard compliance (-14 LUFS integrated, -1.0 dBTP ceiling).
+          </p>
+        </div>
+      </section>
+
+      <section>
+        <h1 id="skills">Skills</h1>
+        <hr />
+        <h2>Technical Capabilities</h2>
+        <h3>Core Stack</h3>
+        <ul class="skills">
+          <li>Python (FAISS, PyTorch, OpenCV)</li>
+          <li>C / C++ (ESP32, Arduino)</li>
+          <li>JavaScript / TypeScript (Three.js, WebGL)</li>
+          <li>SQL (Relational Queries)</li>
+          <li>Bash / Linux Shell</li>
+          <li>HTML5 / CSS3</li>
+        </ul>
+        <p>
+          Proven track record in integrating embedded hardware with cloud and local intelligence: deploying neural inference pipelines, sensor arrays, facial alignment, network socket streaming, and automated attendance logging.
+        </p>
+        <hr />
+        <h2>Systems &amp; Hardware</h2>
+        <h3>IT Support</h3>
+        <ul class="skills">
+          <li>SKM Level 3 IT Support System (S103882102)</li>
+          <li>Cisco CCNA Routing &amp; Switching</li>
+          <li>Cisco IT Essentials: PC Hardware &amp; OS</li>
+          <li>LAN, Subnetting &amp; VLAN Setup</li>
+          <li>PC Diagnostics &amp; Preventative Maintenance</li>
+        </ul>
+      </section>
+
+      <section>
+        <h1 id="awards">Achievements</h1>
+        <hr />
+        <h2>Podium Honors &amp; Credentials</h2>
+        <h3>2023 - 2026</h3>
+        <ul class="skills">
+          <li>🥇 Johan Apps Ideation Johor (2023)</li>
+          <li>🥉 Tempat Ketiga Kebangsaan Android MMU (2024)</li>
+          <li>🏅 Kelima Kebangsaan Beyond The Mic (2026)</li>
+          <li>📜 SKM Level 3 Certified: S103882102</li>
+        </ul>
+        <div class="image" style="gap: 20px;">
+          <img
+            src="/images/trophy_johan_apps_ideation_johor.jpg"
+            alt="Johan Apps Ideation Challenge Johor Trophy"
+            loading="lazy"
+            style="max-width: 340px; aspect-ratio: 4/3;"
+          />
+          <img
+            src="/images/trophy_android_national_mmu.jpg"
+            alt="Tempat Ketiga MMU Android Competition Trophy"
+            loading="lazy"
+            style="max-width: 340px; aspect-ratio: 4/3;"
+          />
+        </div>
+        <p style="text-align: center; margin-top: 20px;">
+          <a class="btn" href="/sijil_skm3_jpk_official.pdf" target="_blank">📄 View Official SKM Digital PDF</a>
+        </p>
+      </section>
+
+      <section>
+        <h1 id="contact">Contact</h1>
+        <p>
+          Available for a <strong>5-Month On-The-Job Training (OJT) IT / Software Internship from February to June 2027</strong>.
+        </p>
+        <ul class="skills">
+          <li>Pasir Gudang, Johor</li>
+          <li>013-5788399</li>
+          <li>mirzaaqmal22@gmail.com</li>
+        </ul>
+        <br />
+        <p style="text-align: center">
+          Connect on
+          <a href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/" target="_blank"><u><b>LinkedIn</b></u></a>
+          or
+          <a href="https://github.com/mircrtierr" target="_blank"><u><b>GitHub</b></u></a>
+        </p>
+      </section>
+    </main>
+
+    <input type="text" id="textarea" readonly />
+    <div id="loading">
+      <h2>Booting...</h2>
+      <div id="loading-bar">
+        <div id="loading-bar-progress"></div>
       </div>
-      <img id="retro-lightbox-img" src="" alt="Enlarged Preview" />
-      <p id="retro-lightbox-desc" style="font-size: 13px; color: #555; margin-top: 8px; text-align: center;"></p>
+      <div id="loading-items">Starting...</div>
     </div>
-  </div>
+    <footer>
+      <div>Muhammad Mirza Aqmal Raziq bin Mirza Affzard.</div>
+      <div>Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan Johor Bahru (KVPJB).</div>
+      <div>Pasir Gudang, Johor, Malaysia • CGPA 3.98 • SKM Level 3: S103882102.</div>
+      <div>5-Month OJT Internship (February – June 2027).</div>
+      <div>Computer 3D Design inspired by the Commodore PET 8296.</div>
+    </footer>
+    <script>
+      function closeMenu() {
+        document.getElementsByTagName("nav")[0].classList.remove("active");
+      }
 
-
-  <!-- Toast Notification -->
-  <div id="toast" style="position: fixed; bottom: 24px; right: 24px; z-index: 2000; background-color: var(--color-primary); color: var(--color-bg); padding: 8px 18px; border-radius: 4px; font-family: var(--font-pixel); font-size: 11px; box-shadow: 3px 3px 0px rgba(0,0,0,0.4); opacity: 0; pointer-events: none; transition: opacity 0.25s, transform 0.25s; transform: translateY(16px);">
-    ✓ COPIED TO CLIPBOARD
-  </div>
-
-
-  <!-- Core Application Script -->
-  <script src="app.js"></script>
-
-</body>
-
+      function toggleMenu() {
+        const nav = document.getElementsByTagName("nav")[0];
+        if (nav.classList.contains("active")) {
+          nav.classList.remove("active");
+        } else {
+          nav.classList.add("active");
+        }
+      }
+    </script>
+  </body>
 </html>

@@ -1,0 +1,835 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+/* ============================================================ */
+/* 1. CUSTOM WEBFONTS (Public Pixel & Chill)                    */
+/* ============================================================ */
+@font-face {
+  font-family: 'public-pixel';
+  src: url('./fonts/public-pixel.woff') format('woff'),
+       url('/fonts/public-pixel.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'chill';
+  src: url('./fonts/chill.woff') format('woff'),
+       url('/fonts/chill.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================================ */
+/* 2. THEME VARIABLES - WARM VINTAGE RETRO                      */
+/* ============================================================ */
+:root {
+  --color-primary: #525252;
+  --color-bg: #f6d4b1;
+  --color-bg-card: #fff8f0;
+  --color-accent: #ffb000;
+  --font-pixel: 'public-pixel', monospace;
+  --font-sans: 'chill', sans-serif;
+  --font-mono: 'JetBrains Mono', 'chill', monospace;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body {
+  background-color: var(--color-bg);
+  color: var(--color-primary);
+  font-family: var(--font-sans);
+  font-size: 18px;
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+/* ============================================================ */
+/* 3. FULL-SCREEN 3D WEBGL WORKSTATION CANVAS                   */
+/* ============================================================ */
+canvas.webgl {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  outline: none;
+  z-index: 1;
+  cursor: grab;
+  touch-action: none;
+  pointer-events: all;
+}
+
+canvas.webgl:active {
+  cursor: grabbing;
+}
+
+/* Hero Backup when canvas is loading */
+#hero-backup {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  margin: auto;
+  color: var(--color-primary);
+  outline: none;
+  z-index: 0;
+  pointer-events: none;
+  text-align: center;
+}
+
+#hero-backup h1 {
+  font-size: 2.2em;
+}
+
+/* Floating Hero Controls over 3D Canvas */
+#hero-controls {
+  position: fixed;
+  bottom: 32px;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  z-index: 10;
+  pointer-events: all;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Floating Scroll Indicator */
+#tip-scroll {
+  position: fixed;
+  bottom: 84px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: 6px 18px;
+  border: 1px solid var(--color-bg);
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  z-index: 10;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+  animation: retro-bounce 2s infinite ease-in-out;
+}
+
+@keyframes retro-bounce {
+  0%, 100% { transform: translate(-50%, 0); }
+  50% { transform: translate(-50%, 6px); }
+}
+
+html[data-scroll="true"] #tip-scroll,
+html[data-scroll="true"] #hero-controls {
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(12px);
+}
+
+/* Reading Progress Bar at very top */
+#scroll-progress-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background-color: rgba(82, 82, 82, 0.15);
+  z-index: 9999;
+  pointer-events: none;
+}
+
+#scroll-progress-bar {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-primary);
+  transition: width 0.1s linear;
+}
+
+/* ============================================================ */
+/* 4. RETRO BOOTLOADER SCREEN                                   */
+/* ============================================================ */
+#loading {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  z-index: 99999;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  transition: opacity 0.3s ease;
+}
+
+#loading.loaded {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.bootloader-card {
+  width: 100%;
+  max-width: 540px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+#loading-bar {
+  position: relative;
+  width: 100%;
+  height: 36px;
+  border: dashed 2px var(--color-bg);
+  background-color: #3d3d3d;
+  box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.4);
+}
+
+#loading-bar-progress {
+  position: absolute;
+  top: 3px;
+  bottom: 3px;
+  left: 3px;
+  right: 3px;
+  background-color: var(--color-bg);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.2s;
+}
+
+/* ============================================================ */
+/* 5. MINIMAL RETRO FIXED NAVIGATION                            */
+/* ============================================================ */
+nav.retro-nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 900;
+  padding: 16px 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  pointer-events: none;
+}
+
+nav.retro-nav .btn {
+  pointer-events: all;
+}
+
+#retro-menu-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  z-index: 1000;
+  padding: 40px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+  transform: translateY(-100%);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#retro-menu-overlay.menu-open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.menu-links {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 680px;
+  margin: auto 0;
+}
+
+.menu-links a {
+  font-family: var(--font-pixel);
+  font-size: clamp(1rem, 2.5vw, 1.5rem);
+  color: var(--color-bg);
+  text-decoration: none;
+  transition: transform 0.2s ease, color 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.menu-links a:hover {
+  transform: translateX(10px);
+  color: #fff;
+}
+
+/* ============================================================ */
+/* 6. MAIN CONTENT LAYOUT (FOCUSED 680PX EDITORIAL ZINE)        */
+/* ============================================================ */
+main {
+  color: var(--color-primary);
+  margin-top: 180vh;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  background-color: var(--color-bg);
+  padding: 40px 16px 120px 16px;
+}
+
+section {
+  padding-bottom: 56px;
+  margin-bottom: 64px;
+  position: relative;
+}
+
+/* Subtle Neo-Brutalist Section Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 54px auto;
+  width: clamp(0px, 95vw, 680px);
+}
+
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background-color: var(--color-primary);
+  opacity: 0.35;
+}
+
+.section-divider span {
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--color-primary);
+  opacity: 0.75;
+}
+
+/* Section Header Typography */
+.section-tag {
+  display: inline-block;
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+h1.section-title {
+  display: inline-block;
+  font-family: var(--font-pixel);
+  font-size: 1.6em;
+  color: var(--color-bg);
+  background-color: var(--color-primary);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 6px 20px 8px 20px;
+  margin: 0 auto 20px auto;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--color-bg);
+}
+
+p {
+  padding: 10px 0;
+  text-align: left;
+  line-height: 1.75;
+  font-size: 1.05rem;
+  width: clamp(0px, 95vw, 680px);
+  margin: auto;
+  box-sizing: border-box;
+  color: #333333;
+}
+
+p strong {
+  color: #111111;
+}
+
+/* ============================================================ */
+/* 7. HIGH-END RETRO BRUTALIST BUTTONS & CHIPS                  */
+/* ============================================================ */
+.btn, .retro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 9px 18px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  fill: var(--color-bg);
+  border: 1.5px solid var(--color-primary);
+  cursor: pointer;
+  text-decoration: none;
+  border-radius: 3px;
+  box-shadow: 3px 3px 0px var(--color-primary);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
+  pointer-events: all;
+}
+
+.btn:hover, .retro-btn:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--color-primary);
+  background-color: #1a1a1a;
+  color: #ffffff;
+}
+
+.btn:active, .retro-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0px var(--color-primary);
+}
+
+.btn-secondary {
+  background-color: #ffffff;
+  color: var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
+}
+
+.btn-secondary:hover {
+  background-color: #fff8f0;
+  color: var(--color-primary);
+}
+
+/* Skills Chips */
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  text-align: center;
+  list-style: none;
+  margin: 14px auto;
+  width: clamp(0px, 95vw, 680px);
+}
+
+.skills-list li {
+  display: inline-flex;
+  align-items: center;
+  padding: 5px 12px;
+  border: 1.5px solid var(--color-primary);
+  background-color: #ffffff;
+  color: var(--color-primary);
+  box-shadow: 2px 2px 0px var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 3px;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
+}
+
+.skills-list li:hover {
+  transform: translate(-1px, -1px);
+  background-color: #fff9f0;
+  box-shadow: 3px 3px 0px var(--color-primary);
+}
+
+/* Metric Plaques Grid */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 24px auto;
+  width: clamp(0px, 95vw, 680px);
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
+  padding: 16px 12px;
+  text-align: center;
+  border-radius: 4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.metric-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--color-primary);
+}
+
+.metric-num {
+  font-family: var(--font-pixel);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.metric-num.highlight {
+  color: #d97706;
+}
+
+.metric-label {
+  font-family: var(--font-pixel);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  margin-top: 5px;
+}
+
+.metric-sub {
+  font-size: 11.5px;
+  color: #777777;
+  margin-top: 2px;
+}
+
+/* Retro General Cards */
+.retro-card {
+  width: clamp(0px, 95vw, 680px);
+  margin: 18px auto;
+  background-color: var(--color-bg-card);
+  border: 2px solid var(--color-primary);
+  box-shadow: 4px 4px 0px var(--color-primary);
+  padding: 24px;
+  text-align: left;
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retro-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0px var(--color-primary);
+}
+
+/* Project Case Study Card */
+.project-card {
+  width: clamp(0px, 95vw, 680px);
+  margin: 28px auto;
+  background-color: var(--color-bg-card);
+  border: 2px solid var(--color-primary);
+  box-shadow: 5px 5px 0px var(--color-primary);
+  border-radius: 4px;
+  text-align: left;
+  padding: 24px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 7px 7px 0px var(--color-primary);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-family: var(--font-pixel);
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.project-badge {
+  font-family: var(--font-pixel);
+  font-size: 9.5px;
+  padding: 4px 10px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  border-radius: 2px;
+}
+
+.project-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+}
+
+/* Responsive Images in Solid Brutalist Frame */
+.retro-img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  margin: 16px auto;
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
+  border-radius: 3px;
+  display: block;
+  background-color: #ffffff;
+}
+
+.retro-img.clickable {
+  cursor: zoom-in;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retro-img.clickable:hover {
+  transform: scale(1.01);
+  box-shadow: 5px 5px 0px var(--color-primary);
+}
+
+/* ============================================================ */
+/* 8. COLLAPSIBLE ACCORDION (.collapse-btn & .collapse-body)    */
+/* ============================================================ */
+.collapse-btn {
+  margin-top: 10px;
+  font-size: 10px;
+  padding: 6px 14px;
+}
+
+.collapse-btn[collapsed="true"] + .collapse-body {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: opacity 0.3s ease, max-height 0.4s cubic-bezier(0, 1, 0, 1);
+}
+
+.collapse-btn[collapsed="false"] + .collapse-body {
+  opacity: 1;
+  max-height: 1200px;
+  overflow: hidden;
+  transition: opacity 0.35s 0.1s ease, max-height 0.5s ease;
+}
+
+/* ============================================================ */
+/* 9. TROPHY & CREDENTIALS SHOWCASE                             */
+/* ============================================================ */
+.trophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.trophy-card {
+  background-color: #ffffff;
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
+  border-radius: 4px;
+  padding: 16px 12px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trophy-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--color-primary);
+}
+
+.trophy-badge {
+  font-family: var(--font-pixel);
+  font-size: 9.5px;
+  padding: 4px 10px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  display: inline-block;
+  margin-bottom: 8px;
+  border-radius: 2px;
+}
+
+.trophy-badge.gold {
+  background-color: #b45309;
+  color: #fff;
+}
+
+.trophy-badge.bronze {
+  background-color: #92400e;
+  color: #fff;
+}
+
+/* ============================================================ */
+/* 10. INTERACTIVE TERMINAL SHELL BOX                           */
+/* ============================================================ */
+.retro-terminal-box {
+  width: clamp(0px, 95vw, 680px);
+  margin: 24px auto;
+  background-color: #141416;
+  border: 2px solid var(--color-primary);
+  box-shadow: 5px 5px 0px var(--color-primary);
+  border-radius: 6px;
+  color: var(--color-accent);
+  font-family: var(--font-mono);
+  overflow: hidden;
+  text-align: left;
+}
+
+.retro-terminal-bar {
+  background-color: #242428;
+  color: #eee;
+  padding: 9px 14px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #333;
+}
+
+.term-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.term-dot.red { background-color: #ff5f56; }
+.term-dot.amber { background-color: #ffbd2e; }
+.term-dot.green { background-color: #27c93f; }
+
+.terminal-scroll-area {
+  padding: 18px;
+  height: 250px;
+  overflow-y: auto;
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+/* ============================================================ */
+/* 11. LIGHTBOX MODAL & BACK TO TOP BUTTON                      */
+/* ============================================================ */
+#retro-lightbox {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(30, 30, 30, 0.88);
+  backdrop-filter: blur(6px);
+  z-index: 10000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+#retro-lightbox.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+#retro-lightbox-content {
+  background-color: var(--color-bg-card);
+  border: 3px solid var(--color-primary);
+  box-shadow: 6px 6px 0px var(--color-primary);
+  max-width: 800px;
+  width: 100%;
+  max-height: 88vh;
+  overflow-y: auto;
+  padding: 22px;
+  transform: scale(0.95);
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+#retro-lightbox.active #retro-lightbox-content {
+  transform: scale(1);
+}
+
+#retro-lightbox-img {
+  width: 100%;
+  max-height: 60vh;
+  object-fit: contain;
+  border: 2px solid var(--color-primary);
+  background-color: #fff;
+  display: block;
+  margin: 14px auto;
+}
+
+#back-to-top-btn {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 800;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  font-family: var(--font-pixel);
+  font-size: 10px;
+  padding: 9px 18px;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 3px;
+  box-shadow: 3px 3px 0px var(--color-primary);
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+#back-to-top-btn.visible {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateY(0);
+}
+
+#back-to-top-btn:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 5px 5px 0px var(--color-primary);
+}
+
+/* Toast Notification */
+#toast {
+  position: fixed;
+  bottom: 24px;
+  left: 24px;
+  z-index: 2000;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: 8px 18px;
+  border-radius: 3px;
+  font-family: var(--font-pixel);
+  font-size: 11px;
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s, transform 0.25s;
+  transform: translateY(14px);
+}
+
+.font-pixel {
+  font-family: var(--font-pixel) !important;
+}
+
+.font-mono {
+  font-family: var(--font-mono) !important;
+}
+
+@media (max-width: 640px) {
+  html, body {
+    font-size: 16px;
+  }
+  h1.section-title {
+    font-size: 1.4em;
+  }
+  .btn, .retro-btn {
+    padding: 7px 14px;
+    font-size: 9.5px;
+  }
+}
