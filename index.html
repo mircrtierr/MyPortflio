@@ -9,9 +9,9 @@
     content="Portfolio of Muhammad Mirza Aqmal Raziq bin Mirza Affzard — Final year Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98). Seeking 5-month IT Internship / OJT (Feb–June 2027)." />
   <meta name="theme-color" content="#0a0c10" />
 
-  <!-- Favicon: Terminal Monogram SVG -->
-  <link rel="icon" type="image/svg+xml"
-    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%230a0c10'/%3E%3Cpath d='M8 10l6 6-6 6M16 22h8' stroke='%2310b981' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round' fill='none'/%3E%3C/svg%3E" />
+  <!-- Favicon: Authentic Amber CRT Terminal Icon -->
+  <link rel="icon" type="image/png" href="assets/retro/prompt_icon_crt.png" />
+  <link rel="apple-touch-icon" href="assets/retro/prompt_icon_crt.png" />
 
   <!-- Open Graph & Social Cards -->
   <meta property="og:title" content="Muhammad Mirza Aqmal Raziq | Software & Computer Technology Portfolio" />
@@ -53,8 +53,9 @@
     }
   </script>
 
-  <!-- Three.js Library for 60FPS Interactive WebGL Scene -->
+  <!-- Three.js & GLTFLoader for 60FPS Interactive 3D Commodore 710 & Constellation -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="assets/GLTFLoader.js"></script>
 
   <!-- Google Fonts: Inter, JetBrains Mono & Silkscreen Pixel Accents -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -384,7 +385,11 @@
               <!-- Tabs Header -->
               <div class="px-3 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
                 <div class="flex items-center gap-1">
-                  <button class="terminal-tab active" data-tab="terminal">
+                  <button class="terminal-tab active" data-tab="retro3d">
+                    <span class="text-amber-400 font-bold text-[11px]">🖥️</span>
+                    <span>commodore.3d</span>
+                  </button>
+                  <button class="terminal-tab" data-tab="terminal">
                     <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 9l3 3-3 3m5 0h3" />
                     </svg>
@@ -405,8 +410,46 @@
                 </div>
               </div>
 
+              <!-- Tab Panel 0: Interactive 3D Commodore 710 Computer Showcase -->
+              <div id="tab-panel-retro3d" class="p-2 sm:p-3 relative">
+                <div class="relative w-full h-[320px] rounded-lg overflow-hidden bg-gradient-to-b from-[#14100c] to-[#070503] border border-amber-500/30 shadow-inner group">
+                  <!-- 3D Canvas -->
+                  <canvas id="commodore-canvas" class="w-full h-full cursor-grab active:cursor-grabbing block" aria-label="Interactive 3D Commodore 710 Retro Computer"></canvas>
+                  
+                  <!-- Overlay Controls & Badges -->
+                  <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 pointer-events-none">
+                    <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-mono text-[10px] font-bold shadow">
+                      COMMODORE 710
+                    </span>
+                    <span id="crt-status-badge" class="px-1.5 py-0.5 rounded bg-slate-900/80 border border-amber-500/30 text-amber-300 font-mono text-[10px]">
+                      AMBER CRT
+                    </span>
+                  </div>
+
+                  <!-- Quick Helper & Action Bar -->
+                  <div class="absolute bottom-2.5 inset-x-2.5 flex items-center justify-between text-[11px] font-mono pointer-events-auto">
+                    <span class="text-slate-400 bg-slate-950/85 px-2 py-1 rounded border border-slate-800 text-[10px] hidden sm:inline">
+                      🖱️ Drag to rotate 3D model
+                    </span>
+                    <div class="flex items-center gap-1.5">
+                      <button onclick="toggleCrtColor()" id="crt-color-btn" class="px-2 py-1 rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[10px] font-bold transition-colors cursor-pointer">
+                        🟡 Amber CRT
+                      </button>
+                      <button onclick="switchTerminalTab('terminal')" class="px-2.5 py-1 rounded bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-[10px] transition-colors shadow cursor-pointer">
+                        &gt;_ Open Shell
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="mt-2.5 px-1 flex items-center justify-between text-[11px] font-mono text-slate-400">
+                  <span>MODEL: Commodore 710 (1982 Vintage Terminal)</span>
+                  <span class="text-emerald-400 font-bold">MIRZA-OS 2.0 LTS</span>
+                </div>
+              </div>
+
               <!-- Tab Panel 1: Interactive Terminal -->
-              <div id="tab-panel-terminal" class="p-4 font-mono text-xs">
+              <div id="tab-panel-terminal" class="hidden p-4 font-mono text-xs">
                 <div id="terminal-container" class="h-[280px] overflow-y-auto pr-1">
                   <div id="terminal-output">
                     <!-- Populated dynamically -->

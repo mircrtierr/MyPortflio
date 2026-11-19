@@ -375,6 +375,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initJohorClock();
   initSpotlightMouseTracking();
   initThreeWebGL();
+  initCommodore3D();
   initScrollTip();
   initTerminalTabs();
   initTerminal();
@@ -420,36 +421,52 @@ function initSpotlightMouseTracking() {
   });
 }
 
-// Terminal Tab Switching
+// Terminal Tab Switching & Remote Navigation
 function initTerminalTabs() {
   const tabs = document.querySelectorAll('.terminal-tab');
+  tabs.forEach(tab => {
+    tab.addEventListener('click', () => {
+      audio.playSoftClick();
+      const target = tab.getAttribute('data-tab');
+      window.switchTerminalTab(target);
+    });
+  });
+}
+
+window.switchTerminalTab = function(target) {
+  const tabs = document.querySelectorAll('.terminal-tab');
   const panels = {
+    retro3d: document.getElementById('tab-panel-retro3d'),
     terminal: document.getElementById('tab-panel-terminal'),
     code: document.getElementById('tab-panel-code'),
     json: document.getElementById('tab-panel-json')
   };
 
-  tabs.forEach(tab => {
-    tab.addEventListener('click', () => {
-      audio.playSoftClick();
-      const target = tab.getAttribute('data-tab');
-      STATE.activeTerminalTab = target;
+  STATE.activeTerminalTab = target;
 
-      tabs.forEach(t => t.classList.remove('active'));
-      tab.classList.add('active');
-
-      Object.keys(panels).forEach(key => {
-        if (panels[key]) {
-          if (key === target) {
-            panels[key].classList.remove('hidden');
-          } else {
-            panels[key].classList.add('hidden');
-          }
-        }
-      });
-    });
+  tabs.forEach(t => {
+    if (t.getAttribute('data-tab') === target) {
+      t.classList.add('active');
+    } else {
+      t.classList.remove('active');
+    }
   });
-}
+
+  Object.keys(panels).forEach(key => {
+    if (panels[key]) {
+      if (key === target) {
+        panels[key].classList.remove('hidden');
+      } else {
+        panels[key].classList.add('hidden');
+      }
+    }
+  });
+
+  if (target === 'terminal') {
+    const input = document.getElementById('terminal-input');
+    if (input) input.focus();
+  }
+};
 
 // Terminal Logic
 function initTerminal() {
@@ -2034,4 +2051,210 @@ function initScrollTip() {
 
   window.addEventListener('scroll', checkScroll, { passive: true });
   checkScroll();
+}
+
+// ==============================================
+// 3D COMMODORE 710 RETRO TERMINAL (THREE.JS GLTF)
+// ==============================================
+let commodoreModel = null;
+let commodoreScreenMesh = null;
+let commodorePointLight = null;
+let currentCrtColorIndex = 0;
+
+const CRT_COLORS = [
+  { name: "AMBER CRT", btnText: "🟡 Amber CRT", hex: 0xffb000, texture: "assets/retro/crt_screen_mirza.png" },
+  { name: "MATRIX GREEN", btnText: "🟢 Matrix Green", hex: 0x10b981, texture: "assets/retro/crt_screen_green.png" },
+  { name: "CYBER CYAN", btnText: "🔵 Cyber Cyan", hex: 0x06b6d4, texture: "assets/retro/crt_screen_cyan.png" }
+];
+
+function initCommodore3D() {
+  const canvas = document.getElementById('commodore-canvas');
+  if (!canvas || typeof THREE === 'undefined') return;
+
+  try {
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
+    camera.position.set(0, 0.35, 6.2);
+
+    const renderer = new THREE.WebGLRenderer({
+      canvas: canvas,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'high-performance'
+    });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+    // Warm Ambient Lighting
+    const ambientLight = new THREE.AmbientLight(0xfff8ee, 1.25);
+    scene.add(ambientLight);
+
+    // Directional Key Light
+    const dirLight = new THREE.DirectionalLight(0xffecd2, 1.35);
+    dirLight.position.set(5, 8, 6);
+    scene.add(dirLight);
+
+    // CRT Phosphor glow cast onto the keyboard
+    commodorePointLight = new THREE.PointLight(CRT_COLORS[0].hex, 1.5, 6);
+    commodorePointLight.position.set(0, 0.5, 1.5);
+    scene.add(commodorePointLight);
+
+    // Texture Loader
+    const textureLoader = new THREE.TextureLoader();
+    const crtTextures = {
+      0: textureLoader.load(CRT_COLORS[0].texture),
+      1: textureLoader.load(CRT_COLORS[1].texture),
+      2: textureLoader.load(CRT_COLORS[2].texture)
+    };
+
+    // Load Commodore 710 GLB Model
+    if (typeof THREE.GLTFLoader !== 'undefined') {
+      const loader = new THREE.GLTFLoader();
+      loader.load('assets/models/Commodore710_33.5.glb', (gltf) => {
+        commodoreModel = gltf.scene;
+
+        commodoreModel.traverse((child) => {
+          if (child.isMesh) {
+            if (child.name === 'Screen') {
+              commodoreScreenMesh = child;
+              child.material = new THREE.MeshBasicMaterial({
+                map: crtTextures[0]
+              });
+            } else if (child.name === 'Keyboard') {
+              child.material = new THREE.MeshStandardMaterial({
+                color: 0x24211e,
+                roughness: 0.75,
+                metalness: 0.1
+              });
+            } else if (child.name === 'ShadowPlane') {
+              child.material = new THREE.MeshBasicMaterial({
+                color: 0x050403,
+                transparent: true,
+                opacity: 0.45
+              });
+            } else if (child.name === 'Plane') {
+              child.visible = false;
+            } else {
+              // Casing (Computer, CRT body)
+              child.material = new THREE.MeshStandardMaterial({
+                color: 0xe8dfce,
+                roughness: 0.65,
+                metalness: 0.04
+              });
+            }
+          }
+        });
+
+        // Set initial orientation
+        commodoreModel.position.set(0, -0.45, 0);
+        commodoreModel.rotation.set(0.12, -0.25, 0);
+        commodoreModel.scale.set(1.05, 1.05, 1.05);
+
+        scene.add(commodoreModel);
+      }, undefined, (err) => {
+        console.warn("Commodore GLTF load note:", err);
+      });
+    }
+
+    // Drag Orbit Interactivity
+    let isDragging = false;
+    let prevMouse = { x: 0, y: 0 };
+    let rotVel = { x: 0, y: 0 };
+
+    canvas.addEventListener('pointerdown', (e) => {
+      isDragging = true;
+      prevMouse = { x: e.clientX, y: e.clientY };
+    }, { passive: true });
+
+    window.addEventListener('pointermove', (e) => {
+      if (!isDragging || !commodoreModel) return;
+      const dx = e.clientX - prevMouse.x;
+      const dy = e.clientY - prevMouse.y;
+      rotVel.y += dx * 0.005;
+      rotVel.x += dy * 0.003;
+      prevMouse = { x: e.clientX, y: e.clientY };
+    }, { passive: true });
+
+    window.addEventListener('pointerup', () => {
+      isDragging = false;
+    }, { passive: true });
+
+    // Double click to open interactive terminal shell
+    canvas.addEventListener('dblclick', () => {
+      window.switchTerminalTab('terminal');
+      audio.playBeep();
+    });
+
+    // Resize handling via ResizeObserver
+    const resizeObserver = new ResizeObserver(() => {
+      if (!canvas.clientWidth || !canvas.clientHeight) return;
+      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
+    });
+    resizeObserver.observe(canvas);
+
+    // DeltaTime Animation Loop
+    let idleTime = 0;
+    function renderLoop() {
+      requestAnimationFrame(renderLoop);
+
+      // Only render if panel is visible
+      const panel = document.getElementById('tab-panel-retro3d');
+      if (panel && panel.classList.contains('hidden')) return;
+
+      const dt = DeltaTime();
+      idleTime += dt;
+
+      if (commodoreModel) {
+        if (!isDragging) {
+          // Gentle idle breathing sway
+          commodoreModel.rotation.y += (rotVel.y + Math.sin(idleTime * 0.8) * 0.03) * dt;
+          commodoreModel.rotation.x += rotVel.x * dt;
+        } else {
+          commodoreModel.rotation.y += rotVel.y * dt;
+          commodoreModel.rotation.x += rotVel.x * dt;
+        }
+
+        // Clamp vertical tilt
+        commodoreModel.rotation.x = Math.max(-0.25, Math.min(0.4, commodoreModel.rotation.x));
+
+        // Velocity damping
+        rotVel.y *= 0.92;
+        rotVel.x *= 0.92;
+      }
+
+      renderer.render(scene, camera);
+    }
+
+    renderLoop();
+
+    // Color Switcher Handler
+    window.toggleCrtColor = function() {
+      currentCrtColorIndex = (currentCrtColorIndex + 1) % CRT_COLORS.length;
+      const current = CRT_COLORS[currentCrtColorIndex];
+
+      if (commodoreScreenMesh && crtTextures[currentCrtColorIndex]) {
+        commodoreScreenMesh.material.map = crtTextures[currentCrtColorIndex];
+        commodoreScreenMesh.material.needsUpdate = true;
+      }
+
+      if (commodorePointLight) {
+        commodorePointLight.color.setHex(current.hex);
+      }
+
+      const btn = document.getElementById('crt-color-btn');
+      if (btn) btn.textContent = current.btnText;
+
+      const badge = document.getElementById('crt-status-badge');
+      if (badge) {
+        badge.textContent = current.name;
+      }
+
+      audio.playBeep();
+    };
+
+  } catch (err) {
+    console.warn("Commodore 3D init error:", err);
+  }
 }
