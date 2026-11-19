@@ -2040,13 +2040,11 @@ window.toggleCollapse = function(btn) {
   if (!btn) return;
   const isCollapsed = btn.getAttribute('collapsed') === 'true';
   btn.setAttribute('collapsed', isCollapsed ? 'false' : 'true');
+  btn.textContent = isCollapsed ? 'less...' : 'more...';
 
-  const indicator = btn.querySelector('.collapse-indicator');
-  if (indicator) {
-    indicator.textContent = isCollapsed ? '[-]' : '[+]';
+  if (typeof audio !== 'undefined' && audio.playSoftClick) {
+    audio.playSoftClick();
   }
-
-  audio.playSoftClick();
 };
 
 // ==============================================
@@ -2055,7 +2053,7 @@ window.toggleCollapse = function(btn) {
 function initScrollTip() {
   const tip = document.getElementById('tip-scroll');
   function checkScroll() {
-    if (window.scrollY > 40) {
+    if (window.scrollY > 10) {
       document.documentElement.setAttribute('data-scroll', 'true');
     } else {
       document.documentElement.removeAttribute('data-scroll');
@@ -2064,13 +2062,10 @@ function initScrollTip() {
 
   if (tip) {
     tip.addEventListener('click', () => {
-      const targetSec = document.getElementById('playgrounds') || document.getElementById('bento');
-      if (targetSec) {
-        targetSec.scrollIntoView({ behavior: 'smooth' });
-      } else {
-        window.scrollBy({ top: 400, behavior: 'smooth' });
+      window.scrollTo({ top: (window.innerHeight || 800) * 1.1, behavior: 'smooth' });
+      if (typeof audio !== 'undefined' && audio.playSoftClick) {
+        audio.playSoftClick();
       }
-      audio.playSoftClick();
     });
   }
 
@@ -2173,17 +2168,38 @@ function initCommodore3D() {
   const canvas = document.getElementById('commodore-canvas');
   if (!canvas || typeof THREE === 'undefined') return;
 
+  function valMap(x, from, to) {
+    const y = ((x - from[0]) / (from[1] - from[0])) * (to[1] - to[0]) + to[0];
+    if (to[0] < to[1]) {
+      if (y < to[0]) return to[0];
+      if (y > to[1]) return to[1];
+    } else {
+      if (y > to[0]) return to[0];
+      if (y < to[1]) return to[1];
+    }
+    return y;
+  }
+
   try {
     const scene = new THREE.Scene();
     scene.background = new THREE.Color(0xf6d4b1);
 
-    // Camera setup with Dual-Mode Zoom Targets
-    const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-    const cameraOverviewPos = new THREE.Vector3(0, 0.35, 6.2);
-    const cameraZoomedPos = new THREE.Vector3(0, 0.42, 2.75);
-    const cameraLookTarget = new THREE.Vector3(0, 0.15, 0);
-    camera.position.copy(cameraOverviewPos);
-    camera.lookAt(cameraLookTarget);
+    const sizes = {
+      width: document.documentElement.clientWidth || window.innerWidth,
+      height: window.innerHeight,
+      portraitOffset: valMap(
+        window.innerHeight / (document.documentElement.clientWidth || window.innerWidth),
+        [0.75, 1.75],
+        [0, 2]
+      )
+    };
+
+    // Camera setup - zoomed into CRT screen at top of page
+    const camera = new THREE.PerspectiveCamera(50, sizes.width / sizes.height, 0.1, 100);
+    camera.position.set(0, 0, -2.5 - sizes.portraitOffset);
+    camera.rotation.set(-Math.PI, 0, Math.PI);
+    camera.lookAt(0, 0, 0);
+    scene.add(camera);
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
@@ -2192,8 +2208,8 @@ function initCommodore3D() {
       powerPreference: 'high-performance'
     });
     renderer.setClearColor(0xf6d4b1, 1);
-    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.setSize(sizes.width, sizes.height);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio || 1, 2));
     if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
 
     // Ambient & Directional Lighting matching warm retro aesthetic
@@ -2201,12 +2217,12 @@ function initCommodore3D() {
     scene.add(ambientLight);
 
     const dirLight = new THREE.DirectionalLight(0xfff3e6, 1.45);
-    dirLight.position.set(4, 7, 5);
+    dirLight.position.set(4, 7, -5);
     scene.add(dirLight);
 
     // Dynamic CRT screen point light casting phosphor bounce onto keys
     commodorePointLight = new THREE.PointLight(CRT_PALETTES[0].hex, 1.8, 5);
-    commodorePointLight.position.set(0, 0.55, 1.2);
+    commodorePointLight.position.set(0, 0.55, -1.2);
     scene.add(commodorePointLight);
 
     // ========================================================
@@ -2220,6 +2236,7 @@ function initCommodore3D() {
     const crtTexture = new THREE.CanvasTexture(crtCanvas);
     crtTexture.minFilter = THREE.LinearFilter;
     crtTexture.magFilter = THREE.LinearFilter;
+    if (THREE.sRGBEncoding) crtTexture.encoding = THREE.sRGBEncoding;
 
     // Line log buffer with Mirza's verified credentials
     const crtLogs = [
@@ -2336,7 +2353,6 @@ function initCommodore3D() {
     // ========================================================
     const textureLoader = new THREE.TextureLoader();
     
-    // Baked workstation textures from reference package
     const bakeTexture = textureLoader.load('assets/textures/bake-quality-5.jpg', () => {
       if (renderer) renderer.render(scene, camera);
     });
@@ -2354,35 +2370,35 @@ function initCommodore3D() {
       opacity: 0.95
     });
 
+    const computerGroup = new THREE.Group();
+    scene.add(computerGroup);
+    commodoreModel = computerGroup;
+
     if (typeof THREE.GLTFLoader !== 'undefined') {
       const loader = new THREE.GLTFLoader();
       loader.load('assets/models/Commodore710_33.5.glb', (gltf) => {
-        commodoreModel = gltf.scene;
-
-        commodoreModel.traverse((child) => {
+        const children = [...gltf.scene.children];
+        children.forEach((child) => {
           if (child.isMesh) {
             if (child.name === 'Screen') {
               commodoreScreenMesh = child;
               child.material = new THREE.MeshBasicMaterial({
                 map: crtTexture
               });
+              computerGroup.add(child);
             } else if (child.name === 'Computer' || child.name === 'CRT' || child.name === 'Keyboard') {
               child.material = computerMaterial;
+              computerGroup.add(child);
             } else if (child.name === 'ShadowPlane') {
               child.material = floorMaterial;
-            } else if (child.name === 'Plane') {
-              child.visible = false;
-            } else {
-              child.material = computerMaterial;
+              computerGroup.add(child);
             }
           }
         });
 
-        commodoreModel.position.set(0, -0.45, 0);
-        commodoreModel.rotation.set(0.12, -0.25, 0);
-        commodoreModel.scale.set(1.05, 1.05, 1.05);
+        computerGroup.position.set(0, 0, 0);
+        computerGroup.rotation.set(0, 0, 0);
 
-        scene.add(commodoreModel);
         drawCrtScreen();
       }, undefined, (err) => {
         console.warn("Commodore GLTF load note:", err);
@@ -2395,18 +2411,20 @@ function initCommodore3D() {
     let isDragging = false;
     let prevMouse = { x: 0, y: 0 };
     let rotVel = { x: 0, y: 0 };
-    let scrollRatio = 0;
     let targetMouseParallax = { x: 0, y: 0 };
     let currentMouseParallax = { x: 0, y: 0 };
-
-    window.addEventListener('scroll', () => {
-      const vh = window.innerHeight || 800;
-      scrollRatio = Math.min(2.5, Math.max(0, window.scrollY / vh));
-    }, { passive: true });
 
     window.addEventListener('pointermove', (e) => {
       targetMouseParallax.x = (e.clientX / window.innerWidth - 0.5) * 2;
       targetMouseParallax.y = (e.clientY / window.innerHeight - 0.5) * 2;
+
+      if (isDragging && computerGroup) {
+        const dx = e.clientX - prevMouse.x;
+        const dy = e.clientY - prevMouse.y;
+        rotVel.y += dx * 0.005;
+        rotVel.x += dy * 0.003;
+        prevMouse = { x: e.clientX, y: e.clientY };
+      }
     }, { passive: true });
 
     canvas.addEventListener('pointerdown', (e) => {
@@ -2414,32 +2432,23 @@ function initCommodore3D() {
       prevMouse = { x: e.clientX, y: e.clientY };
     }, { passive: true });
 
-    window.addEventListener('pointermove', (e) => {
-      if (!isDragging || !commodoreModel) return;
-      const dx = e.clientX - prevMouse.x;
-      const dy = e.clientY - prevMouse.y;
-      rotVel.y += dx * 0.005;
-      rotVel.x += dy * 0.003;
-      prevMouse = { x: e.clientX, y: e.clientY };
-    }, { passive: true });
-
     window.addEventListener('pointerup', () => {
       isDragging = false;
     }, { passive: true });
 
-    // Double-click to toggle CRT Zoom Focus
     canvas.addEventListener('dblclick', () => {
       window.toggleCommodoreZoom();
     });
 
-    // Resize handling via ResizeObserver
-    const resizeObserver = new ResizeObserver(() => {
-      if (!canvas.clientWidth || !canvas.clientHeight) return;
-      camera.aspect = canvas.clientWidth / canvas.clientHeight;
+    // Window Resize Handler
+    window.addEventListener('resize', () => {
+      sizes.width = document.documentElement.clientWidth || window.innerWidth;
+      sizes.height = window.innerHeight;
+      sizes.portraitOffset = valMap(sizes.height / sizes.width, [0.8, 1.8], [0, 2.5]);
+      camera.aspect = sizes.width / sizes.height;
       camera.updateProjectionMatrix();
-      renderer.setSize(canvas.clientWidth, canvas.clientHeight, false);
-    });
-    resizeObserver.observe(canvas);
+      renderer.setSize(sizes.width, sizes.height);
+    }, { passive: true });
 
     // ========================================================
     // ZOOM CONTROL TOGGLE
@@ -2504,37 +2513,47 @@ function initCommodore3D() {
       currentMouseParallax.x += (targetMouseParallax.x - currentMouseParallax.x) * dt * 3.5;
       currentMouseParallax.y += (targetMouseParallax.y - currentMouseParallax.y) * dt * 3.5;
 
-      // Calculate Scroll-Linked Camera & Model Offset
-      const scrollRotY = isCommodoreZoomed ? 0 : scrollRatio * 0.35;
-      const scrollPosY = isCommodoreZoomed ? -0.45 : (-0.45 + scrollRatio * 0.18);
-      const scrollCamZ = isCommodoreZoomed ? cameraZoomedPos.z : (cameraOverviewPos.z + scrollRatio * 0.6);
+      const vh = window.innerHeight || 800;
+      const scroll = window.scrollY / vh;
+      const zoomFac = isCommodoreZoomed ? 0 : valMap(scroll, [0, 1], [0, 1]);
 
-      const targetPos = isCommodoreZoomed ? cameraZoomedPos : new THREE.Vector3(cameraOverviewPos.x, cameraOverviewPos.y, scrollCamZ);
-      camera.position.lerp(targetPos, Math.min(1, dt * 5.0));
-      camera.lookAt(cameraLookTarget.x, isCommodoreZoomed ? 0.35 : (0.15 + scrollRatio * 0.08), cameraLookTarget.z);
+      const targetCamZ = isCommodoreZoomed
+        ? -2.5 - sizes.portraitOffset
+        : valMap(scroll, [0, 1], [-2.5 - sizes.portraitOffset, -10 - sizes.portraitOffset]);
 
-      if (commodoreModel) {
+      camera.position.z += (targetCamZ - camera.position.z) * Math.min(1, dt * 5.0);
+
+      const targetCompX = isCommodoreZoomed ? 0 : 0.5 * zoomFac;
+      const targetCompY = isCommodoreZoomed ? 0 : valMap(scroll, [0, 1], [0, 1.5]);
+      const targetCompRotY = isCommodoreZoomed ? 0 : (Math.PI * 0.2) * zoomFac;
+
+      if (computerGroup) {
         if (!isDragging) {
-          // Gentle idle breathing sway combined with mouse parallax and scroll rotation
-          const swayFactor = isCommodoreZoomed ? 0.005 : 0.02;
-          const targetRotY = -0.25 + scrollRotY + (isCommodoreZoomed ? 0 : currentMouseParallax.x * 0.16) + Math.sin(idleTime * 0.8) * swayFactor;
-          const targetRotX = 0.12 + (isCommodoreZoomed ? 0 : currentMouseParallax.y * 0.1);
-          
-          commodoreModel.rotation.y += (targetRotY - commodoreModel.rotation.y) * Math.min(1, dt * 4.0);
-          commodoreModel.rotation.x += (targetRotX - commodoreModel.rotation.x) * Math.min(1, dt * 4.0);
-          commodoreModel.position.y += (scrollPosY - commodoreModel.position.y) * Math.min(1, dt * 4.0);
-        } else {
-          commodoreModel.rotation.y += rotVel.y * dt;
-          commodoreModel.rotation.x += rotVel.x * dt;
-        }
+          const swayFactor = isCommodoreZoomed ? 0.005 : 0.015;
+          const finalRotY = targetCompRotY + currentMouseParallax.x * 0.1 + Math.sin(idleTime * 0.8) * swayFactor;
+          const finalRotX = currentMouseParallax.y * 0.06;
 
-        // Clamp vertical tilt
-        commodoreModel.rotation.x = Math.max(-0.25, Math.min(0.4, commodoreModel.rotation.x));
+          computerGroup.rotation.y += (finalRotY - computerGroup.rotation.y) * Math.min(1, dt * 4.0);
+          computerGroup.rotation.x += (finalRotX - computerGroup.rotation.x) * Math.min(1, dt * 4.0);
+          computerGroup.position.x += (targetCompX - computerGroup.position.x) * Math.min(1, dt * 4.0);
+          computerGroup.position.y += (targetCompY - computerGroup.position.y) * Math.min(1, dt * 4.0);
+        } else {
+          computerGroup.rotation.y += rotVel.y * dt;
+          computerGroup.rotation.x += rotVel.x * dt;
+        }
 
         // Velocity damping
         rotVel.y *= 0.92;
         rotVel.x *= 0.92;
       }
+
+      camera.position.x = currentMouseParallax.x * valMap(scroll, [0, 1], [0.2, 3]) * 0.1;
+      camera.position.y = currentMouseParallax.y * valMap(scroll, [0, 1], [0.2, 1.2]) * 0.1;
+      camera.lookAt(0, isCommodoreZoomed ? 0.1 : valMap(scroll, [0, 1], [0, 0.4]), 0);
+
+      // Canvas opacity smoothly fades from 1.0 to 0.0 as user scrolls past hero
+      const canvasOpacity = isCommodoreZoomed ? 1 : valMap(scroll, [1.05, 1.55], [1, 0]);
+      canvas.style.opacity = canvasOpacity.toFixed(3);
 
       renderer.render(scene, camera);
     }

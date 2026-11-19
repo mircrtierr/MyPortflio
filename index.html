@@ -145,62 +145,60 @@
   </div>
 
 
+  <div id="home"></div>
+
   <!-- ========================================== -->
-  <!-- 4. HERO SECTION: 3D COMMODORE WORKSTATION  -->
+  <!-- 4. FULL-SCREEN 3D COMMODORE WORKSTATION    -->
   <!-- ========================================== -->
-  <header id="hero">
-    <!-- Top Subtitle -->
-    <div style="text-align: center; margin-bottom: 8px;">
-      <h3>Hi there, I’m</h3>
-      <h1 style="margin-bottom: 0;">Mirza</h1>
+  <canvas class="webgl" id="commodore-canvas" aria-label="Interactive 3D Commodore 710 Computer"></canvas>
+
+  <!-- Hero Backup (Visible while canvas initializes or if WebGL is unavailable) -->
+  <div id="hero-backup">
+    <div class="font-pixel" style="font-size: 13px; color: var(--color-primary); letter-spacing: 0.05em;">Hi there, I’m</div>
+    <h1 style="margin: 0; font-size: 2.4em;">Mirza</h1>
+    <div class="font-pixel" style="font-size: 11px; letter-spacing: 0.05em; color: var(--color-primary); margin-top: 6px;">
+      PASIR GUDANG, JOHOR • DIPLOMA TEKNOLOGI KOMPUTERAN • KVPJB
     </div>
+    <ul class="skills-list" style="justify-content: center; max-width: 580px; margin-top: 10px;">
+      <li>CGPA 3.98 / 4.00</li>
+      <li>SKM Level 3: S103882102</li>
+      <li>Edge AI &amp; FAISS 512D</li>
+      <li>5-Mo OJT (Feb–Jun 2027)</li>
+    </ul>
+  </div>
 
-    <p style="text-align: center; font-family: var(--font-pixel); font-size: 11px; margin-bottom: 16px; letter-spacing: 0.05em;">
-      COMPUTER TECHNOLOGY • EDGE AI &amp; FAISS • NETWORKS
-    </p>
+  <!-- Floating Hero Controls Over 3D Workstation (Fades smoothly on scroll) -->
+  <div id="hero-controls">
+    <button onclick="toggleCommodoreZoom()" id="crt-zoom-btn" class="btn" title="Smoothly zoom camera into CRT screen">
+      🔍 Zoom Screen
+    </button>
+    <button onclick="toggleCrtColor()" id="crt-color-btn" class="btn" title="Toggle CRT phosphor color">
+      🟡 Amber CRT
+    </button>
+    <a href="#about" class="btn btn-secondary" title="Read About Mirza">
+      👤 About Me
+    </a>
+    <a href="#projects" class="btn btn-secondary" title="View Engineering Projects">
+      🛠️ Projects
+    </a>
+    <a href="#terminal" class="btn btn-secondary" title="Interactive Shell">
+      💻 Open Shell
+    </a>
+    <a href="assets/certificates/sijil_skm3_jpk_official.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" title="View Certified Credentials">
+      📄 Resume PDF
+    </a>
+  </div>
 
-    <!-- 3D Commodore Canvas Container -->
-    <div id="commodore-canvas-wrapper">
-      <canvas id="commodore-canvas" aria-label="Interactive 3D Commodore 710 Computer"></canvas>
-
-      <!-- Overlay Badges -->
-      <div style="position: absolute; top: 12px; left: 16px; pointer-events: none; display: flex; gap: 8px;">
-        <span class="btn" style="padding: 4px 10px; font-size: 9px; box-shadow: 2px 2px 0px var(--color-primary);">
-          COMMODORE 710
-        </span>
-        <span id="crt-status-badge" class="btn btn-secondary" style="padding: 4px 10px; font-size: 9px;">
-          AMBER CRT
-        </span>
-      </div>
-
-      <!-- Quick Action Buttons Below 3D Computer -->
-      <div style="position: absolute; bottom: 12px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; padding: 0 12px; pointer-events: all;">
-        <button onclick="toggleCommodoreZoom()" id="crt-zoom-btn" class="btn" title="Smoothly zoom camera into CRT screen">
-          🔍 Zoom Screen
-        </button>
-        <button onclick="toggleCrtColor()" id="crt-color-btn" class="btn" title="Toggle CRT phosphor color">
-          🟡 Amber CRT
-        </button>
-        <a href="#terminal" class="btn btn-secondary" title="Jump down to interactive shell">
-          💻 Open Shell
-        </a>
-        <a href="assets/certificates/sijil_skm3_jpk_official.pdf" target="_blank" class="btn btn-secondary" title="View certified SKM Level 3 credential">
-          📄 View SKM3 PDF
-        </a>
-      </div>
-    </div>
-
-    <!-- Floating Scroll Tip with Bounce Animation -->
-    <div id="tip-scroll" role="button" aria-label="Scroll down to explore">
-      Scroll ↓
-    </div>
-  </header>
+  <!-- Floating Scroll Tip (Bounces gently, hides on scroll) -->
+  <div id="tip-scroll" onclick="window.scrollTo({top: window.innerHeight * 1.05, behavior: 'smooth'})" role="button" aria-label="Scroll down to explore">
+    Scroll ↓
+  </div>
 
 
   <!-- ========================================== -->
   <!-- 5. MAIN CONTENT WRAPPER                     -->
   <!-- ========================================== -->
-  <main style="max-width: 760px; margin: 0 auto; padding: 32px 20px;">
+  <main>
 
     <!-- ---------------------------------------- -->
     <!-- SECTION 1: ABOUT ME                      -->
@@ -281,6 +279,19 @@
           <img src="assets/projects/smartattend_dashboard.jpg" alt="SmartAttend Biometric System Interface" class="retro-img clickable" loading="lazy"
             onclick="openLightbox('assets/projects/smartattend_dashboard.jpg', 'SmartAttend Dashboard', 'Real-time ESP32-CAM biometric attendance UI with sub-second FAISS vector search.')" />
         </div>
+
+        <button class="btn collapse-btn" collapsed="true" onclick="toggleCollapse(this)">more...</button>
+        <div class="collapse-body">
+          <div class="retro-card" style="margin-top: 14px;">
+            <div class="font-pixel" style="font-size: 11px; margin-bottom: 8px; color: var(--color-primary);">SYSTEM ARCHITECTURE &amp; WORKFLOW:</div>
+            <ul style="padding-left: 20px; font-size: 15px; line-height: 1.6; text-align: left;">
+              <li><strong>Edge Vision Node:</strong> ESP32-CAM (OV2640 sensor) transmitting high-throughput JPEG frames over local LAN.</li>
+              <li><strong>Embedding Pipeline:</strong> Facial landmark alignment + InsightFace (ArcFace ResNet-50) yielding dense 512-dimensional feature vectors.</li>
+              <li><strong>Vector Similarity:</strong> IndexFlatL2 FAISS vector index querying 500+ student embeddings in &lt;250ms with Euclidean distance threshold of 0.42.</li>
+              <li><strong>Persistent Storage:</strong> SQLite backend with transactional timestamps, duplicate suppression, and automated attendance reporting.</li>
+            </ul>
+          </div>
+        </div>
       </article>
 
       <hr class="retro-divider" />
@@ -311,6 +322,19 @@
           <img src="assets/projects/yolo_colab_detection.jpg" alt="YOLO Custom Detection on Google Colab" class="retro-img clickable" loading="lazy"
             onclick="openLightbox('assets/projects/yolo_colab_detection.jpg', 'YOLO Object Classifier on Google Colab', 'Webcam detection inference identifying classroom devices with high confidence bounding boxes.')" />
         </div>
+
+        <button class="btn collapse-btn" collapsed="true" onclick="toggleCollapse(this)">more...</button>
+        <div class="collapse-body">
+          <div class="retro-card" style="margin-top: 14px;">
+            <div class="font-pixel" style="font-size: 11px; margin-bottom: 8px; color: var(--color-primary);">TRAINING METRICS &amp; PIPELINE:</div>
+            <ul style="padding-left: 20px; font-size: 15px; line-height: 1.6; text-align: left;">
+              <li><strong>Dataset:</strong> 1,200+ annotated high-res images with augmentations (random crop, brightness jitter, mosaic).</li>
+              <li><strong>Training Compute:</strong> 100 epochs on Google Colab Tesla T4 GPU running PyTorch and Ultralytics YOLOv8.</li>
+              <li><strong>Performance:</strong> Achieved 92.4% mAP@0.5 and 18ms inference latency per frame on live video streams.</li>
+              <li><strong>Deployment:</strong> OpenCV continuous video loop with bounding box thresholds and automated alert triggers.</li>
+            </ul>
+          </div>
+        </div>
       </article>
 
       <hr class="retro-divider" />
@@ -339,6 +363,19 @@
         <div style="margin: 16px 0; max-width: 420px; margin-left: auto; margin-right: auto;">
           <img src="assets/awards/trophy_petah_madani_podcast.jpg" alt="Petah KPM 2026 National Trophy" class="retro-img clickable" loading="lazy"
             onclick="openLightbox('assets/awards/trophy_petah_madani_podcast.jpg', 'Kelima Kebangsaan Trophy - Petah KPM 2026', 'Beyond The Mic Podcast competition trophy awarded at Putrajaya International Convention Centre (PICC).')" />
+        </div>
+
+        <button class="btn collapse-btn" collapsed="true" onclick="toggleCollapse(this)">more...</button>
+        <div class="collapse-body">
+          <div class="retro-card" style="margin-top: 14px;">
+            <div class="font-pixel" style="font-size: 11px; margin-bottom: 8px; color: var(--color-primary);">PRODUCTION &amp; AUDIO SPECIFICATIONS:</div>
+            <ul style="padding-left: 20px; font-size: 15px; line-height: 1.6; text-align: left;">
+              <li><strong>Hardware:</strong> Dual-channel balanced XLR dynamic microphones with low-noise mic preamps and shock mounts.</li>
+              <li><strong>Acoustic Processing:</strong> Multi-band downward expansion, phase-aligned dynamic EQ, and real-time noise suppression.</li>
+              <li><strong>Mastering:</strong> EBU R128 / ITU-R BS.1770 broadcast standard compliance (-14 LUFS integrated, -1.0 dBTP ceiling).</li>
+              <li><strong>Achievement:</strong> Awarded 5th Place Nationally (Kelima Kebangsaan) at Putrajaya International Convention Centre.</li>
+            </ul>
+          </div>
         </div>
       </article>
     </section>
