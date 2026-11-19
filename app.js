@@ -2240,22 +2240,22 @@ function initCommodore3D() {
 
     // Line log buffer with Mirza's verified credentials
     const crtLogs = [
-      "*** MIRZA-OS 2.0 (COMMODORE 710) ***",
-      "64K RAM SYSTEM  •  FAISS 512D VECTOR READY",
-      "---------------------------------------------------",
-      "Hi there,",
-      "I'm Mirza",
-      "",
-      "• Diploma Teknologi Komputeran (KVPJB)",
-      "• Academic CGPA: 3.98 / 4.00",
-      "• SKM Tahap 3 Certified: S103882102",
-      "• 5-Month IT Internship (Feb - June 2027)",
-      "• Systems: ESP32-CAM FAISS & YOLOv8",
-      "---------------------------------------------------",
-      "READY.",
-      "Scroll down or type to explore",
-      "mirza:~$ ready."
+      "ready."
     ];
+
+    // Preload Phosphor CRT Portraits for 3 palettes
+    const crtPortraits = {
+      amber: new Image(),
+      green: new Image(),
+      white: new Image()
+    };
+    crtPortraits.amber.src = 'assets/retro/mirza_crt_portrait_amber.png';
+    crtPortraits.green.src = 'assets/retro/mirza_crt_portrait_green.png';
+    crtPortraits.white.src = 'assets/retro/mirza_crt_portrait_white.png';
+
+    crtPortraits.amber.onload = () => drawCrtScreen();
+    crtPortraits.green.onload = () => drawCrtScreen();
+    crtPortraits.white.onload = () => drawCrtScreen();
 
     let cursorBlink = true;
     let lastBlinkTime = performance.now();
@@ -2286,49 +2286,84 @@ function initCommodore3D() {
 
       // 4. CRT Outer Frame Accent
       crtCtx.strokeStyle = palette.dim;
-      crtCtx.lineWidth = 6;
-      crtCtx.strokeRect(18, 18, 988, 732);
+      crtCtx.lineWidth = 4;
+      crtCtx.strokeRect(16, 16, 992, 736);
 
-      // 5. Header Bar
-      crtCtx.font = "bold 18px 'public-pixel', monospace";
+      // 5. RIGHT SIDE: PHOSPHOR DITHERED PORTRAIT
+      const portraitImg = currentCrtColorIndex === 0
+        ? crtPortraits.amber
+        : (currentCrtColorIndex === 1 ? crtPortraits.green : crtPortraits.white);
+
+      if (portraitImg && portraitImg.complete && portraitImg.naturalWidth > 0) {
+        // Glowing bezel frame around portrait
+        crtCtx.strokeStyle = palette.dim;
+        crtCtx.lineWidth = 2;
+        crtCtx.strokeRect(588, 126, 364, 456);
+
+        // Portrait Image
+        crtCtx.drawImage(portraitImg, 595, 134, 350, 440);
+      }
+
+      // 6. LEFT SIDE: INTRO & HIGH CONTRAST NAME BADGE
+      crtCtx.font = "bold 28px 'chill', sans-serif";
       crtCtx.fillStyle = palette.primary;
       crtCtx.shadowColor = palette.glow;
       crtCtx.shadowBlur = 10;
-      crtCtx.fillText("COMMODORE 710 // MIRZA-OS 2.0 // CGPA 3.98", 45, 60);
+      crtCtx.fillText("Hi there,", 50, 150);
 
-      // Horizontal separator
-      crtCtx.strokeStyle = palette.dim;
-      crtCtx.lineWidth = 2;
-      crtCtx.beginPath();
-      crtCtx.moveTo(45, 78);
-      crtCtx.lineTo(979, 78);
-      crtCtx.stroke();
+      // Inverted Phosphor Highlight Box: "I'm Mirza"
+      const boxW = 290;
+      const boxH = 50;
+      crtCtx.fillStyle = palette.primary;
+      crtCtx.fillRect(50, 172, boxW, boxH);
 
-      // 6. Draw Log Lines
-      crtCtx.font = "bold 20px 'chill', 'JetBrains Mono', 'Courier New', monospace";
-      let startY = 118;
-      const lineHeight = 36;
-      const maxLines = 14;
-      const linesToRender = crtLogs.slice(-maxLines);
+      crtCtx.font = "bold 24px 'public-pixel', monospace";
+      crtCtx.fillStyle = "#000000";
+      crtCtx.shadowBlur = 0;
+      crtCtx.fillText("I'm Mirza", 68, 208);
 
-      linesToRender.forEach((line) => {
-        if (line.startsWith("***") || line.startsWith("---")) {
-          crtCtx.fillStyle = palette.dim;
-        } else if (line.startsWith(">") || line.includes("READY")) {
-          crtCtx.fillStyle = palette.primary;
-        } else if (line.startsWith("CANDIDATE") || line.startsWith("Hi there") || line.startsWith("I'm Mirza")) {
-          crtCtx.fillStyle = palette.primary;
-        } else {
-          crtCtx.fillStyle = palette.primary;
-        }
-        crtCtx.fillText(line, 48, startY);
-        startY += lineHeight;
+      // Candidate Credential Bullets
+      crtCtx.shadowColor = palette.glow;
+      crtCtx.shadowBlur = 6;
+      crtCtx.fillStyle = palette.primary;
+      crtCtx.font = "18px 'chill', 'JetBrains Mono', monospace";
+
+      const bullets = [
+        "• Software & IT Systems Specialist",
+        "• Diploma Teknologi Komputeran (KVPJB)",
+        "• Academic CGPA: 3.98 / 4.00",
+        "• SKM Level 3 Certified: S103882102",
+        "• 5-Month IT Internship (Feb – June 2027)"
+      ];
+      let bY = 276;
+      bullets.forEach(b => {
+        crtCtx.fillText(b, 50, bY);
+        bY += 36;
       });
 
-      // 7. Blinking Phosphor Prompt Block Cursor
-      if (cursorBlink && startY <= 730) {
-        crtCtx.fillStyle = palette.primary;
-        crtCtx.fillRect(48, startY - 22, 18, 24);
+      // Bottom Shell Prompt Area
+      crtCtx.strokeStyle = palette.dim;
+      crtCtx.lineWidth = 1;
+      crtCtx.beginPath();
+      crtCtx.moveTo(50, 485);
+      crtCtx.lineTo(550, 485);
+      crtCtx.stroke();
+
+      crtCtx.font = "13px 'public-pixel', monospace";
+      crtCtx.fillStyle = palette.dim;
+      crtCtx.fillText("Welcome to MIRZA-OS 1.0 LTS", 50, 520);
+      crtCtx.fillText(">> Scroll down or type below", 50, 550);
+
+      // Live Mirror Command Prompt
+      const lastCmd = crtLogs[crtLogs.length - 1] || "ready.";
+      crtCtx.font = "bold 15px 'public-pixel', monospace";
+      crtCtx.fillStyle = palette.primary;
+      crtCtx.fillText("mirza:~$ " + lastCmd, 50, 604);
+
+      // Blinking Block Prompt Cursor
+      if (cursorBlink) {
+        const textWidth = crtCtx.measureText("mirza:~$ " + lastCmd).width;
+        crtCtx.fillRect(56 + textWidth, 586, 14, 22);
       }
 
       // Reset shadow
@@ -2345,8 +2380,13 @@ function initCommodore3D() {
       drawCrtScreen();
     };
 
-    // Initial render of CRT canvas
+    // Initial render of CRT canvas + font ready hook
     drawCrtScreen();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(() => {
+        drawCrtScreen();
+      });
+    }
 
     // ========================================================
     // PHOTOREALISTIC BAKED TEXTURES & GLTF MODEL LOADER
@@ -2521,7 +2561,7 @@ function initCommodore3D() {
         ? -2.5 - sizes.portraitOffset
         : valMap(scroll, [0, 1], [-2.5 - sizes.portraitOffset, -10 - sizes.portraitOffset]);
 
-      camera.position.z += (targetCamZ - camera.position.z) * Math.min(1, dt * 5.0);
+      camera.position.z = targetCamZ;
 
       const targetCompX = isCommodoreZoomed ? 0 : 0.5 * zoomFac;
       const targetCompY = isCommodoreZoomed ? 0 : valMap(scroll, [0, 1], [0, 1.5]);
@@ -2533,10 +2573,10 @@ function initCommodore3D() {
           const finalRotY = targetCompRotY + currentMouseParallax.x * 0.1 + Math.sin(idleTime * 0.8) * swayFactor;
           const finalRotX = currentMouseParallax.y * 0.06;
 
-          computerGroup.rotation.y += (finalRotY - computerGroup.rotation.y) * Math.min(1, dt * 4.0);
-          computerGroup.rotation.x += (finalRotX - computerGroup.rotation.x) * Math.min(1, dt * 4.0);
-          computerGroup.position.x += (targetCompX - computerGroup.position.x) * Math.min(1, dt * 4.0);
-          computerGroup.position.y += (targetCompY - computerGroup.position.y) * Math.min(1, dt * 4.0);
+          computerGroup.rotation.y = finalRotY;
+          computerGroup.rotation.x = finalRotX;
+          computerGroup.position.x = targetCompX;
+          computerGroup.position.y = targetCompY;
         } else {
           computerGroup.rotation.y += rotVel.y * dt;
           computerGroup.rotation.x += rotVel.x * dt;
@@ -2552,8 +2592,9 @@ function initCommodore3D() {
       camera.lookAt(0, isCommodoreZoomed ? 0.1 : valMap(scroll, [0, 1], [0, 0.4]), 0);
 
       // Canvas opacity smoothly fades from 1.0 to 0.0 as user scrolls past hero
-      const canvasOpacity = isCommodoreZoomed ? 1 : valMap(scroll, [1.05, 1.55], [1, 0]);
+      const canvasOpacity = isCommodoreZoomed ? 1 : valMap(scroll, [1.15, 1.70], [1, 0]);
       canvas.style.opacity = canvasOpacity.toFixed(3);
+      canvas.style.pointerEvents = (canvasOpacity < 0.05) ? 'none' : 'auto';
 
       renderer.render(scene, camera);
     }

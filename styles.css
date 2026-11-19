@@ -67,7 +67,6 @@ canvas.webgl {
   cursor: grab;
   touch-action: none;
   pointer-events: all;
-  transition: opacity 0.3s ease;
 }
 
 canvas.webgl:active {
@@ -282,99 +281,94 @@ nav.retro-nav .btn {
 }
 
 /* ============================================================ */
-/* 6. MAIN CONTENT LAYOUT (FOCUSED 680PX EDITORIAL)            */
+/* 6. MAIN CONTENT LAYOUT (FOCUSED 680PX EDITORIAL ZINE)        */
 /* ============================================================ */
 main {
   color: var(--color-primary);
-  margin-top: 110vh;
+  margin-top: 180vh;
   text-align: center;
   position: relative;
   z-index: 2;
   background-color: var(--color-bg);
-  padding-bottom: 80px;
+  padding: 40px 16px 120px 16px;
 }
 
 section {
-  padding-bottom: 64px;
-  margin-bottom: 72px;
+  padding-bottom: 56px;
+  margin-bottom: 64px;
   position: relative;
 }
 
-section::after {
-  content: "";
-  border-bottom: dashed 2px var(--color-primary);
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
+/* Subtle Neo-Brutalist Section Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  margin: 54px auto;
   width: clamp(0px, 95vw, 680px);
 }
 
-section:last-of-type::after {
-  display: none;
-}
-
-/* Headings with Authentic Brutalist Pixel Blocks */
-h1 {
-  display: inline-block;
-  color: var(--color-bg);
+.section-divider::before,
+.section-divider::after {
+  content: "";
+  flex: 1;
+  height: 2px;
   background-color: var(--color-primary);
-  font-family: var(--font-pixel);
-  font-size: 1.8em;
-  padding: 16px 24px;
-  padding-top: 8px;
-  padding-bottom: 12px;
-  margin: auto;
-  margin-top: 0;
-  margin-bottom: 0.5em;
-  box-shadow: 2px 2px 0px rgba(82, 82, 82, 0.4);
+  opacity: 0.35;
 }
 
-h2 {
-  display: inline-block;
-  font-size: 1.15em;
-  text-align: center;
-  color: var(--color-bg);
-  background-color: var(--color-primary);
+.section-divider span {
   font-family: var(--font-pixel);
-  padding: 12px 18px;
-  padding-top: 6px;
-  padding-bottom: 8px;
-  margin: auto;
-  margin-top: 0.4em;
-  margin-bottom: 0.4em;
-  box-shadow: 2px 2px 0px rgba(82, 82, 82, 0.3);
-}
-
-h3 {
-  font-size: 0.95em;
-  text-align: center;
+  font-size: 10px;
+  letter-spacing: 0.12em;
   color: var(--color-primary);
+  opacity: 0.75;
+}
+
+/* Section Header Typography */
+.section-tag {
+  display: inline-block;
   font-family: var(--font-pixel);
-  padding-top: 4px;
-  padding-bottom: 8px;
-  margin: 0.3em auto;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  padding: 4px 12px;
+  border-radius: 2px;
+  margin-bottom: 12px;
+}
+
+h1.section-title {
+  display: inline-block;
+  font-family: var(--font-pixel);
+  font-size: 1.6em;
+  color: var(--color-bg);
+  background-color: var(--color-primary);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 6px 20px 8px 20px;
+  margin: 0 auto 20px auto;
+  letter-spacing: 0.04em;
+  border: 1px solid var(--color-bg);
 }
 
 p {
-  padding: 12px 0;
+  padding: 10px 0;
   text-align: left;
-  line-height: 1.7;
+  line-height: 1.75;
+  font-size: 1.05rem;
   width: clamp(0px, 95vw, 680px);
   margin: auto;
   box-sizing: border-box;
+  color: #333333;
 }
 
-hr.retro-divider {
-  width: 120px;
-  height: 2px;
-  margin: 40px auto;
-  border: none;
-  border-bottom: dashed 2px var(--color-primary);
+p strong {
+  color: #111111;
 }
 
 /* ============================================================ */
-/* 7. BRUTALIST BUTTONS, CHIPS & RETRO CARDS                    */
+/* 7. HIGH-END RETRO BRUTALIST BUTTONS & CHIPS                  */
 /* ============================================================ */
 .btn, .retro-btn {
   display: inline-flex;
@@ -384,25 +378,25 @@ hr.retro-divider {
   font-family: var(--font-pixel);
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.03em;
-  padding: 8px 18px;
+  letter-spacing: 0.04em;
+  padding: 9px 18px;
   background-color: var(--color-primary);
   color: var(--color-bg);
   fill: var(--color-bg);
-  border: none;
+  border: 1.5px solid var(--color-primary);
   cursor: pointer;
   text-decoration: none;
-  border-radius: 2px;
-  box-shadow: 2px 2px 0px var(--color-primary), 5px 5px 0px rgba(82, 82, 82, 0.25);
-  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: 3px;
+  box-shadow: 3px 3px 0px var(--color-primary);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease;
   pointer-events: all;
 }
 
 .btn:hover, .retro-btn:hover {
-  transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px var(--color-primary), 7px 7px 0px rgba(82, 82, 82, 0.2);
-  background-color: #3d3d3d;
-  color: #fff;
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--color-primary);
+  background-color: #1a1a1a;
+  color: #ffffff;
 }
 
 .btn:active, .retro-btn:active {
@@ -411,14 +405,15 @@ hr.retro-divider {
 }
 
 .btn-secondary {
-  background-color: var(--color-bg-card);
+  background-color: #ffffff;
   color: var(--color-primary);
-  border: dashed 1px var(--color-primary);
+  border: 1.5px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
 }
 
 .btn-secondary:hover {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
+  background-color: #fff8f0;
+  color: var(--color-primary);
 }
 
 /* Skills Chips */
@@ -428,53 +423,161 @@ hr.retro-divider {
   align-content: center;
   justify-content: center;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
   text-align: center;
   list-style: none;
-  margin: 16px auto;
+  margin: 14px auto;
   width: clamp(0px, 95vw, 680px);
 }
 
 .skills-list li {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   padding: 5px 12px;
-  border: dashed 1px var(--color-primary);
-  background-color: var(--color-bg-card);
+  border: 1.5px solid var(--color-primary);
+  background-color: #ffffff;
   color: var(--color-primary);
-  box-shadow: 1px 1px 0px var(--color-bg), 3px 3px 0px rgba(82, 82, 82, 0.2);
-  font-family: var(--font-sans);
-  font-size: 0.9em;
-  border-radius: 2px;
-  transition: all 0.2s;
+  box-shadow: 2px 2px 0px var(--color-primary);
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  font-weight: 600;
+  border-radius: 3px;
+  transition: transform 0.15s, box-shadow 0.15s, background-color 0.15s;
 }
 
 .skills-list li:hover {
-  transform: translateY(-2px);
-  background-color: #fff;
-  box-shadow: 1px 1px 0px var(--color-bg), 5px 5px 0px rgba(82, 82, 82, 0.3);
+  transform: translate(-1px, -1px);
+  background-color: #fff9f0;
+  box-shadow: 3px 3px 0px var(--color-primary);
 }
 
-/* Retro Cards */
+/* Metric Plaques Grid */
+.metric-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+  margin: 24px auto;
+  width: clamp(0px, 95vw, 680px);
+}
+
+.metric-card {
+  background-color: #ffffff;
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
+  padding: 16px 12px;
+  text-align: center;
+  border-radius: 4px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.metric-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 5px 5px 0px var(--color-primary);
+}
+
+.metric-num {
+  font-family: var(--font-pixel);
+  font-size: 1.4rem;
+  color: var(--color-primary);
+  font-weight: bold;
+}
+
+.metric-num.highlight {
+  color: #d97706;
+}
+
+.metric-label {
+  font-family: var(--font-pixel);
+  font-size: 9.5px;
+  letter-spacing: 0.05em;
+  color: #555555;
+  margin-top: 5px;
+}
+
+.metric-sub {
+  font-size: 11.5px;
+  color: #777777;
+  margin-top: 2px;
+}
+
+/* Retro General Cards */
 .retro-card {
   width: clamp(0px, 95vw, 680px);
-  margin: 16px auto;
+  margin: 18px auto;
   background-color: var(--color-bg-card);
-  border: dashed 2px var(--color-primary);
-  box-shadow: 2px 2px 0px var(--color-bg), 5px 5px 0px rgba(82, 82, 82, 0.25);
-  padding: 22px;
+  border: 2px solid var(--color-primary);
+  box-shadow: 4px 4px 0px var(--color-primary);
+  padding: 24px;
   text-align: left;
+  border-radius: 4px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.retro-card:hover {
+  transform: translate(-1px, -1px);
+  box-shadow: 6px 6px 0px var(--color-primary);
+}
+
+/* Project Case Study Card */
+.project-card {
+  width: clamp(0px, 95vw, 680px);
+  margin: 28px auto;
+  background-color: var(--color-bg-card);
+  border: 2px solid var(--color-primary);
+  box-shadow: 5px 5px 0px var(--color-primary);
+  border-radius: 4px;
+  text-align: left;
+  padding: 24px;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.project-card:hover {
+  box-shadow: 7px 7px 0px var(--color-primary);
+}
+
+.project-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.project-title {
+  font-family: var(--font-pixel);
+  font-size: 1.15rem;
+  color: var(--color-primary);
+  margin: 0;
+}
+
+.project-badge {
+  font-family: var(--font-pixel);
+  font-size: 9.5px;
+  padding: 4px 10px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
   border-radius: 2px;
 }
 
-/* Responsive Images */
+.project-year {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+}
+
+/* Responsive Images in Solid Brutalist Frame */
 .retro-img {
   width: 100%;
-  max-width: 680px;
+  max-width: 100%;
   height: auto;
   margin: 16px auto;
-  border: dashed 2px var(--color-primary);
-  box-shadow: 1px 1px 0px var(--color-bg), 5px 5px 0px rgba(82, 82, 82, 0.25);
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
+  border-radius: 3px;
   display: block;
+  background-color: #ffffff;
 }
 
 .retro-img.clickable {
@@ -483,18 +586,24 @@ hr.retro-divider {
 }
 
 .retro-img.clickable:hover {
-  transform: scale(1.015);
-  box-shadow: 2px 2px 0px var(--color-primary), 8px 8px 0px rgba(82, 82, 82, 0.3);
+  transform: scale(1.01);
+  box-shadow: 5px 5px 0px var(--color-primary);
 }
 
 /* ============================================================ */
 /* 8. COLLAPSIBLE ACCORDION (.collapse-btn & .collapse-body)    */
 /* ============================================================ */
+.collapse-btn {
+  margin-top: 10px;
+  font-size: 10px;
+  padding: 6px 14px;
+}
+
 .collapse-btn[collapsed="true"] + .collapse-body {
   opacity: 0;
   max-height: 0;
   overflow: hidden;
-  transition: opacity 0.3s, max-height 0.4s cubic-bezier(0, 1, 0, 1);
+  transition: opacity 0.3s ease, max-height 0.4s cubic-bezier(0, 1, 0, 1);
 }
 
 .collapse-btn[collapsed="false"] + .collapse-body {
@@ -505,14 +614,61 @@ hr.retro-divider {
 }
 
 /* ============================================================ */
-/* 9. INTERACTIVE TERMINAL SHELL BOX                            */
+/* 9. TROPHY & CREDENTIALS SHOWCASE                             */
+/* ============================================================ */
+.trophy-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.trophy-card {
+  background-color: #ffffff;
+  border: 2px solid var(--color-primary);
+  box-shadow: 3px 3px 0px var(--color-primary);
+  border-radius: 4px;
+  padding: 16px 12px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.trophy-card:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0px var(--color-primary);
+}
+
+.trophy-badge {
+  font-family: var(--font-pixel);
+  font-size: 9.5px;
+  padding: 4px 10px;
+  background-color: var(--color-primary);
+  color: var(--color-bg);
+  display: inline-block;
+  margin-bottom: 8px;
+  border-radius: 2px;
+}
+
+.trophy-badge.gold {
+  background-color: #b45309;
+  color: #fff;
+}
+
+.trophy-badge.bronze {
+  background-color: #92400e;
+  color: #fff;
+}
+
+/* ============================================================ */
+/* 10. INTERACTIVE TERMINAL SHELL BOX                           */
 /* ============================================================ */
 .retro-terminal-box {
   width: clamp(0px, 95vw, 680px);
-  margin: 20px auto;
-  background-color: #121214;
-  border: 3px solid var(--color-primary);
-  box-shadow: 3px 3px 0px var(--color-primary), 7px 7px 0px rgba(82, 82, 82, 0.25);
+  margin: 24px auto;
+  background-color: #141416;
+  border: 2px solid var(--color-primary);
+  box-shadow: 5px 5px 0px var(--color-primary);
+  border-radius: 6px;
   color: var(--color-accent);
   font-family: var(--font-mono);
   overflow: hidden;
@@ -520,31 +676,49 @@ hr.retro-divider {
 }
 
 .retro-terminal-bar {
-  background-color: var(--color-primary);
-  color: var(--color-bg);
-  padding: 8px 14px;
-  font-family: var(--font-pixel);
+  background-color: #242428;
+  color: #eee;
+  padding: 9px 14px;
+  font-family: var(--font-mono);
   font-size: 11px;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  border-bottom: 1px solid #333;
 }
 
+.term-dots {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+}
+
+.term-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.term-dot.red { background-color: #ff5f56; }
+.term-dot.amber { background-color: #ffbd2e; }
+.term-dot.green { background-color: #27c93f; }
+
 .terminal-scroll-area {
-  padding: 16px;
-  height: 240px;
+  padding: 18px;
+  height: 250px;
   overflow-y: auto;
   font-size: 13px;
   line-height: 1.55;
 }
 
 /* ============================================================ */
-/* 10. LIGHTBOX MODAL & BACK TO TOP BUTTON                      */
+/* 11. LIGHTBOX MODAL & BACK TO TOP BUTTON                      */
 /* ============================================================ */
 #retro-lightbox {
   position: fixed;
   inset: 0;
-  background-color: rgba(50, 50, 50, 0.85);
+  background-color: rgba(30, 30, 30, 0.88);
   backdrop-filter: blur(6px);
   z-index: 10000;
   display: flex;
@@ -570,7 +744,7 @@ hr.retro-divider {
   width: 100%;
   max-height: 88vh;
   overflow-y: auto;
-  padding: 20px;
+  padding: 22px;
   transform: scale(0.95);
   transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -583,10 +757,10 @@ hr.retro-divider {
   width: 100%;
   max-height: 60vh;
   object-fit: contain;
-  border: dashed 2px var(--color-primary);
+  border: 2px solid var(--color-primary);
   background-color: #fff;
   display: block;
-  margin: 12px auto;
+  margin: 14px auto;
 }
 
 #back-to-top-btn {
@@ -598,10 +772,10 @@ hr.retro-divider {
   color: var(--color-bg);
   font-family: var(--font-pixel);
   font-size: 10px;
-  padding: 8px 16px;
-  border: none;
-  border-radius: 2px;
-  box-shadow: 2px 2px 0px var(--color-primary), 5px 5px 0px rgba(82, 82, 82, 0.25);
+  padding: 9px 18px;
+  border: 1.5px solid var(--color-primary);
+  border-radius: 3px;
+  box-shadow: 3px 3px 0px var(--color-primary);
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
@@ -617,7 +791,7 @@ hr.retro-divider {
 
 #back-to-top-btn:hover {
   transform: translate(-1px, -1px);
-  box-shadow: 4px 4px 0px var(--color-primary);
+  box-shadow: 5px 5px 0px var(--color-primary);
 }
 
 /* Toast Notification */
@@ -629,10 +803,10 @@ hr.retro-divider {
   background-color: var(--color-primary);
   color: var(--color-bg);
   padding: 8px 18px;
-  border-radius: 2px;
+  border-radius: 3px;
   font-family: var(--font-pixel);
   font-size: 11px;
-  box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.4);
+  box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.4);
   opacity: 0;
   pointer-events: none;
   transition: opacity 0.25s, transform 0.25s;
@@ -651,16 +825,11 @@ hr.retro-divider {
   html, body {
     font-size: 16px;
   }
-  h1 {
+  h1.section-title {
     font-size: 1.4em;
-    padding: 10px 16px;
-  }
-  h2 {
-    font-size: 1.05em;
-    padding: 8px 14px;
   }
   .btn, .retro-btn {
-    padding: 6px 12px;
-    font-size: 9px;
+    padding: 7px 14px;
+    font-size: 9.5px;
   }
 }
