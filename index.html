@@ -169,6 +169,16 @@
         <!-- Right Action Buttons -->
         <div class="flex items-center gap-2">
 
+          <!-- Retro Navigation Menu Toggle Button -->
+          <button id="retro-menu-toggle" onclick="toggleRetroMenu()" aria-label="Toggle Retro Navigation Menu"
+            class="p-2 rounded-lg border border-slate-800 hover:border-emerald-500/50 bg-slate-900/80 text-emerald-400 font-mono text-xs flex items-center gap-1.5 transition-colors cursor-pointer"
+            title="Open Retro Navigation">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+            <span class="hidden sm:inline font-pixel text-[10px]">MENU</span>
+          </button>
+
           <!-- Tactile Sound Toggle Button -->
           <button id="sound-toggle-btn" aria-label="Toggle Tactile Audio"
             class="p-2 rounded-lg border border-slate-800 hover:border-slate-700 bg-slate-900/60 text-slate-400 hover:text-white transition-colors"
@@ -234,6 +244,59 @@
             </svg>
             <span>Resume PDF</span>
           </a>
+
+        </div>
+      </div>
+    </header>
+
+    <!-- ========================================== -->
+    <!-- RETRO SLIDE-OUT NAVIGATION OVERLAY         -->
+    <!-- ========================================== -->
+    <div id="retro-menu-overlay"
+      class="fixed inset-0 bg-[#0a0c10]/95 backdrop-blur-2xl z-[9999] opacity-0 pointer-events-none transition-all duration-300 flex flex-col justify-between p-6 sm:p-12 border-b-2 border-emerald-500/30">
+      
+      <div class="flex items-center justify-between pb-4 border-b border-emerald-500/30">
+        <div class="flex items-center gap-2.5">
+          <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 status-pulsar"></span>
+          <span class="font-pixel text-xs sm:text-sm text-emerald-400">MIRZA_NAV_KERNEL // PASIR GUDANG</span>
+        </div>
+        <button onclick="toggleRetroMenu()" class="retro-btn text-xs px-3 py-1.5 cursor-pointer">
+          CLOSE [ESC]
+        </button>
+      </div>
+
+      <div class="flex flex-col gap-3 sm:gap-5 my-auto max-w-2xl">
+        <a href="#hero" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-slate-100 hover:text-emerald-400 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-emerald-400">&gt;</span> 01. IDENTITY &amp; BIO
+        </a>
+        <a href="#playgrounds" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-slate-100 hover:text-cyan-400 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-cyan-400">&gt;</span> 02. INTERACTIVE DEMOS (ESP32 &amp; YOLO)
+        </a>
+        <a href="#bento" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-slate-100 hover:text-emerald-400 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-emerald-400">&gt;</span> 03. HIGHLIGHTS &amp; METRICS (CGPA 3.98)
+        </a>
+        <a href="#projects" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-slate-100 hover:text-amber-400 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-amber-400">&gt;</span> 04. ENGINEERING PROJECTS
+        </a>
+        <a href="#skills" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-slate-100 hover:text-emerald-400 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-emerald-400">&gt;</span> 05. TECHNICAL SKILLS MATRIX
+        </a>
+        <a href="#credentials" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-slate-100 hover:text-cyan-400 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-cyan-400">&gt;</span> 06. SKM LEVEL 3 &amp; CISCO CERTS
+        </a>
+        <a href="#workstation" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-emerald-400 hover:text-emerald-300 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-amber-400">&gt;</span> 07. 3D COMMODORE TERMINAL
+        </a>
+        <a href="#contact" onclick="toggleRetroMenu()" class="font-pixel text-lg sm:text-2xl text-slate-100 hover:text-emerald-400 transition-all hover:translate-x-3 flex items-center gap-3">
+          <span class="text-emerald-400">&gt;</span> 08. CONTACT &amp; OJT INQUIRY
+        </a>
+      </div>
+
+      <div class="pt-4 border-t border-slate-800 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400 gap-2">
+        <span>CGPA: 3.98 • SKM3: S103882102 • PASIR GUDANG, JOHOR</span>
+        <span class="text-emerald-400 font-bold">OJT: 5-MO IT INTERNSHIP (FEB – JUNE 2027)</span>
+      </div>
+    </div>
 
         </div>
       </div>
@@ -423,10 +486,10 @@
                   
                   <!-- Overlay Controls & Badges -->
                   <div class="absolute top-2.5 left-2.5 flex items-center gap-1.5 pointer-events-none">
-                    <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-mono text-[10px] font-bold shadow">
+                    <span class="px-2 py-0.5 rounded bg-amber-500 text-slate-950 font-pixel text-[10px] font-bold shadow">
                       COMMODORE 710
                     </span>
-                    <span id="crt-status-badge" class="px-1.5 py-0.5 rounded bg-slate-900/80 border border-amber-500/30 text-amber-300 font-mono text-[10px]">
+                    <span id="crt-status-badge" class="px-1.5 py-0.5 rounded bg-slate-900/80 border border-amber-500/30 text-amber-300 font-pixel text-[10px]">
                       AMBER CRT
                     </span>
                   </div>
@@ -434,9 +497,12 @@
                   <!-- Quick Helper & Action Bar -->
                   <div class="absolute bottom-2.5 inset-x-2.5 flex items-center justify-between text-[11px] font-mono pointer-events-auto">
                     <span class="text-slate-400 bg-slate-950/85 px-2 py-1 rounded border border-slate-800 text-[10px] hidden sm:inline">
-                      🖱️ Drag to rotate 3D model
+                      🖱️ Drag rotate • Double-click zoom
                     </span>
                     <div class="flex items-center gap-1.5">
+                      <button onclick="toggleCommodoreZoom()" id="crt-zoom-btn" class="px-2 py-1 rounded bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-[10px] font-bold transition-colors cursor-pointer" title="Zoom Camera Into CRT Screen">
+                        🔍 Zoom Screen
+                      </button>
                       <button onclick="toggleCrtColor()" id="crt-color-btn" class="px-2 py-1 rounded bg-amber-500/20 hover:bg-amber-500/30 text-amber-300 border border-amber-500/40 text-[10px] font-bold transition-colors cursor-pointer">
                         🟡 Amber CRT
                       </button>
@@ -448,8 +514,8 @@
                 </div>
 
                 <div class="mt-2.5 px-1 flex items-center justify-between text-[11px] font-mono text-slate-400">
-                  <span>MODEL: Commodore 710 (1982 Vintage Terminal)</span>
-                  <span class="text-emerald-400 font-bold">MIRZA-OS 2.0 LTS</span>
+                  <span>MODEL: Commodore 710 (1982 Baked Workstation)</span>
+                  <span class="text-emerald-400 font-bold">LIVE DYNAMIC PHOSPHOR</span>
                 </div>
               </div>
 

@@ -553,6 +553,11 @@ function handleCommand(cmdStr) {
   `;
   terminalOutput.appendChild(cmdRow);
 
+  // Mirror command to 3D Commodore CRT display if active
+  if (typeof window.logToCommodoreCrt === 'function') {
+    window.logToCommodoreCrt(cmdStr);
+  }
+
   if (COMMANDS[command]) {
     const result = COMMANDS[command].execute(args);
     if (result) {
@@ -2054,17 +2059,67 @@ function initScrollTip() {
 }
 
 // ==============================================
-// 3D COMMODORE 710 RETRO TERMINAL (THREE.JS GLTF)
+// RETRO SLIDE-OUT NAVIGATION OVERLAY
+// ==============================================
+window.toggleRetroMenu = function() {
+  const overlay = document.getElementById('retro-menu-overlay');
+  if (!overlay) return;
+  overlay.classList.toggle('menu-open');
+  if (typeof audio !== 'undefined' && audio.playBeep) {
+    audio.playBeep();
+  }
+};
+
+window.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    const overlay = document.getElementById('retro-menu-overlay');
+    if (overlay && overlay.classList.contains('menu-open')) {
+      overlay.classList.remove('menu-open');
+      if (typeof audio !== 'undefined' && audio.playBeep) audio.playBeep();
+    }
+  }
+});
+
+// ==============================================
+// 3D COMMODORE 710 WORKSTATION (THREE.JS + BAKED TEXTURES + DYNAMIC CRT)
 // ==============================================
 let commodoreModel = null;
 let commodoreScreenMesh = null;
 let commodorePointLight = null;
 let currentCrtColorIndex = 0;
+let isCommodoreZoomed = false;
 
-const CRT_COLORS = [
-  { name: "AMBER CRT", btnText: "🟡 Amber CRT", hex: 0xffb000, texture: "assets/retro/crt_screen_mirza.png" },
-  { name: "MATRIX GREEN", btnText: "🟢 Matrix Green", hex: 0x10b981, texture: "assets/retro/crt_screen_green.png" },
-  { name: "CYBER CYAN", btnText: "🔵 Cyber Cyan", hex: 0x06b6d4, texture: "assets/retro/crt_screen_cyan.png" }
+const CRT_PALETTES = [
+  {
+    name: "AMBER CRT",
+    btnText: "🟡 Amber CRT",
+    hex: 0xffb000,
+    primary: "#ffb000",
+    dim: "#996a00",
+    bg: "#0c0904",
+    glow: "rgba(255, 176, 0, 0.45)",
+    scanline: "rgba(0, 0, 0, 0.35)"
+  },
+  {
+    name: "MATRIX GREEN",
+    btnText: "🟢 Matrix Green",
+    hex: 0x10b981,
+    primary: "#10b981",
+    dim: "#065f46",
+    bg: "#020c06",
+    glow: "rgba(16, 185, 129, 0.45)",
+    scanline: "rgba(0, 0, 0, 0.35)"
+  },
+  {
+    name: "CYBER CYAN",
+    btnText: "🔵 Cyber Cyan",
+    hex: 0x06b6d4,
+    primary: "#06b6d4",
+    dim: "#0e7490",
+    bg: "#020a10",
+    glow: "rgba(6, 182, 212, 0.45)",
+    scanline: "rgba(0, 0, 0, 0.35)"
+  }
 ];
 
 function initCommodore3D() {
@@ -2073,8 +2128,14 @@ function initCommodore3D() {
 
   try {
     const scene = new THREE.Scene();
+
+    // Camera setup with Dual-Mode Zoom Targets
     const camera = new THREE.PerspectiveCamera(45, canvas.clientWidth / canvas.clientHeight, 0.1, 100);
-    camera.position.set(0, 0.35, 6.2);
+    const cameraOverviewPos = new THREE.Vector3(0, 0.35, 6.2);
+    const cameraZoomedPos = new THREE.Vector3(0, 0.42, 2.75);
+    const cameraLookTarget = new THREE.Vector3(0, 0.15, 0);
+    camera.position.copy(cameraOverviewPos);
+    camera.lookAt(cameraLookTarget);
 
     const renderer = new THREE.WebGLRenderer({
       canvas: canvas,
@@ -2084,30 +2145,162 @@ function initCommodore3D() {
     });
     renderer.setSize(canvas.clientWidth, canvas.clientHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    if (THREE.sRGBEncoding) renderer.outputEncoding = THREE.sRGBEncoding;
 
-    // Warm Ambient Lighting
-    const ambientLight = new THREE.AmbientLight(0xfff8ee, 1.25);
+    // Ambient & Directional Lighting matching reference lighting
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.15);
     scene.add(ambientLight);
 
-    // Directional Key Light
-    const dirLight = new THREE.DirectionalLight(0xffecd2, 1.35);
-    dirLight.position.set(5, 8, 6);
+    const dirLight = new THREE.DirectionalLight(0xfff5ea, 1.25);
+    dirLight.position.set(4, 7, 5);
     scene.add(dirLight);
 
-    // CRT Phosphor glow cast onto the keyboard
-    commodorePointLight = new THREE.PointLight(CRT_COLORS[0].hex, 1.5, 6);
-    commodorePointLight.position.set(0, 0.5, 1.5);
+    // Dynamic CRT screen point light casting phosphor bounce onto keys
+    commodorePointLight = new THREE.PointLight(CRT_PALETTES[0].hex, 1.8, 5);
+    commodorePointLight.position.set(0, 0.55, 1.2);
     scene.add(commodorePointLight);
 
-    // Texture Loader
-    const textureLoader = new THREE.TextureLoader();
-    const crtTextures = {
-      0: textureLoader.load(CRT_COLORS[0].texture),
-      1: textureLoader.load(CRT_COLORS[1].texture),
-      2: textureLoader.load(CRT_COLORS[2].texture)
+    // ========================================================
+    // DYNAMIC CRT PHOSPHOR CANVAS (1024x768 4:3 Text Engine)
+    // ========================================================
+    const crtCanvas = document.createElement('canvas');
+    crtCanvas.width = 1024;
+    crtCanvas.height = 768;
+    const crtCtx = crtCanvas.getContext('2d');
+
+    const crtTexture = new THREE.CanvasTexture(crtCanvas);
+    crtTexture.minFilter = THREE.LinearFilter;
+    crtTexture.magFilter = THREE.LinearFilter;
+
+    // Line log buffer with Mirza's verified credentials
+    const crtLogs = [
+      "*** MIRZA-OS 2.0 (COMMODORE 710 RETRO WORKSTATION) ***",
+      "64K RAM SYSTEM  •  FAISS 512D VECTOR  •  YOLO READY",
+      "-------------------------------------------------------------",
+      "CANDIDATE: MUHAMMAD MIRZA AQMAL RAZIQ BIN MIRZA AFFZARD",
+      "DIPLOMA  : TEKNOLOGI KOMPUTERAN (KVPJB)  •  CGPA: 3.98",
+      "SKM LEVEL: LEVEL 3 IT SYSTEM SUPPORT (CERT: S103882102)",
+      "OJT DATES: 5-MONTH INTERNSHIP (FEB - JUN 2027) PASIR GUDANG",
+      "SYSTEMS  : SMARTATTEND (ESP32-CAM) • YOLO CUSTOM CLASSIFIER",
+      "-------------------------------------------------------------",
+      "READY.",
+      "RUN \"PORTFOLIO.PRG\"",
+      "> MIRZA KERNEL ONLINE // 60FPS DELTATIME CLOCK ACTIVE",
+      "READY."
+    ];
+
+    let cursorBlink = true;
+    let lastBlinkTime = performance.now();
+
+    function drawCrtScreen() {
+      if (!crtCtx) return;
+      const palette = CRT_PALETTES[currentCrtColorIndex];
+
+      // 1. CRT Screen Base Phosphor Glow
+      crtCtx.fillStyle = palette.bg;
+      crtCtx.fillRect(0, 0, 1024, 768);
+
+      // 2. Subtle CRT Vignette / Radial Curvature
+      const vignette = crtCtx.createRadialGradient(512, 384, 180, 512, 384, 520);
+      vignette.addColorStop(0, "rgba(0, 0, 0, 0)");
+      vignette.addColorStop(0.85, "rgba(0, 0, 0, 0.4)");
+      vignette.addColorStop(1, "rgba(0, 0, 0, 0.85)");
+      crtCtx.fillStyle = vignette;
+      crtCtx.fillRect(0, 0, 1024, 768);
+
+      // 3. Phosphor Scanlines
+      crtCtx.fillStyle = palette.scanline;
+      for (let y = 0; y < 768; y += 4) {
+        crtCtx.fillRect(0, y, 1024, 2);
+      }
+
+      // 4. CRT Outer Frame Accent
+      crtCtx.strokeStyle = palette.dim;
+      crtCtx.lineWidth = 6;
+      crtCtx.strokeRect(18, 18, 988, 732);
+
+      // 5. Header Bar
+      crtCtx.font = "bold 18px 'public-pixel', monospace";
+      crtCtx.fillStyle = palette.primary;
+      crtCtx.shadowColor = palette.glow;
+      crtCtx.shadowBlur = 10;
+      crtCtx.fillText("COMMODORE 710 // MIRZA-OS 2.0 // CGPA 3.98", 45, 60);
+
+      // Horizontal separator
+      crtCtx.strokeStyle = palette.dim;
+      crtCtx.lineWidth = 2;
+      crtCtx.beginPath();
+      crtCtx.moveTo(45, 78);
+      crtCtx.lineTo(979, 78);
+      crtCtx.stroke();
+
+      // 6. Draw Log Lines
+      crtCtx.font = "bold 20px 'chill', 'JetBrains Mono', 'Courier New', monospace";
+      let startY = 118;
+      const lineHeight = 36;
+      const maxLines = 14;
+      const linesToRender = crtLogs.slice(-maxLines);
+
+      linesToRender.forEach((line) => {
+        if (line.startsWith("***") || line.startsWith("---")) {
+          crtCtx.fillStyle = palette.dim;
+        } else if (line.startsWith(">") || line.includes("READY")) {
+          crtCtx.fillStyle = palette.primary;
+        } else if (line.startsWith("CANDIDATE") || line.startsWith("DIPLOMA")) {
+          crtCtx.fillStyle = palette.primary;
+        } else {
+          crtCtx.fillStyle = palette.primary;
+        }
+        crtCtx.fillText(line, 48, startY);
+        startY += lineHeight;
+      });
+
+      // 7. Blinking Phosphor Prompt Block Cursor
+      if (cursorBlink && startY <= 730) {
+        crtCtx.fillStyle = palette.primary;
+        crtCtx.fillRect(48, startY - 22, 18, 24);
+      }
+
+      // Reset shadow
+      crtCtx.shadowBlur = 0;
+      crtTexture.needsUpdate = true;
+    }
+
+    // Expose log function to mirror CLI commands
+    window.logToCommodoreCrt = function(cmdStr) {
+      if (!cmdStr) return;
+      crtLogs.push("> " + cmdStr.toUpperCase());
+      crtLogs.push("EXEC // STATUS: OK [200]");
+      if (crtLogs.length > 20) crtLogs.shift();
+      drawCrtScreen();
     };
 
-    // Load Commodore 710 GLB Model
+    // Initial render of CRT canvas
+    drawCrtScreen();
+
+    // ========================================================
+    // PHOTOREALISTIC BAKED TEXTURES & GLTF MODEL LOADER
+    // ========================================================
+    const textureLoader = new THREE.TextureLoader();
+    
+    // Baked workstation textures from reference package
+    const bakeTexture = textureLoader.load('assets/textures/bake-quality-5.jpg', () => {
+      if (renderer) renderer.render(scene, camera);
+    });
+    bakeTexture.flipY = false;
+    if (THREE.sRGBEncoding) bakeTexture.encoding = THREE.sRGBEncoding;
+
+    const bakeFloorTexture = textureLoader.load('assets/textures/bake_floor-quality-3.jpg');
+    bakeFloorTexture.flipY = false;
+    if (THREE.sRGBEncoding) bakeFloorTexture.encoding = THREE.sRGBEncoding;
+
+    const computerMaterial = new THREE.MeshBasicMaterial({ map: bakeTexture });
+    const floorMaterial = new THREE.MeshBasicMaterial({
+      map: bakeFloorTexture,
+      transparent: true,
+      opacity: 0.95
+    });
+
     if (typeof THREE.GLTFLoader !== 'undefined') {
       const loader = new THREE.GLTFLoader();
       loader.load('assets/models/Commodore710_33.5.glb', (gltf) => {
@@ -2118,45 +2311,36 @@ function initCommodore3D() {
             if (child.name === 'Screen') {
               commodoreScreenMesh = child;
               child.material = new THREE.MeshBasicMaterial({
-                map: crtTextures[0]
+                map: crtTexture
               });
-            } else if (child.name === 'Keyboard') {
-              child.material = new THREE.MeshStandardMaterial({
-                color: 0x24211e,
-                roughness: 0.75,
-                metalness: 0.1
-              });
+            } else if (child.name === 'Computer' || child.name === 'CRT' || child.name === 'Keyboard') {
+              // Apply photorealistic baked textures
+              child.material = computerMaterial;
             } else if (child.name === 'ShadowPlane') {
-              child.material = new THREE.MeshBasicMaterial({
-                color: 0x050403,
-                transparent: true,
-                opacity: 0.45
-              });
+              // Apply baked floor shadow texture
+              child.material = floorMaterial;
             } else if (child.name === 'Plane') {
               child.visible = false;
             } else {
-              // Casing (Computer, CRT body)
-              child.material = new THREE.MeshStandardMaterial({
-                color: 0xe8dfce,
-                roughness: 0.65,
-                metalness: 0.04
-              });
+              child.material = computerMaterial;
             }
           }
         });
 
-        // Set initial orientation
         commodoreModel.position.set(0, -0.45, 0);
         commodoreModel.rotation.set(0.12, -0.25, 0);
         commodoreModel.scale.set(1.05, 1.05, 1.05);
 
         scene.add(commodoreModel);
+        drawCrtScreen();
       }, undefined, (err) => {
         console.warn("Commodore GLTF load note:", err);
       });
     }
 
-    // Drag Orbit Interactivity
+    // ========================================================
+    // INTERACTIVE ROTATION & CONTROLS
+    // ========================================================
     let isDragging = false;
     let prevMouse = { x: 0, y: 0 };
     let rotVel = { x: 0, y: 0 };
@@ -2179,10 +2363,9 @@ function initCommodore3D() {
       isDragging = false;
     }, { passive: true });
 
-    // Double click to open interactive terminal shell
+    // Double-click to toggle CRT Zoom Focus
     canvas.addEventListener('dblclick', () => {
-      window.switchTerminalTab('terminal');
-      audio.playBeep();
+      window.toggleCommodoreZoom();
     });
 
     // Resize handling via ResizeObserver
@@ -2194,22 +2377,75 @@ function initCommodore3D() {
     });
     resizeObserver.observe(canvas);
 
-    // DeltaTime Animation Loop
+    // ========================================================
+    // ZOOM CONTROL TOGGLE
+    // ========================================================
+    window.toggleCommodoreZoom = function() {
+      isCommodoreZoomed = !isCommodoreZoomed;
+      const btn = document.getElementById('crt-zoom-btn');
+      if (btn) {
+        btn.textContent = isCommodoreZoomed ? "🔍 Zoom Out" : "🔍 Zoom Screen";
+      }
+      if (typeof audio !== 'undefined' && audio.playBeep) {
+        audio.playBeep();
+      }
+    };
+
+    // ========================================================
+    // PHOSPHOR PALETTE SWITCHER
+    // ========================================================
+    window.toggleCrtColor = function() {
+      currentCrtColorIndex = (currentCrtColorIndex + 1) % CRT_PALETTES.length;
+      const current = CRT_PALETTES[currentCrtColorIndex];
+
+      if (commodorePointLight) {
+        commodorePointLight.color.setHex(current.hex);
+      }
+
+      const btn = document.getElementById('crt-color-btn');
+      if (btn) btn.textContent = current.btnText;
+
+      const badge = document.getElementById('crt-status-badge');
+      if (badge) badge.textContent = current.name;
+
+      drawCrtScreen();
+
+      if (typeof audio !== 'undefined' && audio.playBeep) {
+        audio.playBeep();
+      }
+    };
+
+    // ========================================================
+    // 60FPS DELTATIME ANIMATION LOOP
+    // ========================================================
     let idleTime = 0;
     function renderLoop() {
       requestAnimationFrame(renderLoop);
 
-      // Only render if panel is visible
       const panel = document.getElementById('tab-panel-retro3d');
       if (panel && panel.classList.contains('hidden')) return;
 
       const dt = DeltaTime();
       idleTime += dt;
 
+      // Handle Blinking Cursor (every 500ms)
+      const now = performance.now();
+      if (now - lastBlinkTime > 500) {
+        cursorBlink = !cursorBlink;
+        lastBlinkTime = now;
+        drawCrtScreen();
+      }
+
+      // Smooth Camera Lerp for Zoom Toggle
+      const targetPos = isCommodoreZoomed ? cameraZoomedPos : cameraOverviewPos;
+      camera.position.lerp(targetPos, Math.min(1, dt * 5.0));
+      camera.lookAt(cameraLookTarget.x, isCommodoreZoomed ? 0.35 : 0.15, cameraLookTarget.z);
+
       if (commodoreModel) {
         if (!isDragging) {
-          // Gentle idle breathing sway
-          commodoreModel.rotation.y += (rotVel.y + Math.sin(idleTime * 0.8) * 0.03) * dt;
+          // Gentle idle breathing sway (slowed down when zoomed in)
+          const swayFactor = isCommodoreZoomed ? 0.008 : 0.025;
+          commodoreModel.rotation.y += (rotVel.y + Math.sin(idleTime * 0.8) * swayFactor) * dt;
           commodoreModel.rotation.x += rotVel.x * dt;
         } else {
           commodoreModel.rotation.y += rotVel.y * dt;
@@ -2229,32 +2465,8 @@ function initCommodore3D() {
 
     renderLoop();
 
-    // Color Switcher Handler
-    window.toggleCrtColor = function() {
-      currentCrtColorIndex = (currentCrtColorIndex + 1) % CRT_COLORS.length;
-      const current = CRT_COLORS[currentCrtColorIndex];
-
-      if (commodoreScreenMesh && crtTextures[currentCrtColorIndex]) {
-        commodoreScreenMesh.material.map = crtTextures[currentCrtColorIndex];
-        commodoreScreenMesh.material.needsUpdate = true;
-      }
-
-      if (commodorePointLight) {
-        commodorePointLight.color.setHex(current.hex);
-      }
-
-      const btn = document.getElementById('crt-color-btn');
-      if (btn) btn.textContent = current.btnText;
-
-      const badge = document.getElementById('crt-status-badge');
-      if (badge) {
-        badge.textContent = current.name;
-      }
-
-      audio.playBeep();
-    };
-
   } catch (err) {
     console.warn("Commodore 3D init error:", err);
   }
 }
+
