@@ -34,8 +34,8 @@
       content="Final year Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)."
     />
     <link rel="manifest" href="./manifest.json" />
-    <script type="module" crossorigin src="./assets/index-Bfbszoy5.js"></script>
-    <link rel="stylesheet" href="./assets/index-CDbrnKoT.css">
+    <script type="module" crossorigin src="./assets/index-CZRio7_M.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CDbrnKoT.css">
   </head>
 
   <body>
@@ -375,6 +375,20 @@
           nav.classList.add("active");
         }
       }
+
+      // Safety watchdog: ensure loading screen dismisses even if file:/// blocks modules or assets
+      window.addEventListener("DOMContentLoaded", function () {
+        setTimeout(function () {
+          var loading = document.getElementById("loading");
+          if (loading && loading.style.display !== "none" && !window.__WEBGL_LOADED__) {
+            console.warn("Safety watchdog: dismissing loading overlay");
+            loading.style.opacity = "0";
+            setTimeout(function () {
+              loading.style.display = "none";
+            }, 400);
+          }
+        }, 3000);
+      });
     </script>
   </body>
 </html>
