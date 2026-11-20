@@ -8,17 +8,17 @@ const html = `<!DOCTYPE html>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-  <title>Muhammad Mirza Aqmal Raziq | Software & IT Systems Portfolio</title>
+  <title>Muhammad Mirza Aqmal Raziq | Software &amp; IT Systems Portfolio</title>
   <meta
     name="description"
-    content="Muhammad Mirza Aqmal Raziq bin Mirza Affzard – Final Year Diploma Teknologi Komputeran at Kolej Vokasional Perdagangan JB (KVPJB). Academic CGPA 3.98/4.00, SKM Level 3 Certified (S103882102). Seeking 5-Month OJT Internship (Feb–June 2027)."
+    content="Muhammad Mirza Aqmal Raziq bin Mirza Affzard — Final year Diploma Teknologi Komputeran student at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)."
   />
-  <meta name="author" content="Muhammad Mirza Aqmal Raziq" />
-  <meta name="theme-color" content="#06090e" />
-  <link rel="icon" type="image/x-icon" href="./images/mirza-title.png" />
+  <link rel="icon" type="image/png" href="./icon/32x32.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./icon/180x180.png" />
+  <meta name="theme-color" content="#080b11" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Muhammad Mirza Aqmal Raziq – 3D Workstation Portfolio" />
+  <meta property="og:title" content="Muhammad Mirza Aqmal Raziq – Portfolio" />
   <meta property="og:description" content="Final year Diploma Teknologi Komputeran at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)." />
   <meta property="og:image" content="./images/mirza-title.png" />
   <meta property="og:type" content="website" />
@@ -28,8 +28,8 @@ const html = `<!DOCTYPE html>
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- 3D WebGL Workstation Bundle (Interactive Typing Engine) -->
-  <script type="module" crossorigin src="./assets/index-B6GiIVB6.js"></script>
+  <!-- 3D WebGL Workstation Bundle (Clean Hero Workstation from 592fce5) -->
+  <script type="module" crossorigin src="./assets/index-UlS8cB25.js"></script>
 
   <style>
     /* ============================================================ */
@@ -53,26 +53,24 @@ const html = `<!DOCTYPE html>
     }
 
     /* ============================================================ */
-    /* DESIGN SYSTEM: CYBER OBSIDIAN, NEON CYAN & PHOSPHOR AMBER    */
+    /* DESIGN SYSTEM: CYBER OBSIDIAN & PHOSPHOR AMBER               */
     /* ============================================================ */
     :root {
-      --bg-base: #06090e;
-      --bg-surface: #0c121d;
-      --bg-card: rgba(12, 18, 30, 0.9);
-      --bg-card-hover: rgba(18, 27, 46, 0.96);
-      --border-subtle: rgba(148, 163, 184, 0.16);
+      --bg-base: #070a0f;
+      --bg-surface: #0e1524;
+      --bg-card: rgba(14, 21, 36, 0.88);
+      --bg-card-hover: rgba(20, 30, 52, 0.95);
+      --border-subtle: rgba(148, 163, 184, 0.14);
       --border-accent: rgba(245, 158, 11, 0.4);
       --border-accent-strong: rgba(245, 158, 11, 0.8);
-      --border-cyan: rgba(56, 189, 248, 0.35);
       
       --amber: #f59e0b;
       --amber-light: #fbbf24;
-      --amber-glow: rgba(245, 158, 11, 0.28);
+      --amber-glow: rgba(245, 158, 11, 0.25);
       --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.28);
+      --emerald-glow: rgba(16, 185, 129, 0.25);
       --cyan: #38bdf8;
-      --cyan-glow: rgba(56, 189, 248, 0.28);
-      --slate-200: #e2e8f0;
+      --cyan-glow: rgba(56, 189, 248, 0.25);
       --slate-300: #cbd5e1;
       --slate-400: #94a3b8;
       --slate-500: #64748b;
@@ -90,17 +88,17 @@ const html = `<!DOCTYPE html>
 
     html {
       scroll-behavior: smooth;
-      background-color: var(--bg-base);
     }
 
     body {
       background-color: var(--bg-base);
       background-image: 
         radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 85% 35%, rgba(56, 189, 248, 0.08) 0%, transparent 45%),
-        linear-gradient(rgba(255, 255, 255, 0.018) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.018) 1px, transparent 1px);
-      background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+        radial-gradient(circle at 90% 30%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
+        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 45%),
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+      background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
       color: #f8fafc;
       font-family: var(--font-sans);
       font-size: 16px;
@@ -109,24 +107,15 @@ const html = `<!DOCTYPE html>
       -webkit-font-smoothing: antialiased;
     }
 
+    /* Selection */
     ::selection {
       background: var(--amber);
       color: #000;
     }
 
-    /* Ambient Cyber 3D Canvas Background */
-    #bg-cyber-canvas {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100vw;
-      height: 100vh;
-      pointer-events: none;
-      z-index: 0;
-      opacity: 0.65;
-    }
-
-    /* 3D WebGL Retro Workstation Canvas */
+    /* ============================================================ */
+    /* 3D WEBGL RETRO WORKSTATION CANVAS                            */
+    /* ============================================================ */
     canvas.webgl {
       position: fixed;
       top: 0;
@@ -138,29 +127,24 @@ const html = `<!DOCTYPE html>
       outline: none;
       z-index: 1;
       pointer-events: all;
-      transition: opacity 0.5s ease-out;
     }
     canvas.webgl:active {
       cursor: grabbing;
     }
 
-    /* Invisible typing receiver for 3D retro computer */
     #textarea {
       position: fixed;
-      top: -100px;
-      left: -100px;
-      width: 10px;
-      height: 10px;
-      opacity: 0;
-      z-index: -10;
+      top: 0;
+      right: 0;
       outline: none;
-      border: none;
+      z-index: -1;
+      opacity: 0;
     }
 
     /* Bootloader Screen */
     #loading {
       color: #f8fafc;
-      background: #06090e;
+      background: #090d16;
       position: fixed;
       top: 0;
       bottom: 0;
@@ -178,9 +162,9 @@ const html = `<!DOCTYPE html>
     .boot-box {
       max-width: 620px;
       width: 100%;
-      background: #0c121d;
+      background: #0f172a;
       border: 1px solid var(--border-accent);
-      box-shadow: 0 0 35px rgba(245, 158, 11, 0.2);
+      box-shadow: 0 0 35px rgba(245, 158, 11, 0.18);
       border-radius: 8px;
       padding: 24px;
     }
@@ -202,7 +186,7 @@ const html = `<!DOCTYPE html>
       position: relative;
       width: 100%;
       height: 28px;
-      background: #04060a;
+      background: #05080f;
       border: 1px solid var(--border-accent);
       border-radius: 4px;
       overflow: hidden;
@@ -211,29 +195,29 @@ const html = `<!DOCTYPE html>
     #loading-bar-progress {
       position: absolute;
       top: 0; bottom: 0; left: 0; right: 0;
-      background: linear-gradient(90deg, #d97706, #fbbf24, #38bdf8);
+      background: linear-gradient(90deg, #d97706, #fbbf24);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.2s;
     }
 
     /* ============================================================ */
-    /* TOP HUD COMMAND BAR                                          */
+    /* NAVIGATION & TOP HUD BAR                                     */
     /* ============================================================ */
     nav.hud-navbar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 60;
-      padding: 14px 24px;
+      z-index: 50;
+      padding: 12px 24px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(6, 9, 14, 0.85);
+      background: rgba(7, 10, 15, 0.88);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
     }
     .brand-hud {
       display: flex;
@@ -245,9 +229,10 @@ const html = `<!DOCTYPE html>
       width: 36px;
       height: 36px;
       border-radius: 8px;
-      border: 1px solid var(--border-accent);
+      border: 1.5px solid var(--border-accent);
       background: #1e293b;
       overflow: hidden;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.25);
     }
     .brand-avatar img {
       width: 100%;
@@ -267,12 +252,13 @@ const html = `<!DOCTYPE html>
       letter-spacing: 0.5px;
     }
     .brand-status {
-      font-family: var(--font-mono);
       font-size: 11px;
       color: var(--emerald);
       display: flex;
       align-items: center;
       gap: 6px;
+      font-family: var(--font-mono);
+      font-weight: 600;
     }
     .status-dot {
       width: 7px;
@@ -280,1407 +266,1508 @@ const html = `<!DOCTYPE html>
       border-radius: 50%;
       background: var(--emerald);
       box-shadow: 0 0 8px var(--emerald);
-      animation: pulse 2s infinite;
+      animation: pulse-dot 2s infinite;
     }
-    @keyframes pulse {
+    @keyframes pulse-dot {
       0%, 100% { opacity: 1; transform: scale(1); }
       50% { opacity: 0.4; transform: scale(0.85); }
     }
 
-    .nav-links {
+    .nav-sections {
       display: flex;
-      gap: 10px;
+      gap: 6px;
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .nav-sections { display: none; }
+    }
+    .nav-sec-link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--slate-400);
+      text-decoration: none;
+      padding: 6px 10px;
+      border-radius: 6px;
+      transition: all 0.2s;
+    }
+    .nav-sec-link:hover {
+      color: var(--amber);
+      background: rgba(245, 158, 11, 0.08);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 8px;
       align-items: center;
     }
     .nav-btn {
       font-family: var(--font-mono);
       font-size: 12px;
+      font-weight: 600;
       color: var(--slate-300);
-      background: rgba(15, 23, 42, 0.7);
-      border: 1px solid var(--border-subtle);
-      padding: 7px 14px;
+      background: rgba(30, 41, 59, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      padding: 7px 12px;
       border-radius: 6px;
       text-decoration: none;
-      transition: all 0.2s ease;
       display: inline-flex;
       align-items: center;
       gap: 6px;
+      transition: all 0.2s ease;
       cursor: pointer;
     }
     .nav-btn:hover {
-      color: #fff;
+      background: rgba(245, 158, 11, 0.15);
       border-color: var(--amber);
-      background: rgba(245, 158, 11, 0.12);
-      box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+      color: #fff;
+      transform: translateY(-1px);
     }
     .nav-btn.primary {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
       color: #000;
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      border-color: #f59e0b;
-      font-weight: 600;
+      font-weight: 700;
+      border: 1px solid #fbbf24;
       box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
     }
     .nav-btn.primary:hover {
-      background: linear-gradient(135deg, #fcd34d, #fbbf24);
-      box-shadow: 0 0 20px rgba(245, 158, 11, 0.55);
+      background: linear-gradient(135deg, #fbbf24, #f59e0b);
+      box-shadow: 0 0 22px rgba(245, 158, 11, 0.55);
       color: #000;
     }
 
-    /* Floating Navigation Rail (Right Side Quick Jump) */
-    .nav-rail {
+    /* Floating Scroll Guide */
+    #tip-scroll {
       position: fixed;
-      right: 20px;
-      top: 50%;
-      transform: translateY(-50%);
-      z-index: 70;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      background: rgba(8, 13, 22, 0.85);
-      padding: 14px 10px;
-      border-radius: 30px;
-      border: 1px solid rgba(148, 163, 184, 0.18);
-      backdrop-filter: blur(14px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    }
-    .rail-dot {
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-      background: rgba(148, 163, 184, 0.25);
-      border: 1px solid rgba(148, 163, 184, 0.4);
-      cursor: pointer;
-      position: relative;
-      transition: all 0.25s ease;
-    }
-    .rail-dot:hover {
-      background: var(--cyan);
-      box-shadow: 0 0 10px var(--cyan);
-      transform: scale(1.2);
-    }
-    .rail-dot.active {
-      background: var(--amber);
-      border-color: var(--amber-light);
-      box-shadow: 0 0 14px var(--amber);
-      transform: scale(1.3);
-    }
-    .rail-tooltip {
-      position: absolute;
-      right: 26px;
-      top: 50%;
-      transform: translateY(-50%);
-      background: #0f172a;
-      border: 1px solid var(--border-accent);
-      color: #fff;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      white-space: nowrap;
-      pointer-events: none;
-      opacity: 0;
-      transition: opacity 0.2s ease, transform 0.2s ease;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-    }
-    .rail-dot:hover .rail-tooltip {
-      opacity: 1;
-      transform: translateY(-50%) translateX(-4px);
-    }
-
-    /* ============================================================ */
-    /* STAGE 01: 3D WORKSTATION (HERO) - CLEAR & UNOBSTRUCTED        */
-    /* ============================================================ */
-    #workstation {
-      height: 100vh;
-      position: relative;
-      pointer-events: none; /* Allows full click & drag directly on the 3D computer */
-    }
-
-    /* Floating Interactive Terminal Dock at the bottom */
-    .retro-prompt-dock {
-      position: absolute;
-      bottom: 22px;
+      bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      z-index: 25;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 10px;
-      pointer-events: auto; /* Buttons & hints remain clickable */
-      background: rgba(8, 13, 23, 0.9);
-      border: 1px solid var(--border-accent);
-      padding: 12px 24px;
-      border-radius: 30px;
-      backdrop-filter: blur(14px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.25);
-      max-width: 92vw;
-      animation: floatDock 4s ease-in-out infinite;
-    }
-    @keyframes floatDock {
-      0%, 100% { transform: translateX(-50%) translateY(0); }
-      50% { transform: translateX(-50%) translateY(-4px); }
-    }
-    .dock-badge {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      color: var(--amber);
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      letter-spacing: 0.5px;
-    }
-    .blinking-cursor {
-      color: var(--amber);
-      animation: blinkCursor 1s step-end infinite;
-    }
-    @keyframes blinkCursor {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    .dock-cmd-list {
-      display: flex;
-      gap: 8px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .dock-chip {
-      background: rgba(22, 33, 54, 0.85);
-      border: 1px solid rgba(56, 189, 248, 0.3);
-      color: var(--cyan);
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      font-weight: 600;
-      padding: 5px 12px;
-      border-radius: 6px;
-      cursor: pointer;
-      transition: all 0.2s ease;
-    }
-    .dock-chip:hover {
-      background: var(--amber);
-      color: #000;
-      border-color: var(--amber-light);
-      box-shadow: 0 0 12px var(--amber);
-      transform: translateY(-2px);
-    }
-    .dock-scroll-hint {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--slate-400);
-      cursor: pointer;
-      transition: color 0.2s ease;
-      display: flex;
-      align-items: center;
-      gap: 6px;
+      font-weight: 600;
+      color: var(--amber);
+      background: rgba(14, 21, 36, 0.92);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--border-accent);
+      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+      padding: 8px 18px;
+      border-radius: 20px;
+      pointer-events: none;
+      z-index: 10;
+      transition: opacity 0.3s;
+      animation: bounce 2s infinite ease-in-out;
     }
-    .dock-scroll-hint:hover {
-      color: #fff;
+    @keyframes bounce {
+      0%, 100% { transform: translate(-50%, 0); }
+      50% { transform: translate(-50%, -6px); }
+    }
+    html[data-scroll="true"] #tip-scroll {
+      opacity: 0;
     }
 
-    /* Offline hero backup fallback */
+    /* Offline / Non-WebGL Fallback Hero */
     #hero-backup {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 16px;
       position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 10;
+      top: 0; left: 0; right: 0;
+      min-height: 100vh;
+      width: clamp(0px, 94vw, 840px);
+      margin: auto;
+      z-index: 0;
+      padding: 90px 16px 40px;
+      text-align: center;
+    }
+    .hero-offline-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-accent);
+      border-radius: 14px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.7);
+      padding: 32px;
+      max-width: 680px;
+    }
+
+    /* ============================================================ */
+    /* EDITORIAL CONTENT CONTAINER & SECTIONS                       */
+    /* ============================================================ */
+    main {
+      position: relative;
+      z-index: 5;
+      margin-top: 185vh;
+      padding: 40px 16px 120px;
+      max-width: 1060px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    section {
+      padding-bottom: 80px;
+      margin-bottom: 80px;
+      position: relative;
+      scroll-margin-top: 80px;
+    }
+    section::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 5%;
+      right: 5%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(148, 163, 184, 0.18), transparent);
+    }
+    section:last-of-type::after {
       display: none;
     }
 
-    /* ============================================================ */
-    /* THE 3D TIMELINE & SECTION-BY-SECTION ARCHITECTURE             */
-    /* ============================================================ */
-    #timeline-container {
-      position: relative;
-      max-width: 1060px;
-      margin: 0 auto;
-      padding: 0 24px 100px 90px;
-      z-index: 10;
-    }
-
-    /* Vertical 3D Spine Track */
-    .timeline-spine {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 42px;
-      width: 4px;
-      background: rgba(148, 163, 184, 0.14);
-      border-radius: 999px;
-      z-index: 2;
-    }
-    .timeline-glow-line {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 0%;
-      background: linear-gradient(180deg, #38bdf8 0%, #f59e0b 50%, #10b981 100%);
-      box-shadow: 0 0 15px rgba(56, 189, 248, 0.85), 0 0 30px rgba(245, 158, 11, 0.45);
-      border-radius: 999px;
-      transition: height 0.15s ease-out;
-    }
-    .timeline-spark {
-      position: absolute;
-      top: 0;
-      left: -5px;
-      width: 14px;
-      height: 70px;
-      background: linear-gradient(180deg, transparent, #fff, #38bdf8, transparent);
-      border-radius: 999px;
-      filter: blur(1px);
-      animation: sparkTravel 4s infinite linear;
-    }
-    @keyframes sparkTravel {
-      0% { top: 0%; opacity: 0; }
-      10% { opacity: 1; }
-      90% { opacity: 1; }
-      100% { top: 98%; opacity: 0; }
-    }
-
-    /* Dedicated Viewport Section Stage */
-    .section-stage {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 70px 0;
-      position: relative;
-      scroll-margin-top: 75px;
-    }
-
-    /* 3D Node on the Spine */
-    .spine-node {
-      position: absolute;
-      left: -69px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 42px;
-      height: 42px;
-      border-radius: 50%;
-      background: #080d17;
-      border: 2px solid rgba(56, 189, 248, 0.35);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 700;
-      color: var(--slate-400);
-      box-shadow: 0 0 15px rgba(0, 0, 0, 0.8);
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      z-index: 5;
-      cursor: pointer;
-    }
-    .spine-node::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      border: 1px solid var(--cyan);
-      opacity: 0;
-      transform: scale(1);
-      transition: all 0.3s ease;
-    }
-    .section-stage.active-stage .spine-node,
-    .spine-node:hover {
-      border-color: var(--amber);
-      color: #fff;
-      background: #141c2d;
-      box-shadow: 0 0 22px rgba(245, 158, 11, 0.6), 0 0 45px rgba(245, 158, 11, 0.3);
-      transform: translateY(-50%) scale(1.18);
-    }
-    .section-stage.active-stage .spine-node::after {
-      animation: nodePulse 2s infinite;
-    }
-    @keyframes nodePulse {
-      0% { transform: scale(1); opacity: 0.8; }
-      100% { transform: scale(1.7); opacity: 0; }
-    }
-
-    /* Section Header */
-    .stage-header {
-      margin-bottom: 24px;
-    }
-    .stage-badge {
+    .section-tagline {
       display: inline-flex;
       align-items: center;
       gap: 8px;
       font-family: var(--font-mono);
-      font-size: 12px;
-      font-weight: 600;
+      font-size: 11.5px;
+      font-weight: 700;
       color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
       background: rgba(245, 158, 11, 0.1);
       border: 1px solid rgba(245, 158, 11, 0.3);
-      padding: 5px 12px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-      letter-spacing: 0.5px;
+      padding: 4px 14px;
+      border-radius: 20px;
     }
-    .stage-badge .badge-dot {
+    .badge-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
       background: var(--amber);
-      box-shadow: 0 0 8px var(--amber);
+      box-shadow: 0 0 6px var(--amber);
     }
-    .stage-title {
-      font-size: 1.95rem;
+    .section-title {
+      font-size: 2.2rem;
       font-weight: 800;
       color: #fff;
       letter-spacing: -0.5px;
-      margin-bottom: 6px;
+      margin-bottom: 8px;
+      background: linear-gradient(180deg, #ffffff 0%, #cbd5e1 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
-    .stage-desc {
-      font-size: 14.5px;
+    .section-desc {
       color: var(--slate-400);
+      font-size: 16px;
       max-width: 680px;
+      margin-bottom: 30px;
+      line-height: 1.6;
     }
 
-    /* 3D Glassmorphic Container Card */
-    .stage-card {
+    /* ============================================================ */
+    /* CARDS & GLASSMORPHISM SURFACES                               */
+    /* ============================================================ */
+    .card {
       background: var(--bg-card);
-      border: 1px solid var(--border-cyan);
-      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.08);
-      border-radius: 14px;
-      padding: 30px;
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--border-subtle);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.7);
+      padding: 32px;
+      position: relative;
       transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      position: relative;
     }
-    .stage-card:hover {
+    .card:hover {
       border-color: var(--border-accent);
-      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.75), 0 0 25px rgba(245, 158, 11, 0.16);
-      transform: translateY(-3px);
+      box-shadow: 0 18px 45px -10px rgba(0, 0, 0, 0.85), 0 0 30px rgba(245, 158, 11, 0.1);
+      transform: translateY(-2px);
+    }
+    .card.highlight {
+      border-color: var(--border-accent);
+      box-shadow: 0 12px 35px -8px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 158, 11, 0.08);
     }
 
     /* ============================================================ */
-    /* SECTION 02: CANDIDATE DOSSIER DETAILS                        */
+    /* THE 4 KEY PERFORMANCE INDICATORS (KPI STATS GRID)            */
     /* ============================================================ */
-    .dossier-grid {
+    .kpi-grid {
       display: grid;
-      grid-template-columns: 280px 1fr;
-      gap: 28px;
-      align-items: start;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin: 26px 0;
     }
-    .dossier-photo-card {
-      background: #090e18;
+    @media (max-width: 840px) {
+      .kpi-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .kpi-grid { grid-template-columns: 1fr; }
+    }
+
+    .kpi-tile {
+      background: linear-gradient(180deg, rgba(20, 30, 52, 0.75) 0%, rgba(14, 21, 36, 0.9) 100%);
       border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 16px;
+      border-top: 2px solid var(--amber);
+      border-radius: 12px;
+      padding: 20px 16px;
       text-align: center;
-    }
-    .photo-frame {
-      width: 100%;
-      aspect-ratio: 1/1;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid var(--border-accent);
+      transition: all 0.25s ease;
       position: relative;
-      background: #000;
-      margin-bottom: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
-    .photo-frame img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    .photo-scanline {
-      position: absolute;
-      top: 0; left: 0; right: 0; bottom: 0;
-      background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.35) 50%);
-      background-size: 100% 4px;
-      pointer-events: none;
-    }
-    .credential-chip {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px solid rgba(16, 185, 129, 0.35);
-      color: var(--emerald);
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      padding: 6px 10px;
-      border-radius: 6px;
-      margin-bottom: 12px;
-      display: block;
-    }
+    .kpi-tile.emerald-top { border-top-color: #10b981; }
+    .kpi-tile.cyan-top { border-top-color: #38bdf8; }
+    .kpi-tile.gold-top { border-top-color: #f59e0b; }
 
-    /* KPI Highlights */
-    .kpi-row {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 12px;
-      margin: 18px 0;
-    }
-    .kpi-box {
-      background: rgba(15, 23, 42, 0.65);
-      border: 1px solid var(--border-subtle);
-      border-radius: 8px;
-      padding: 12px 14px;
-      transition: all 0.2s ease;
-    }
-    .kpi-box:hover {
+    .kpi-tile:hover {
       border-color: var(--amber);
-      background: rgba(245, 158, 11, 0.08);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
     }
-    .kpi-num {
+    .kpi-val {
       font-family: var(--font-mono);
-      font-size: 1.55rem;
+      font-size: 2.1rem;
       font-weight: 800;
-      color: var(--amber);
+      color: #fff;
       line-height: 1.1;
+      margin-bottom: 6px;
+    }
+    .kpi-val.gold {
+      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .kpi-val.emerald {
+      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .kpi-val.cyan {
+      background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
     .kpi-label {
       font-size: 11.5px;
+      font-weight: 700;
       color: var(--slate-400);
-      margin-top: 3px;
-      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+    }
+    .kpi-chip {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: var(--slate-300);
     }
 
     /* ============================================================ */
-    /* SECTION 03: ENGINEERED PROJECTS SHOWCASE                     */
+    /* CANDIDATE DOSSIER PROFILE (SECTION 1)                        */
     /* ============================================================ */
-    .projects-stack {
+    .profile-hero {
       display: flex;
-      flex-direction: column;
-      gap: 22px;
-    }
-    .project-card {
-      background: rgba(10, 16, 27, 0.9);
-      border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      padding: 22px;
-      transition: all 0.25s ease;
-      display: grid;
-      grid-template-columns: 240px 1fr;
-      gap: 22px;
+      gap: 32px;
       align-items: center;
+      margin-bottom: 24px;
     }
-    .project-card:hover {
-      border-color: var(--cyan);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), 0 0 18px rgba(56, 189, 248, 0.18);
-      transform: translateX(4px);
+    @media (max-width: 720px) {
+      .profile-hero {
+        flex-direction: column;
+        text-align: center;
+      }
     }
-    .project-media {
-      width: 100%;
-      height: 160px;
-      border-radius: 8px;
-      overflow: hidden;
-      border: 1px solid rgba(148, 163, 184, 0.18);
+    .avatar-frame {
+      width: 145px;
+      height: 145px;
+      border-radius: 14px;
+      border: 2px solid var(--border-accent);
+      box-shadow: 0 0 30px rgba(245, 158, 11, 0.25);
       background: #000;
+      overflow: hidden;
+      flex-shrink: 0;
+      position: relative;
     }
-    .project-media img {
+    .avatar-frame img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      transition: transform 0.3s ease;
+      image-rendering: pixelated;
     }
-    .project-card:hover .project-media img {
-      transform: scale(1.05);
+    .avatar-frame::after {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
     }
-    .project-content h3 {
-      font-size: 1.25rem;
+    .profile-info h1 {
+      font-size: 1.9rem;
+      font-weight: 800;
       color: #fff;
-      font-weight: 700;
       margin-bottom: 4px;
+      letter-spacing: -0.5px;
     }
-    .project-tagline {
+    .profile-sub {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 14px;
       color: var(--amber);
-      margin-bottom: 8px;
-    }
-    .project-desc {
-      font-size: 13.5px;
-      color: var(--slate-300);
+      font-weight: 600;
       margin-bottom: 12px;
-      line-height: 1.55;
     }
-    .tech-pill-list {
+    .profile-bio {
+      color: var(--slate-300);
+      font-size: 15.5px;
+      line-height: 1.65;
+    }
+    .profile-tags {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 12px;
+      gap: 8px;
+      margin-top: 16px;
     }
-    .tech-pill {
+    @media (max-width: 720px) {
+      .profile-tags { justify-content: center; }
+    }
+    .tag-badge {
       font-family: var(--font-mono);
       font-size: 11px;
-      padding: 3px 9px;
+      padding: 4px 11px;
+      border-radius: 6px;
       background: rgba(30, 41, 59, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.2);
-      border-radius: 4px;
-      color: var(--cyan);
+      border: 1px solid rgba(148, 163, 184, 0.15);
+      color: var(--slate-300);
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
     }
-    .metrics-bar {
-      display: flex;
-      gap: 16px;
-      font-family: var(--font-mono);
-      font-size: 11.5px;
-      color: var(--emerald);
-      padding-top: 10px;
-      border-top: 1px solid rgba(148, 163, 184, 0.12);
+    .tag-badge.active {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      font-weight: 600;
     }
 
     /* ============================================================ */
-    /* SECTION 04: TECHNICAL CAPABILITIES MATRIX                    */
+    /* INTERACTIVE CRT TERMINAL READOUT                             */
     /* ============================================================ */
-    .skills-quad {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
-    .skill-card {
-      background: rgba(10, 15, 26, 0.85);
-      border: 1px solid var(--border-subtle);
+    .crt-console {
+      background: #05080e;
+      border: 1px solid rgba(245, 158, 11, 0.4);
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.85), 0 0 30px rgba(245, 158, 11, 0.12);
       border-radius: 10px;
-      padding: 18px;
-      transition: all 0.2s ease;
-    }
-    .skill-card:hover {
-      border-color: var(--amber);
-      background: rgba(16, 24, 40, 0.95);
-      transform: translateY(-3px);
-    }
-    .skill-icon {
-      font-size: 1.6rem;
-      margin-bottom: 8px;
-    }
-    .skill-card h4 {
-      font-size: 1rem;
-      color: #fff;
-      font-weight: 700;
-      margin-bottom: 10px;
-    }
-    .skill-list {
-      list-style: none;
+      padding: 22px;
+      font-family: var(--font-mono);
       font-size: 13px;
-      color: var(--slate-300);
+      line-height: 1.8;
+      margin-top: 24px;
+      position: relative;
+      overflow: hidden;
+    }
+    .crt-console::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        rgba(0, 0, 0, 0.25),
+        rgba(0, 0, 0, 0.25) 1px,
+        transparent 1px,
+        transparent 2px
+      );
+      pointer-events: none;
+    }
+    .cmd-prompt { color: var(--amber); font-weight: bold; }
+    .cmd-val { color: var(--slate-300); }
+    .cmd-green { color: var(--emerald); font-weight: 600; }
+    .cmd-cyan { color: var(--cyan); font-weight: 600; }
+    .cmd-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 15px;
+      background: var(--amber);
+      margin-left: 4px;
+      vertical-align: middle;
+      animation: blink 1s infinite;
+    }
+    @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
+
+    /* ============================================================ */
+    /* PROJECT SHOWCASE MISSION CARDS                               */
+    /* ============================================================ */
+    .project-grid {
       display: flex;
       flex-direction: column;
+      gap: 36px;
+    }
+    .project-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 32px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.6);
+      position: relative;
+    }
+    .project-card:hover {
+      border-color: var(--border-accent);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.1);
+      transform: translateY(-2px);
+    }
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .project-tag {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--amber);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      display: inline-flex;
+      align-items: center;
       gap: 6px;
     }
-    .skill-list li {
+    .project-year {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      color: var(--slate-400);
+      background: rgba(30, 41, 59, 0.6);
+      padding: 2px 8px;
+      border-radius: 4px;
+      border: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    .project-title {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .project-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin: 14px 0 18px;
+      list-style: none;
+    }
+    .project-pills li {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 4px 11px;
+      border-radius: 5px;
+      background: rgba(30, 41, 59, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      color: var(--slate-300);
+    }
+    .hardware-frame {
+      border-radius: 12px;
+      border: 1px solid rgba(148, 163, 184, 0.22);
+      overflow: hidden;
+      background: #03060a;
+      margin: 20px 0;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+      position: relative;
+    }
+    .hardware-frame img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .hardware-frame:hover img {
+      transform: scale(1.02);
+    }
+    .pipeline-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 8px;
+      background: rgba(8, 12, 20, 0.7);
+      border: 1px solid rgba(148, 163, 184, 0.16);
+      padding: 12px 16px;
+      border-radius: 10px;
+      margin: 16px 0;
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--slate-300);
+    }
+    .pipe-node {
+      background: rgba(245, 158, 11, 0.12);
+      border: 1px solid rgba(245, 158, 11, 0.35);
+      color: #fbbf24;
+      padding: 3px 10px;
+      border-radius: 6px;
+      font-weight: 600;
+    }
+    .pipe-node.cyan {
+      background: rgba(56, 189, 248, 0.12);
+      border-color: rgba(56, 189, 248, 0.35);
+      color: #7dd3fc;
+    }
+    .pipe-node.emerald {
+      background: rgba(16, 185, 129, 0.12);
+      border-color: rgba(16, 185, 129, 0.35);
+      color: #6ee7b7;
+    }
+    .pipe-arrow {
+      color: var(--slate-500);
+      font-weight: bold;
+      user-select: none;
+    }
+
+    /* Collapsible Specs */
+    .accordion-btn {
+      background: rgba(30, 41, 59, 0.5);
+      border: 1px solid rgba(148, 163, 184, 0.2);
+      color: var(--slate-300);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 9px 18px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s;
+    }
+    .accordion-btn:hover {
+      background: rgba(245, 158, 11, 0.12);
+      border-color: var(--amber);
+      color: #fff;
+    }
+    .accordion-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out, opacity 0.3s ease-out;
+      opacity: 0;
+    }
+    .accordion-body.open {
+      max-height: 600px;
+      opacity: 1;
+      margin-top: 14px;
+      padding: 18px;
+      background: rgba(8, 12, 20, 0.65);
+      border: 1px solid rgba(148, 163, 184, 0.14);
+      border-radius: 8px;
+    }
+    .spec-list {
+      list-style: none;
+      font-size: 14px;
+      line-height: 1.75;
+      color: var(--slate-300);
+    }
+    .spec-list li {
+      margin-bottom: 8px;
+    }
+    .spec-list strong {
+      color: var(--amber);
+      font-family: var(--font-mono);
+      font-size: 13px;
+    }
+
+    /* ============================================================ */
+    /* TECHNICAL CAPABILITIES MATRIX (SECTION 3)                    */
+    /* ============================================================ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    @media (max-width: 860px) {
+      .skills-grid { grid-template-columns: 1fr; }
+    }
+    .skill-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-top: 2px solid var(--amber);
+      border-radius: 14px;
+      padding: 26px;
+      transition: all 0.25s;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+    }
+    .skill-card.cyan-top { border-top-color: #38bdf8; }
+    .skill-card.emerald-top { border-top-color: #10b981; }
+
+    .skill-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.1);
+    }
+    .skill-card-head {
+      font-family: var(--font-mono);
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--amber);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-bottom: 12px;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+    }
+    .skill-card.cyan-top .skill-card-head { color: #38bdf8; }
+    .skill-card.emerald-top .skill-card-head { color: #10b981; }
+
+    .skill-items {
+      list-style: none;
+      font-size: 14.5px;
+      color: var(--slate-300);
+    }
+    .skill-items li {
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px dotted rgba(148, 163, 184, 0.1);
+    }
+    .skill-items li:last-child { border-bottom: none; }
+    .skill-name {
       display: flex;
       align-items: center;
       gap: 8px;
     }
-    .skill-list li::before {
+    .skill-name::before {
       content: "▹";
       color: var(--amber);
+      font-weight: bold;
+    }
+    .skill-card.cyan-top .skill-name::before { color: #38bdf8; }
+    .skill-card.emerald-top .skill-name::before { color: #10b981; }
+
+    .skill-level-tag {
       font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 600;
+      padding: 2px 7px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--slate-400);
+      border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     /* ============================================================ */
-    /* SECTION 05: PODIUM HONORS & RECOGNITIONS                     */
+    /* PODIUM HONORS & TROPHY SHOWCASE (SECTION 4)                  */
     /* ============================================================ */
-    .honors-grid {
+    .trophy-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 18px;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-bottom: 28px;
     }
-    .honor-card {
-      background: rgba(10, 16, 27, 0.9);
+    @media (max-width: 860px) {
+      .trophy-grid { grid-template-columns: 1fr; }
+    }
+    .trophy-card {
+      background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.25s ease;
+      border-radius: 14px;
+      padding: 22px;
+      text-align: center;
       display: flex;
       flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.3s ease;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
-    .honor-card:hover {
-      border-color: var(--amber);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 16px rgba(245, 158, 11, 0.2);
+    .trophy-card:hover {
+      border-color: var(--border-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.7), 0 0 25px rgba(245, 158, 11, 0.12);
     }
-    .honor-media {
+    .trophy-badge {
+      display: inline-block;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 5px 12px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .trophy-badge.gold {
+      background: rgba(245, 158, 11, 0.15);
+      border: 1px solid rgba(245, 158, 11, 0.45);
+      color: #fbbf24;
+      box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+    }
+    .trophy-badge.bronze {
+      background: rgba(217, 119, 6, 0.15);
+      border: 1px solid rgba(217, 119, 6, 0.4);
+      color: #f59e0b;
+    }
+    .trophy-badge.national {
+      background: rgba(16, 185, 129, 0.15);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      color: #34d399;
+      box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+    }
+    .trophy-img-wrap {
       width: 100%;
-      height: 150px;
+      aspect-ratio: 4/3;
+      border-radius: 10px;
       overflow: hidden;
-      background: #000;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      margin-bottom: 16px;
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      background: #03060a;
+      position: relative;
     }
-    .honor-media img {
+    .trophy-img-wrap img {
       width: 100%;
       height: 100%;
       object-fit: cover;
+      transition: transform 0.4s ease;
     }
-    .honor-body {
-      padding: 16px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+    .trophy-img-wrap:hover img {
+      transform: scale(1.06);
     }
-    .honor-trophy-tag {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
+    .trophy-name {
+      font-size: 15.5px;
       font-weight: 700;
-      color: var(--amber);
-      margin-bottom: 6px;
-    }
-    .honor-card h4 {
-      font-size: 1.05rem;
       color: #fff;
-      font-weight: 700;
       margin-bottom: 6px;
     }
-    .honor-meta {
-      font-family: var(--font-mono);
-      font-size: 11.5px;
+    .trophy-org {
+      font-size: 13px;
       color: var(--slate-400);
-      margin-top: auto;
-      padding-top: 8px;
+      line-height: 1.5;
     }
 
     /* ============================================================ */
-    /* SECTION 06: INTERACTIVE TERMINAL CONSOLE                     */
+    /* INTERACTIVE UNIX SHELL CONSOLE (SECTION 5)                   */
     /* ============================================================ */
-    .terminal-box {
-      background: #04070d;
-      border: 1px solid var(--border-accent);
-      border-radius: 10px;
-      box-shadow: 0 0 35px rgba(0, 0, 0, 0.8), inset 0 0 40px rgba(245, 158, 11, 0.05);
+    .shell-container {
+      background: #05080e;
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
       overflow: hidden;
-      font-family: var(--font-mono);
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.75);
     }
-    .terminal-titlebar {
-      background: #0c1320;
-      padding: 10px 16px;
+    .shell-header {
+      background: #0e1524;
+      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      padding: 12px 18px;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.15);
+      align-items: center;
     }
-    .term-dots {
+    .shell-dots {
       display: flex;
-      gap: 6px;
+      gap: 7px;
+      align-items: center;
     }
-    .term-dot {
+    .dot {
       width: 11px;
       height: 11px;
       border-radius: 50%;
     }
-    .term-dot.r { background: #ef4444; }
-    .term-dot.y { background: #f59e0b; }
-    .term-dot.g { background: #10b981; }
-    .term-title {
+    .dot.red { background: #ef4444; }
+    .dot.yellow { background: #f59e0b; }
+    .dot.green { background: #10b981; }
+    .shell-title {
+      font-family: var(--font-mono);
       font-size: 12px;
       color: var(--slate-400);
     }
-    .terminal-screen {
-      padding: 18px;
-      height: 280px;
+    .shell-body {
+      padding: 22px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 1.8;
+      min-height: 180px;
+      max-height: 340px;
       overflow-y: auto;
-      font-size: 13px;
-      color: #cbd5e1;
-      line-height: 1.6;
     }
-    .term-quick-bar {
-      padding: 10px 16px;
-      background: #080d16;
-      border-top: 1px solid rgba(148, 163, 184, 0.12);
+    .shell-input-row {
       display: flex;
       align-items: center;
       gap: 8px;
-      flex-wrap: wrap;
+      margin-top: 10px;
+      padding-top: 10px;
+      border-top: 1px solid rgba(148, 163, 184, 0.1);
     }
-    .quick-chip {
-      background: rgba(30, 41, 59, 0.8);
-      border: 1px solid rgba(148, 163, 184, 0.25);
+    .shell-prompt {
       color: var(--amber);
-      font-size: 11.5px;
-      padding: 4px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.15s ease;
+      font-weight: bold;
     }
-    .quick-chip:hover {
-      background: var(--amber);
-      color: #000;
-      box-shadow: 0 0 10px var(--amber);
-    }
-    .term-input-row {
-      display: flex;
-      align-items: center;
-      padding: 10px 16px;
-      background: #060a12;
-      border-top: 1px solid rgba(148, 163, 184, 0.12);
-      gap: 8px;
-    }
-    .term-prompt {
-      color: var(--amber);
-      font-weight: 700;
-      font-size: 13px;
-    }
-    #shell-input {
+    .shell-input {
+      flex: 1;
       background: transparent;
       border: none;
       outline: none;
       color: #fff;
       font-family: var(--font-mono);
       font-size: 13px;
-      flex-grow: 1;
+    }
+    .shell-quick-cmds {
+      padding: 12px 18px;
+      background: #080c14;
+      border-top: 1px solid rgba(148, 163, 184, 0.08);
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+    .cmd-pill {
+      background: rgba(30, 41, 59, 0.85);
+      border: 1px solid rgba(148, 163, 184, 0.18);
+      color: var(--slate-300);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      padding: 4px 11px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+    .cmd-pill:hover {
+      background: rgba(245, 158, 11, 0.2);
+      border-color: var(--amber);
+      color: #fff;
+      transform: translateY(-1px);
     }
 
     /* ============================================================ */
-    /* SECTION 07: TRANSMISSION DISPATCH & CONTACT                  */
+    /* CONTACT & DISPATCH TILES (SECTION 6)                         */
     /* ============================================================ */
-    .dispatch-grid {
+    .contact-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 16px;
+      margin: 24px 0;
     }
-    .dispatch-card {
-      background: rgba(10, 16, 27, 0.85);
+    .contact-card {
+      background: rgba(14, 21, 36, 0.85);
       border: 1px solid var(--border-subtle);
-      border-radius: 10px;
-      padding: 18px;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s ease;
+      border-radius: 12px;
+      padding: 22px;
+      text-align: center;
       cursor: pointer;
+      transition: all 0.25s ease;
+      text-decoration: none;
+      display: block;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
-    .dispatch-card:hover {
-      border-color: var(--cyan);
-      background: rgba(16, 25, 42, 0.95);
+    .contact-card:hover {
+      border-color: var(--amber);
       transform: translateY(-3px);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5), 0 0 15px rgba(56, 189, 248, 0.15);
+      background: rgba(20, 30, 52, 0.95);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
     }
-    .dispatch-icon {
-      font-size: 1.5rem;
-      margin-bottom: 6px;
+    .contact-icon {
+      font-size: 24px;
+      margin-bottom: 8px;
     }
-    .dispatch-label {
+    .contact-label {
       font-family: var(--font-mono);
       font-size: 11px;
       color: var(--slate-400);
       margin-bottom: 4px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
     }
-    .dispatch-val {
+    .contact-val {
+      font-family: var(--font-mono);
+      font-size: 14px;
       font-weight: 700;
-      font-size: 14.5px;
       color: #fff;
+      word-break: break-all;
+    }
+    .contact-hint {
+      font-size: 11px;
+      color: var(--amber);
+      margin-top: 6px;
+      font-family: var(--font-mono);
     }
 
-    /* Toast */
+    /* Toast Notification */
     #toast {
       position: fixed;
       bottom: 24px;
       right: 24px;
       background: #0f172a;
-      border: 1px solid var(--emerald);
-      color: var(--emerald);
+      color: var(--amber);
+      border: 1px solid var(--amber);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 158, 11, 0.35);
+      padding: 12px 22px;
+      border-radius: 8px;
       font-family: var(--font-mono);
-      font-size: 12.5px;
-      padding: 10px 18px;
-      border-radius: 6px;
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-      z-index: 1000;
-      opacity: 0;
-      transform: translateY(10px);
-      transition: all 0.25s ease;
-      pointer-events: none;
+      font-size: 13px;
+      font-weight: 600;
+      z-index: 999;
+      transform: translateY(120px);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     #toast.show {
-      opacity: 1;
       transform: translateY(0);
     }
 
     /* Footer */
     footer {
       border-top: 1px solid rgba(148, 163, 184, 0.12);
-      padding: 40px 24px;
+      padding: 44px 16px;
       text-align: center;
-      font-size: 13px;
       color: var(--slate-500);
-      position: relative;
-      z-index: 10;
-      background: rgba(6, 9, 14, 0.9);
+      font-size: 13.5px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
-
-    /* Responsive adjustments */
-    @media (max-width: 860px) {
-      #timeline-container {
-        padding-left: 60px;
-        padding-right: 16px;
-      }
-      .timeline-spine {
-        left: 24px;
-      }
-      .spine-node {
-        left: -52px;
-        width: 34px;
-        height: 34px;
-        font-size: 10px;
-      }
-      .dossier-grid {
-        grid-template-columns: 1fr;
-      }
-      .project-card {
-        grid-template-columns: 1fr;
-      }
-      .project-media {
-        height: 180px;
-      }
-      .nav-rail {
-        display: none;
-      }
-      .retro-prompt-dock {
-        padding: 10px 16px;
-        bottom: 16px;
-      }
-    }
+    footer a { color: var(--slate-400); text-decoration: none; }
+    footer a:hover { color: var(--amber); }
   </style>
 </head>
+
 <body>
-  <!-- Ambient Cyber Canvas (Subtle 3D Grid & Particle Lines) -->
-  <canvas id="bg-cyber-canvas"></canvas>
+  <div id="home"></div>
 
   <!-- 3D Retro Commodore PET 8296 Workstation Canvas -->
   <canvas class="webgl"></canvas>
 
-  <!-- Hidden typing receiver textarea for 3D retro computer -->
-  <textarea id="textarea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
-
-  <!-- Offline Hero Fallback -->
+  <!-- Offline / Non-WebGL Fallback Hero -->
   <div id="hero-backup">
-    <div style="background: rgba(12, 18, 30, 0.95); border: 1px solid var(--border-accent); padding: 30px; border-radius: 12px; text-align: center; max-width: 500px;">
-      <h2 style="color: #fff; margin-bottom: 8px;">Muhammad Mirza Aqmal Raziq</h2>
-      <p style="color: var(--slate-300); margin-bottom: 16px;">Final Year Diploma Teknologi Komputeran • KVPJB (CGPA 3.98 • SKM Level 3)</p>
-      <a class="nav-btn primary" href="#about">Enter Candidate Dossier ↓</a>
+    <div class="hero-offline-card">
+      <div class="avatar-frame" style="margin: 0 auto 16px;">
+        <img src="./images/mirza-title.png" alt="Muhammad Mirza Aqmal Raziq" />
+      </div>
+      <div class="brand-status" style="justify-content: center; margin-bottom: 8px;">
+        <span class="status-dot"></span> AVAILABLE FOR 5-MONTH OJT (FEB–JUN 2027)
+      </div>
+      <h1 style="font-size: 2.1rem; font-weight: 800; color: #fff; margin-bottom: 6px;">Muhammad Mirza Aqmal Raziq</h1>
+      <div style="font-family: var(--font-mono); font-size: 14px; color: var(--amber); margin-bottom: 14px;">
+        Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan JB (KVPJB)
+      </div>
+      <p style="color: var(--slate-300); font-size: 15.5px; max-width: 560px; margin: 0 auto 20px;">
+        Passionate Software &amp; IT Systems Engineer specializing in Edge IoT vision (ESP32-CAM), FAISS vector search, custom YOLOv8 detection, and enterprise hardware diagnostics.
+      </p>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <a class="nav-btn primary" href="#about">Explore Candidate Dossier ↓</a>
+        <a class="nav-btn" href="./sijil_skm3_jpk_official.pdf" target="_blank">📄 Official SKM 3 PDF</a>
+      </div>
     </div>
   </div>
 
   <!-- Top HUD Command Bar -->
   <nav class="hud-navbar">
-    <a href="#workstation" class="brand-hud">
+    <a href="#home" class="brand-hud">
       <div class="brand-avatar">
         <img src="./images/mirza-title.png" alt="Mirza" />
       </div>
       <div class="brand-info">
-        <span class="brand-title">MIRZA // 3D OS</span>
-        <span class="brand-status"><span class="status-dot"></span> 5-MONTH OJT READY (FEB 2027)</span>
+        <span class="brand-title">MIRZA // OS-1.0</span>
+        <span class="brand-status"><span class="status-dot"></span> OJT READY (FEB 2027)</span>
       </div>
     </a>
 
-    <div class="nav-links">
+    <!-- Quick In-Page Section Links -->
+    <div class="nav-sections">
+      <a class="nav-sec-link" href="#about">Dossier</a>
+      <a class="nav-sec-link" href="#projects">Projects</a>
+      <a class="nav-sec-link" href="#skills">Skills</a>
+      <a class="nav-sec-link" href="#awards">Honors</a>
+      <a class="nav-sec-link" href="#terminal">Terminal</a>
+      <a class="nav-sec-link" href="#contact">Contact</a>
+    </div>
+
+    <!-- Quick Actions -->
+    <div class="nav-actions">
       <button class="nav-btn" onclick="toggleAudio()" id="sound-btn" title="Toggle Tactile Audio">
         🔊 Sound: ON
       </button>
-      <a class="nav-btn" href="./Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" target="_blank" onclick="playBeep(700, 0.05)">
-        📄 Resume PDF
-      </a>
       <a class="nav-btn" href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/" target="_blank">
         LinkedIn
       </a>
       <a class="nav-btn" href="https://github.com/mircrtierr" target="_blank">
         GitHub
       </a>
-      <a class="nav-btn primary" href="./sijil_skm3_jpk_official.pdf" target="_blank">
-        🏆 SKM 3 PDF
+      <a class="nav-btn primary" href="./sijil_skm3_jpk_official.pdf" target="_blank" title="Download Verified SKM 3 Digital PDF">
+        📄 SKM 3 PDF
       </a>
     </div>
+
+    <div id="tip-scroll">▼ SCROLL TO EXPLORE DOSSIER ▼</div>
   </nav>
 
-  <!-- Floating Right-Side Navigation Rail -->
-  <div class="nav-rail">
-    <div class="rail-dot active" onclick="glideTo('workstation')" data-section="workstation">
-      <span class="rail-tooltip">01 // 3D Workstation</span>
-    </div>
-    <div class="rail-dot" onclick="glideTo('about')" data-section="about">
-      <span class="rail-tooltip">02 // Candidate Dossier</span>
-    </div>
-    <div class="rail-dot" onclick="glideTo('projects')" data-section="projects">
-      <span class="rail-tooltip">03 // Engineered Projects</span>
-    </div>
-    <div class="rail-dot" onclick="glideTo('skills')" data-section="skills">
-      <span class="rail-tooltip">04 // Technical Matrix</span>
-    </div>
-    <div class="rail-dot" onclick="glideTo('awards')" data-section="awards">
-      <span class="rail-tooltip">05 // Podium Honors</span>
-    </div>
-    <div class="rail-dot" onclick="glideTo('terminal')" data-section="terminal">
-      <span class="rail-tooltip">06 // Diagnostic Terminal</span>
-    </div>
-    <div class="rail-dot" onclick="glideTo('contact')" data-section="contact">
-      <span class="rail-tooltip">07 // Transmission Dispatch</span>
-    </div>
-  </div>
+  <!-- Editorial Main Content Container -->
+  <main>
+    <!-- ============================================== -->
+    <!-- SECTION 1: CANDIDATE DOSSIER // ABOUT MIRZA     -->
+    <!-- ============================================== -->
+    <section id="about">
+      <div class="section-tagline"><span class="badge-dot"></span> 01 // PROFILE &amp; ACADEMICS</div>
+      <h2 class="section-title">Candidate Dossier</h2>
+      <p class="section-desc">
+        Final-year Computer Technology student at KVPJB with verified government accreditation, high-academic standing, and embedded vision specialization.
+      </p>
 
-  <!-- ============================================================ -->
-  <!-- STAGE 01: 3D RETRO WORKSTATION (HERO) - CLEAR & UNOBSTRUCTED -->
-  <!-- ============================================================ -->
-  <section id="workstation">
-    <!-- Floating Bottom Dock: Guide & Quick Command Chips -->
-    <div class="retro-prompt-dock">
-      <div class="dock-badge">
-        <span class="blinking-cursor">█</span> INTERACTIVE RETRO TERMINAL READY // TYPE ON KEYBOARD OR CLICK:
-      </div>
-      <div class="dock-cmd-list">
-        <button class="dock-chip" onclick="typeOnRetro('help')">help</button>
-        <button class="dock-chip" onclick="typeOnRetro('about')">about</button>
-        <button class="dock-chip" onclick="typeOnRetro('projects')">projects</button>
-        <button class="dock-chip" onclick="typeOnRetro('skills')">skills</button>
-        <button class="dock-chip" onclick="typeOnRetro('awards')">awards</button>
-        <button class="dock-chip" onclick="typeOnRetro('contact')">contact</button>
-        <button class="dock-chip" onclick="typeOnRetro('neofetch')">neofetch</button>
-        <button class="dock-chip" onclick="typeOnRetro('clear')">clear</button>
-      </div>
-      <div class="dock-scroll-hint" onclick="glideTo('about')">
-        ▼ Scroll down to Candidate Dossier &amp; 3D Timeline ▼
-      </div>
-    </div>
-  </section>
-
-  <!-- ============================================================ -->
-  <!-- 3D NEON SPINE TIMELINE & STRUCTURED SECTION STAGES           -->
-  <!-- ============================================================ -->
-  <div id="timeline-container">
-    <!-- The Glowing 3D Laser Spine -->
-    <div class="timeline-spine">
-      <div class="timeline-glow-line" id="timeline-glow"></div>
-      <div class="timeline-spark"></div>
-    </div>
-
-    <!-- ========================================================== -->
-    <!-- STAGE 02: CANDIDATE DOSSIER                                -->
-    <!-- ========================================================== -->
-    <section id="about" class="section-stage" data-node="02">
-      <div class="spine-node" onclick="glideTo('about')">02</div>
-      
-      <div class="stage-header">
-        <div class="stage-badge"><span class="badge-dot"></span> STAGE 02 // CANDIDATE PROFILE</div>
-        <h2 class="stage-title">Candidate Dossier &amp; Verified Credentials</h2>
-        <p class="stage-desc">Comprehensive academic standing, verified vocational accreditations, and industrial training requirements.</p>
-      </div>
-
-      <div class="stage-card">
-        <div class="dossier-grid">
-          <!-- Left: Photo & Identification Badge -->
-          <div class="dossier-photo-card">
-            <div class="photo-frame">
-              <img src="./images/mirza-title.png" alt="Muhammad Mirza Aqmal Raziq" />
-              <div class="photo-scanline"></div>
-            </div>
-            <div class="credential-chip">
-              ✓ SKM Level 3: S103882102
-            </div>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--slate-400); margin-bottom: 14px;">
-              Pasir Gudang, Johor, Malaysia
-            </div>
-            <a class="nav-btn primary" href="./sijil_skm3_jpk_official.pdf" target="_blank" style="width: 100%; justify-content: center; margin-bottom: 8px;">
-              📄 Official SKM 3 PDF
-            </a>
-            <a class="nav-btn" href="./Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" target="_blank" style="width: 100%; justify-content: center;">
-              📥 Download Resume PDF
-            </a>
+      <div class="card highlight">
+        <div class="profile-hero">
+          <div class="avatar-frame">
+            <img src="./images/mirza-title.png" alt="Muhammad Mirza Aqmal Raziq" />
           </div>
-
-          <!-- Right: Identity Details & KPI Counter Grid -->
-          <div>
-            <div style="font-family: var(--font-mono); font-size: 12px; color: var(--amber); margin-bottom: 4px;">
-              // DIPLOMA TEKNOLOGI KOMPUTERAN • FINAL YEAR CANDIDATE
-            </div>
-            <h3 style="font-size: 1.45rem; color: #fff; font-weight: 700; margin-bottom: 12px;">
-              Muhammad Mirza Aqmal Raziq bin Mirza Affzard
-            </h3>
-            <p style="color: var(--slate-300); font-size: 14.5px; line-height: 1.65; margin-bottom: 14px;">
-              Final-year Computer Technology student at <strong>Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</strong>. I specialize in bridging Edge IoT microcontrollers with neural similarity search (ESP32-CAM + FAISS 512D), custom YOLOv8 computer vision classification, hardware diagnostics, and Cisco enterprise networking.
+          <div class="profile-info">
+            <h1>Muhammad Mirza Aqmal Raziq</h1>
+            <div class="profile-sub">Diploma Teknologi Komputeran • KVPJB (Pasir Gudang, Johor)</div>
+            <p class="profile-bio">
+              Software &amp; IT Systems specialist bridging embedded edge microcontrollers with neural similarity search (ESP32-CAM + FAISS 512D), custom YOLOv8 computer vision classification, Cisco CCNA routing, and hardware diagnostics.
             </p>
-
-            <!-- 4 Key KPI Metrics -->
-            <div class="kpi-row">
-              <div class="kpi-box">
-                <div class="kpi-num">3.98</div>
-                <div class="kpi-label">Cumulative CGPA / 4.00</div>
-              </div>
-              <div class="kpi-box">
-                <div class="kpi-num">SKM 3</div>
-                <div class="kpi-label">IT System Support (JPK)</div>
-              </div>
-              <div class="kpi-box">
-                <div class="kpi-num">5 Mo.</div>
-                <div class="kpi-label">OJT: Feb – June 2027</div>
-              </div>
-              <div class="kpi-box">
-                <div class="kpi-num">3x</div>
-                <div class="kpi-label">State &amp; National Podiums</div>
-              </div>
-            </div>
-
-            <!-- Internship Scope Specs -->
-            <div style="background: rgba(15, 23, 42, 0.7); border: 1px solid var(--border-subtle); border-radius: 8px; padding: 14px 16px; margin-top: 14px;">
-              <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--emerald); font-weight: 600; margin-bottom: 4px;">
-                🎯 5-MONTH ON-THE-JOB TRAINING (OJT) INTERNSHIP SPECIFICATION
-              </div>
-              <div style="font-size: 13.5px; color: var(--slate-300);">
-                Available for placement from <strong>February 2027 to June 2027</strong> in Software Engineering, Edge IoT Systems, IT Infrastructure, or Network Administration. Willing to relocate within Johor or Greater Kuala Lumpur.
-              </div>
+            <div class="profile-tags">
+              <span class="tag-badge active">● Seeking 5-Mo OJT (Feb–Jun 2027)</span>
+              <span class="tag-badge">📍 Pasir Gudang, Johor</span>
+              <span class="tag-badge">🎓 CGPA 3.98 / 4.00</span>
+              <span class="tag-badge">🛡️ SKM Level 3: S103882102</span>
             </div>
           </div>
+        </div>
+
+        <!-- THE 4 GRAND KPI STATS -->
+        <div class="kpi-grid">
+          <div class="kpi-tile gold-top">
+            <div class="kpi-val gold">3.98</div>
+            <div class="kpi-label">Cumulative CGPA</div>
+            <span class="kpi-chip">ACADEMIC EXCELLENCE</span>
+          </div>
+
+          <div class="kpi-tile emerald-top">
+            <div class="kpi-val emerald">SKM 3</div>
+            <div class="kpi-label">JPK Accreditation</div>
+            <span class="kpi-chip">ID: S103882102</span>
+          </div>
+
+          <div class="kpi-tile cyan-top">
+            <div class="kpi-val cyan">5 MOS</div>
+            <div class="kpi-label">OJT Internship</div>
+            <span class="kpi-chip">FEB – JUNE 2027</span>
+          </div>
+
+          <div class="kpi-tile gold-top">
+            <div class="kpi-val gold">TOP 5</div>
+            <div class="kpi-label">National Podium</div>
+            <span class="kpi-chip">3x COMPETITIONS</span>
+          </div>
+        </div>
+
+        <!-- Glowing CRT Terminal Diagnostic Readout -->
+        <div class="crt-console">
+          <div><span class="cmd-prompt">&gt; mirza.status --verbose</span></div>
+          <div><span class="cmd-cyan">[INSTITUTION]</span> Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</div>
+          <div><span class="cmd-cyan">[SPECIALIZATION]</span> Edge IoT vision nodes, FAISS 512D vector embeddings, YOLOv8 object detection, Cisco networking.</div>
+          <div><span class="cmd-cyan">[AVAILABILITY]</span> <span class="cmd-green">Open for 5-Month On-The-Job Training (OJT) IT / Software Internship (Feb – June 2027)</span>.</div>
+          <div><span class="cmd-cyan">[VERIFICATION]</span> Sijil Kemahiran Malaysia (SKM) Tahap 3 in IT System Support issued by JPK.</div>
+          <div><span class="cmd-prompt">&gt; ready_for_interview</span><span class="cmd-cursor"></span></div>
+        </div>
+
+        <div style="display: flex; gap: 12px; margin-top: 26px; flex-wrap: wrap;">
+          <a class="nav-btn primary" href="./sijil_skm3_jpk_official.pdf" target="_blank">
+            📄 View Official SKM 3 Certificate PDF
+          </a>
+          <a class="nav-btn" href="./Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" target="_blank">
+            📥 Download Resume PDF
+          </a>
+          <a class="nav-btn" href="#contact">
+            ✉ Contact / Hire Mirza
+          </a>
         </div>
       </div>
     </section>
 
-    <!-- ========================================================== -->
-    <!-- STAGE 03: ENGINEERED PROJECTS SHOWCASE                     -->
-    <!-- ========================================================== -->
-    <section id="projects" class="section-stage" data-node="03">
-      <div class="spine-node" onclick="glideTo('projects')">03</div>
+    <!-- ============================================== -->
+    <!-- SECTION 2: ENGINEERING PROJECTS                -->
+    <!-- ============================================== -->
+    <section id="projects">
+      <div class="section-tagline"><span class="badge-dot"></span> 02 // ENGINEERING MISSION LOGS</div>
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-desc">
+        End-to-end hardware integrations, edge vision pipelines, and production neural models developed and field-tested.
+      </p>
 
-      <div class="stage-header">
-        <div class="stage-badge"><span class="badge-dot"></span> STAGE 03 // MISSION LOG</div>
-        <h2 class="stage-title">Featured Engineered Systems &amp; AI Research</h2>
-        <p class="stage-desc">Production-grade implementations combining embedded microcontrollers, computer vision, vector search, and digital signal engineering.</p>
-      </div>
+      <div class="project-grid">
+        <!-- Project 1: SmartAttend KVPJB -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">⚡ Edge AI &amp; Biometric Security</span>
+            <span class="project-year">2024 – 2025</span>
+          </div>
+          <h3 class="project-title">SmartAttend KVPJB</h3>
+          <p style="color: var(--slate-300); font-size: 15.5px; margin-bottom: 14px;">
+            Automated facial recognition attendance platform that replaces manual paper sheets with low-cost edge vision hardware coupled to a high-speed Python embedding server.
+          </p>
 
-      <div class="stage-card">
-        <div class="projects-stack">
-          <!-- Project 1: SmartAttend KVPJB -->
-          <div class="project-card">
-            <div class="project-media">
-              <img src="./images/smartattend_dashboard.jpg" alt="SmartAttend KVPJB Attendance Dashboard" />
-            </div>
-            <div class="project-content">
-              <h3>SmartAttend KVPJB: Edge IoT Biometric Attendance</h3>
-              <div class="project-tagline">// ESP32-CAM • FAISS 512D VECTOR SIMILARITY • GOOGLE SHEETS API • TELEGRAM BOT</div>
-              <p class="project-desc">
-                Architected a production attendance verification station for vocational cohorts. An ESP32-CAM micro-module captures frames and streams them to a Python backend where 512-dimensional facial embeddings are queried against a FAISS index, achieving sub-second verification with automated cloud logging and instant parent alerts.
-              </p>
-              <div class="tech-pill-list">
-                <span class="tech-pill">ESP32-CAM (OV2640)</span>
-                <span class="tech-pill">Python Flask</span>
-                <span class="tech-pill">FAISS 512D Index</span>
-                <span class="tech-pill">Google Sheets REST API</span>
-                <span class="tech-pill">Telegram Bot API</span>
-              </div>
-              <div class="metrics-bar">
-                <span>⚡ Latency: &lt;150ms</span>
-                <span>🎯 Verification: 99.2% Accuracy</span>
-                <span>☁️ Storage: Zero Cost Cloud Sync</span>
-              </div>
-            </div>
+          <div class="pipeline-bar">
+            <span style="color: var(--amber); font-weight: bold;">Pipeline:</span>
+            <span class="pipe-node">ESP32-CAM</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node cyan">LAN UDP Stream</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node">InsightFace (ArcFace 512D)</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node emerald">FAISS Index (&lt;250ms)</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node">SQLite DB</span>
           </div>
 
-          <!-- Project 2: YOLOv8 Custom Object Detection -->
-          <div class="project-card">
-            <div class="project-media">
-              <img src="./images/yolo_colab_detection.jpg" alt="Custom YOLOv8 Model Training in Google Colab" />
-            </div>
-            <div class="project-content">
-              <h3>Custom YOLOv8 Object Classification &amp; Telemetry</h3>
-              <div class="project-tagline">// TRANSFER LEARNING • GOOGLE COLAB TESLA T4 • OPENCV INFERENCE PIPELINE</div>
-              <p class="project-desc">
-                Engineered an end-to-end computer vision pipeline. Curated and augmented custom dataset with bounding box annotations in Roboflow, trained custom YOLOv8 model on Tesla T4 GPUs via Google Colab, and deployed high-framerate real-time video detection via OpenCV.
-              </p>
-              <div class="tech-pill-list">
-                <span class="tech-pill">YOLOv8 PyTorch</span>
-                <span class="tech-pill">Tesla T4 GPU</span>
-                <span class="tech-pill">Roboflow Dataset</span>
-                <span class="tech-pill">OpenCV Video Engine</span>
-                <span class="tech-pill">ONNX Runtime</span>
-              </div>
-              <div class="metrics-bar">
-                <span>📊 Precision: 92.4% mAP@0.5</span>
-                <span>⚡ Real-time Inference @ 30+ FPS</span>
-                <span>📦 Export: ONNX / TensorRT Ready</span>
-              </div>
-            </div>
+          <ul class="project-pills">
+            <li>ESP32-CAM Node</li>
+            <li>Python</li>
+            <li>FAISS 512D Index</li>
+            <li>ArcFace ResNet-50</li>
+            <li>SQLite Relational DB</li>
+            <li>Sub-second (&lt;250ms) Latency</li>
+          </ul>
+
+          <div class="hardware-frame">
+            <img src="./images/smartattend_dashboard.jpg" alt="SmartAttend Biometric System Interface" loading="lazy" />
           </div>
 
-          <!-- Project 3: Beyond The Mic Podcast Audio Engineering -->
-          <div class="project-card">
-            <div class="project-media">
-              <img src="./images/trophy_petah_madani_podcast.jpg" alt="Beyond The Mic Podcast National Award" />
-            </div>
-            <div class="project-content">
-              <h3>Beyond The Mic: National Competition Audio Engineering</h3>
-              <div class="project-tagline">// 5TH PLACE NATIONAL @ PICC PUTRAJAYA • DIGITAL AUDIO MASTERING • MULTI-CAM OBS</div>
-              <p class="project-desc">
-                Led audio engineering and studio recording for the Beyond The Mic podcast series, competing against premier institutions across Malaysia. Handled dynamic cardioid acoustic capture, multi-stage spectral noise gating, parametric EQ, and EBU R128 loudness normalization.
-              </p>
-              <div class="tech-pill-list">
-                <span class="tech-pill">Audacity Digital Mastering</span>
-                <span class="tech-pill">EBU R128 Loudness Target</span>
-                <span class="tech-pill">OBS Studio Multi-Cam</span>
-                <span class="tech-pill">Acoustic Calibration</span>
-              </div>
-              <div class="metrics-bar">
-                <span>🏆 5th Place National Award (PICC Putrajaya)</span>
-                <span>🔊 Studio EBU R128 Broadcast Mastering</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================== -->
-    <!-- STAGE 04: TECHNICAL MATRIX & CAPABILITIES                  -->
-    <!-- ========================================================== -->
-    <section id="skills" class="section-stage" data-node="04">
-      <div class="spine-node" onclick="glideTo('skills')">04</div>
-
-      <div class="stage-header">
-        <div class="stage-badge"><span class="badge-dot"></span> STAGE 04 // CAPABILITIES</div>
-        <h2 class="stage-title">Technical Matrix &amp; Engineering Disciplines</h2>
-        <p class="stage-desc">Core proficiencies encompassing applied software development, edge IoT devices, hardware repair, and enterprise network design.</p>
-      </div>
-
-      <div class="stage-card">
-        <div class="skills-quad">
-          <!-- Domain 1 -->
-          <div class="skill-card">
-            <div class="skill-icon">🧠</div>
-            <h4>Software &amp; AI Vision</h4>
-            <ul class="skill-list">
-              <li>Python (Scripting &amp; Automation)</li>
-              <li>YOLOv8 &amp; PyTorch Inference</li>
-              <li>FAISS 512D Vector Similarity</li>
-              <li>OpenCV Image Processing</li>
-              <li>Flask REST APIs &amp; Webhooks</li>
-              <li>JavaScript &amp; Three.js WebGL</li>
-            </ul>
-          </div>
-
-          <!-- Domain 2 -->
-          <div class="skill-card">
-            <div class="skill-icon">📡</div>
-            <h4>Edge IoT &amp; Embedded</h4>
-            <ul class="skill-list">
-              <li>ESP32 &amp; ESP32-CAM Modules</li>
-              <li>Arduino C/C++ Programming</li>
-              <li>UART / I2C / SPI Sensors</li>
-              <li>Camera Video Streaming RTSP</li>
-              <li>Relay &amp; Actuator Control</li>
-              <li>Low-Power Sleep Modes</li>
-            </ul>
-          </div>
-
-          <!-- Domain 3 -->
-          <div class="skill-card">
-            <div class="skill-icon">🛠️</div>
-            <h4>IT Support &amp; Hardware</h4>
-            <ul class="skill-list">
-              <li>SKM Level 3 Certified (JPK)</li>
-              <li>PC Architecture &amp; Custom Assembly</li>
-              <li>Component Troubleshooting</li>
-              <li>Thermal Paste &amp; Cooling Diagnosis</li>
-              <li>BIOS/UEFI Configuration &amp; Flashing</li>
-              <li>OS Deployment (Windows &amp; Linux)</li>
-            </ul>
-          </div>
-
-          <!-- Domain 4 -->
-          <div class="skill-card">
-            <div class="skill-icon">🌐</div>
-            <h4>Cisco &amp; Telecommunications</h4>
-            <ul class="skill-list">
-              <li>Cisco Packet Tracer Architecture</li>
-              <li>IPv4 / IPv6 Subnetting &amp; CIDR</li>
-              <li>VLANs, Trunking &amp; Inter-VLAN</li>
-              <li>DHCP / DNS Server Setup</li>
-              <li>Cat6 Cable Crimping (T568A/B)</li>
-              <li>Router &amp; Switch CLI Config</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================== -->
-    <!-- STAGE 05: PODIUM HONORS & RECOGNITIONS                     -->
-    <!-- ========================================================== -->
-    <section id="awards" class="section-stage" data-node="05">
-      <div class="spine-node" onclick="glideTo('awards')">05</div>
-
-      <div class="stage-header">
-        <div class="stage-badge"><span class="badge-dot"></span> STAGE 05 // PODIUM DISTINCTIONS</div>
-        <h2 class="stage-title">Podium Honors &amp; Competitive Accolades</h2>
-        <p class="stage-desc">Proven excellence under time-pressured competitive hackathons, app development challenges, and national broadcasts.</p>
-      </div>
-
-      <div class="stage-card">
-        <div class="honors-grid">
-          <!-- Award 1 -->
-          <div class="honor-card">
-            <div class="honor-media">
-              <img src="./images/trophy_johan_apps_ideation_johor.jpg" alt="Johan Apps Ideation Johor Trophy" />
-            </div>
-            <div class="honor-body">
-              <div class="honor-trophy-tag">🥇 CHAMPION // JOHAN NEGERI</div>
-              <h4>Johan Pertandingan Apps Ideation Johor</h4>
-              <p style="font-size: 13px; color: var(--slate-300); margin: 6px 0;">
-                Awarded 1st Place across Johor state for novel software architecture addressing student community utility and digital workflows.
-              </p>
-              <div class="honor-meta">State Level (Johor) • 2023</div>
-            </div>
-          </div>
-
-          <!-- Award 2 -->
-          <div class="honor-card">
-            <div class="honor-media">
-              <img src="./images/trophy_android_national_mmu.jpg" alt="MMU Android Challenge Trophy" />
-            </div>
-            <div class="honor-body">
-              <div class="honor-trophy-tag">🥉 3RD PLACE // TEMPAT KETIGA</div>
-              <h4>Tempat Ketiga MMU Android Challenge</h4>
-              <p style="font-size: 13px; color: var(--slate-300); margin: 6px 0;">
-                Secured 3rd Place nationwide at Multimedia University (MMU) for rapid Android native mobile app engineering and UI presentation.
-              </p>
-              <div class="honor-meta">National Level (MMU) • 2024</div>
-            </div>
-          </div>
-
-          <!-- Award 3 -->
-          <div class="honor-card">
-            <div class="honor-media">
-              <img src="./images/trophy_petah_madani_podcast.jpg" alt="Beyond The Mic Podcast National Award" />
-            </div>
-            <div class="honor-body">
-              <div class="honor-trophy-tag">🏅 5TH PLACE // KEBANGSAAN</div>
-              <h4>Kelima Kebangsaan Beyond The Mic</h4>
-              <p style="font-size: 13px; color: var(--slate-300); margin: 6px 0;">
-                Achieved 5th Place National standing at the Putrajaya International Convention Centre (PICC) for podcast engineering and production.
-              </p>
-              <div class="honor-meta">National @ PICC Putrajaya • 2026</div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========================================================== -->
-    <!-- STAGE 06: INTERACTIVE TERMINAL CONSOLE                     -->
-    <!-- ========================================================== -->
-    <section id="terminal" class="section-stage" data-node="06">
-      <div class="spine-node" onclick="glideTo('terminal')">06</div>
-
-      <div class="stage-header">
-        <div class="stage-badge"><span class="badge-dot"></span> STAGE 06 // SYSTEM DIAGNOSTIC</div>
-        <h2 class="stage-title">Interactive Terminal Console</h2>
-        <p class="stage-desc">Direct CLI shell for querying system diagnostics, candidate dossier specs, and verification records.</p>
-      </div>
-
-      <div class="terminal-box">
-        <div class="terminal-titlebar">
-          <div class="term-dots">
-            <span class="term-dot r"></span>
-            <span class="term-dot y"></span>
-            <span class="term-dot g"></span>
-          </div>
-          <span class="term-title">mirza@kvpjb-system: /opt/dossier</span>
-          <span style="font-size: 11px; color: var(--emerald);">● CONNECTED</span>
-        </div>
-
-        <div class="terminal-screen" id="shell-output">
-          <div style="color: var(--amber); font-weight: bold;">MIRZA-OS v1.0 LTS Diagnostic Console</div>
-          <div style="color: var(--slate-400); margin-bottom: 8px;">Type <span style="color: var(--cyan); font-weight: bold;">help</span> or click command chips below to inspect candidate profile.</div>
-          <div style="color: #34d399;">mirza@kvpjb:~$ neofetch</div>
-          <div style="margin: 6px 0; padding: 8px; background: rgba(255,255,255,0.03); border-radius: 6px;">
-            <div>• Candidate: <strong style="color: #fff;">Muhammad Mirza Aqmal Raziq</strong></div>
-            <div>• Institution: <strong>Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</strong></div>
-            <div>• Academic CGPA: <strong style="color: var(--amber);">3.98 / 4.00</strong></div>
-            <div>• Verified Credential: <strong style="color: var(--cyan);">SKM Tahap 3 (S103882102)</strong></div>
-            <div>• Status: <strong style="color: var(--emerald);">Available for 5-Month OJT (Feb–Jun 2027)</strong></div>
-          </div>
-        </div>
-
-        <div class="term-quick-bar">
-          <span style="font-size: 11px; color: var(--slate-400);">QUICK EXEC:</span>
-          <button class="quick-chip" onclick="runCommand('about')">about</button>
-          <button class="quick-chip" onclick="runCommand('projects')">projects</button>
-          <button class="quick-chip" onclick="runCommand('skills')">skills</button>
-          <button class="quick-chip" onclick="runCommand('cgpa')">cgpa</button>
-          <button class="quick-chip" onclick="runCommand('ojt')">ojt</button>
-          <button class="quick-chip" onclick="runCommand('awards')">awards</button>
-          <button class="quick-chip" onclick="runCommand('contact')">contact</button>
-          <button class="quick-chip" onclick="runCommand('clear')">clear</button>
-        </div>
-
-        <div class="term-input-row">
-          <span class="term-prompt">mirza@kvpjb:~$</span>
-          <input type="text" id="shell-input" placeholder="Type command here (e.g. help, about, ojt, contact)..." onkeydown="if(event.key==='Enter') submitCommand()" />
-          <button class="nav-btn primary" onclick="submitCommand()" style="padding: 4px 12px; font-size: 11px;">
-            EXECUTE ↵
+          <button class="accordion-btn" onclick="toggleSpec(this)">
+            [+] View System Architecture Breakdown
           </button>
+          <div class="accordion-body">
+            <ul class="spec-list">
+              <li><strong>• Edge Vision Node:</strong> ESP32-CAM (OV2640 sensor) transmitting high-throughput JPEG frames over local LAN via socket streaming.</li>
+              <li><strong>• Embedding Pipeline:</strong> Facial landmark alignment + InsightFace (ArcFace ResNet-50) yielding dense 512-dimensional feature vectors.</li>
+              <li><strong>• Vector Similarity:</strong> <code>IndexFlatL2</code> FAISS vector index querying 500+ student embeddings in &lt;250ms with a Euclidean distance threshold of 0.42.</li>
+              <li><strong>• Persistent Storage:</strong> SQLite backend with transactional timestamps, duplicate suppression, and automated attendance reporting.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project 2: YOLO Custom Object Detection -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">🎯 Computer Vision &amp; Deep Learning</span>
+            <span class="project-year">2024</span>
+          </div>
+          <h3 class="project-title">YOLO Custom Object Classifier</h3>
+          <p style="color: var(--slate-300); font-size: 15.5px; margin-bottom: 14px;">
+            Custom neural object classifier trained on Google Colab GPU for real-time classroom inventory and laboratory equipment tracking.
+          </p>
+
+          <div class="pipeline-bar">
+            <span style="color: var(--amber); font-weight: bold;">Benchmark:</span>
+            <span class="pipe-node emerald">92.4% mAP@0.5</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node cyan">18ms Latency</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">Tesla T4 GPU (100 Epochs)</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">1,200+ Annotated Samples</span>
+          </div>
+
+          <ul class="project-pills">
+            <li>YOLOv8</li>
+            <li>Google Colab GPU</li>
+            <li>PyTorch</li>
+            <li>OpenCV</li>
+            <li>Python</li>
+            <li>Live Webcam Inference</li>
+          </ul>
+
+          <div class="hardware-frame">
+            <img src="./images/yolo_colab_detection.jpg" alt="YOLO Custom Detection on Google Colab" loading="lazy" />
+          </div>
+
+          <button class="accordion-btn" onclick="toggleSpec(this)">
+            [+] View Training &amp; Inference Specs
+          </button>
+          <div class="accordion-body">
+            <ul class="spec-list">
+              <li><strong>• Dataset:</strong> 1,200+ annotated high-res images with augmentations (random crop, brightness jitter, mosaic blending).</li>
+              <li><strong>• Training Compute:</strong> 100 epochs on Google Colab Tesla T4 GPU running PyTorch and Ultralytics YOLOv8 architecture.</li>
+              <li><strong>• Performance:</strong> Achieved 92.4% mAP@0.5 and 18ms inference latency per frame on continuous video loops.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Project 3: Beyond The Mic Podcast -->
+        <div class="project-card">
+          <div class="project-meta">
+            <span class="project-tag">🎚 Broadcast Engineering &amp; Mastering</span>
+            <span class="project-year">2026 (National Final)</span>
+          </div>
+          <h3 class="project-title">Beyond The Mic Podcast Production</h3>
+          <p style="color: var(--slate-300); font-size: 15.5px; margin-bottom: 14px;">
+            Broadcast engineering and audio mastering for <em>Pertandingan Beyond The Mic: Podcast Peringkat Kebangsaan</em> at Putrajaya International Convention Centre (PICC) during Petah KPM 2026, achieving <strong>5th Place Nationally (Kelima Kebangsaan)</strong>.
+          </p>
+
+          <div class="pipeline-bar">
+            <span style="color: var(--amber); font-weight: bold;">Standard:</span>
+            <span class="pipe-node emerald">EBU R128 (-14 LUFS)</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">Kelima Kebangsaan</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node cyan">PICC Putrajaya</span>
+          </div>
+
+          <ul class="project-pills">
+            <li>Broadcast Audio</li>
+            <li>Acoustic Noise Suppression</li>
+            <li>PICC Putrajaya</li>
+            <li>Dual Balanced XLR</li>
+            <li>Petah KPM 2026</li>
+          </ul>
+
+          <div class="hardware-frame" style="max-width: 540px; margin: 20px auto;">
+            <img src="./images/trophy_petah_madani_podcast.jpg" alt="Petah KPM 2026 National Trophy" loading="lazy" />
+          </div>
+
+          <button class="accordion-btn" onclick="toggleSpec(this)">
+            [+] View Audio Production Specifications
+          </button>
+          <div class="accordion-body">
+            <ul class="spec-list">
+              <li><strong>• Hardware:</strong> Dual-channel balanced XLR dynamic microphones with low-noise mic preamps and shock mounts.</li>
+              <li><strong>• Acoustic Processing:</strong> Multi-band downward expansion, phase-aligned dynamic EQ, and real-time noise suppression.</li>
+              <li><strong>• Mastering:</strong> EBU R128 / ITU-R BS.1770 broadcast standard compliance (-14 LUFS integrated, -1.0 dBTP ceiling).</li>
+            </ul>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- ========================================================== -->
-    <!-- STAGE 07: TRANSMISSION DISPATCH & CONTACT                  -->
-    <!-- ========================================================== -->
-    <section id="contact" class="section-stage" data-node="07">
-      <div class="spine-node" onclick="glideTo('contact')">07</div>
+    <!-- ============================================== -->
+    <!-- SECTION 3: TECHNICAL CAPABILITIES MATRIX       -->
+    <!-- ============================================== -->
+    <section id="skills">
+      <div class="section-tagline"><span class="badge-dot"></span> 03 // CORE COMPETENCIES</div>
+      <h2 class="section-title">Technical Capabilities</h2>
+      <p class="section-desc">
+        Comprehensive expertise bridging software intelligence with physical IT infrastructure and Cisco network architecture.
+      </p>
 
-      <div class="stage-header">
-        <div class="stage-badge"><span class="badge-dot"></span> STAGE 07 // DISPATCH</div>
-        <h2 class="stage-title">Transmission Dispatch &amp; Connect</h2>
-        <p class="stage-desc">Direct communication channels for internship inquiries, interview scheduling, and credential verification.</p>
-      </div>
-
-      <div class="stage-card">
-        <div class="dispatch-grid">
-          <div class="dispatch-card" onclick="copyText('mirzaaqmal22@gmail.com', 'Email address')">
-            <div class="dispatch-icon">✉️</div>
-            <div class="dispatch-label">PRIMARY EMAIL</div>
-            <div class="dispatch-val">mirzaaqmal22@gmail.com</div>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--amber); margin-top: 6px;">[Click to Copy]</div>
-          </div>
-
-          <div class="dispatch-card" onclick="copyText('013-5788399', 'Phone number')">
-            <div class="dispatch-icon">📞</div>
-            <div class="dispatch-label">PHONE / WHATSAPP</div>
-            <div class="dispatch-val">013-5788399</div>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--amber); margin-top: 6px;">[Click to Copy]</div>
-          </div>
-
-          <a class="dispatch-card" href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/" target="_blank" onclick="playBeep(900, 0.05)">
-            <div class="dispatch-icon">💼</div>
-            <div class="dispatch-label">LINKEDIN PROFILE</div>
-            <div class="dispatch-val">aqmal-raziq-3975b0346</div>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--cyan); margin-top: 6px;">[Open LinkedIn ↗]</div>
-          </a>
-
-          <a class="dispatch-card" href="https://github.com/mircrtierr" target="_blank" onclick="playBeep(900, 0.05)">
-            <div class="dispatch-icon">💻</div>
-            <div class="dispatch-label">GITHUB REPOSITORIES</div>
-            <div class="dispatch-val">github.com/mircrtierr</div>
-            <div style="font-family: var(--font-mono); font-size: 11px; color: var(--cyan); margin-top: 6px;">[Open GitHub ↗]</div>
-          </a>
+      <div class="skills-grid">
+        <div class="skill-card">
+          <div class="skill-card-head">🤖 EMBEDDED &amp; AI SYSTEMS</div>
+          <ul class="skill-items">
+            <li><span class="skill-name">ESP32 &amp; ESP32-CAM (C/C++)</span><span class="skill-level-tag">Advanced</span></li>
+            <li><span class="skill-name">FAISS 512D Vector Embeddings</span><span class="skill-level-tag">Advanced</span></li>
+            <li><span class="skill-name">YOLOv8 Custom Object Detection</span><span class="skill-level-tag">Trained</span></li>
+            <li><span class="skill-name">OpenCV Vision Processing</span><span class="skill-level-tag">Core</span></li>
+            <li><span class="skill-name">PyTorch Neural Models</span><span class="skill-level-tag">Applied</span></li>
+            <li><span class="skill-name">IoT Socket UDP Streaming</span><span class="skill-level-tag">Network</span></li>
+          </ul>
         </div>
 
-        <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 26px;">
-          <a class="nav-btn primary" href="mailto:mirzaaqmal22@gmail.com?subject=OJT%20Internship%20Offer%20-%20Muhammad%20Mirza%20Aqmal%20Raziq" style="padding: 12px 28px; font-size: 14px;" onclick="playBeep(1100, 0.08)">
-            ✉️ Dispatch Email to Mirza
-          </a>
-          <a class="nav-btn" href="./Muhammad_Mirza_Aqmal_Raziq.vcf" download style="padding: 12px 20px; font-size: 13.5px;" onclick="playBeep(850, 0.05)">
-            📇 Save vCard Contact (.vcf)
-          </a>
-          <a class="nav-btn" href="./sijil_skm3_jpk_official.pdf" target="_blank" style="padding: 12px 20px; font-size: 13.5px;" onclick="playBeep(850, 0.05)">
-            🏆 Verified SKM 3 Digital Certificate
-          </a>
+        <div class="skill-card cyan-top">
+          <div class="skill-card-head">💻 SOFTWARE &amp; DATA</div>
+          <ul class="skill-items">
+            <li><span class="skill-name">Python (Scripting &amp; Automation)</span><span class="skill-level-tag">Primary</span></li>
+            <li><span class="skill-name">JavaScript &amp; TypeScript (WebGL)</span><span class="skill-level-tag">Proficient</span></li>
+            <li><span class="skill-name">SQL (SQLite / Relational Design)</span><span class="skill-level-tag">Relational</span></li>
+            <li><span class="skill-name">Linux / Bash CLI &amp; SSH</span><span class="skill-level-tag">Systems</span></li>
+            <li><span class="skill-name">HTML5, CSS3, Modern Responsive</span><span class="skill-level-tag">Frontend</span></li>
+            <li><span class="skill-name">Git &amp; GitHub Version Control</span><span class="skill-level-tag">DevOps</span></li>
+          </ul>
+        </div>
+
+        <div class="skill-card emerald-top">
+          <div class="skill-card-head">🛠 IT SUPPORT &amp; CISCO</div>
+          <ul class="skill-items">
+            <li><span class="skill-name">SKM 3 IT Support (S103882102)</span><span class="skill-level-tag">Certified</span></li>
+            <li><span class="skill-name">Cisco CCNA: Routing &amp; Switching</span><span class="skill-level-tag">Verified</span></li>
+            <li><span class="skill-name">Cisco IT Essentials: PC Hardware</span><span class="skill-level-tag">Verified</span></li>
+            <li><span class="skill-name">LAN / VLAN &amp; Subnet Setup</span><span class="skill-level-tag">Network</span></li>
+            <li><span class="skill-name">Component Diagnostics &amp; Repair</span><span class="skill-level-tag">Hardware</span></li>
+            <li><span class="skill-name">OS Deployment &amp; Recovery</span><span class="skill-level-tag">Systems</span></li>
+          </ul>
         </div>
       </div>
     </section>
-  </div>
+
+    <!-- ============================================== -->
+    <!-- SECTION 4: PODIUM HONORS & TROPHY SHOWCASE     -->
+    <!-- ============================================== -->
+    <section id="awards">
+      <div class="section-tagline"><span class="badge-dot"></span> 04 // COMPETITIVE ACHIEVEMENTS</div>
+      <h2 class="section-title">Podium Honors &amp; Awards</h2>
+      <p class="section-desc">
+        Recognized at state and national levels across software innovation, mobile app ideation, and broadcast production.
+      </p>
+
+      <div class="trophy-grid">
+        <div class="trophy-card">
+          <div>
+            <span class="trophy-badge gold">🥇 JOHAN (CHAMPION)</span>
+            <div class="trophy-img-wrap">
+              <img src="./images/trophy_johan_apps_ideation_johor.jpg" alt="Johan Apps Ideation Challenge Johor Trophy" loading="lazy" />
+            </div>
+          </div>
+          <div>
+            <div class="trophy-name">Johan Apps Ideation Challenge</div>
+            <div class="trophy-org">State Level Android Innovation • Johor (2023)</div>
+          </div>
+        </div>
+
+        <div class="trophy-card">
+          <div>
+            <span class="trophy-badge bronze">🥉 TEMPAT KETIGA</span>
+            <div class="trophy-img-wrap">
+              <img src="./images/trophy_android_national_mmu.jpg" alt="Tempat Ketiga MMU Android Competition Trophy" loading="lazy" />
+            </div>
+          </div>
+          <div>
+            <div class="trophy-name">Tempat Ketiga MMU Android</div>
+            <div class="trophy-org">Multimedia University &amp; JPN Melaka (2024)</div>
+          </div>
+        </div>
+
+        <div class="trophy-card">
+          <div>
+            <span class="trophy-badge national">🏅 KELIMA KEBANGSAAN</span>
+            <div class="trophy-img-wrap">
+              <img src="./images/trophy_petah_madani_podcast.jpg" alt="Kelima Kebangsaan Beyond The Mic Trophy" loading="lazy" />
+            </div>
+          </div>
+          <div>
+            <div class="trophy-name">Kelima Kebangsaan Beyond The Mic</div>
+            <div class="trophy-org">Petah KPM 2026 @ PICC Putrajaya (2026)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 20px;">
+        <div>
+          <div style="font-family: var(--font-mono); font-size: 11.5px; color: var(--emerald); font-weight: 700; margin-bottom: 4px;">
+            VERIFIED GOVERNMENT ACCREDITATION
+          </div>
+          <div style="font-size: 1.2rem; font-weight: 700; color: #fff;">Sijil Kemahiran Malaysia (SKM) Tahap 3</div>
+          <div style="font-size: 14px; color: var(--slate-400); margin-top: 4px;">
+            IT System Support • Cert ID: <strong style="color: #fff;">S103882102</strong> • JPK Kementerian Sumber Manusia
+          </div>
+        </div>
+        <a class="nav-btn primary" href="./sijil_skm3_jpk_official.pdf" target="_blank" style="padding: 11px 22px;">
+          📄 Download Official SKM PDF
+        </a>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 5: INTERACTIVE UNIX SHELL              -->
+    <!-- ============================================== -->
+    <section id="terminal">
+      <div class="section-tagline"><span class="badge-dot"></span> 05 // INTERACTIVE UNIX SHELL</div>
+      <h2 class="section-title">Terminal Console</h2>
+      <p class="section-desc">
+        Type commands or click quick pills below to interact with the system kernel and explore credentials.
+      </p>
+
+      <div class="shell-container">
+        <div class="shell-header">
+          <div class="shell-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+            <span style="font-family: var(--font-mono); font-size: 11.5px; color: var(--slate-300); margin-left: 8px;">mirza@kvpjb:~$</span>
+          </div>
+          <span class="shell-title">MIRZA_KERNEL // BASH</span>
+        </div>
+
+        <div class="shell-body" id="shell-output">
+          <div style="color: var(--slate-400); margin-bottom: 8px;">
+            *** MIRZA-OS v1.0 LTS (COMMODORE 710 EDITION) ***<br />
+            Type <span style="color: var(--amber); font-weight: bold; cursor: pointer; text-decoration: underline;" onclick="runCommand('help')">help</span> or <span style="color: var(--amber); font-weight: bold; cursor: pointer; text-decoration: underline;" onclick="runCommand('neofetch')">neofetch</span> to view system information.
+          </div>
+        </div>
+
+        <form class="shell-input-row" onsubmit="event.preventDefault(); submitCommand();" style="padding: 10px 20px;">
+          <span class="shell-prompt">mirza@kvpjb:~$</span>
+          <input type="text" id="shell-input" class="shell-input" autocomplete="off" spellcheck="false" placeholder="type 'help', 'about', 'neofetch'..." />
+        </form>
+
+        <div class="shell-quick-cmds">
+          <span style="font-size: 11.5px; color: var(--slate-500); font-family: var(--font-mono);">Quick Run:</span>
+          <button class="cmd-pill" onclick="runCommand('neofetch')">neofetch</button>
+          <button class="cmd-pill" onclick="runCommand('about')">about</button>
+          <button class="cmd-pill" onclick="runCommand('projects')">projects</button>
+          <button class="cmd-pill" onclick="runCommand('skills')">skills</button>
+          <button class="cmd-pill" onclick="runCommand('cgpa')">cgpa</button>
+          <button class="cmd-pill" onclick="runCommand('ojt')">ojt</button>
+          <button class="cmd-pill" onclick="runCommand('awards')">awards</button>
+          <button class="cmd-pill" onclick="runCommand('contact')">contact</button>
+          <button class="cmd-pill" onclick="runCommand('clear')" style="color: var(--slate-400);">clear</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================== -->
+    <!-- SECTION 6: CONTACT & OJT INQUIRY               -->
+    <!-- ============================================== -->
+    <section id="contact">
+      <div class="section-tagline"><span class="badge-dot"></span> 06 // DIRECT DISPATCH</div>
+      <h2 class="section-title">Contact &amp; Connect</h2>
+      <p class="section-desc">
+        Actively available for technical interviews regarding the <strong>5-Month IT / Software Internship (February – June 2027)</strong>.
+      </p>
+
+      <div class="contact-grid">
+        <div class="contact-card" onclick="copyText('mirzaaqmal22@gmail.com', 'Email address')">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-label">DIRECT EMAIL</div>
+          <div class="contact-val">mirzaaqmal22@gmail.com</div>
+          <div class="contact-hint">[Click to Copy]</div>
+        </div>
+
+        <div class="contact-card" onclick="copyText('013-5788399', 'Phone number')">
+          <div class="contact-icon">📞</div>
+          <div class="contact-label">PHONE / WHATSAPP</div>
+          <div class="contact-val">013-5788399</div>
+          <div class="contact-hint">[Click to Copy]</div>
+        </div>
+
+        <a class="contact-card" href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/" target="_blank">
+          <div class="contact-icon">💼</div>
+          <div class="contact-label">LINKEDIN</div>
+          <div class="contact-val">aqmal-raziq-3975b0346</div>
+          <div class="contact-hint">[Open Profile ↗]</div>
+        </a>
+
+        <a class="contact-card" href="https://github.com/mircrtierr" target="_blank">
+          <div class="contact-icon">💻</div>
+          <div class="contact-label">GITHUB</div>
+          <div class="contact-val">github.com/mircrtierr</div>
+          <div class="contact-hint">[Open Repos ↗]</div>
+        </a>
+      </div>
+
+      <div style="text-align: center; margin-top: 30px;">
+        <a class="nav-btn primary" href="mailto:mirzaaqmal22@gmail.com?subject=OJT%20Internship%20Offer%20-%20Muhammad%20Mirza%20Aqmal%20Raziq" style="padding: 13px 30px; font-size: 14.5px;">
+          ✉️ Send Direct Email to Mirza
+        </a>
+      </div>
+    </section>
+  </main>
 
   <!-- Interactive Toast Notification -->
   <div id="toast">✓ Copied to clipboard!</div>
 
+  <input type="text" id="textarea" readonly />
+
   <!-- Footer -->
   <footer>
-    <div style="color: #fff; font-weight: 600; font-family: var(--font-mono); font-size: 14px; margin-bottom: 4px;">
+    <div style="color: #fff; font-weight: 600; font-family: var(--font-mono); font-size: 14px;">
       Muhammad Mirza Aqmal Raziq bin Mirza Affzard
     </div>
     <div>Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</div>
-    <div>Pasir Gudang, Johor, Malaysia • Academic CGPA 3.98 / 4.00 • SKM Level 3 ID: S103882102</div>
-    <div style="color: var(--amber); margin-top: 6px;">5-Month On-The-Job Training (OJT) Internship Window: February – June 2027</div>
-    <div style="font-size: 12px; color: var(--slate-500); margin-top: 8px;">Commodore PET 8296 Workstation // Interactive Retro Engine &amp; 3D Neon Timeline.</div>
+    <div>Pasir Gudang, Johor, Malaysia • CGPA 3.98 • SKM Level 3: S103882102</div>
+    <div>5-Month OJT Internship Window: February – June 2027</div>
+    <div>Retro Workstation 3D Design inspired by the Commodore PET 8296.</div>
   </footer>
 
-  <!-- Scripts: Audio, Ambient Canvas, Smooth Glide, Active Stage Tracker, CLI -->
+  <!-- Scripts: Tactile Audio, CLI Shell, Copy Helper, Watchdogs -->
   <script>
     // Audio Synthesizer
     var audioOn = true;
@@ -1715,26 +1802,15 @@ const html = `<!DOCTYPE html>
       if (audioOn) playBeep(1000, 0.08);
     }
 
-    // Type directly onto the 3D retro computer
-    function typeOnRetro(cmd) {
-      playBeep(950, 0.06);
-      if (typeof window.__TYPE_TERMINAL__ === 'function') {
-        window.__TYPE_TERMINAL__(cmd);
-      } else {
-        var ta = document.getElementById('textarea');
-        if (ta) {
-          ta.value = cmd;
-          ta.focus();
-        }
-      }
-    }
-
-    // Smooth Gliding Navigation
-    function glideTo(sectionId) {
-      playBeep(850, 0.05);
-      var el = document.getElementById(sectionId);
-      if (el) {
-        el.scrollIntoView({ behavior: 'smooth' });
+    // Accordion Toggle
+    function toggleSpec(btn) {
+      playBeep(700, 0.04);
+      var body = btn.nextElementSibling;
+      if (body) {
+        body.classList.toggle('open');
+        btn.textContent = body.classList.contains('open')
+          ? '[-] Collapse Specifications'
+          : '[+] View System Architecture Breakdown';
       }
     }
 
@@ -1760,13 +1836,14 @@ const html = `<!DOCTYPE html>
       }, 2200);
     }
 
-    // Shell CLI Commands for Section 06 Terminal
+    // Shell CLI Commands
     var shellOutput = document.getElementById('shell-output');
     var shellInput = document.getElementById('shell-input');
 
     var COMMANDS = {
       help: function() {
         return '<div style="color: #fbbf24;">⚡ Available Commands:</div>' +
+               '<div><span style="color: #38bdf8; font-weight: bold;">neofetch</span> - View system hardware & candidate info</div>' +
                '<div><span style="color: #38bdf8; font-weight: bold;">about</span> - Candidate summary & CGPA</div>' +
                '<div><span style="color: #38bdf8; font-weight: bold;">projects</span> - SmartAttend, YOLO, Beyond The Mic</div>' +
                '<div><span style="color: #38bdf8; font-weight: bold;">skills</span> - Core technologies & frameworks</div>' +
@@ -1775,6 +1852,20 @@ const html = `<!DOCTYPE html>
                '<div><span style="color: #38bdf8; font-weight: bold;">awards</span> - Competitive podium finishes</div>' +
                '<div><span style="color: #38bdf8; font-weight: bold;">contact</span> - Direct phone & email info</div>' +
                '<div><span style="color: #38bdf8; font-weight: bold;">clear</span> - Clear terminal window</div>';
+      },
+      neofetch: function() {
+        return '<pre style="color: #38bdf8; font-family: monospace; font-size: 11px; line-height: 1.3;">' +
+               '        _.-;;-._          <span style="color: #fbbf24; font-weight: bold;">mirza@kvpjb</span><br/>' +
+               ' \'-..-\'|   ||   |         <span style="color: #94a3b8;">-----------</span><br/>' +
+               ' \'-..-\'|_.-;;-._|         <span style="color: #38bdf8;">OS:</span> Mirza-OS 1.0 LTS (64-bit)<br/>' +
+               ' \'-..-\'|   ||   |         <span style="color: #38bdf8;">Host:</span> KVPJB Workstation (Commodore 710)<br/>' +
+               ' \'-..-\'|_.-\'\'-._|         <span style="color: #38bdf8;">Kernel:</span> Linux 6.8.0-kvpjb-generic<br/>' +
+               '                          <span style="color: #38bdf8;">Uptime:</span> 2024 - 2027 (Final Year)<br/>' +
+               '                          <span style="color: #38bdf8;">CGPA:</span> <span style="color: #fbbf24; font-weight: bold;">3.98 / 4.00</span><br/>' +
+               '                          <span style="color: #38bdf8;">Certification:</span> <span style="color: #34d399; font-weight: bold;">SKM Level 3 (S103882102)</span><br/>' +
+               '                          <span style="color: #38bdf8;">OJT Placement:</span> <span style="color: #34d399;">Feb - June 2027 (5 Mos)</span><br/>' +
+               '                          <span style="color: #38bdf8;">Focus:</span> ESP32-CAM, FAISS 512D, YOLOv8<br/>' +
+               '</pre>';
       },
       about: function() {
         return '<div style="color: #34d399; font-weight: bold;">Muhammad Mirza Aqmal Raziq bin Mirza Affzard</div>' +
@@ -1846,129 +1937,6 @@ const html = `<!DOCTYPE html>
       shellInput.value = '';
     }
 
-    // Dynamic 3D Neon Spine Glow on Scroll & Active Section Highlighting
-    var glowLine = document.getElementById('timeline-glow');
-    var timelineContainer = document.getElementById('timeline-container');
-    var stages = document.querySelectorAll('.section-stage');
-    var railDots = document.querySelectorAll('.rail-dot');
-
-    function updateTimeline() {
-      if (timelineContainer && glowLine) {
-        var rect = timelineContainer.getBoundingClientRect();
-        var winH = window.innerHeight;
-        var top = rect.top;
-        var height = rect.height;
-        
-        var progress = 0;
-        if (top < winH) {
-          progress = Math.min(1, Math.max(0, (winH * 0.7 - top) / height));
-        }
-        glowLine.style.height = (progress * 100) + '%';
-      }
-
-      // Check active section
-      var currentId = 'workstation';
-      if (window.scrollY < window.innerHeight * 0.5) {
-        currentId = 'workstation';
-      } else {
-        stages.forEach(function(stage) {
-          var r = stage.getBoundingClientRect();
-          if (r.top <= window.innerHeight * 0.45 && r.bottom >= window.innerHeight * 0.25) {
-            currentId = stage.id;
-          }
-        });
-      }
-
-      // Update stage classes
-      stages.forEach(function(stage) {
-        if (stage.id === currentId) {
-          stage.classList.add('active-stage');
-        } else {
-          stage.classList.remove('active-stage');
-        }
-      });
-
-      // Update floating rail dots
-      railDots.forEach(function(dot) {
-        if (dot.getAttribute('data-section') === currentId) {
-          dot.classList.add('active');
-        } else {
-          dot.classList.remove('active');
-        }
-      });
-    }
-
-    window.addEventListener('scroll', updateTimeline, { passive: true });
-    window.addEventListener('resize', updateTimeline, { passive: true });
-    updateTimeline();
-
-    // Ambient Cyber Canvas Particle Lines
-    (function initCyberCanvas() {
-      var canvas = document.getElementById('bg-cyber-canvas');
-      if (!canvas) return;
-      var ctx = canvas.getContext('2d');
-      var width = canvas.width = window.innerWidth;
-      var height = canvas.height = window.innerHeight;
-
-      var particles = [];
-      var particleCount = Math.min(45, Math.floor(width / 30));
-
-      for (var i = 0; i < particleCount; i++) {
-        particles.push({
-          x: Math.random() * width,
-          y: Math.random() * height,
-          vx: (Math.random() - 0.5) * 0.35,
-          vy: (Math.random() - 0.5) * 0.35,
-          radius: Math.random() * 1.5 + 0.8
-        });
-      }
-
-      function draw() {
-        ctx.clearRect(0, 0, width, height);
-
-        // Draw connections
-        ctx.strokeStyle = 'rgba(56, 189, 248, 0.04)';
-        ctx.lineWidth = 1;
-        for (var i = 0; i < particles.length; i++) {
-          for (var j = i + 1; j < particles.length; j++) {
-            var dx = particles[i].x - particles[j].x;
-            var dy = particles[i].y - particles[j].y;
-            var dist = Math.sqrt(dx * dx + dy * dy);
-            if (dist < 140) {
-              ctx.beginPath();
-              ctx.moveTo(particles[i].x, particles[i].y);
-              ctx.lineTo(particles[j].x, particles[j].y);
-              ctx.stroke();
-            }
-          }
-        }
-
-        // Draw particles
-        for (var i = 0; i < particles.length; i++) {
-          var p = particles[i];
-          p.x += p.vx;
-          p.y += p.vy;
-          if (p.x < 0) p.x = width;
-          if (p.x > width) p.x = 0;
-          if (p.y < 0) p.y = height;
-          if (p.y > height) p.y = 0;
-
-          ctx.fillStyle = 'rgba(245, 158, 11, 0.25)';
-          ctx.beginPath();
-          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fill();
-        }
-
-        requestAnimationFrame(draw);
-      }
-      requestAnimationFrame(draw);
-
-      window.addEventListener('resize', function() {
-        width = canvas.width = window.innerWidth;
-        height = canvas.height = window.innerHeight;
-      });
-    })();
-
     // Safety watchdog for loading screen
     window.addEventListener('load', function() {
       if (window.__WEBGL_LOADED__) {
@@ -1989,4 +1957,4 @@ const html = `<!DOCTYPE html>
 `;
 
 fs.writeFileSync('index.html', html);
-console.log('Successfully written index.html! Length:', html.length);
+console.log('Successfully generated cyber obsidian portfolio! Size:', html.length);
