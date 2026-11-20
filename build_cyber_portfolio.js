@@ -362,7 +362,7 @@ const html = `<!DOCTYPE html>
 
     /* Offline / Non-WebGL Fallback Hero */
     #hero-backup {
-      display: flex;
+      display: none;
       flex-direction: column;
       justify-content: center;
       align-items: center;
@@ -1943,12 +1943,18 @@ const html = `<!DOCTYPE html>
           loading.style.opacity = '0';
           setTimeout(function() { loading.style.display = 'none'; }, 400);
         }
+        var hb = document.getElementById('hero-backup');
+        if (hb) hb.style.display = 'none';
       }
       setTimeout(function() {
         var loading = document.getElementById('loading');
         if (loading && loading.style.display !== 'none') {
           loading.style.opacity = '0';
           setTimeout(function() { loading.style.display = 'none'; }, 400);
+        }
+        if (!window.__WEBGL_LOADED__) {
+          var hb = document.getElementById('hero-backup');
+          if (hb) hb.style.display = 'flex';
         }
       }, 3500);
     });
