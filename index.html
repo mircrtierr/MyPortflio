@@ -48,9 +48,9 @@
     }
 
     /* ============================================================ */
-    /* DESIGN SYSTEM: RETRO COMPUTER CRT THEME                      */
+    /* DESIGN SYSTEM: EXPANSIVE RETRO COMPUTER CRT THEME            */
     /* Inspired by edh.dev / Edward Huang's retro computer site     */
-    /* Unified with 3D CRT Phosphor Orange Palette                  */
+    /* Widescreen-Optimized (Full space utilization)                */
     /* ============================================================ */
     :root {
       --bg-dark: #0a0d14;
@@ -96,7 +96,7 @@
       background-size: 100% 100%, 100% 100%, 32px 32px, 32px 32px;
       color: #f1f5f9;
       font-family: var(--font-chill);
-      font-size: 17px;
+      font-size: 16.5px;
       line-height: 1.65;
       overflow-x: hidden;
       -webkit-font-smoothing: antialiased;
@@ -144,7 +144,7 @@
       position: fixed;
       top: 0; bottom: 0; left: 0; right: 0;
       padding: 10vw 6vw;
-      z-index: 100;
+      z-index: 2000;
       transition: opacity 0.4s ease-out;
       display: flex;
       flex-direction: column;
@@ -193,32 +193,26 @@
     }
 
     /* ============================================================ */
-    /* RETRO HUD NAVBAR (Appears Only on Scroll Below Hero)         */
+    /* PERMANENT FULL-WIDTH RETRO NAVIGATION BAR                    */
+    /* Always visible, docked at top, sleek and responsive          */
     /* ============================================================ */
     nav.hud-navbar {
       position: fixed;
       top: 0;
       left: 0;
       right: 0;
-      z-index: 50;
-      padding: 10px 20px;
+      width: 100%;
+      height: 60px;
+      z-index: 1000;
+      padding: 0 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(10, 13, 20, 0.94);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: dashed 2px rgba(249, 115, 22, 0.4);
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
-    }
-    nav.hud-navbar.nav-visible {
-      transform: translateY(0);
-      opacity: 1;
-      pointer-events: all;
+      background: rgba(10, 13, 20, 0.95);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: dashed 2px var(--orange);
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.7);
     }
     .brand-hud {
       display: flex;
@@ -227,8 +221,8 @@
       text-decoration: none;
     }
     .brand-avatar {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       border: 1px dashed var(--orange);
       box-shadow: 2px 2px 0px #000;
       background: #111726;
@@ -276,26 +270,27 @@
 
     .nav-sections {
       display: flex;
-      gap: 4px;
+      gap: 6px;
       align-items: center;
     }
-    @media (max-width: 860px) {
+    @media (max-width: 990px) {
       .nav-sections { display: none; }
     }
     .nav-sec-link {
       font-family: var(--font-mono);
-      font-size: 12px;
+      font-size: 12.5px;
       font-weight: 600;
       color: var(--slate-300);
       text-decoration: none;
-      padding: 6px 10px;
+      padding: 6px 12px;
       border: 1px solid transparent;
+      border-radius: 2px;
       transition: all 0.2s;
     }
-    .nav-sec-link:hover {
+    .nav-sec-link:hover, .nav-sec-link.active {
       color: #fff;
-      background: rgba(249, 115, 22, 0.15);
-      border-color: rgba(249, 115, 22, 0.4);
+      background: rgba(249, 115, 22, 0.2);
+      border-color: var(--orange);
     }
 
     .nav-actions {
@@ -305,8 +300,7 @@
     }
 
     /* ============================================================ */
-    /* EDWARD-STYLE RETRO BUTTONS (.btn)                            */
-    /* Tactile block buttons with offset drop shadows               */
+    /* RETRO TACTILE BUTTONS (.btn)                                 */
     /* ============================================================ */
     .btn {
       position: relative;
@@ -317,7 +311,7 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 7px 16px;
+      padding: 8px 18px;
       background-color: var(--orange-dark);
       color: #fff;
       border: 1px solid var(--orange-bright);
@@ -329,7 +323,7 @@
       border-radius: 2px;
     }
     .btn:hover {
-      transform: scale(1.05);
+      transform: scale(1.04);
       background-color: var(--orange);
       box-shadow: 4px 4px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.55);
       color: #fff;
@@ -354,8 +348,11 @@
 
     .btn.nav-small {
       font-size: 13px;
-      padding: 5px 12px;
+      padding: 6px 14px;
       font-family: var(--font-mono);
+    }
+    @media (max-width: 600px) {
+      .btn.nav-small.hide-mobile { display: none; }
     }
 
     /* Offline / Non-WebGL Fallback Hero */
@@ -368,38 +365,40 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       min-height: 100vh;
-      width: clamp(0px, 94vw, 760px);
+      width: min(94vw, 1280px);
       margin: auto;
       z-index: 0;
-      padding: 90px 16px 40px;
+      padding: 100px 16px 40px;
       text-align: center;
     }
     .hero-offline-card {
       background: var(--bg-card);
       border: dashed 2px var(--orange);
       box-shadow: 3px 3px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.3);
-      padding: 32px;
-      max-width: 680px;
+      padding: 36px;
+      max-width: 720px;
     }
 
     /* ============================================================ */
-    /* EDITORIAL CONTENT CONTAINER & SECTIONS                       */
-    /* Edward's focused reading width + dashed dividers             */
+    /* FULL-WIDTH EXPANSIVE CONTENT CONTAINER & SECTIONS            */
+    /* Maximizes screen space usage on all viewports                */
     /* ============================================================ */
     main {
       position: relative;
       z-index: 5;
       margin-top: 185vh;
-      padding: 40px 16px 120px;
-      width: clamp(0px, 94vw, 760px);
+      padding: 60px 24px 120px;
+      width: 100%;
+      max-width: 1320px;
       margin-left: auto;
       margin-right: auto;
-      text-align: center;
     }
 
     section {
-      padding-bottom: 72px;
-      margin-bottom: 72px;
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto 90px;
+      padding-bottom: 80px;
       position: relative;
       scroll-margin-top: 80px;
       text-align: left;
@@ -408,23 +407,23 @@
       content: "";
       position: absolute;
       bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: clamp(0px, 92vw, 720px);
-      border-bottom: dashed 2px rgba(249, 115, 22, 0.38);
+      left: 0;
+      right: 0;
+      width: 100%;
+      border-bottom: dashed 2px rgba(249, 115, 22, 0.35);
     }
     section:last-of-type::after {
       display: none;
     }
 
-    /* PIXEL BADGE HEADINGS (Edward's signature style) */
+    /* PIXEL BADGE HEADINGS (Centered Section Cartridge) */
     .retro-badge-title {
       display: inline-block;
       font-family: var(--font-pixel);
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       background-color: var(--orange-dark);
       color: #fff;
-      padding: 10px 20px 6px;
+      padding: 10px 22px 6px;
       border: 1px dashed var(--orange-bright);
       box-shadow: 3px 3px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.35);
       margin-bottom: 14px;
@@ -432,8 +431,8 @@
     }
     @media (max-width: 600px) {
       .retro-badge-title {
-        font-size: 1.05rem;
-        padding: 8px 14px 5px;
+        font-size: 1.1rem;
+        padding: 8px 16px 5px;
       }
     }
 
@@ -441,59 +440,56 @@
       color: var(--slate-300);
       font-size: 16px;
       line-height: 1.6;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
+      text-align: center;
     }
 
-    /* RETRO CARD CONTAINER */
-    .retro-card {
+    /* ============================================================ */
+    /* SECTION 1: ABOUT ME & CANDIDATE STORY (WIDE 2-COLUMN)        */
+    /* ============================================================ */
+    .about-grid-wide {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      gap: 32px;
+      align-items: stretch;
+    }
+    @media (max-width: 960px) {
+      .about-grid-wide { grid-template-columns: 1fr; }
+    }
+
+    .about-sidebar-card {
       background: var(--bg-card);
       border: dashed 1px rgba(249, 115, 22, 0.45);
       box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.22);
-      border-radius: 4px;
-      padding: 26px;
-      margin-bottom: 24px;
-      position: relative;
-      transition: all 0.2s ease;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 16px;
     }
-    .retro-card:hover {
+    .about-sidebar-card:hover {
       border-color: var(--orange-bright);
-      box-shadow: 3px 3px 0px #000, 8px 8px 0px rgba(249, 115, 22, 0.35);
     }
 
-    /* ============================================================ */
-    /* SECTION 1: CANDIDATE PROFILE & HUMAN STORY                   */
-    /* ============================================================ */
-    .profile-layout {
-      display: flex;
-      gap: 24px;
-      align-items: flex-start;
-      margin-bottom: 20px;
-    }
-    @media (max-width: 640px) {
-      .profile-layout {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-    }
-    .avatar-frame {
-      width: 130px;
-      height: 130px;
+    .avatar-frame-large {
+      width: 180px;
+      height: 180px;
       border: 1px dashed var(--orange);
-      box-shadow: 2px 2px 0px #000, 5px 5px 0px rgba(249, 115, 22, 0.3);
+      box-shadow: 2px 2px 0px #000, 5px 5px 0px rgba(249, 115, 22, 0.35);
       background: #000;
       overflow: hidden;
       flex-shrink: 0;
       position: relative;
     }
-    .avatar-frame img {
+    .avatar-frame-large img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       object-position: 85% center;
       image-rendering: pixelated;
     }
-    .avatar-frame::after {
+    .avatar-frame-large::after {
       content: "";
       position: absolute;
       top: 0; left: 0; right: 0; bottom: 0;
@@ -506,37 +502,31 @@
       );
       pointer-events: none;
     }
-    .profile-details h3 {
-      font-family: var(--font-pixel);
-      font-size: 1.15rem;
-      color: #fff;
-      margin-bottom: 6px;
+
+    .about-main-card {
+      background: var(--bg-card);
+      border: dashed 1px rgba(249, 115, 22, 0.45);
+      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.22);
+      padding: 32px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
     }
-    .profile-details .subhead {
-      font-family: var(--font-mono);
-      font-size: 13.5px;
-      color: var(--orange-light);
-      font-weight: 600;
-      margin-bottom: 12px;
-    }
-    .profile-details p {
-      color: var(--slate-300);
-      font-size: 15.5px;
-      line-height: 1.65;
-      margin-bottom: 12px;
+    .about-main-card:hover {
+      border-color: var(--orange-bright);
     }
 
-    /* 4 Tactile Retro Stat Boxes */
+    /* 4 Grand KPI Stats (Expansive 4-column row) */
     .kpi-retro-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 12px;
-      margin: 20px 0;
+      gap: 14px;
+      margin: 22px 0;
     }
-    @media (max-width: 700px) {
+    @media (max-width: 680px) {
       .kpi-retro-grid { grid-template-columns: repeat(2, 1fr); }
     }
-    @media (max-width: 440px) {
+    @media (max-width: 400px) {
       .kpi-retro-grid { grid-template-columns: 1fr; }
     }
     .kpi-retro-box {
@@ -577,11 +567,11 @@
       background: #060910;
       border: dashed 1px rgba(249, 115, 22, 0.45);
       box-shadow: inset 0 0 15px rgba(0, 0, 0, 0.8), 2px 2px 0px #000, 4px 4px 0px rgba(249, 115, 22, 0.15);
-      padding: 18px;
+      padding: 20px;
       font-family: var(--font-mono);
       font-size: 13px;
       line-height: 1.75;
-      margin: 20px 0;
+      margin-top: 18px;
       position: relative;
     }
     .retro-terminal-box::before {
@@ -612,8 +602,33 @@
     @keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
     /* ============================================================ */
-    /* SECTION 2: PROJECTS (Story-driven, humanized)                */
+    /* SECTION 2: PROJECTS (EXPANSIVE 2-COLUMN CARDS)               */
+    /* Spans full desktop width: Story on left, Image on right      */
     /* ============================================================ */
+    .project-card-wide {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 36px;
+      align-items: center;
+      background: var(--bg-card);
+      border: dashed 1px rgba(249, 115, 22, 0.45);
+      box-shadow: 3px 3px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.22);
+      border-radius: 4px;
+      padding: 34px;
+      margin-bottom: 38px;
+      transition: all 0.25s ease;
+    }
+    .project-card-wide:hover {
+      border-color: var(--orange-bright);
+      box-shadow: 4px 4px 0px #000, 10px 10px 0px rgba(249, 115, 22, 0.35);
+    }
+    @media (max-width: 960px) {
+      .project-card-wide {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+    }
+
     .project-header-row {
       display: flex;
       justify-content: space-between;
@@ -654,7 +669,6 @@
       color: var(--cream);
     }
 
-    /* Dashed Skills / Tags (Edward Huang style) */
     .retro-tags-list {
       display: flex;
       flex-wrap: wrap;
@@ -673,22 +687,28 @@
       font-size: 12px;
     }
 
-    .retro-image-frame {
+    .project-card-image {
+      width: 100%;
+      height: 100%;
+      min-height: 300px;
+      max-height: 420px;
       border: dashed 1px var(--orange);
-      box-shadow: 2px 2px 0px #000, 5px 5px 0px rgba(249, 115, 22, 0.25);
+      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.25);
       background: #05080e;
       overflow: hidden;
-      margin: 18px 0;
       position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .retro-image-frame img {
+    .project-card-image img {
       width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.3s ease;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
     }
-    .retro-image-frame:hover img {
-      transform: scale(1.02);
+    .project-card-image:hover img {
+      transform: scale(1.04);
     }
 
     .retro-pipeline-box {
@@ -765,60 +785,81 @@
     }
 
     /* ============================================================ */
-    /* SECTION 3: SKILLS (Categorized dashed badges)                */
+    /* SECTION 3: SKILLS (EXPANSIVE 4-COLUMN MATRIX)                */
     /* ============================================================ */
-    .skills-group {
-      margin-bottom: 22px;
+    .skills-grid-wide {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
     }
-    .skills-group-title {
+    @media (max-width: 1100px) {
+      .skills-grid-wide { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .skills-grid-wide { grid-template-columns: 1fr; }
+    }
+    .skill-card-column {
+      background: var(--bg-card);
+      border: dashed 1px rgba(249, 115, 22, 0.45);
+      box-shadow: 2px 2px 0px #000, 5px 5px 0px rgba(249, 115, 22, 0.2);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      transition: all 0.2s ease;
+    }
+    .skill-card-column:hover {
+      border-color: var(--orange-bright);
+      transform: translateY(-2px);
+      box-shadow: 2px 2px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.35);
+    }
+    .skills-col-title {
       font-family: var(--font-pixel);
       font-size: 0.95rem;
       color: var(--orange-bright);
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
+      padding-bottom: 10px;
+      border-bottom: 1px dashed rgba(249, 115, 22, 0.3);
+      line-height: 1.4;
     }
     .skills-pills-wrap {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 8px;
     }
     .skills-pills-wrap span {
       display: inline-block;
-      padding: 6px 12px;
+      padding: 5px 10px;
       border: dashed 1px rgba(249, 115, 22, 0.5);
-      box-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(249, 115, 22, 0.2);
+      box-shadow: 1px 1px 0px #000, 3px 3px 0px rgba(249, 115, 22, 0.2);
       background: #0e1422;
       color: var(--cream);
       font-family: var(--font-mono);
-      font-size: 13.5px;
+      font-size: 13px;
       transition: all 0.2s ease;
     }
     .skills-pills-wrap span:hover {
       border-color: var(--orange-bright);
       transform: translateY(-2px);
-      box-shadow: 2px 2px 0px #000, 5px 5px 0px rgba(249, 115, 22, 0.4);
       color: #fff;
     }
 
     /* ============================================================ */
-    /* SECTION 4: AWARDS & TROPHIES                                 */
+    /* SECTION 4: AWARDS & TROPHIES (EXPANSIVE 3-COLUMN)            */
     /* ============================================================ */
-    .trophy-grid-3 {
+    .awards-grid-wide {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-      margin-bottom: 24px;
+      gap: 24px;
+      margin-bottom: 30px;
     }
-    @media (max-width: 720px) {
-      .trophy-grid-3 { grid-template-columns: 1fr; }
+    @media (max-width: 880px) {
+      .awards-grid-wide { grid-template-columns: 1fr; }
     }
     .trophy-tile {
-      background: #0d1420;
-      border: dashed 1px rgba(249, 115, 22, 0.4);
-      box-shadow: 2px 2px 0px #000, 5px 5px 0px rgba(249, 115, 22, 0.2);
-      padding: 16px;
+      background: var(--bg-card);
+      border: dashed 1px rgba(249, 115, 22, 0.45);
+      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.2);
+      padding: 20px;
       text-align: center;
       display: flex;
       flex-direction: column;
@@ -828,24 +869,24 @@
     .trophy-tile:hover {
       border-color: var(--orange-bright);
       transform: translateY(-3px);
-      box-shadow: 2px 2px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.35);
+      box-shadow: 2px 2px 0px #000, 8px 8px 0px rgba(249, 115, 22, 0.35);
     }
     .trophy-badge-pill {
       display: inline-block;
       font-family: var(--font-pixel);
       font-size: 10px;
-      padding: 4px 8px;
+      padding: 4px 10px;
       background: rgba(249, 115, 22, 0.15);
       border: 1px dashed var(--orange);
       color: var(--cream);
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
     .trophy-photo-frame {
       width: 100%;
       aspect-ratio: 4/3;
       border: 1px solid rgba(148, 163, 184, 0.2);
       overflow: hidden;
-      margin-bottom: 12px;
+      margin-bottom: 14px;
       background: #000;
     }
     .trophy-photo-frame img {
@@ -864,54 +905,54 @@
       margin-bottom: 6px;
     }
     .trophy-desc-text {
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--slate-400);
       line-height: 1.5;
     }
 
     /* Government Credential Banner */
-    .cert-banner {
-      background: #0d131f;
+    .cert-banner-wide {
+      background: var(--bg-card);
       border: dashed 1px var(--orange);
-      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.25);
-      padding: 20px;
+      box-shadow: 2px 2px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.25);
+      padding: 24px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-      gap: 16px;
+      gap: 20px;
     }
     .cert-badge-tag {
       font-family: var(--font-pixel);
-      font-size: 10.5px;
+      font-size: 11px;
       color: var(--orange-bright);
       margin-bottom: 6px;
     }
     .cert-title-big {
       font-family: var(--font-pixel);
-      font-size: 1.1rem;
+      font-size: 1.15rem;
       color: #fff;
       margin-bottom: 4px;
     }
     .cert-meta-info {
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 13.5px;
       color: var(--slate-300);
     }
 
     /* ============================================================ */
-    /* SECTION 5: INTERACTIVE UNIX SHELL                            */
+    /* SECTION 5: INTERACTIVE UNIX SHELL (FULL CONTAINER)           */
     /* ============================================================ */
-    .terminal-container {
+    .terminal-container-wide {
       background: #05080e;
       border: dashed 1px var(--orange);
-      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.2);
+      box-shadow: 2px 2px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.22);
       overflow: hidden;
     }
     .terminal-topbar {
       background: #0d131f;
       border-bottom: dashed 1px rgba(249, 115, 22, 0.3);
-      padding: 10px 16px;
+      padding: 12px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -929,19 +970,19 @@
     .term-dot.yellow { background: #ff7a00; }
     .term-dot.green { background: #fb923c; }
     .terminal-body {
-      padding: 18px;
+      padding: 24px;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 13.5px;
       line-height: 1.75;
-      min-height: 160px;
-      max-height: 320px;
+      min-height: 180px;
+      max-height: 360px;
       overflow-y: auto;
     }
     .terminal-input-row {
       display: flex;
       align-items: center;
       gap: 8px;
-      padding: 10px 16px;
+      padding: 12px 20px;
       background: #090e18;
       border-top: dashed 1px rgba(249, 115, 22, 0.25);
     }
@@ -956,14 +997,14 @@
       outline: none;
       color: #fff;
       font-family: var(--font-mono);
-      font-size: 13px;
+      font-size: 13.5px;
     }
     .terminal-quick-pills {
-      padding: 10px 16px;
+      padding: 12px 20px;
       background: #060910;
       border-top: 1px solid rgba(249, 115, 22, 0.15);
       display: flex;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
       align-items: center;
     }
@@ -972,8 +1013,8 @@
       border: dashed 1px rgba(249, 115, 22, 0.4);
       color: var(--cream);
       font-family: var(--font-mono);
-      font-size: 11px;
-      padding: 3px 9px;
+      font-size: 11.5px;
+      padding: 4px 10px;
       cursor: pointer;
       transition: all 0.15s;
     }
@@ -984,22 +1025,25 @@
     }
 
     /* ============================================================ */
-    /* SECTION 6: CONTACT & OJT INQUIRIES                           */
+    /* SECTION 6: CONTACT & OJT INQUIRIES (4-COLUMN ROW)            */
     /* ============================================================ */
-    .contact-tiles-grid {
+    .contact-grid-wide {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 14px;
-      margin: 20px 0;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin: 24px 0;
     }
-    @media (max-width: 580px) {
-      .contact-tiles-grid { grid-template-columns: 1fr; }
+    @media (max-width: 900px) {
+      .contact-grid-wide { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .contact-grid-wide { grid-template-columns: 1fr; }
     }
     .contact-tile {
-      background: #0d1420;
+      background: var(--bg-card);
       border: dashed 1px rgba(249, 115, 22, 0.45);
-      box-shadow: 2px 2px 0px #000, 4px 4px 0px rgba(249, 115, 22, 0.2);
-      padding: 20px 18px;
+      box-shadow: 2px 2px 0px #000, 5px 5px 0px rgba(249, 115, 22, 0.2);
+      padding: 24px 20px;
       text-align: center;
       cursor: pointer;
       transition: all 0.2s ease;
@@ -1011,12 +1055,12 @@
     }
     .contact-tile:hover {
       border-color: var(--orange-bright);
-      transform: translateY(-2px);
-      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.4);
+      transform: translateY(-3px);
+      box-shadow: 2px 2px 0px #000, 7px 7px 0px rgba(249, 115, 22, 0.4);
       background: #141c2c;
     }
     .contact-svg-icon {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1031,7 +1075,7 @@
     }
     .contact-val-main {
       font-family: var(--font-mono);
-      font-size: 14px;
+      font-size: 13.5px;
       font-weight: 700;
       color: #fff;
       word-break: break-all;
@@ -1039,7 +1083,7 @@
     .contact-hint-sub {
       font-size: 11px;
       color: var(--slate-400);
-      margin-top: 4px;
+      margin-top: 6px;
       font-family: var(--font-mono);
     }
 
@@ -1067,14 +1111,15 @@
     /* Footer */
     footer {
       border-top: dashed 2px rgba(249, 115, 22, 0.35);
-      padding: 40px 16px;
+      padding: 44px 20px;
       text-align: center;
       color: var(--slate-400);
       font-size: 13.5px;
       display: flex;
       flex-direction: column;
       gap: 8px;
-      width: clamp(0px, 94vw, 760px);
+      width: 100%;
+      max-width: 1280px;
       margin: 0 auto;
     }
     footer a { color: var(--cream); text-decoration: none; }
@@ -1102,7 +1147,7 @@
   <!-- Offline / Non-WebGL Fallback Hero -->
   <div id="hero-backup">
     <div class="hero-offline-card">
-      <div class="avatar-frame" style="margin: 0 auto 16px;">
+      <div class="avatar-frame-large" style="margin: 0 auto 16px;">
         <img src="./images/mirza-title.png" alt="Muhammad Mirza Aqmal Raziq" />
       </div>
       <div class="brand-status" style="justify-content: center; margin-bottom: 8px;">
@@ -1112,7 +1157,7 @@
       <div style="font-family: var(--font-mono); font-size: 14px; color: var(--orange-bright); margin-bottom: 14px;">
         Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan JB (KVPJB)
       </div>
-      <p style="color: var(--slate-300); font-size: 15.5px; max-width: 540px; margin: 0 auto 20px; line-height: 1.6;">
+      <p style="color: var(--slate-300); font-size: 15.5px; max-width: 580px; margin: 0 auto 20px; line-height: 1.6;">
         Final-year student specializing in IoT microcontrollers (ESP32-CAM), FAISS vector search, custom YOLOv8 computer vision, and Cisco networking.
       </p>
       <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
@@ -1122,7 +1167,7 @@
     </div>
   </div>
 
-  <!-- Top Retro HUD Command Bar (Slides in on scroll) -->
+  <!-- Permanent Top Retro HUD Navigation Bar -->
   <nav class="hud-navbar">
     <a href="#home" class="brand-hud">
       <div class="brand-avatar">
@@ -1149,10 +1194,10 @@
       <button class="btn nav-small secondary" onclick="toggleAudio()" id="sound-btn" title="Toggle Tactile Audio">
         🔊 Sound: ON
       </button>
-      <a class="btn nav-small secondary" href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/" target="_blank">
+      <a class="btn nav-small secondary hide-mobile" href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/" target="_blank">
         LinkedIn
       </a>
-      <a class="btn nav-small secondary" href="https://github.com/mircrtierr" target="_blank">
+      <a class="btn nav-small secondary hide-mobile" href="https://github.com/mircrtierr" target="_blank">
         GitHub
       </a>
       <a class="btn nav-small" href="./sijil_skm3_jpk_official.pdf" target="_blank" title="Download Verified SKM 3 Digital PDF">
@@ -1161,93 +1206,103 @@
     </div>
   </nav>
 
-  <!-- Editorial Main Content Container (Centered Edward-style width) -->
+  <!-- Editorial Main Content Container (Full-Width Widescreen Layout) -->
   <main>
     <!-- ============================================== -->
     <!-- SECTION 1: ABOUT ME & CANDIDATE STORY          -->
     <!-- ============================================== -->
     <section id="about">
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 24px;">
         <h2 class="retro-badge-title">HI THERE, I'M MIRZA</h2>
       </div>
 
-      <div class="retro-card">
-        <div class="profile-layout">
-          <div class="avatar-frame">
+      <div class="about-grid-wide">
+        <!-- Sidebar Profile Card -->
+        <div class="about-sidebar-card">
+          <div class="avatar-frame-large">
             <img src="./images/mirza-title.png" alt="Muhammad Mirza Aqmal Raziq" />
           </div>
-          <div class="profile-details">
-            <h3>Muhammad Mirza Aqmal Raziq</h3>
-            <div class="subhead">Diploma Teknologi Komputeran • KVPJB (Pasir Gudang, Johor)</div>
-            <p>
+          <div>
+            <h3 style="font-family: var(--font-pixel); font-size: 1.15rem; color: #fff; margin-bottom: 4px;">Mirza Aqmal Raziq</h3>
+            <div style="font-family: var(--font-mono); font-size: 13px; color: var(--orange-bright);">Diploma Teknologi Komputeran</div>
+            <div style="font-size: 13px; color: var(--slate-400); margin-top: 2px;">KVPJB (Pasir Gudang, Johor)</div>
+          </div>
+
+          <div style="background: rgba(249, 115, 22, 0.08); border: 1px dashed var(--orange); padding: 12px; font-size: 13.5px; color: var(--cream); width: 100%; text-align: center;">
+            🎯 <strong>Seeking 5-Month OJT Internship</strong><br />February – June 2027
+          </div>
+
+          <div style="display: flex; flex-direction: column; gap: 8px; width: 100%;">
+            <a class="btn" href="./sijil_skm3_jpk_official.pdf" target="_blank" style="width: 100%;">
+              📄 Verified SKM 3 PDF
+            </a>
+            <a class="btn secondary" href="./Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" target="_blank" style="width: 100%;">
+              📥 Download Resume PDF
+            </a>
+            <a class="btn secondary" href="#contact" style="width: 100%;">
+              ✉ Contact Mirza
+            </a>
+          </div>
+        </div>
+
+        <!-- Main Narrative & Stats Card -->
+        <div class="about-main-card">
+          <div>
+            <h3 style="font-family: var(--font-pixel); font-size: 1.15rem; color: #fff; margin-bottom: 12px;">Candidate Dossier</h3>
+            <p style="color: var(--slate-300); font-size: 16px; line-height: 1.7; margin-bottom: 14px;">
               Hi, I'm Mirza. I am a final-year Computer Technology student at <strong>Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</strong>. Ever since I started my vocational journey, I have loved getting my hands dirty with technology — whether that is crimping network cables in the lab, configuring Cisco routers, or hooking up cheap microcontrollers to Python scripts to build things that actually work in real life.
             </p>
-            <p>
-              I take pride in doing quality work: I maintain a cumulative CGPA of <strong>3.98 / 4.00</strong> and earned my official <strong>Sijil Kemahiran Malaysia (SKM) Tahap 3 accreditation (Cert ID: S103882102)</strong> in IT System Support from JPK.
+            <p style="color: var(--slate-300); font-size: 16px; line-height: 1.7;">
+              I take pride in doing quality work: I maintain a cumulative CGPA of <strong>3.98 / 4.00</strong> and earned my official <strong>Sijil Kemahiran Malaysia (SKM) Tahap 3 accreditation (Cert ID: S103882102)</strong> in IT System Support from JPK. I am eager to contribute to a real engineering team, solve daily technical challenges, and learn from experienced mentors.
             </p>
           </div>
-        </div>
 
-        <div style="background: rgba(249, 115, 22, 0.08); border: 1px dashed var(--orange); padding: 12px 16px; margin: 16px 0; font-size: 15px; color: var(--cream);">
-          🎯 <strong>Current Objective:</strong> Seeking a <strong>5-Month On-The-Job Training (OJT) IT / Software Internship from February to June 2027</strong>. Eager to contribute to a real engineering team, solve daily challenges, and learn from experienced mentors.
-        </div>
+          <!-- 4 Grand KPI Stats -->
+          <div class="kpi-retro-grid">
+            <div class="kpi-retro-box">
+              <div class="kpi-retro-num">3.98</div>
+              <div class="kpi-retro-label">CGPA</div>
+              <div class="kpi-retro-sub">Academic Excellence</div>
+            </div>
 
-        <!-- 4 Grand KPI Stats -->
-        <div class="kpi-retro-grid">
-          <div class="kpi-retro-box">
-            <div class="kpi-retro-num">3.98</div>
-            <div class="kpi-retro-label">Cumulative CGPA</div>
-            <div class="kpi-retro-sub">Academic Excellence</div>
+            <div class="kpi-retro-box">
+              <div class="kpi-retro-num">SKM 3</div>
+              <div class="kpi-retro-label">JPK Certified</div>
+              <div class="kpi-retro-sub">ID: S103882102</div>
+            </div>
+
+            <div class="kpi-retro-box">
+              <div class="kpi-retro-num">5 MOS</div>
+              <div class="kpi-retro-label">OJT Internship</div>
+              <div class="kpi-retro-sub">Feb – June 2027</div>
+            </div>
+
+            <div class="kpi-retro-box">
+              <div class="kpi-retro-num">TOP 5</div>
+              <div class="kpi-retro-label">National Podium</div>
+              <div class="kpi-retro-sub">3x Competitions</div>
+            </div>
           </div>
 
-          <div class="kpi-retro-box">
-            <div class="kpi-retro-num">SKM 3</div>
-            <div class="kpi-retro-label">JPK Certified</div>
-            <div class="kpi-retro-sub">ID: S103882102</div>
+          <!-- Diagnostic Terminal Readout -->
+          <div class="retro-terminal-box">
+            <div><span class="rt-prompt">&gt; mirza.status --summary</span></div>
+            <div><span class="rt-key">[CANDIDATE]</span> <span class="rt-val">Muhammad Mirza Aqmal Raziq bin Mirza Affzard</span></div>
+            <div><span class="rt-key">[INSTITUTION]</span> <span class="rt-val">Kolej Vokasional Perdagangan Johor Bahru (KVPJB), Pasir Gudang, Johor</span></div>
+            <div><span class="rt-key">[ACCREDITATION]</span> <span class="rt-val">SKM Tahap 3 (IT System Support) • JPK Kementerian Sumber Manusia</span></div>
+            <div><span class="rt-key">[INTERNSHIP]</span> <span class="rt-val" style="color: var(--orange-bright); font-weight: bold;">Available for 5-Month OJT (February – June 2027)</span></div>
+            <div><span class="rt-prompt">&gt; status: ready_for_interview</span><span class="rt-cursor"></span></div>
           </div>
-
-          <div class="kpi-retro-box">
-            <div class="kpi-retro-num">5 MOS</div>
-            <div class="kpi-retro-label">OJT Internship</div>
-            <div class="kpi-retro-sub">Feb – June 2027</div>
-          </div>
-
-          <div class="kpi-retro-box">
-            <div class="kpi-retro-num">TOP 5</div>
-            <div class="kpi-retro-label">National Podium</div>
-            <div class="kpi-retro-sub">3x Competitions</div>
-          </div>
-        </div>
-
-        <!-- Diagnostic Terminal Readout -->
-        <div class="retro-terminal-box">
-          <div><span class="rt-prompt">&gt; mirza.status --summary</span></div>
-          <div><span class="rt-key">[CANDIDATE]</span> <span class="rt-val">Muhammad Mirza Aqmal Raziq bin Mirza Affzard</span></div>
-          <div><span class="rt-key">[INSTITUTION]</span> <span class="rt-val">Kolej Vokasional Perdagangan Johor Bahru (KVPJB), Pasir Gudang, Johor</span></div>
-          <div><span class="rt-key">[ACCREDITATION]</span> <span class="rt-val">SKM Tahap 3 (IT System Support) • JPK Kementerian Sumber Manusia</span></div>
-          <div><span class="rt-key">[INTERNSHIP]</span> <span class="rt-val" style="color: var(--orange-bright); font-weight: bold;">Available for 5-Month OJT (February – June 2027)</span></div>
-          <div><span class="rt-prompt">&gt; status: ready_for_interview</span><span class="rt-cursor"></span></div>
-        </div>
-
-        <div style="display: flex; gap: 10px; flex-wrap: wrap; margin-top: 20px;">
-          <a class="btn" href="./sijil_skm3_jpk_official.pdf" target="_blank">
-            📄 View Official SKM 3 Certificate PDF
-          </a>
-          <a class="btn secondary" href="./Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" target="_blank">
-            📥 Download Resume PDF
-          </a>
-          <a class="btn secondary" href="#contact">
-            ✉ Contact Mirza
-          </a>
         </div>
       </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- SECTION 2: FEATURED PROJECTS (Human Builder Stories) -->
+    <!-- SECTION 2: FEATURED PROJECTS (WIDE 2-COLUMN)   -->
+    <!-- Story on left, Wide visual frame on right      -->
     <!-- ============================================== -->
     <section id="projects">
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 24px;">
         <h2 class="retro-badge-title">FEATURED PROJECTS</h2>
         <div class="retro-section-subtitle">
           Real projects I built to solve problems at college, with code, wiring, and lessons learned.
@@ -1255,172 +1310,181 @@
       </div>
 
       <!-- Project 1: SmartAttend KVPJB -->
-      <div class="retro-card">
-        <div class="project-header-row">
-          <span class="project-badge-tag">[ PROJECT_01 ]</span>
-          <span class="project-year-badge">2024 – 2025</span>
-        </div>
-        <h3 class="project-main-title">SmartAttend KVPJB — Facial Recognition Attendance</h3>
-        
-        <p class="project-story-p">
-          <strong>Why I built this:</strong> Every morning at our college, lecturers had to pass around physical paper sheets for roll-call. It wasted 10 to 15 minutes of class time, paper got misplaced, and students sometimes signed for their absent friends. Commercial facial recognition turnstiles cost thousands of ringgit that student departments don't have. I wanted to prove we could build a fast, reliable attendance station using accessible, budget-friendly hardware.
-        </p>
-        <p class="project-story-p">
-          <strong>How it works:</strong> An affordable RM35 ESP32-CAM module mounted at the classroom entrance captures video frames and streams them over our campus Wi-Fi to a local Python server. The server runs InsightFace to extract 512-dimensional facial embeddings and queries a FAISS vector index. The lookup matches against our student database in <strong>less than 250 milliseconds</strong>! Once verified, it logs the attendance timestamp into SQLite and plays a friendly confirmation chime.
-        </p>
+      <div class="project-card-wide">
+        <div>
+          <div class="project-header-row">
+            <span class="project-badge-tag">[ PROJECT_01 ]</span>
+            <span class="project-year-badge">2024 – 2025</span>
+          </div>
+          <h3 class="project-main-title">SmartAttend KVPJB — Facial Recognition Attendance</h3>
+          
+          <p class="project-story-p">
+            <strong>Why I built this:</strong> Every morning at our college, lecturers had to pass around physical paper sheets for roll-call. It wasted 10 to 15 minutes of class time, paper got misplaced, and students sometimes signed for their absent friends. Commercial facial recognition turnstiles cost thousands of ringgit that student departments don't have. I wanted to prove we could build a fast, reliable attendance station using accessible, budget-friendly hardware.
+          </p>
+          <p class="project-story-p">
+            <strong>How it works:</strong> An affordable RM35 ESP32-CAM module mounted at the classroom entrance captures video frames and streams them over our campus Wi-Fi to a local Python server. The server runs InsightFace to extract 512-dimensional facial embeddings and queries a FAISS vector index. The lookup matches against our student database in <strong>less than 250 milliseconds</strong>! Once verified, it logs the attendance timestamp into SQLite and plays a friendly confirmation chime.
+          </p>
 
-        <div class="retro-pipeline-box">
-          <span style="color: var(--orange-bright); font-weight: bold;">Data Flow:</span>
-          <span class="pipe-node">ESP32-CAM Node</span>
-          <span class="pipe-arrow">➔</span>
-          <span class="pipe-node">LAN UDP Stream</span>
-          <span class="pipe-arrow">➔</span>
-          <span class="pipe-node">InsightFace (ArcFace 512D)</span>
-          <span class="pipe-arrow">➔</span>
-          <span class="pipe-node">FAISS Vector Index (&lt;250ms)</span>
-          <span class="pipe-arrow">➔</span>
-          <span class="pipe-node">SQLite DB</span>
-        </div>
+          <div class="retro-pipeline-box">
+            <span style="color: var(--orange-bright); font-weight: bold;">Data Flow:</span>
+            <span class="pipe-node">ESP32-CAM Node</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node">LAN UDP Stream</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node">InsightFace (ArcFace 512D)</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node">FAISS Vector Index (&lt;250ms)</span>
+            <span class="pipe-arrow">➔</span>
+            <span class="pipe-node">SQLite DB</span>
+          </div>
 
-        <ul class="retro-tags-list">
-          <li>ESP32-CAM Node</li>
-          <li>Python 3</li>
-          <li>FAISS 512D Index</li>
-          <li>InsightFace</li>
-          <li>SQLite</li>
-          <li>Sub-250ms Response</li>
-        </ul>
-
-        <div class="retro-image-frame">
-          <img src="./images/smartattend_dashboard.jpg" alt="SmartAttend Biometric System Interface" loading="lazy" />
-        </div>
-
-        <button class="collapse-toggle-btn" onclick="toggleAccordion(this)">
-          [+] View Technical Build Details
-        </button>
-        <div class="collapse-content">
-          <ul class="collapse-list">
-            <li><strong>• Edge Camera Hardware:</strong> ESP32-CAM with OV2640 sensor streaming JPEG frames over local LAN via socket connection. Offloading heavy neural processing to Python prevented microcontroller overheating.</li>
-            <li><strong>• Vector Search Architecture:</strong> Built on FAISS <code>IndexFlatL2</code> querying 500+ student embeddings with a Euclidean distance threshold of 0.42 to prevent false positives.</li>
-            <li><strong>• Storage & Verification:</strong> Transactional SQLite logging with duplicate scan suppression within 60-second windows so students don't get logged twice.</li>
+          <ul class="retro-tags-list">
+            <li>ESP32-CAM Node</li>
+            <li>Python 3</li>
+            <li>FAISS 512D Index</li>
+            <li>InsightFace</li>
+            <li>SQLite</li>
+            <li>Sub-250ms Response</li>
           </ul>
+
+          <button class="collapse-toggle-btn" onclick="toggleAccordion(this)">
+            [+] View Technical Build Details
+          </button>
+          <div class="collapse-content">
+            <ul class="collapse-list">
+              <li><strong>• Edge Camera Hardware:</strong> ESP32-CAM with OV2640 sensor streaming JPEG frames over local LAN via socket connection. Offloading heavy neural processing to Python prevented microcontroller overheating.</li>
+              <li><strong>• Vector Search Architecture:</strong> Built on FAISS <code>IndexFlatL2</code> querying 500+ student embeddings with a Euclidean distance threshold of 0.42 to prevent false positives.</li>
+              <li><strong>• Storage & Verification:</strong> Transactional SQLite logging with duplicate scan suppression within 60-second windows so students don't get logged twice.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Wide Project Visual Frame -->
+        <div class="project-card-image">
+          <img src="./images/smartattend_dashboard.jpg" alt="SmartAttend Biometric System Interface" loading="lazy" />
         </div>
       </div>
 
       <!-- Project 2: YOLO Custom Object Classifier -->
-      <div class="retro-card">
-        <div class="project-header-row">
-          <span class="project-badge-tag">[ PROJECT_02 ]</span>
-          <span class="project-year-badge">2024</span>
-        </div>
-        <h3 class="project-main-title">Lab Equipment Vision Tracker — YOLOv8 Custom Model</h3>
-        
-        <p class="project-story-p">
-          <strong>Why I built this:</strong> In our vocational computer hardware lab, small tools like digital multimeters, LAN cable testers, and RJ-45 crimping pliers frequently went missing after practical exams. Lecturers had to spend extra time inspecting every workstation rack before letting students leave.
-        </p>
-        <p class="project-story-p">
-          <strong>How it works:</strong> I gathered and hand-labelled <strong>1,200 photos of lab tools</strong> under different lighting conditions and orientations. I trained a custom YOLOv8 model using Google Colab's free GPU tier (babysitting the notebook late at night so the runtime would not disconnect!). The finished model runs on a standard laptop webcam, detecting equipment with <strong>92.4% accuracy at 18ms per frame</strong> and immediately flagging any missing tool slot.
-        </p>
+      <div class="project-card-wide">
+        <div>
+          <div class="project-header-row">
+            <span class="project-badge-tag">[ PROJECT_02 ]</span>
+            <span class="project-year-badge">2024</span>
+          </div>
+          <h3 class="project-main-title">Lab Equipment Vision Tracker — YOLOv8 Custom Model</h3>
+          
+          <p class="project-story-p">
+            <strong>Why I built this:</strong> In our vocational computer hardware lab, small tools like digital multimeters, LAN cable testers, and RJ-45 crimping pliers frequently went missing after practical exams. Lecturers had to spend extra time inspecting every workstation rack before letting students leave.
+          </p>
+          <p class="project-story-p">
+            <strong>How it works:</strong> I gathered and hand-labelled <strong>1,200 photos of lab tools</strong> under different lighting conditions and orientations. I trained a custom YOLOv8 model using Google Colab's free GPU tier (babysitting the notebook late at night so the runtime would not disconnect!). The finished model runs on a standard laptop webcam, detecting equipment with <strong>92.4% accuracy at 18ms per frame</strong> and immediately flagging any missing tool slot.
+          </p>
 
-        <div class="retro-pipeline-box">
-          <span style="color: var(--orange-bright); font-weight: bold;">Performance:</span>
-          <span class="pipe-node">92.4% mAP@0.5</span>
-          <span class="pipe-arrow">|</span>
-          <span class="pipe-node">18ms Latency</span>
-          <span class="pipe-arrow">|</span>
-          <span class="pipe-node">Tesla T4 GPU (100 Epochs)</span>
-          <span class="pipe-arrow">|</span>
-          <span class="pipe-node">1,200 Annotated Photos</span>
-        </div>
+          <div class="retro-pipeline-box">
+            <span style="color: var(--orange-bright); font-weight: bold;">Performance:</span>
+            <span class="pipe-node">92.4% mAP@0.5</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">18ms Latency</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">Tesla T4 GPU (100 Epochs)</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">1,200 Annotated Photos</span>
+          </div>
 
-        <ul class="retro-tags-list">
-          <li>YOLOv8</li>
-          <li>Google Colab GPU</li>
-          <li>PyTorch</li>
-          <li>OpenCV</li>
-          <li>Python</li>
-          <li>Real-Time Video Inference</li>
-        </ul>
-
-        <div class="retro-image-frame">
-          <img src="./images/yolo_colab_detection.jpg" alt="YOLO Custom Detection on Google Colab" loading="lazy" />
-        </div>
-
-        <button class="collapse-toggle-btn" onclick="toggleAccordion(this)">
-          [+] View Training &amp; Dataset Specs
-        </button>
-        <div class="collapse-content">
-          <ul class="collapse-list">
-            <li><strong>• Dataset Preparation:</strong> 1,200 annotated images with data augmentations (mosaic blending, random brightness shifts, and rotational flips) to handle reflective metal lab tables.</li>
-            <li><strong>• Training Details:</strong> Ultralytics YOLOv8 architecture trained over 100 epochs on a Tesla T4 GPU instance, optimized for edge inference on low-power workstations.</li>
+          <ul class="retro-tags-list">
+            <li>YOLOv8</li>
+            <li>Google Colab GPU</li>
+            <li>PyTorch</li>
+            <li>OpenCV</li>
+            <li>Python</li>
+            <li>Real-Time Video Inference</li>
           </ul>
+
+          <button class="collapse-toggle-btn" onclick="toggleAccordion(this)">
+            [+] View Training &amp; Dataset Specs
+          </button>
+          <div class="collapse-content">
+            <ul class="collapse-list">
+              <li><strong>• Dataset Preparation:</strong> 1,200 annotated images with data augmentations (mosaic blending, random brightness shifts, and rotational flips) to handle reflective metal lab tables.</li>
+              <li><strong>• Training Details:</strong> Ultralytics YOLOv8 architecture trained over 100 epochs on a Tesla T4 GPU instance, optimized for edge inference on low-power workstations.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Wide Project Visual Frame -->
+        <div class="project-card-image">
+          <img src="./images/yolo_colab_detection.jpg" alt="YOLO Custom Detection on Google Colab" loading="lazy" />
         </div>
       </div>
 
       <!-- Project 3: Beyond The Mic Podcast -->
-      <div class="retro-card">
-        <div class="project-header-row">
-          <span class="project-badge-tag">[ PROJECT_03 ]</span>
-          <span class="project-year-badge">2026 (National Final)</span>
-        </div>
-        <h3 class="project-main-title">Beyond The Mic Podcast — Audio Engineering &amp; Mastering</h3>
-        
-        <p class="project-story-p">
-          <strong>The experience:</strong> Representing the state of Johor and KVPJB at the National Finals of Petah KPM 2026 at the Putrajaya International Convention Centre (PICC) was one of the proudest moments of my vocational journey. We competed against top student production teams from across Malaysia.
-        </p>
-        <p class="project-story-p">
-          <strong>My technical role:</strong> In addition to co-hosting the podcast, I was in charge of our live audio engineering and broadcast mastering. A podcast can have great discussion, but if the audio clips or has hollow hall echo, listeners tune out. I managed dual dynamic XLR microphones, dialed in real-time gain staging, configured downward expansion to kill convention hall rumble, and mastered the broadcast track to the international <strong>EBU R128 (-14 LUFS) broadcast standard</strong>. We secured <strong>5th Place Nationally (Kelima Kebangsaan)</strong>!
-        </p>
+      <div class="project-card-wide">
+        <div>
+          <div class="project-header-row">
+            <span class="project-badge-tag">[ PROJECT_03 ]</span>
+            <span class="project-year-badge">2026 (National Final)</span>
+          </div>
+          <h3 class="project-main-title">Beyond The Mic Podcast — Audio Engineering &amp; Mastering</h3>
+          
+          <p class="project-story-p">
+            <strong>The experience:</strong> Representing the state of Johor and KVPJB at the National Finals of Petah KPM 2026 at the Putrajaya International Convention Centre (PICC) was one of the proudest moments of my vocational journey. We competed against top student production teams from across Malaysia.
+          </p>
+          <p class="project-story-p">
+            <strong>My technical role:</strong> In addition to co-hosting the podcast, I was in charge of our live audio engineering and broadcast mastering. A podcast can have great discussion, but if the audio clips or has hollow hall echo, listeners tune out. I managed dual dynamic XLR microphones, dialed in real-time gain staging, configured downward expansion to kill convention hall rumble, and mastered the broadcast track to the international <strong>EBU R128 (-14 LUFS) broadcast standard</strong>. We secured <strong>5th Place Nationally (Kelima Kebangsaan)</strong>!
+          </p>
 
-        <div class="retro-pipeline-box">
-          <span style="color: var(--orange-bright); font-weight: bold;">Broadcast Specs:</span>
-          <span class="pipe-node">EBU R128 (-14 LUFS)</span>
-          <span class="pipe-arrow">|</span>
-          <span class="pipe-node">Dual Dynamic XLR</span>
-          <span class="pipe-arrow">|</span>
-          <span class="pipe-node">PICC Putrajaya</span>
-          <span class="pipe-arrow">|</span>
-          <span class="pipe-node">5th Place Malaysia</span>
-        </div>
+          <div class="retro-pipeline-box">
+            <span style="color: var(--orange-bright); font-weight: bold;">Broadcast Specs:</span>
+            <span class="pipe-node">EBU R128 (-14 LUFS)</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">Dual Dynamic XLR</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">PICC Putrajaya</span>
+            <span class="pipe-arrow">|</span>
+            <span class="pipe-node">5th Place Malaysia</span>
+          </div>
 
-        <ul class="retro-tags-list">
-          <li>Live Broadcast Audio</li>
-          <li>Acoustic Noise Suppression</li>
-          <li>EBU R128 Loudness Standard</li>
-          <li>PICC Putrajaya</li>
-          <li>Petah KPM 2026</li>
-        </ul>
-
-        <div class="retro-image-frame" style="max-width: 500px; margin: 16px auto;">
-          <img src="./images/trophy_petah_madani_podcast.jpg" alt="Petah KPM 2026 National Trophy" loading="lazy" />
-        </div>
-
-        <button class="collapse-toggle-btn" onclick="toggleAccordion(this)">
-          [+] View Audio Production Details
-        </button>
-        <div class="collapse-content">
-          <ul class="collapse-list">
-            <li><strong>• Audio Chain:</strong> Dual balanced XLR dynamic microphones with low-noise preamps, shock absorption mounts, and dedicated pop filtration.</li>
-            <li><strong>• Real-Time Processing:</strong> Phase-aligned dynamic EQ, multiband downward expansion, and transparent brickwall limiting with a -1.0 dBTP ceiling.</li>
+          <ul class="retro-tags-list">
+            <li>Live Broadcast Audio</li>
+            <li>Acoustic Noise Suppression</li>
+            <li>EBU R128 Loudness Standard</li>
+            <li>PICC Putrajaya</li>
+            <li>Petah KPM 2026</li>
           </ul>
+
+          <button class="collapse-toggle-btn" onclick="toggleAccordion(this)">
+            [+] View Audio Production Details
+          </button>
+          <div class="collapse-content">
+            <ul class="collapse-list">
+              <li><strong>• Audio Chain:</strong> Dual balanced XLR dynamic microphones with low-noise preamps, shock absorption mounts, and dedicated pop filtration.</li>
+              <li><strong>• Real-Time Processing:</strong> Phase-aligned dynamic EQ, multiband downward expansion, and transparent brickwall limiting with a -1.0 dBTP ceiling.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Wide Project Visual Frame -->
+        <div class="project-card-image">
+          <img src="./images/trophy_petah_madani_podcast.jpg" alt="Petah KPM 2026 National Trophy" loading="lazy" />
         </div>
       </div>
     </section>
 
     <!-- ============================================== -->
-    <!-- SECTION 3: SKILLS MATRIX (Edward Dashed Badges) -->
+    <!-- SECTION 3: SKILLS (EXPANSIVE 4-COLUMN MATRIX)  -->
     <!-- ============================================== -->
     <section id="skills">
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 24px;">
         <h2 class="retro-badge-title">SKILLS &amp; TOOLS</h2>
         <div class="retro-section-subtitle">
           Technologies, hardware, and tools I actually use and have hands-on experience with.
         </div>
       </div>
 
-      <div class="retro-card">
-        <div class="skills-group">
-          <div class="skills-group-title">⚡ EMBEDDED SYSTEMS &amp; IOT HARDWARE</div>
+      <div class="skills-grid-wide">
+        <div class="skill-card-column">
+          <div class="skills-col-title">⚡ EMBEDDED SYSTEMS &amp; IOT HARDWARE</div>
           <div class="skills-pills-wrap">
             <span>ESP32 &amp; ESP32-CAM</span>
             <span>Arduino C/C++</span>
@@ -1431,8 +1495,8 @@
           </div>
         </div>
 
-        <div class="skills-group">
-          <div class="skills-group-title">🎯 COMPUTER VISION &amp; MACHINE LEARNING</div>
+        <div class="skill-card-column">
+          <div class="skills-col-title">🎯 COMPUTER VISION &amp; MACHINE LEARNING</div>
           <div class="skills-pills-wrap">
             <span>Python 3 (Primary Language)</span>
             <span>FAISS 512D Vector Embeddings</span>
@@ -1444,21 +1508,21 @@
           </div>
         </div>
 
-        <div class="skills-group">
-          <div class="skills-group-title">🛠 IT SUPPORT &amp; CISCO NETWORKING (SKM 3)</div>
+        <div class="skill-card-column">
+          <div class="skills-col-title">🛠 IT SUPPORT &amp; CISCO NETWORKING</div>
           <div class="skills-pills-wrap">
-            <span>SKM Tahap 3: IT System Support (S103882102)</span>
+            <span>SKM Tahap 3: IT Support (S103882102)</span>
             <span>Cisco CCNA: Routing &amp; Switching</span>
-            <span>Cisco IT Essentials: PC Hardware Repair</span>
-            <span>LAN Cabling (Cat5e / Cat6 RJ-45 Crimping)</span>
+            <span>Cisco IT Essentials: PC Repair</span>
+            <span>LAN Cabling (Cat5e / Cat6 RJ-45)</span>
             <span>VLAN &amp; Subnet Configuration</span>
             <span>OS Deployment &amp; Recovery</span>
             <span>Linux CLI &amp; Bash Scripting</span>
           </div>
         </div>
 
-        <div class="skills-group" style="margin-bottom: 0;">
-          <div class="skills-group-title">💻 SOFTWARE &amp; MEDIA TOOLS</div>
+        <div class="skill-card-column">
+          <div class="skills-col-title">💻 SOFTWARE &amp; MEDIA TOOLS</div>
           <div class="skills-pills-wrap">
             <span>JavaScript &amp; TypeScript</span>
             <span>HTML5 &amp; CSS3 Responsive Design</span>
@@ -1475,14 +1539,14 @@
     <!-- SECTION 4: PODIUM HONORS & AWARDS              -->
     <!-- ============================================== -->
     <section id="awards">
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 24px;">
         <h2 class="retro-badge-title">PODIUM HONORS &amp; AWARDS</h2>
         <div class="retro-section-subtitle">
           Recognitions won representing KVPJB and Johor at state and national competitive events.
         </div>
       </div>
 
-      <div class="trophy-grid-3">
+      <div class="awards-grid-wide">
         <div class="trophy-tile">
           <div>
             <span class="trophy-badge-pill">🥇 JOHAN (CHAMPION)</span>
@@ -1523,8 +1587,8 @@
         </div>
       </div>
 
-      <!-- Verified Government Accreditation Banner -->
-      <div class="cert-banner">
+      <!-- Verified Government Accreditation Banner (Full Width) -->
+      <div class="cert-banner-wide">
         <div>
           <div class="cert-badge-tag">★ VERIFIED GOVERNMENT ACCREDITATION</div>
           <div class="cert-title-big">Sijil Kemahiran Malaysia (SKM) Tahap 3</div>
@@ -1542,14 +1606,14 @@
     <!-- SECTION 5: INTERACTIVE UNIX SHELL              -->
     <!-- ============================================== -->
     <section id="terminal">
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 24px;">
         <h2 class="retro-badge-title">TERMINAL CONSOLE</h2>
         <div class="retro-section-subtitle">
           Type commands or click quick pills below to query system info and credentials.
         </div>
       </div>
 
-      <div class="terminal-container">
+      <div class="terminal-container-wide">
         <div class="terminal-topbar">
           <div class="terminal-dots">
             <span class="term-dot red"></span>
@@ -1588,17 +1652,17 @@
     </section>
 
     <!-- ============================================== -->
-    <!-- SECTION 6: CONTACT & OJT INQUIRIES             -->
+    <!-- SECTION 6: CONTACT & OJT INQUIRIES (4-COLUMN)  -->
     <!-- ============================================== -->
     <section id="contact">
-      <div style="text-align: center; margin-bottom: 20px;">
+      <div style="text-align: center; margin-bottom: 24px;">
         <h2 class="retro-badge-title">GET IN TOUCH</h2>
         <div class="retro-section-subtitle">
           Actively available for technical interviews regarding the <strong>5-Month IT / Software Internship (February – June 2027)</strong>.
         </div>
       </div>
 
-      <div class="contact-tiles-grid">
+      <div class="contact-grid-wide">
         <div class="contact-tile" onclick="copyText('mirzaaqmal22@gmail.com', 'Email address')">
           <div class="contact-svg-icon">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--orange-bright)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -1648,8 +1712,8 @@
         </a>
       </div>
 
-      <div style="text-align: center; margin-top: 24px;">
-        <a class="btn" href="mailto:mirzaaqmal22@gmail.com?subject=OJT%20Internship%20Offer%20-%20Muhammad%20Mirza%20Aqmal%20Raziq" style="padding: 12px 28px; font-size: 16px;">
+      <div style="text-align: center; margin-top: 28px;">
+        <a class="btn" href="mailto:mirzaaqmal22@gmail.com?subject=OJT%20Internship%20Offer%20-%20Muhammad%20Mirza%20Aqmal%20Raziq" style="padding: 13px 32px; font-size: 16px;">
           ✉ Send Direct Email to Mirza
         </a>
       </div>
@@ -1844,33 +1908,44 @@
       shellInput.value = '';
     }
 
-    // Show top HUD navbar only when scrolled into content sections (Hero stays pure computer)
-    function updateNavbarOnScroll() {
-      var nav = document.querySelector('nav.hud-navbar');
-      if (!nav) return;
-      var threshold = window.innerHeight * 0.45;
-      if (window.scrollY > threshold) {
-        nav.classList.add('nav-visible');
-      } else {
-        nav.classList.remove('nav-visible');
-      }
-    }
-    window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
-    updateNavbarOnScroll();
+    // Scrollspy for active navigation links
+    var sections = document.querySelectorAll('section[id]');
+    var navLinks = document.querySelectorAll('.nav-sec-link');
 
-    // Safety watchdog for loading screen
+    function updateScrollspy() {
+      var scrollY = window.pageYOffset;
+      sections.forEach(function(current) {
+        var sectionHeight = current.offsetHeight;
+        var sectionTop = current.offsetTop - 120;
+        var sectionId = current.getAttribute('id');
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + sectionId) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+    window.addEventListener('scroll', updateScrollspy, { passive: true });
+
+    // Safety watchdog for loading screen: ensure it never freezes
     window.addEventListener('load', function() {
       if (window.__WEBGL_LOADED__) {
-        var hb = document.getElementById('hero-backup');
-        if (hb) hb.style.display = 'none';
-      }
-      setTimeout(function() {
         var loading = document.getElementById('loading');
-        if (loading && loading.style.display !== 'none' && !window.__WEBGL_LOADED__) {
+        if (loading) {
           loading.style.opacity = '0';
           setTimeout(function() { loading.style.display = 'none'; }, 400);
         }
-      }, 3000);
+      }
+      setTimeout(function() {
+        var loading = document.getElementById('loading');
+        if (loading && loading.style.display !== 'none') {
+          loading.style.opacity = '0';
+          setTimeout(function() { loading.style.display = 'none'; }, 400);
+        }
+      }, 3500);
     });
   </script>
 </body>
