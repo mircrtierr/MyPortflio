@@ -53,24 +53,33 @@ const html = `<!DOCTYPE html>
     }
 
     /* ============================================================ */
-    /* DESIGN SYSTEM: CYBER OBSIDIAN & PHOSPHOR AMBER               */
+    /* DESIGN SYSTEM: CYBER OBSIDIAN & PHOSPHOR RETRO ORANGE        */
+    /* (Unified with the 3D retro computer CRT amber/orange glow)   */
     /* ============================================================ */
     :root {
-      --bg-base: #070a0f;
-      --bg-surface: #0e1524;
-      --bg-card: rgba(14, 21, 36, 0.88);
-      --bg-card-hover: rgba(20, 30, 52, 0.95);
-      --border-subtle: rgba(148, 163, 184, 0.14);
-      --border-accent: rgba(245, 158, 11, 0.4);
-      --border-accent-strong: rgba(245, 158, 11, 0.8);
+      --bg-base: #06090e;
+      --bg-surface: #0c121d;
+      --bg-card: rgba(13, 19, 32, 0.88);
+      --bg-card-hover: rgba(22, 30, 48, 0.96);
+      --border-subtle: rgba(249, 115, 22, 0.16);
+      --border-accent: rgba(249, 115, 22, 0.45);
+      --border-accent-strong: rgba(255, 122, 0, 0.85);
       
-      --amber: #f59e0b;
-      --amber-light: #fbbf24;
-      --amber-glow: rgba(245, 158, 11, 0.25);
-      --emerald: #10b981;
-      --emerald-glow: rgba(16, 185, 129, 0.25);
-      --cyan: #38bdf8;
-      --cyan-glow: rgba(56, 189, 248, 0.25);
+      --orange: #f97316;
+      --orange-bright: #ff7a00;
+      --orange-light: #fb923c;
+      --orange-dark: #ea580c;
+      --orange-glow: rgba(249, 115, 22, 0.35);
+      
+      --amber: #f97316;
+      --amber-light: #fb923c;
+      --amber-glow: rgba(249, 115, 22, 0.3);
+      --emerald: #fb923c;
+      --emerald-glow: rgba(249, 115, 22, 0.25);
+      --cyan: #ff7a00;
+      --cyan-glow: rgba(255, 122, 0, 0.25);
+      
+      --slate-200: #e2e8f0;
       --slate-300: #cbd5e1;
       --slate-400: #94a3b8;
       --slate-500: #64748b;
@@ -93,9 +102,9 @@ const html = `<!DOCTYPE html>
     body {
       background-color: var(--bg-base);
       background-image: 
-        radial-gradient(circle at 50% 0%, rgba(245, 158, 11, 0.12) 0%, transparent 60%),
-        radial-gradient(circle at 90% 30%, rgba(56, 189, 248, 0.06) 0%, transparent 45%),
-        radial-gradient(circle at 10% 70%, rgba(16, 185, 129, 0.05) 0%, transparent 45%),
+        radial-gradient(circle at 50% 0%, rgba(249, 115, 22, 0.18) 0%, transparent 60%),
+        radial-gradient(circle at 85% 35%, rgba(255, 122, 0, 0.08) 0%, transparent 45%),
+        radial-gradient(circle at 15% 70%, rgba(234, 88, 12, 0.08) 0%, transparent 45%),
         linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
       background-size: 100% 100%, 100% 100%, 100% 100%, 36px 36px, 36px 36px;
@@ -109,7 +118,7 @@ const html = `<!DOCTYPE html>
 
     /* Selection */
     ::selection {
-      background: var(--amber);
+      background: #f97316;
       color: #000;
     }
 
@@ -262,7 +271,7 @@ const html = `<!DOCTYPE html>
     }
     .brand-status {
       font-size: 11px;
-      color: var(--emerald);
+      color: #fb923c;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -273,8 +282,8 @@ const html = `<!DOCTYPE html>
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--emerald);
-      box-shadow: 0 0 8px var(--emerald);
+      background: #ff7a00;
+      box-shadow: 0 0 8px #ff7a00;
       animation: pulse-dot 2s infinite;
     }
     @keyframes pulse-dot {
@@ -300,8 +309,8 @@ const html = `<!DOCTYPE html>
       transition: all 0.2s;
     }
     .nav-sec-link:hover {
-      color: var(--amber);
-      background: rgba(245, 158, 11, 0.08);
+      color: #ff7a00;
+      background: rgba(249, 115, 22, 0.1);
     }
 
     .nav-actions {
@@ -326,21 +335,21 @@ const html = `<!DOCTYPE html>
       cursor: pointer;
     }
     .nav-btn:hover {
-      background: rgba(245, 158, 11, 0.15);
-      border-color: var(--amber);
+      background: rgba(249, 115, 22, 0.15);
+      border-color: #ff7a00;
       color: #fff;
       transform: translateY(-1px);
     }
     .nav-btn.primary {
-      background: linear-gradient(135deg, #f59e0b, #d97706);
+      background: linear-gradient(135deg, #ff7a00, #ea580c);
       color: #000;
       font-weight: 700;
-      border: 1px solid #fbbf24;
-      box-shadow: 0 0 15px rgba(245, 158, 11, 0.35);
+      border: 1px solid #ff9d42;
+      box-shadow: 0 0 16px rgba(249, 115, 22, 0.45);
     }
     .nav-btn.primary:hover {
-      background: linear-gradient(135deg, #fbbf24, #f59e0b);
-      box-shadow: 0 0 22px rgba(245, 158, 11, 0.55);
+      background: linear-gradient(135deg, #ff922d, #ff6d00);
+      box-shadow: 0 0 25px rgba(249, 115, 22, 0.65);
       color: #000;
     }
 
@@ -486,9 +495,9 @@ const html = `<!DOCTYPE html>
     }
 
     .kpi-tile {
-      background: linear-gradient(180deg, rgba(20, 30, 52, 0.75) 0%, rgba(14, 21, 36, 0.9) 100%);
+      background: linear-gradient(180deg, rgba(22, 30, 50, 0.8) 0%, rgba(13, 19, 32, 0.95) 100%);
       border: 1px solid var(--border-subtle);
-      border-top: 2px solid var(--amber);
+      border-top: 2px solid #ff7a00;
       border-radius: 12px;
       padding: 20px 16px;
       text-align: center;
@@ -497,14 +506,14 @@ const html = `<!DOCTYPE html>
       overflow: hidden;
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
-    .kpi-tile.emerald-top { border-top-color: #10b981; }
-    .kpi-tile.cyan-top { border-top-color: #38bdf8; }
-    .kpi-tile.gold-top { border-top-color: #f59e0b; }
+    .kpi-tile.emerald-top { border-top-color: #f97316; }
+    .kpi-tile.cyan-top { border-top-color: #ea580c; }
+    .kpi-tile.gold-top { border-top-color: #ff7a00; }
 
     .kpi-tile:hover {
-      border-color: var(--amber);
+      border-color: #ff7a00;
       transform: translateY(-3px);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 24px rgba(249, 115, 22, 0.25);
     }
     .kpi-val {
       font-family: var(--font-mono);
@@ -515,17 +524,17 @@ const html = `<!DOCTYPE html>
       margin-bottom: 6px;
     }
     .kpi-val.gold {
-      background: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+      background: linear-gradient(135deg, #fed7aa 0%, #ff7a00 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .kpi-val.emerald {
-      background: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+      background: linear-gradient(135deg, #ffba7a 0%, #f97316 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .kpi-val.cyan {
-      background: linear-gradient(135deg, #7dd3fc 0%, #38bdf8 100%);
+      background: linear-gradient(135deg, #ff9d42 0%, #ea580c 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -645,9 +654,9 @@ const html = `<!DOCTYPE html>
     /* INTERACTIVE CRT TERMINAL READOUT                             */
     /* ============================================================ */
     .crt-console {
-      background: #05080e;
-      border: 1px solid rgba(245, 158, 11, 0.4);
-      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.85), 0 0 30px rgba(245, 158, 11, 0.12);
+      background: #04070c;
+      border: 1px solid rgba(249, 115, 22, 0.45);
+      box-shadow: inset 0 0 25px rgba(0, 0, 0, 0.85), 0 0 30px rgba(249, 115, 22, 0.16);
       border-radius: 10px;
       padding: 22px;
       font-family: var(--font-mono);
@@ -670,15 +679,15 @@ const html = `<!DOCTYPE html>
       );
       pointer-events: none;
     }
-    .cmd-prompt { color: var(--amber); font-weight: bold; }
+    .cmd-prompt { color: #ff7a00; font-weight: bold; }
     .cmd-val { color: var(--slate-300); }
-    .cmd-green { color: var(--emerald); font-weight: 600; }
-    .cmd-cyan { color: var(--cyan); font-weight: 600; }
+    .cmd-green { color: #ffba7a; font-weight: 600; }
+    .cmd-cyan { color: #fed7aa; font-weight: 600; }
     .cmd-cursor {
       display: inline-block;
       width: 8px;
       height: 15px;
-      background: var(--amber);
+      background: #ff7a00;
       margin-left: 4px;
       vertical-align: middle;
       animation: blink 1s infinite;
@@ -704,8 +713,8 @@ const html = `<!DOCTYPE html>
       position: relative;
     }
     .project-card:hover {
-      border-color: var(--border-accent);
-      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 30px rgba(245, 158, 11, 0.1);
+      border-color: rgba(249, 115, 22, 0.5);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.8), 0 0 35px rgba(249, 115, 22, 0.16);
       transform: translateY(-2px);
     }
     .project-meta {
@@ -720,7 +729,7 @@ const html = `<!DOCTYPE html>
       font-family: var(--font-mono);
       font-size: 11.5px;
       font-weight: 700;
-      color: var(--amber);
+      color: #ff7a00;
       text-transform: uppercase;
       letter-spacing: 1px;
       display: inline-flex;
@@ -781,8 +790,8 @@ const html = `<!DOCTYPE html>
       flex-wrap: wrap;
       align-items: center;
       gap: 8px;
-      background: rgba(8, 12, 20, 0.7);
-      border: 1px solid rgba(148, 163, 184, 0.16);
+      background: rgba(6, 9, 15, 0.75);
+      border: 1px solid rgba(249, 115, 22, 0.2);
       padding: 12px 16px;
       border-radius: 10px;
       margin: 16px 0;
@@ -791,22 +800,22 @@ const html = `<!DOCTYPE html>
       color: var(--slate-300);
     }
     .pipe-node {
-      background: rgba(245, 158, 11, 0.12);
-      border: 1px solid rgba(245, 158, 11, 0.35);
-      color: #fbbf24;
+      background: rgba(249, 115, 22, 0.15);
+      border: 1px solid rgba(249, 115, 22, 0.4);
+      color: #fed7aa;
       padding: 3px 10px;
       border-radius: 6px;
       font-weight: 600;
     }
     .pipe-node.cyan {
-      background: rgba(56, 189, 248, 0.12);
-      border-color: rgba(56, 189, 248, 0.35);
-      color: #7dd3fc;
+      background: rgba(255, 122, 0, 0.15);
+      border-color: rgba(255, 122, 0, 0.45);
+      color: #ffba7a;
     }
     .pipe-node.emerald {
-      background: rgba(16, 185, 129, 0.12);
-      border-color: rgba(16, 185, 129, 0.35);
-      color: #6ee7b7;
+      background: rgba(234, 88, 12, 0.15);
+      border-color: rgba(234, 88, 12, 0.45);
+      color: #fdba74;
     }
     .pipe-arrow {
       color: var(--slate-500);
@@ -830,8 +839,8 @@ const html = `<!DOCTYPE html>
       transition: all 0.2s;
     }
     .accordion-btn:hover {
-      background: rgba(245, 158, 11, 0.12);
-      border-color: var(--amber);
+      background: rgba(249, 115, 22, 0.14);
+      border-color: #ff7a00;
       color: #fff;
     }
     .accordion-body {
@@ -845,8 +854,8 @@ const html = `<!DOCTYPE html>
       opacity: 1;
       margin-top: 14px;
       padding: 18px;
-      background: rgba(8, 12, 20, 0.65);
-      border: 1px solid rgba(148, 163, 184, 0.14);
+      background: rgba(6, 9, 15, 0.75);
+      border: 1px solid rgba(249, 115, 22, 0.18);
       border-radius: 8px;
     }
     .spec-list {
@@ -859,7 +868,7 @@ const html = `<!DOCTYPE html>
       margin-bottom: 8px;
     }
     .spec-list strong {
-      color: var(--amber);
+      color: #ff7a00;
       font-family: var(--font-mono);
       font-size: 13px;
     }
@@ -878,34 +887,34 @@ const html = `<!DOCTYPE html>
     .skill-card {
       background: var(--bg-card);
       border: 1px solid var(--border-subtle);
-      border-top: 2px solid var(--amber);
+      border-top: 2px solid #ff7a00;
       border-radius: 14px;
       padding: 26px;
       transition: all 0.25s;
       box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
     }
-    .skill-card.cyan-top { border-top-color: #38bdf8; }
-    .skill-card.emerald-top { border-top-color: #10b981; }
+    .skill-card.cyan-top { border-top-color: #f97316; }
+    .skill-card.emerald-top { border-top-color: #ea580c; }
 
     .skill-card:hover {
-      border-color: var(--border-accent);
+      border-color: #ff7a00;
       transform: translateY(-3px);
-      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(245, 158, 11, 0.1);
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 25px rgba(249, 115, 22, 0.2);
     }
     .skill-card-head {
       font-family: var(--font-mono);
       font-size: 12.5px;
       font-weight: 700;
-      color: var(--amber);
+      color: #ff8c00;
       display: flex;
       align-items: center;
       gap: 8px;
       margin-bottom: 16px;
       padding-bottom: 12px;
-      border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      border-bottom: 1px solid rgba(249, 115, 22, 0.15);
     }
-    .skill-card.cyan-top .skill-card-head { color: #38bdf8; }
-    .skill-card.emerald-top .skill-card-head { color: #10b981; }
+    .skill-card.cyan-top .skill-card-head { color: #f97316; }
+    .skill-card.emerald-top .skill-card-head { color: #fb923c; }
 
     .skill-items {
       list-style: none;
@@ -917,7 +926,7 @@ const html = `<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-bottom: 1px dotted rgba(148, 163, 184, 0.1);
+      border-bottom: 1px dotted rgba(249, 115, 22, 0.12);
     }
     .skill-items li:last-child { border-bottom: none; }
     .skill-name {
@@ -927,11 +936,11 @@ const html = `<!DOCTYPE html>
     }
     .skill-name::before {
       content: "▹";
-      color: var(--amber);
+      color: #ff7a00;
       font-weight: bold;
     }
-    .skill-card.cyan-top .skill-name::before { color: #38bdf8; }
-    .skill-card.emerald-top .skill-name::before { color: #10b981; }
+    .skill-card.cyan-top .skill-name::before { color: #f97316; }
+    .skill-card.emerald-top .skill-name::before { color: #fb923c; }
 
     .skill-level-tag {
       font-family: var(--font-mono);
@@ -939,9 +948,9 @@ const html = `<!DOCTYPE html>
       font-weight: 600;
       padding: 2px 7px;
       border-radius: 4px;
-      background: rgba(255, 255, 255, 0.05);
-      color: var(--slate-400);
-      border: 1px solid rgba(255, 255, 255, 0.08);
+      background: rgba(249, 115, 22, 0.08);
+      color: #fed7aa;
+      border: 1px solid rgba(249, 115, 22, 0.22);
     }
 
     /* ============================================================ */
@@ -983,21 +992,21 @@ const html = `<!DOCTYPE html>
       margin-bottom: 14px;
     }
     .trophy-badge.gold {
-      background: rgba(245, 158, 11, 0.15);
-      border: 1px solid rgba(245, 158, 11, 0.45);
-      color: #fbbf24;
-      box-shadow: 0 0 12px rgba(245, 158, 11, 0.2);
+      background: rgba(249, 115, 22, 0.18);
+      border: 1px solid rgba(249, 115, 22, 0.5);
+      color: #fed7aa;
+      box-shadow: 0 0 15px rgba(249, 115, 22, 0.25);
     }
     .trophy-badge.bronze {
-      background: rgba(217, 119, 6, 0.15);
-      border: 1px solid rgba(217, 119, 6, 0.4);
-      color: #f59e0b;
+      background: rgba(234, 88, 12, 0.18);
+      border: 1px solid rgba(234, 88, 12, 0.45);
+      color: #fb923c;
     }
     .trophy-badge.national {
-      background: rgba(16, 185, 129, 0.15);
-      border: 1px solid rgba(16, 185, 129, 0.4);
-      color: #34d399;
-      box-shadow: 0 0 12px rgba(16, 185, 129, 0.2);
+      background: rgba(255, 122, 0, 0.18);
+      border: 1px solid rgba(255, 122, 0, 0.45);
+      color: #ffba7a;
+      box-shadow: 0 0 15px rgba(255, 122, 0, 0.25);
     }
     .trophy-img-wrap {
       width: 100%;
@@ -1059,8 +1068,8 @@ const html = `<!DOCTYPE html>
       border-radius: 50%;
     }
     .dot.red { background: #ef4444; }
-    .dot.yellow { background: #f59e0b; }
-    .dot.green { background: #10b981; }
+    .dot.yellow { background: #ff7a00; }
+    .dot.green { background: #fb923c; }
     .shell-title {
       font-family: var(--font-mono);
       font-size: 12px;
@@ -1081,10 +1090,10 @@ const html = `<!DOCTYPE html>
       gap: 8px;
       margin-top: 10px;
       padding-top: 10px;
-      border-top: 1px solid rgba(148, 163, 184, 0.1);
+      border-top: 1px solid rgba(249, 115, 22, 0.15);
     }
     .shell-prompt {
-      color: var(--amber);
+      color: #ff7a00;
       font-weight: bold;
     }
     .shell-input {
@@ -1099,7 +1108,7 @@ const html = `<!DOCTYPE html>
     .shell-quick-cmds {
       padding: 12px 18px;
       background: #080c14;
-      border-top: 1px solid rgba(148, 163, 184, 0.08);
+      border-top: 1px solid rgba(249, 115, 22, 0.12);
       display: flex;
       gap: 8px;
       flex-wrap: wrap;
@@ -1107,7 +1116,7 @@ const html = `<!DOCTYPE html>
     }
     .cmd-pill {
       background: rgba(30, 41, 59, 0.85);
-      border: 1px solid rgba(148, 163, 184, 0.18);
+      border: 1px solid rgba(249, 115, 22, 0.2);
       color: var(--slate-300);
       font-family: var(--font-mono);
       font-size: 11.5px;
@@ -1117,8 +1126,8 @@ const html = `<!DOCTYPE html>
       transition: all 0.15s;
     }
     .cmd-pill:hover {
-      background: rgba(245, 158, 11, 0.2);
-      border-color: var(--amber);
+      background: rgba(249, 115, 22, 0.25);
+      border-color: #ff7a00;
       color: #fff;
       transform: translateY(-1px);
     }
@@ -1145,10 +1154,10 @@ const html = `<!DOCTYPE html>
       box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
     }
     .contact-card:hover {
-      border-color: var(--amber);
+      border-color: #ff7a00;
       transform: translateY(-3px);
-      background: rgba(20, 30, 52, 0.95);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.15);
+      background: rgba(22, 30, 48, 0.96);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6), 0 0 25px rgba(249, 115, 22, 0.25);
     }
     .contact-icon {
       font-size: 24px;
@@ -1171,7 +1180,7 @@ const html = `<!DOCTYPE html>
     }
     .contact-hint {
       font-size: 11px;
-      color: var(--amber);
+      color: #fb923c;
       margin-top: 6px;
       font-family: var(--font-mono);
     }
@@ -1181,10 +1190,10 @@ const html = `<!DOCTYPE html>
       position: fixed;
       bottom: 24px;
       right: 24px;
-      background: #0f172a;
-      color: var(--amber);
-      border: 1px solid var(--amber);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 158, 11, 0.35);
+      background: #0c121d;
+      color: #ff8c00;
+      border: 1px solid #ff7a00;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), 0 0 25px rgba(249, 115, 22, 0.45);
       padding: 12px 22px;
       border-radius: 8px;
       font-family: var(--font-mono);
@@ -1822,66 +1831,66 @@ const html = `<!DOCTYPE html>
 
     var COMMANDS = {
       help: function() {
-        return '<div style="color: #fbbf24;">⚡ Available Commands:</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">neofetch</span> - View system hardware & candidate info</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">about</span> - Candidate summary & CGPA</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">projects</span> - SmartAttend, YOLO, Beyond The Mic</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">skills</span> - Core technologies & frameworks</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">cgpa</span> - Academic standing (3.98 / 4.00)</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">ojt</span> - 5-Month IT Internship details (Feb–Jun 2027)</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">awards</span> - Competitive podium finishes</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">contact</span> - Direct phone & email info</div>' +
-               '<div><span style="color: #38bdf8; font-weight: bold;">clear</span> - Clear terminal window</div>';
+        return '<div style="color: #ff7a00; font-weight: bold;">⚡ Available Commands:</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">neofetch</span> - View system hardware & candidate info</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">about</span> - Candidate summary & CGPA</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">projects</span> - SmartAttend, YOLO, Beyond The Mic</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">skills</span> - Core technologies & frameworks</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">cgpa</span> - Academic standing (3.98 / 4.00)</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">ojt</span> - 5-Month IT Internship details (Feb–Jun 2027)</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">awards</span> - Competitive podium finishes</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">contact</span> - Direct phone & email info</div>' +
+               '<div><span style="color: #fb923c; font-weight: bold;">clear</span> - Clear terminal window</div>';
       },
       neofetch: function() {
-        return '<pre style="color: #38bdf8; font-family: monospace; font-size: 11px; line-height: 1.3;">' +
-               '        _.-;;-._          <span style="color: #fbbf24; font-weight: bold;">mirza@kvpjb</span><br/>' +
+        return '<pre style="color: #fb923c; font-family: monospace; font-size: 11px; line-height: 1.3;">' +
+               '        _.-;;-._          <span style="color: #ff7a00; font-weight: bold;">mirza@kvpjb</span><br/>' +
                ' \'-..-\'|   ||   |         <span style="color: #94a3b8;">-----------</span><br/>' +
-               ' \'-..-\'|_.-;;-._|         <span style="color: #38bdf8;">OS:</span> Mirza-OS 1.0 LTS (64-bit)<br/>' +
-               ' \'-..-\'|   ||   |         <span style="color: #38bdf8;">Host:</span> KVPJB Workstation (Commodore 710)<br/>' +
-               ' \'-..-\'|_.-\'\'-._|         <span style="color: #38bdf8;">Kernel:</span> Linux 6.8.0-kvpjb-generic<br/>' +
-               '                          <span style="color: #38bdf8;">Uptime:</span> 2024 - 2027 (Final Year)<br/>' +
-               '                          <span style="color: #38bdf8;">CGPA:</span> <span style="color: #fbbf24; font-weight: bold;">3.98 / 4.00</span><br/>' +
-               '                          <span style="color: #38bdf8;">Certification:</span> <span style="color: #34d399; font-weight: bold;">SKM Level 3 (S103882102)</span><br/>' +
-               '                          <span style="color: #38bdf8;">OJT Placement:</span> <span style="color: #34d399;">Feb - June 2027 (5 Mos)</span><br/>' +
-               '                          <span style="color: #38bdf8;">Focus:</span> ESP32-CAM, FAISS 512D, YOLOv8<br/>' +
+               ' \'-..-\'|_.-;;-._|         <span style="color: #fed7aa;">OS:</span> Mirza-OS 1.0 LTS (64-bit)<br/>' +
+               ' \'-..-\'|   ||   |         <span style="color: #fed7aa;">Host:</span> KVPJB Workstation (Commodore 710)<br/>' +
+               ' \'-..-\'|_.-\'\'-._|         <span style="color: #fed7aa;">Kernel:</span> Linux 6.8.0-kvpjb-generic<br/>' +
+               '                          <span style="color: #fed7aa;">Uptime:</span> 2024 - 2027 (Final Year)<br/>' +
+               '                          <span style="color: #fed7aa;">CGPA:</span> <span style="color: #ff7a00; font-weight: bold;">3.98 / 4.00</span><br/>' +
+               '                          <span style="color: #fed7aa;">Certification:</span> <span style="color: #fb923c; font-weight: bold;">SKM Level 3 (S103882102)</span><br/>' +
+               '                          <span style="color: #fed7aa;">OJT Placement:</span> <span style="color: #fed7aa;">Feb - June 2027 (5 Mos)</span><br/>' +
+               '                          <span style="color: #fed7aa;">Focus:</span> ESP32-CAM, FAISS 512D, YOLOv8<br/>' +
                '</pre>';
       },
       about: function() {
-        return '<div style="color: #34d399; font-weight: bold;">Muhammad Mirza Aqmal Raziq bin Mirza Affzard</div>' +
+        return '<div style="color: #ff7a00; font-weight: bold;">Muhammad Mirza Aqmal Raziq bin Mirza Affzard</div>' +
                '<div>Diploma Teknologi Komputeran • KVPJB (Pasir Gudang, Johor)</div>' +
-               '<div>Academic CGPA: <strong style="color: #fbbf24;">3.98 / 4.00</strong></div>' +
-               '<div>SKM Level 3 Certified: <strong style="color: #fbbf24;">S103882102</strong></div>';
+               '<div>Academic CGPA: <strong style="color: #ff7a00;">3.98 / 4.00</strong></div>' +
+               '<div>SKM Level 3 Certified: <strong style="color: #fb923c;">S103882102</strong></div>';
       },
       projects: function() {
-        return '<div style="color: #fbbf24; font-weight: bold;">Featured Projects:</div>' +
+        return '<div style="color: #ff7a00; font-weight: bold;">Featured Projects:</div>' +
                '<div>• <strong>SmartAttend KVPJB:</strong> ESP32-CAM + FAISS 512D sub-second biometric attendance.</div>' +
                '<div>• <strong>YOLO Custom Classifier:</strong> 92.4% mAP@0.5 Colab Tesla T4 GPU device detection.</div>' +
                '<div>• <strong>Beyond The Mic Podcast:</strong> 5th Place National @ PICC Putrajaya (EBU R128 mastering).</div>';
       },
       skills: function() {
-        return '<div style="color: #38bdf8; font-weight: bold;">Technical Skills:</div>' +
+        return '<div style="color: #ff7a00; font-weight: bold;">Technical Skills:</div>' +
                '<div>• AI & Vision: FAISS 512D, YOLOv8, OpenCV, PyTorch, ESP32-CAM</div>' +
                '<div>• Languages: Python, C/C++, JavaScript, SQL, Bash</div>' +
                '<div>• IT Support: SKM Tahap 3, Cisco CCNA, Hardware Repair, LAN/VLAN</div>';
       },
       cgpa: function() {
-        return '<div>Academic Cumulative CGPA: <strong style="color: #fbbf24; font-size: 1.2em;">3.98 / 4.00</strong> (Top-tier academic excellence).</div>';
+        return '<div>Academic Cumulative CGPA: <strong style="color: #ff7a00; font-size: 1.2em;">3.98 / 4.00</strong> (Top-tier academic excellence).</div>';
       },
       ojt: function() {
-        return '<div style="color: #34d399; font-weight: bold;">5-Month On-The-Job Training (OJT) Placement</div>' +
+        return '<div style="color: #ff7a00; font-weight: bold;">5-Month On-The-Job Training (OJT) Placement</div>' +
                '<div>Window: <strong>February – June 2027</strong> (5 Months)</div>' +
                '<div>Role: Software Engineering / IT Support / Embedded Systems Internship.</div>';
       },
       awards: function() {
-        return '<div style="color: #fbbf24; font-weight: bold;">Podium Honors:</div>' +
+        return '<div style="color: #ff7a00; font-weight: bold;">Podium Honors:</div>' +
                '<div>🥇 Johan (Champion) - Apps Ideation Challenge Johor (2023)</div>' +
                '<div>🥉 Tempat Ketiga - MMU Android Competition Kebangsaan (2024)</div>' +
                '<div>🏅 Kelima Kebangsaan - Beyond The Mic Podcast @ PICC Putrajaya (2026)</div>';
       },
       contact: function() {
-        return '<div>Email: <a href="mailto:mirzaaqmal22@gmail.com" style="color: #38bdf8;">mirzaaqmal22@gmail.com</a></div>' +
-               '<div>Phone: <strong style="color: #34d399;">013-5788399</strong></div>' +
+        return '<div>Email: <a href="mailto:mirzaaqmal22@gmail.com" style="color: #fb923c;">mirzaaqmal22@gmail.com</a></div>' +
+               '<div>Phone: <strong style="color: #ff7a00;">013-5788399</strong></div>' +
                '<div>Location: Pasir Gudang, Johor, Malaysia</div>';
       },
       clear: function() {
