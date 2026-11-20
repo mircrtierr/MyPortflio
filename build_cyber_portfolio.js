@@ -140,58 +140,61 @@ const html = `<!DOCTYPE html>
       opacity: 0;
     }
 
-    /* Bootloader Screen */
+    /* ============================================================ */
+    /* RETRO BOOTLOADER SCREEN (edh.dev style with Phosphor Orange) */
+    /* ============================================================ */
     #loading {
       color: var(--cream);
-      background: #090c12;
+      background-color: #0c1018;
       position: fixed;
       top: 0; bottom: 0; left: 0; right: 0;
-      padding: 10vw;
+      padding: 10vw 6vw;
       z-index: 100;
       transition: opacity 0.4s ease-out;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      gap: 16px;
     }
     .boot-box {
-      max-width: 600px;
-      width: 100%;
-      background: #0e1420;
-      border: dashed 2px var(--orange);
-      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.3);
-      padding: 24px;
+      width: clamp(0px, 92vw, 680px);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
     #loading h2 {
       font-family: var(--font-pixel);
-      font-size: 1.1rem;
+      font-size: 1.5rem;
       color: var(--orange-bright);
-      margin-bottom: 8px;
-    }
-    #loading-items {
-      height: 32px;
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--slate-400);
-      overflow: hidden;
-      text-overflow: ellipsis;
+      margin: 0;
+      padding: 0;
+      text-align: left;
+      letter-spacing: 0.5px;
     }
     #loading-bar {
       position: relative;
       width: 100%;
-      height: 28px;
-      background: #06090f;
-      border: dashed 1px var(--orange);
-      margin: 12px 0;
+      height: 52px;
+      border: dashed 2px var(--orange);
+      box-shadow: 2px 2px 0px #000, 6px 6px 0px rgba(249, 115, 22, 0.4);
+      background-color: #06090f;
     }
     #loading-bar-progress {
       position: absolute;
-      top: 2px; bottom: 2px; left: 2px; right: 2px;
-      background: linear-gradient(90deg, #ea580c, #f97316);
+      top: 3px; bottom: 3px; left: 3px; right: 3px;
+      background: linear-gradient(90deg, #ea580c, #ff7a00);
       transform: scaleX(0);
       transform-origin: left;
       transition: transform 0.2s;
+    }
+    #loading-items {
+      height: 36px;
+      font-family: var(--font-mono);
+      font-size: 13.5px;
+      color: var(--cream);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      text-align: left;
     }
 
     /* ============================================================ */
@@ -1085,6 +1088,17 @@ const html = `<!DOCTYPE html>
 </head>
 
 <body>
+  <!-- Retro Bootloader Loading Screen (edh.dev Booting... progress bar) -->
+  <div id="loading">
+    <div class="boot-box">
+      <h2>Booting...</h2>
+      <div id="loading-bar">
+        <div id="loading-bar-progress"></div>
+      </div>
+      <div id="loading-items">Starting...</div>
+    </div>
+  </div>
+
   <div id="home"></div>
 
   <!-- 3D Retro Commodore PET 8296 Workstation Canvas -->
