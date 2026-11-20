@@ -202,7 +202,7 @@ const html = `<!DOCTYPE html>
     }
 
     /* ============================================================ */
-    /* NAVIGATION & TOP HUD BAR                                     */
+    /* NAVIGATION & TOP HUD BAR (Appears Only on Scroll Below Hero) */
     /* ============================================================ */
     nav.hud-navbar {
       position: fixed;
@@ -214,10 +214,19 @@ const html = `<!DOCTYPE html>
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background: rgba(7, 10, 15, 0.88);
+      background: rgba(7, 10, 15, 0.92);
       backdrop-filter: blur(16px);
       -webkit-backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.3s ease;
+    }
+    nav.hud-navbar.nav-visible {
+      transform: translateY(0);
+      opacity: 1;
+      pointer-events: all;
     }
     .brand-hud {
       display: flex;
@@ -335,34 +344,7 @@ const html = `<!DOCTYPE html>
       color: #000;
     }
 
-    /* Floating Scroll Guide */
-    #tip-scroll {
-      position: fixed;
-      bottom: 24px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-family: var(--font-mono);
-      font-size: 11px;
-      font-weight: 600;
-      color: var(--amber);
-      background: rgba(14, 21, 36, 0.92);
-      backdrop-filter: blur(10px);
-      border: 1px solid var(--border-accent);
-      box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-      padding: 8px 18px;
-      border-radius: 20px;
-      pointer-events: none;
-      z-index: 10;
-      transition: opacity 0.3s;
-      animation: bounce 2s infinite ease-in-out;
-    }
-    @keyframes bounce {
-      0%, 100% { transform: translate(-50%, 0); }
-      50% { transform: translate(-50%, -6px); }
-    }
-    html[data-scroll="true"] #tip-scroll {
-      opacity: 0;
-    }
+
 
     /* Offline / Non-WebGL Fallback Hero */
     #hero-backup {
@@ -1298,8 +1280,6 @@ const html = `<!DOCTYPE html>
         📄 SKM 3 PDF
       </a>
     </div>
-
-    <div id="tip-scroll">▼ SCROLL TO EXPLORE DOSSIER ▼</div>
   </nav>
 
   <!-- Editorial Main Content Container -->
@@ -1936,6 +1916,20 @@ const html = `<!DOCTYPE html>
       runCommand(val);
       shellInput.value = '';
     }
+
+    // Show top HUD navbar only when scrolled into content sections (Hero stays pure computer)
+    function updateNavbarOnScroll() {
+      var nav = document.querySelector('nav.hud-navbar');
+      if (!nav) return;
+      var threshold = window.innerHeight * 0.55;
+      if (window.scrollY > threshold) {
+        nav.classList.add('nav-visible');
+      } else {
+        nav.classList.remove('nav-visible');
+      }
+    }
+    window.addEventListener('scroll', updateNavbarOnScroll, { passive: true });
+    updateNavbarOnScroll();
 
     // Safety watchdog for loading screen
     window.addEventListener('load', function() {
