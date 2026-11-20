@@ -9,11 +9,11 @@
     content="Muhammad Mirza Aqmal Raziq bin Mirza Affzard – Final Year Diploma Teknologi Komputeran at Kolej Vokasional Perdagangan JB (KVPJB). Academic CGPA 3.98/4.00, SKM Level 3 Certified (S103882102). Seeking 5-Month OJT Internship (Feb–June 2027)."
   />
   <meta name="author" content="Muhammad Mirza Aqmal Raziq" />
-  <meta name="theme-color" content="#080b11" />
+  <meta name="theme-color" content="#06090e" />
   <link rel="icon" type="image/x-icon" href="./images/mirza-title.png" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Muhammad Mirza Aqmal Raziq – 3D Portfolio & Timeline" />
+  <meta property="og:title" content="Muhammad Mirza Aqmal Raziq – 3D Workstation Portfolio" />
   <meta property="og:description" content="Final year Diploma Teknologi Komputeran at KVPJB (CGPA 3.98 • SKM Level 3 S103882102). Seeking 5-Month IT Internship (Feb–June 2027)." />
   <meta property="og:image" content="./images/mirza-title.png" />
   <meta property="og:type" content="website" />
@@ -23,8 +23,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- 3D WebGL Workstation Bundle (Ambient Persistent Engine) -->
-  <script type="module" crossorigin src="./assets/index-D1c0b_CX.js"></script>
+  <!-- 3D WebGL Workstation Bundle (Interactive Typing Engine) -->
+  <script type="module" crossorigin src="./assets/index-B6GiIVB6.js"></script>
 
   <style>
     /* ============================================================ */
@@ -53,11 +53,11 @@
     :root {
       --bg-base: #06090e;
       --bg-surface: #0c121d;
-      --bg-card: rgba(12, 18, 30, 0.88);
-      --bg-card-hover: rgba(18, 27, 46, 0.95);
+      --bg-card: rgba(12, 18, 30, 0.9);
+      --bg-card-hover: rgba(18, 27, 46, 0.96);
       --border-subtle: rgba(148, 163, 184, 0.16);
-      --border-accent: rgba(245, 158, 11, 0.38);
-      --border-accent-strong: rgba(245, 158, 11, 0.75);
+      --border-accent: rgba(245, 158, 11, 0.4);
+      --border-accent-strong: rgba(245, 158, 11, 0.8);
       --border-cyan: rgba(56, 189, 248, 0.35);
       
       --amber: #f59e0b;
@@ -139,13 +139,17 @@
       cursor: grabbing;
     }
 
+    /* Invisible typing receiver for 3D retro computer */
     #textarea {
       position: fixed;
-      top: 0;
-      right: 0;
-      outline: none;
-      z-index: -1;
+      top: -100px;
+      left: -100px;
+      width: 10px;
+      height: 10px;
       opacity: 0;
+      z-index: -10;
+      outline: none;
+      border: none;
     }
 
     /* Bootloader Screen */
@@ -327,10 +331,10 @@
       display: flex;
       flex-direction: column;
       gap: 12px;
-      background: rgba(8, 13, 22, 0.82);
+      background: rgba(8, 13, 22, 0.85);
       padding: 14px 10px;
       border-radius: 30px;
-      border: 1px solid rgba(148, 163, 184, 0.16);
+      border: 1px solid rgba(148, 163, 184, 0.18);
       backdrop-filter: blur(14px);
       box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
@@ -379,80 +383,93 @@
     }
 
     /* ============================================================ */
-    /* 3D HERO SECTION (STAGE 01)                                   */
+    /* STAGE 01: 3D WORKSTATION (HERO) - CLEAR & UNOBSTRUCTED        */
     /* ============================================================ */
-    #hero-stage {
+    #workstation {
       height: 100vh;
       position: relative;
+      pointer-events: none; /* Allows full click & drag directly on the 3D computer */
+    }
+
+    /* Floating Interactive Terminal Dock at the bottom */
+    .retro-prompt-dock {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 25;
       display: flex;
       flex-direction: column;
-      justify-content: flex-end;
       align-items: center;
-      padding-bottom: 45px;
-      z-index: 5;
-      text-align: center;
-    }
-    .hero-hud-card {
-      background: rgba(10, 16, 28, 0.85);
+      gap: 10px;
+      pointer-events: auto; /* Buttons & hints remain clickable */
+      background: rgba(8, 13, 23, 0.9);
       border: 1px solid var(--border-accent);
-      box-shadow: 0 0 35px rgba(245, 158, 11, 0.18), 0 20px 40px rgba(0, 0, 0, 0.6);
+      padding: 12px 24px;
+      border-radius: 30px;
       backdrop-filter: blur(14px);
-      border-radius: 12px;
-      padding: 20px 32px;
-      max-width: 660px;
-      width: calc(100% - 32px);
-      animation: floatHero 4s ease-in-out infinite;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.6), 0 0 20px rgba(245, 158, 11, 0.25);
+      max-width: 92vw;
+      animation: floatDock 4s ease-in-out infinite;
     }
-    @keyframes floatHero {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-6px); }
+    @keyframes floatDock {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50% { transform: translateX(-50%) translateY(-4px); }
     }
-    .hero-badge-tag {
+    .dock-badge {
       font-family: var(--font-mono);
       font-size: 11.5px;
       color: var(--amber);
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
-    .hero-name-title {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.5px;
-      color: #fff;
-      margin-bottom: 4px;
-      background: linear-gradient(135deg, #fff 40%, #cbd5e1 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-sub-text {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--slate-300);
-      margin-bottom: 14px;
-    }
-    .hero-actions {
       display: flex;
-      gap: 10px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .scroll-guide-pill {
-      margin-top: 16px;
-      display: inline-flex;
       align-items: center;
       gap: 8px;
+      letter-spacing: 0.5px;
+    }
+    .blinking-cursor {
+      color: var(--amber);
+      animation: blinkCursor 1s step-end infinite;
+    }
+    @keyframes blinkCursor {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .dock-cmd-list {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .dock-chip {
+      background: rgba(22, 33, 54, 0.85);
+      border: 1px solid rgba(56, 189, 248, 0.3);
+      color: var(--cyan);
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .dock-chip:hover {
+      background: var(--amber);
+      color: #000;
+      border-color: var(--amber-light);
+      box-shadow: 0 0 12px var(--amber);
+      transform: translateY(-2px);
+    }
+    .dock-scroll-hint {
       font-family: var(--font-mono);
       font-size: 11px;
-      color: var(--cyan);
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      animation: bouncePulse 2s infinite;
+      color: var(--slate-400);
       cursor: pointer;
+      transition: color 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 6px;
     }
-    @keyframes bouncePulse {
-      0%, 100% { transform: translateY(0); opacity: 0.8; }
-      50% { transform: translateY(5px); opacity: 1; }
+    .dock-scroll-hint:hover {
+      color: #fff;
     }
 
     /* Offline hero backup fallback */
@@ -1103,6 +1120,10 @@
       .nav-rail {
         display: none;
       }
+      .retro-prompt-dock {
+        padding: 10px 16px;
+        bottom: 16px;
+      }
     }
   </style>
 </head>
@@ -1113,16 +1134,15 @@
   <!-- 3D Retro Commodore PET 8296 Workstation Canvas -->
   <canvas class="webgl"></canvas>
 
+  <!-- Hidden typing receiver textarea for 3D retro computer -->
+  <textarea id="textarea" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+
   <!-- Offline Hero Fallback -->
   <div id="hero-backup">
-    <div class="hero-hud-card">
-      <div class="hero-badge-tag">[ SYSTEM ACTIVE • OJT READY ]</div>
-      <h1 class="hero-name-title">Muhammad Mirza Aqmal Raziq</h1>
-      <div class="hero-sub-text">Diploma Teknologi Komputeran • KVPJB (CGPA 3.98 • SKM Level 3)</div>
-      <div class="hero-actions">
-        <a class="nav-btn primary" href="#about">Enter Candidate Dossier ↓</a>
-        <a class="nav-btn" href="./sijil_skm3_jpk_official.pdf" target="_blank">📄 Official SKM 3 PDF</a>
-      </div>
+    <div style="background: rgba(12, 18, 30, 0.95); border: 1px solid var(--border-accent); padding: 30px; border-radius: 12px; text-align: center; max-width: 500px;">
+      <h2 style="color: #fff; margin-bottom: 8px;">Muhammad Mirza Aqmal Raziq</h2>
+      <p style="color: var(--slate-300); margin-bottom: 16px;">Final Year Diploma Teknologi Komputeran • KVPJB (CGPA 3.98 • SKM Level 3)</p>
+      <a class="nav-btn primary" href="#about">Enter Candidate Dossier ↓</a>
     </div>
   </div>
 
@@ -1142,6 +1162,9 @@
       <button class="nav-btn" onclick="toggleAudio()" id="sound-btn" title="Toggle Tactile Audio">
         🔊 Sound: ON
       </button>
+      <a class="nav-btn" href="./Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" target="_blank" onclick="playBeep(700, 0.05)">
+        📄 Resume PDF
+      </a>
       <a class="nav-btn" href="https://www.linkedin.com/in/aqmal-raziq-3975b0346/" target="_blank">
         LinkedIn
       </a>
@@ -1149,7 +1172,7 @@
         GitHub
       </a>
       <a class="nav-btn primary" href="./sijil_skm3_jpk_official.pdf" target="_blank">
-        📄 Verified SKM 3 PDF
+        🏆 SKM 3 PDF
       </a>
     </div>
   </nav>
@@ -1180,25 +1203,26 @@
   </div>
 
   <!-- ============================================================ -->
-  <!-- STAGE 01: 3D RETRO WORKSTATION (HERO)                        -->
+  <!-- STAGE 01: 3D RETRO WORKSTATION (HERO) - CLEAR & UNOBSTRUCTED -->
   <!-- ============================================================ -->
   <section id="workstation">
-    <div id="hero-stage">
-      <div class="hero-hud-card">
-        <div class="hero-badge-tag">[ STAGE 01 // INTERACTIVE 3D WORKSTATION ]</div>
-        <h1 class="hero-name-title">Muhammad Mirza Aqmal Raziq</h1>
-        <div class="hero-sub-text">
-          Final Year Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan JB<br/>
-          <strong style="color: var(--amber);">CGPA 3.98 / 4.00</strong> • Verified SKM Level 3 Certified: <strong style="color: var(--cyan);">S103882102</strong>
-        </div>
-        <div class="hero-actions">
-          <a class="nav-btn primary" href="#about" onclick="playBeep(850, 0.05)">Explore Candidate Dossier ↓</a>
-          <a class="nav-btn" href="./Resume_Muhammad_Mirza_Aqmal_Raziq.pdf" target="_blank" onclick="playBeep(700, 0.05)">📄 Resume PDF</a>
-          <a class="nav-btn" href="./sijil_skm3_jpk_official.pdf" target="_blank" onclick="playBeep(700, 0.05)">🏆 SKM Level 3 PDF</a>
-        </div>
-        <div class="scroll-guide-pill" onclick="glideTo('about')">
-          ▼ Scroll down or click to enter timeline ▼
-        </div>
+    <!-- Floating Bottom Dock: Guide & Quick Command Chips -->
+    <div class="retro-prompt-dock">
+      <div class="dock-badge">
+        <span class="blinking-cursor">█</span> INTERACTIVE RETRO TERMINAL READY // TYPE ON KEYBOARD OR CLICK:
+      </div>
+      <div class="dock-cmd-list">
+        <button class="dock-chip" onclick="typeOnRetro('help')">help</button>
+        <button class="dock-chip" onclick="typeOnRetro('about')">about</button>
+        <button class="dock-chip" onclick="typeOnRetro('projects')">projects</button>
+        <button class="dock-chip" onclick="typeOnRetro('skills')">skills</button>
+        <button class="dock-chip" onclick="typeOnRetro('awards')">awards</button>
+        <button class="dock-chip" onclick="typeOnRetro('contact')">contact</button>
+        <button class="dock-chip" onclick="typeOnRetro('neofetch')">neofetch</button>
+        <button class="dock-chip" onclick="typeOnRetro('clear')">clear</button>
+      </div>
+      <div class="dock-scroll-hint" onclick="glideTo('about')">
+        ▼ Scroll down to Candidate Dossier &amp; 3D Timeline ▼
       </div>
     </div>
   </section>
@@ -1640,9 +1664,6 @@
   <!-- Interactive Toast Notification -->
   <div id="toast">✓ Copied to clipboard!</div>
 
-  <!-- Hidden input for 3D retro keyboard compatibility -->
-  <input type="text" id="textarea" readonly />
-
   <!-- Footer -->
   <footer>
     <div style="color: #fff; font-weight: 600; font-family: var(--font-mono); font-size: 14px; margin-bottom: 4px;">
@@ -1651,7 +1672,7 @@
     <div>Diploma Teknologi Komputeran • Kolej Vokasional Perdagangan Johor Bahru (KVPJB)</div>
     <div>Pasir Gudang, Johor, Malaysia • Academic CGPA 3.98 / 4.00 • SKM Level 3 ID: S103882102</div>
     <div style="color: var(--amber); margin-top: 6px;">5-Month On-The-Job Training (OJT) Internship Window: February – June 2027</div>
-    <div style="font-size: 12px; color: var(--slate-500); margin-top: 8px;">Engineered with 3D WebGL Workstation &amp; Neon Timeline Architecture.</div>
+    <div style="font-size: 12px; color: var(--slate-500); margin-top: 8px;">Commodore PET 8296 Workstation // Interactive Retro Engine &amp; 3D Neon Timeline.</div>
   </footer>
 
   <!-- Scripts: Audio, Ambient Canvas, Smooth Glide, Active Stage Tracker, CLI -->
@@ -1689,6 +1710,20 @@
       if (audioOn) playBeep(1000, 0.08);
     }
 
+    // Type directly onto the 3D retro computer
+    function typeOnRetro(cmd) {
+      playBeep(950, 0.06);
+      if (typeof window.__TYPE_TERMINAL__ === 'function') {
+        window.__TYPE_TERMINAL__(cmd);
+      } else {
+        var ta = document.getElementById('textarea');
+        if (ta) {
+          ta.value = cmd;
+          ta.focus();
+        }
+      }
+    }
+
     // Smooth Gliding Navigation
     function glideTo(sectionId) {
       playBeep(850, 0.05);
@@ -1720,7 +1755,7 @@
       }, 2200);
     }
 
-    // Shell CLI Commands
+    // Shell CLI Commands for Section 06 Terminal
     var shellOutput = document.getElementById('shell-output');
     var shellInput = document.getElementById('shell-input');
 
